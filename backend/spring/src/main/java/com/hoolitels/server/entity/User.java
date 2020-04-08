@@ -1,11 +1,6 @@
 package com.hoolitels.server.entity;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -33,6 +28,11 @@ public class User {
 
     @Column(nullable = false)
     private String phone;
+
+    @Column(nullable = false)
+    private int countryId;
+
+    public User(){}
 
     public void setId(long id) {
         this.id = id;
@@ -90,21 +90,6 @@ public class User {
         this.countryId = countryId;
     }
 
-    @Column(nullable = false)
-    private int countryId;
-
-    public User(){}
-
-    public User(String name, String password, String email, String address, String zip, String city, String phone, int countryId) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.address = address;
-        this.zip = zip;
-        this.city = city;
-        this.phone = phone;
-        this.countryId = countryId;
-    }
 
     public void setName(String name) {
         this.name = name;

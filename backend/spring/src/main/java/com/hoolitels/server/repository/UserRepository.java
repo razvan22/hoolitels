@@ -10,9 +10,4 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByName(String name);
     List<User> findAllByName(String name);
-/*
-    BasicUser findByTitle(String title);
-    UserWithImages findByTitle(String title);
-    CompleteUser findByTitle(String title);
-*/
 }
