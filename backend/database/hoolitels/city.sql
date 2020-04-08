@@ -19,7 +19,16 @@ CREATE TABLE IF NOT EXISTS `city` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.city: ~5 rows (ungefär)
+DELETE FROM `city`;
+/*!40000 ALTER TABLE `city` DISABLE KEYS */;
+INSERT INTO `city` (`Id`, `name`) VALUES
+	(1, 'Helsingborg'),
+	(2, 'Kristiansstad'),
+	(4, 'Malmö'),
+	(5, 'Stockholm'),
+	(3, 'Vånga');
+/*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

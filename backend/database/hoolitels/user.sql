@@ -29,7 +29,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `FK__country` FOREIGN KEY (`countryId`) REFERENCES `country` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.user: ~0 rows (ungefär)
+DELETE FROM `user`;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

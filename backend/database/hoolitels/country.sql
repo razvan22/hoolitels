@@ -19,7 +19,16 @@ CREATE TABLE IF NOT EXISTS `country` (
   UNIQUE KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.country: ~5 rows (ungefär)
+DELETE FROM `country`;
+/*!40000 ALTER TABLE `country` DISABLE KEYS */;
+INSERT INTO `country` (`Id`, `name`) VALUES
+	(1, 'Helsingborg'),
+	(2, 'Kristiansstad'),
+	(4, 'Malmö'),
+	(5, 'Stockholm'),
+	(3, 'Vånga');
+/*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

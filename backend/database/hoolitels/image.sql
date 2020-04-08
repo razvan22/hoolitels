@@ -26,7 +26,10 @@ CREATE TABLE IF NOT EXISTS `image` (
   CONSTRAINT `FK_image_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.image: ~0 rows (ungefär)
+DELETE FROM `image`;
+/*!40000 ALTER TABLE `image` DISABLE KEYS */;
+/*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -31,7 +31,10 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   CONSTRAINT `FK_cityId` FOREIGN KEY (`cityId`) REFERENCES `city` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.hotel: ~0 rows (ungefär)
+DELETE FROM `hotel`;
+/*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

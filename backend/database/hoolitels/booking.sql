@@ -27,7 +27,10 @@ CREATE TABLE IF NOT EXISTS `booking` (
   CONSTRAINT `FK_booking_user` FOREIGN KEY (`userId`) REFERENCES `user` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.booking: ~0 rows (ungefär)
+DELETE FROM `booking`;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

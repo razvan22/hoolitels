@@ -25,7 +25,10 @@ CREATE TABLE IF NOT EXISTS `roombooking` (
   CONSTRAINT `FK__room` FOREIGN KEY (`roomId`) REFERENCES `room` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dataexport var bortvalt.
+-- Dumpar data för tabell hoolitels.roombooking: ~0 rows (ungefär)
+DELETE FROM `roombooking`;
+/*!40000 ALTER TABLE `roombooking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
