@@ -1,19 +1,3 @@
-SELECT * FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE   CONSTRAINT_SCHEMA='hoolitels'   AND TABLE_NAME='hotelamenity'   AND REFERENCED_TABLE_NAME IS NOT NULL;
-SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE   CONSTRAINT_SCHEMA='hoolitels'   AND TABLE_NAME='hotelamenity'   AND REFERENCED_TABLE_NAME IS NOT NULL;
-SHOW CREATE TABLE `hoolitels`.`hotelamenity`;
-SELECT 1 FROM `hotel` LIMIT 1;
-SELECT 1 FROM `amenity` LIMIT 1;
-SELECT * FROM `information_schema`.`COLUMNS` WHERE TABLE_SCHEMA='hoolitels' AND TABLE_NAME='amenity' ORDER BY ORDINAL_POSITION;
-ALTER TABLE `hotelamenity`
-	ADD COLUMN `hotelId` INT NOT NULL AFTER `Id`,
-	ADD COLUMN `amenityId` INT NOT NULL AFTER `hotelId`,
-	ADD CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotelId`) REFERENCES `hotel` (`Id`),
-	ADD CONSTRAINT `FK_hotelamenity_amenity` FOREIGN KEY (`amenityId`) REFERENCES `amenity` (`Id`);
-SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='hoolitels';
-SHOW TABLE STATUS FROM `hoolitels`;
-SHOW FUNCTION STATUS WHERE `Db`='hoolitels';
-SHOW PROCEDURE STATUS WHERE `Db`='hoolitels';
-SHOW TRIGGERS FROM `hoolitels`;
 SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='hoolitels';
 SELECT * FROM `information_schema`.`COLUMNS` WHERE TABLE_SCHEMA='hoolitels' AND TABLE_NAME='hotelamenity' ORDER BY ORDINAL_POSITION;
 SHOW INDEXES FROM `hotelamenity` FROM `hoolitels`;
@@ -577,4 +561,16 @@ SELECT * FROM `hoolitels`.`roombooking` LIMIT 104857600;
 SELECT 'hoolitels' AS `Database`, 'user' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
 SHOW CREATE TABLE `hoolitels`.`user`;
 SELECT * FROM `hoolitels`.`user` LIMIT 104857600;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_LOCAL_SQL_MODE, '') */;
+SELECT 'hoolitels' AS `Database`, 'amenity' AS `Table`, 4 AS `Rows`, 0 AS `Duration`;
+/*!40101 SET @OLD_LOCAL_SQL_MODE=@@SQL_MODE, SQL_MODE='' */;
+SELECT 'hoolitels' AS `Database`, 'booking' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'city' AS `Table`, 5 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'country' AS `Table`, 5 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'hotel' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'hotelamenity' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'image' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'room' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'roombooking' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+SELECT 'hoolitels' AS `Database`, 'user' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_LOCAL_SQL_MODE, '') */;
