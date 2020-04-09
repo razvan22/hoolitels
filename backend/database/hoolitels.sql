@@ -13,10 +13,12 @@
 
 
 -- Dumpar databasstruktur för hoolitels
+DROP DATABASE IF EXISTS `hoolitels`;
 CREATE DATABASE IF NOT EXISTS `hoolitels` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `hoolitels`;
 
 -- Dumpar struktur för tabell hoolitels.amenity
+DROP TABLE IF EXISTS `amenity`;
 CREATE TABLE IF NOT EXISTS `amenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -35,6 +37,7 @@ INSERT INTO `amenity` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `amenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.booking
+DROP TABLE IF EXISTS `booking`;
 CREATE TABLE IF NOT EXISTS `booking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT 0,
@@ -56,6 +59,7 @@ DELETE FROM `booking`;
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.city
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -63,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.city: ~5 rows (ungefär)
+-- Dumpar data för tabell hoolitels.city: ~6 rows (ungefär)
 DELETE FROM `city`;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `name`) VALUES
@@ -76,6 +80,7 @@ INSERT INTO `city` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.country
+DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -83,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   UNIQUE KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumpar data för tabell hoolitels.country: ~5 rows (ungefär)
+-- Dumpar data för tabell hoolitels.country: ~9 rows (ungefär)
 DELETE FROM `country`;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
 INSERT INTO `country` (`id`, `name`) VALUES
@@ -99,6 +104,7 @@ INSERT INTO `country` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotel
+DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -124,6 +130,7 @@ DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotelamenity
+DROP TABLE IF EXISTS `hotelamenity`;
 CREATE TABLE IF NOT EXISTS `hotelamenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hotel_id` int(11) NOT NULL,
@@ -141,6 +148,7 @@ DELETE FROM `hotelamenity`;
 /*!40000 ALTER TABLE `hotelamenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.image
+DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) NOT NULL DEFAULT '0',
@@ -161,6 +169,7 @@ DELETE FROM `image`;
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Type` enum('Single','Double','Triple','Family') NOT NULL,
@@ -185,6 +194,7 @@ DELETE FROM `room`;
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.roombooking
+DROP TABLE IF EXISTS `roombooking`;
 CREATE TABLE IF NOT EXISTS `roombooking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `booking_id` int(11) NOT NULL DEFAULT 0,
@@ -204,6 +214,7 @@ DELETE FROM `roombooking`;
 /*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '0',
