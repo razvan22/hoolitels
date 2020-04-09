@@ -13,21 +13,23 @@
 
 
 -- Dumpar databasstruktur för hoolitels
+DROP DATABASE IF EXISTS `hoolitels`;
 CREATE DATABASE IF NOT EXISTS `hoolitels` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `hoolitels`;
 
 -- Dumpar struktur för tabell hoolitels.amenity
+DROP TABLE IF EXISTS `amenity`;
 CREATE TABLE IF NOT EXISTS `amenity` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Id`),
+  PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.amenity: ~4 rows (ungefär)
 DELETE FROM `amenity`;
 /*!40000 ALTER TABLE `amenity` DISABLE KEYS */;
-INSERT INTO `amenity` (`Id`, `name`) VALUES
+INSERT INTO `amenity` (`id`, `name`) VALUES
 	(3, 'Barnklubb'),
 	(2, 'Kvällsunderhållning'),
 	(1, 'Pool'),
@@ -35,19 +37,20 @@ INSERT INTO `amenity` (`Id`, `name`) VALUES
 /*!40000 ALTER TABLE `amenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.booking
+DROP TABLE IF EXISTS `booking`;
 CREATE TABLE IF NOT EXISTS `booking` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL DEFAULT 0,
-  `numAdults` int(11) NOT NULL DEFAULT 0,
-  `numChildren` int(11) NOT NULL DEFAULT 0,
-  `numInfants` int(11) NOT NULL DEFAULT 0,
-  `startDate` date NOT NULL,
-  `endDate` date NOT NULL,
-  `Comment` varchar(500) DEFAULT '0',
-  `Paid` bit(1) NOT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `FK_booking_user` (`userId`),
-  CONSTRAINT `FK_booking_user` FOREIGN KEY (`userId`) REFERENCES `user` (`Id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `num_adults` int(11) unsigned NOT NULL DEFAULT 0,
+  `num_children` int(11) unsigned NOT NULL DEFAULT 0,
+  `num_infants` int(11) unsigned NOT NULL DEFAULT 0,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `comment` varchar(500) DEFAULT '0',
+  `paid` bit(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_booking_user` (`user_id`) USING BTREE,
+  CONSTRAINT `FK_booking_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.booking: ~0 rows (ungefär)
@@ -56,61 +59,69 @@ DELETE FROM `booking`;
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.city
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`Id`),
+  PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.city: ~5 rows (ungefär)
+-- Dumpar data för tabell hoolitels.city: ~6 rows (ungefär)
 DELETE FROM `city`;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
-INSERT INTO `city` (`Id`, `name`) VALUES
+INSERT INTO `city` (`id`, `name`) VALUES
 	(1, 'Helsingborg'),
 	(2, 'Kristiansstad'),
+	(6, 'Lund'),
 	(4, 'Malmö'),
 	(5, 'Stockholm'),
 	(3, 'Vånga');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.country
+DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`Id`) USING BTREE,
+  PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `name` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumpar data för tabell hoolitels.country: ~5 rows (ungefär)
+-- Dumpar data för tabell hoolitels.country: ~9 rows (ungefär)
 DELETE FROM `country`;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` (`Id`, `name`) VALUES
-	(1, 'Helsingborg'),
-	(2, 'Kristiansstad'),
-	(4, 'Malmö'),
-	(5, 'Stockholm'),
-	(3, 'Vånga');
+INSERT INTO `country` (`id`, `name`) VALUES
+	(6, 'Belgium'),
+	(7, 'China'),
+	(4, 'Denmark'),
+	(5, 'Finland'),
+	(3, 'Germany'),
+	(2, 'Norway'),
+	(8, 'Russia'),
+	(1, 'Sweden'),
+	(9, 'USA');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotel
+DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
   `address` varchar(50) NOT NULL DEFAULT '0',
   `zip` varchar(10) NOT NULL DEFAULT '0',
-  `cityId` int(11) NOT NULL DEFAULT 0,
+  `city_id` int(11) NOT NULL DEFAULT 0,
   `desc` varchar(500) DEFAULT '0',
   `email` varchar(50) NOT NULL DEFAULT '0',
   `phone` varchar(20) NOT NULL DEFAULT '0',
-  `distanceToBeach` int(11) DEFAULT -1 COMMENT '-1, finns inte nära, 0 ligger precis vid',
-  `distanceToTownCenter` int(11) DEFAULT -1 COMMENT '-1, finns inte nära, 0 ligger precis vid',
-  `checkinTime` time NOT NULL,
-  `checkoutTime` time NOT NULL DEFAULT '11:00:00',
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `name_cityId` (`name`,`cityId`),
-  KEY `FK_cityId` (`cityId`),
-  CONSTRAINT `FK_cityId` FOREIGN KEY (`cityId`) REFERENCES `city` (`Id`)
+  `distance_to_beach` int(11) DEFAULT -1 COMMENT '-1, finns inte nära, 0 ligger precis vid',
+  `distance_to_town_center` int(11) DEFAULT -1 COMMENT '-1, finns inte nära, 0 ligger precis vid',
+  `checkin_time` time NOT NULL,
+  `checkout_time` time NOT NULL DEFAULT '11:00:00',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `name_cityId` (`name`,`city_id`) USING BTREE,
+  KEY `FK_cityId` (`city_id`) USING BTREE,
+  CONSTRAINT `FK_cityId` FOREIGN KEY (`city_id`) REFERENCES `city` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.hotel: ~0 rows (ungefär)
@@ -119,15 +130,16 @@ DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotelamenity
+DROP TABLE IF EXISTS `hotelamenity`;
 CREATE TABLE IF NOT EXISTS `hotelamenity` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `hotelId` int(11) NOT NULL,
-  `amenityId` int(11) NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `hotelId_amenityId` (`hotelId`,`amenityId`),
-  KEY `FK_hotelamenity_amenity` (`amenityId`),
-  CONSTRAINT `FK_hotelamenity_amenity` FOREIGN KEY (`amenityId`) REFERENCES `amenity` (`Id`),
-  CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotelId`) REFERENCES `hotel` (`Id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) NOT NULL,
+  `amenity_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `hotelId_amenityId` (`hotel_id`,`amenity_id`) USING BTREE,
+  KEY `FK_hotelamenity_amenity` (`amenity_id`) USING BTREE,
+  CONSTRAINT `FK_hotelamenity_amenity` FOREIGN KEY (`amenity_id`) REFERENCES `amenity` (`id`),
+  CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.hotelamenity: ~0 rows (ungefär)
@@ -136,18 +148,19 @@ DELETE FROM `hotelamenity`;
 /*!40000 ALTER TABLE `hotelamenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.image
+DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL DEFAULT '0',
   `desc` varchar(500) NOT NULL DEFAULT '0',
-  `hotelId` int(11) DEFAULT 0,
-  `roomId` int(11) DEFAULT 0,
-  PRIMARY KEY (`Id`),
-  KEY `FK_image_hotel` (`hotelId`),
-  KEY `FK_image_room` (`roomId`),
-  CONSTRAINT `FK_image_hotel` FOREIGN KEY (`hotelId`) REFERENCES `hotel` (`Id`),
-  CONSTRAINT `FK_image_room` FOREIGN KEY (`roomId`) REFERENCES `room` (`Id`)
+  `hotel_id` int(11) DEFAULT 0,
+  `room_id` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_image_hotel` (`hotel_id`) USING BTREE,
+  KEY `FK_image_room` (`room_id`) USING BTREE,
+  CONSTRAINT `FK_image_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`),
+  CONSTRAINT `FK_image_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.image: ~0 rows (ungefär)
@@ -156,22 +169,23 @@ DELETE FROM `image`;
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Type` enum('Single','Double','Triple','Family') NOT NULL,
   `floor` int(11) NOT NULL DEFAULT 0,
   `number` int(10) unsigned NOT NULL DEFAULT 0,
-  `hotelId` int(11) NOT NULL DEFAULT 0,
+  `hotel_id` int(11) NOT NULL DEFAULT 0,
   `price` int(11) NOT NULL DEFAULT 0,
-  `maxOccupancy` int(11) NOT NULL DEFAULT 0,
-  `costExtraBed` int(11) NOT NULL DEFAULT 0,
-  `costHalfBoard` int(11) NOT NULL DEFAULT 0,
-  `costFullBoard` int(11) NOT NULL DEFAULT 0,
-  `costAllInclusive` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`Id`),
+  `max_occupancy` int(11) NOT NULL DEFAULT 0,
+  `cost_extra_bed` int(11) NOT NULL DEFAULT 0,
+  `cost_half_board` int(11) NOT NULL DEFAULT 0,
+  `cost_full_board` int(11) NOT NULL DEFAULT 0,
+  `cost_all_inclusive` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `number` (`number`),
-  KEY `FK__hotel` (`hotelId`),
-  CONSTRAINT `FK__hotel` FOREIGN KEY (`hotelId`) REFERENCES `hotel` (`Id`)
+  KEY `FK__hotel` (`hotel_id`) USING BTREE,
+  CONSTRAINT `FK__hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.room: ~0 rows (ungefär)
@@ -180,17 +194,18 @@ DELETE FROM `room`;
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.roombooking
+DROP TABLE IF EXISTS `roombooking`;
 CREATE TABLE IF NOT EXISTS `roombooking` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `bookingId` int(11) NOT NULL DEFAULT 0,
-  `roomId` int(11) NOT NULL DEFAULT 0,
-  `extraBed` bit(1) DEFAULT b'0',
-  `foodCost` int(11) DEFAULT 0,
-  PRIMARY KEY (`Id`),
-  KEY `FK__booking` (`bookingId`),
-  KEY `FK__room` (`roomId`),
-  CONSTRAINT `FK__booking` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`Id`),
-  CONSTRAINT `FK__room` FOREIGN KEY (`roomId`) REFERENCES `room` (`Id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_id` int(11) NOT NULL DEFAULT 0,
+  `room_id` int(11) NOT NULL DEFAULT 0,
+  `extra_bed` bit(1) DEFAULT b'0',
+  `food_cost` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK__booking` (`booking_id`) USING BTREE,
+  KEY `FK__room` (`room_id`) USING BTREE,
+  CONSTRAINT `FK__booking` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`),
+  CONSTRAINT `FK__room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.roombooking: ~0 rows (ungefär)
@@ -199,8 +214,9 @@ DELETE FROM `roombooking`;
 /*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '0',
   `email` varchar(50) NOT NULL DEFAULT '0',
   `address` varchar(50) NOT NULL DEFAULT '0',
@@ -208,12 +224,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `city` varchar(50) NOT NULL DEFAULT '0',
   `phone` varchar(20) NOT NULL DEFAULT '0',
   `password` varchar(50) NOT NULL DEFAULT '0',
-  `countryId` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`Id`),
+  `country_id` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone` (`phone`),
-  KEY `FK__country` (`countryId`),
-  CONSTRAINT `FK__country` FOREIGN KEY (`countryId`) REFERENCES `country` (`Id`)
+  KEY `FK__country` (`country_id`) USING BTREE,
+  CONSTRAINT `FK__country` FOREIGN KEY (`country_id`) REFERENCES `country` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.user: ~0 rows (ungefär)
