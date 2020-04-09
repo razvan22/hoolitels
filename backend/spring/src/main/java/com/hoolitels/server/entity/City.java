@@ -7,7 +7,7 @@ import java.util.Set;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -15,10 +15,14 @@ public class City {
     @OneToMany(mappedBy = "city")
     private Set<Hotel> hotels;
 
+    public Set<Hotel> getHotels() {
+        return hotels;
+    }
+
     public City() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
