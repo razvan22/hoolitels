@@ -1,0 +1,132 @@
+package com.hoolitels.server.entity;
+
+/*
+Programmerat av Jan-Erik "Janis" Karlsson 2020-04-14
+Programmering i Java EMMJUH19, EC-Utbildning
+CopyLeft 2020 - JanInc
+*/
+import javax.persistence.*;
+
+@Entity
+public class Room {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+//    @Type(type = "com.hoolitels.server.entity.RoomType")
+    private RoomType type;
+
+    @Column(nullable = false)
+    private int floor;
+
+    @Column(nullable = false)
+    private int number;
+
+    @ManyToOne
+    @JoinColumn(name="hotel_id", nullable = false)
+    private Hotel hotel;
+
+    @Column(nullable = false)
+    private int price;
+
+    @Column(nullable = false)
+    private int max_occupancy;
+
+    @Column(nullable = true)
+    private Integer cost_extra_bed;
+
+    @Column(nullable = true)
+    private Integer cost_half_board;
+
+    @Column(nullable = true)
+    private Integer cost_full_board;
+
+    @Column(nullable = true)
+    private Integer cost_all_inclusive;
+
+    public long getId() {
+        return id;
+    }
+
+    public RoomType getType() {
+        return type;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getHotel() {
+        return hotel.getName();
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getMax_occupancy() {
+        return max_occupancy;
+    }
+
+    public Integer getCost_extra_bed() {
+        return cost_extra_bed;
+    }
+
+    public Integer getCost_half_board() {
+        return cost_half_board;
+    }
+
+    public Integer getCost_full_board() {
+        return cost_full_board;
+    }
+
+    public Integer getCost_all_inclusive() {
+        return cost_all_inclusive;
+    }
+
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setMax_occupancy(int max_occupancy) {
+        this.max_occupancy = max_occupancy;
+    }
+
+    public void setCost_extra_bed(Integer cost_extra_bed) {
+        this.cost_extra_bed = cost_extra_bed;
+    }
+
+    public void setCost_half_board(Integer cost_half_board) {
+        this.cost_half_board = cost_half_board;
+    }
+
+    public void setCost_full_board(Integer cost_full_board) {
+        this.cost_full_board = cost_full_board;
+    }
+
+    public void setCost_all_inclusive(Integer cost_all_inclusive) {
+        this.cost_all_inclusive = cost_all_inclusive;
+    }
+}

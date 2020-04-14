@@ -2,12 +2,13 @@ package com.hoolitels.server.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Set;
 
 @Entity
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -18,9 +19,15 @@ public class Hotel {
 //    @Column(nullable = false)
 //    private int city_id;
 
-    public String getCity() {
-        return city.getName();
-    }
+    @OneToMany(mappedBy = "hotel")
+    private Set<Room> rooms;
+
+    @ManyToMany()
+    @JoinTable(
+            name = "hotelamenity",
+            joinColumns = @JoinColumn(name = "hotel_id"),
+            inverseJoinColumns = @JoinColumn(name = "amenity_id"))
+    private Set<Amenity> amenities;
 
     @ManyToOne
     @JoinColumn(name="city_id", nullable = false)
@@ -47,7 +54,15 @@ public class Hotel {
     public Hotel() {
     }
 
-    public int getId() {
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public String getCity() {
+        return city.getName();
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -131,5 +146,7 @@ public class Hotel {
         this.checkout_time = checkout_time;
     }
 
-
+    public Set<Amenity> getAmenities() {
+        return amenities;
+    }
 }
