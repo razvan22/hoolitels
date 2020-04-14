@@ -13,6 +13,5 @@ export default {
 <style>
     body{
         background-color: aquamarine;
-         border: 10px solid black;
     }
 </style>
