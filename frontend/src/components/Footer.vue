@@ -1,6 +1,8 @@
 <template>
 <ul class ="Footer">
-    <span v-for="icon in icons" :key="icon.image"> {{icon.image}}</span>
+    <span class= "fab fa-facebook fa-3x "></span>
+    <span class="fab fa-instagram fa-3x "></span>
+    <span class="fab fa-twitter-square fa-3x"></span>
       <div><span id="footer-text"> @Copyright Hoolitels {{currentYear}} </span> </div>
   </ul>
 
@@ -14,12 +16,6 @@ export default {
     data(){
       return{
         currentYear: new Date().getFullYear(),
-        icons: [
-          {image: 'Facebook'}, 
-          {image:'Instagram'}, 
-          {image:'Twitter'}, 
-
-        ]
       }
     }
 }
@@ -36,6 +32,16 @@ export default {
     }
     span  {
       padding: 5%;
+    }
+    .fa-facebook {
+      color: blue;
+    }
+     .fa-instagram{
+      color:purple;
+    }
+    
+     .fa-twitter-square{
+      color:lightblue;
     }
   
 </style>
