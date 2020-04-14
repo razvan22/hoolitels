@@ -1,11 +1,8 @@
 package com.hoolitels.server.entity;
 
-/*
-Programmerat av Jan-Erik "Janis" Karlsson 2020-04-14
-Programmering i Java EMMJUH19, EC-Utbildning
-CopyLeft 2020 - JanInc
-*/
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Room {
@@ -28,6 +25,9 @@ public class Room {
     @JoinColumn(name="hotel_id", nullable = false)
     private Hotel hotel;
 
+    @OneToMany(mappedBy = "room")
+    private Set<Roombooking> roombookings;
+
     @Column(nullable = false)
     private int price;
 
@@ -45,6 +45,9 @@ public class Room {
 
     @Column(nullable = true)
     private Integer cost_all_inclusive;
+
+    @OneToMany(mappedBy = "room")
+    private Set<Image> images;
 
     public long getId() {
         return id;
@@ -89,6 +92,20 @@ public class Room {
     public Integer getCost_all_inclusive() {
         return cost_all_inclusive;
     }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+//    public Set<Roombooking> getRoombookings() {
+//        return roombookings;
+//    }
+
+//    public boolean isBooked(Date start_date, Date end_date) {
+//        roombookings.stream()
+//                .filter(s -> s.getBooking().getStart_date())
+//        return false;
+//    }
 
     public void setType(RoomType type) {
         this.type = type;

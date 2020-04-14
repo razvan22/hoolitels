@@ -16,8 +16,10 @@ public class Hotel {
     @Column(nullable = false)
     private String zip;
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
 //    private int city_id;
+    @OneToMany(mappedBy = "hotel")
+    private Set<Image> images;
 
     @OneToMany(mappedBy = "hotel")
     private Set<Room> rooms;
@@ -30,7 +32,7 @@ public class Hotel {
     private Set<Amenity> amenities;
 
     @ManyToOne
-    @JoinColumn(name="city_id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     private String desc;
@@ -82,7 +84,15 @@ public class Hotel {
         this.zip = zip;
     }
 
-//    public int getCity_id() {
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public int getDistance_to_town_center() {
+        return distance_to_town_center;
+    }
+
+    //    public int getCity_id() {
 //        return city_id;
 //    }
 //
