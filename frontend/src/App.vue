@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    
+    <Footer></footer>
   </div>
 </template>
 
@@ -8,7 +8,12 @@
 
 
 <script>
+import Footer from '@/components/Footer.vue'
+
 export default {
+  components:{
+    Footer
+  },
   data(){
     return{
       users: []
