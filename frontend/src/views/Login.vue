@@ -2,9 +2,9 @@
   <div class="login">
     <div class="container">
         <div class="row">
-        <div class="col s12 m12 l12">
-            <img src="../assets/logo_minimal.gif" alt=""  srcset="" class="responsive">
-        </div>
+          <div class="col s12 m12 l12">
+              <img src="../assets/logo_minimal.gif" alt=""  srcset="" class="responsive">
+          </div>
       </div>
       <div class="row">
         <div class="col s12">
