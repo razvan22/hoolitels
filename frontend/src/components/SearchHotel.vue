@@ -9,13 +9,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s3">
-                     <input type="text" class="datepicker">
-                </div>
-                
-            </div>
-        
         </div>
     </div>
   
