@@ -1,11 +1,7 @@
 <template>
   <div class="login">
     <div class="container">
-        <div class="row">
-          <div class="col s12 m12 l12">
-              <img src="../assets/logo_minimal.gif" alt=""  srcset="" class="responsive">
-          </div>
-      </div>
+      <Logo/>
       <div class="row">
         <div class="col s12">
           <div class="input-field inline">
@@ -25,8 +21,13 @@
 </template>
 
 <script>
+import Logo from '@/components/Logo.vue'
+
 export default {
-  name:'Login'
+  name:'Login',
+  components:{
+    Logo
+  }
 }
 </script>
 
