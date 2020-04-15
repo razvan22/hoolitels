@@ -5,8 +5,8 @@
             <div class="row row-1">
                 <div class="col s8 m10 l10"></div>
                 <div class="col s4 m2 l2 col-login">
-                    <router-link to="/login" class="btn-floating btn-large waves-effect waves-light blue-grey darken-3">
-                        <i class="large material-icons">account_circle</i>
+                    <router-link to="/login" class="btn-floating btn-large waves-effect waves-light cyan darken-3">
+                        <i class="large material-icons ">account_circle</i>
                     </router-link>
                 </div>
             </div>
