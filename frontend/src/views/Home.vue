@@ -27,11 +27,14 @@
 <script>
 import Footer from '@/components/Footer.vue'
 import SearchHotel from '@/components/SearchHotel.vue'
+
+
 export default {
     name: 'Home',
     components: {
         Footer,
-        SearchHotel
+        SearchHotel, 
+      
         
     }
 }

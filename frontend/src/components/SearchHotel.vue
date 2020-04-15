@@ -1,4 +1,5 @@
 <template>
+
     <div class="main" id="date">
         <div class="container">
             <div class="row">
@@ -8,6 +9,30 @@
                         <label for="icon_prefix">CITY</label>
                     </div>
                 </div>
+
+                <div class="col s8 m5 l3">
+                    <label>Antal personer</label>
+                    <div id="change">
+                        <span> Vuxna 12+ </span>
+                          <button v-on:click="countDownAdult"> -</button>
+                            <span> {{ counterAdult }}</span>
+                            <button v-on:click="countUpAdult"> +</button>   
+                    </div>
+                       <div id="change">
+                        <span> Barn 2+ </span>
+                          <button v-on:click="countDownChild"> -</button>
+                            <span> {{ counterChild }}</span>
+                            <button v-on:click="countUpChild"> +</button>   
+                    </div>
+                       <div id="change">
+                        <span> Småbarn 12+ </span>
+                          <button v-on:click="countDownBaby"> -</button>
+                            <span> {{ counterBaby }}</span>
+                            <button v-on:click="countUpBaby"> +</button>   
+                    </div>
+                </div>
+
+  
             </div>
             <div class="row">
                 <div class="col  s12 m12 l12">
@@ -70,32 +95,47 @@
 
 import M from '@/assets/materialize.min.js'
 export default {
-    components: {
-    },
-
     data(){
-        return{
-         
-
-        }
-
+       return{
+            counterAdult: 0, 
+            counterChild: 0, 
+            counterBaby: 0, 
+       }
     },
+  
 
     mounted(){
         let elems = document.querySelectorAll('.datepicker');
         M.Datepicker.init(elems);
         let element = document.querySelectorAll('select');
         M.FormSelect.init(element);
-    }
-    ,
+    },
+
     methods:{
-        date: function(){
-
-        }
+        countUpAdult: function(){
+            this.counterAdult +=1
+        },
+          countUpChild: function(){
+            this.counterChild +=1
+        },
+         countUpBaby: function(){
+            this.counterBaby +=1
+        },
+          countDownAdult: function(){
+            if (this.counterAdult === 0) return
+            this.counterAdult -=1
+        },
+          countDownChild: function(){
+            if (this.counterChild === 0) return
+            this.counterChild -=1
+        },
+         countDownBaby: function(){
+            if (this.counterBaby === 0) return
+            this.counterBaby -=1
+        },
     }
+
 }
-
-
 </script>
 
 
