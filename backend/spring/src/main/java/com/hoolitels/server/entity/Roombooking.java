@@ -14,6 +14,7 @@ public class Roombooking {
     @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "booking_id", nullable = false)
     @JsonBackReference
+    @MapsId
     private Booking booking;
 
     @ManyToOne

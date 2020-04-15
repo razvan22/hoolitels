@@ -104,8 +104,8 @@ public class Room {
 
     public boolean isFree(Date start_date, Date end_date) {
         return roombookings.stream()
-                .allMatch(s -> ((s.getBooking().getEnd_date()).before(start_date) || s.getBooking().getEnd_date().equals(start_date) && (end_date.before(s.getBooking().getStart_date()) || end_date.equals(s.getBooking().getStart_date()))));
-
+            .allMatch(s -> ((s.getBooking().getEnd_date()).before(start_date) || s.getBooking().getEnd_date().equals(start_date) &&
+                    (end_date.before(s.getBooking().getStart_date()) || end_date.equals(s.getBooking().getStart_date()))));
     }
 
     public void setType(RoomType type) {

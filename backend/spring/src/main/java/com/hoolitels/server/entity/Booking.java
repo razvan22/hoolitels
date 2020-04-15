@@ -84,5 +84,9 @@ public class Booking {
     public boolean isPaid() {
         return paid;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
 
