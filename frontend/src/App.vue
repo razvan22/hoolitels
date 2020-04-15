@@ -1,38 +1,8 @@
 <template>
   <div id="app">
-    <Header></Header>
-
-    <Footer></Footer>
+    <router-view/>
   </div>
 </template>
-
-
-
-
-<script>
-import Footer from '@/components/Footer.vue'
-import Header from '@/components/Header.vue'
-
-export default {
-  components:{
-    Footer,
-    Header
-  },
-  data(){
-    return{
-      users: []
-    }
-  },
-
-  methods:{
-    getUsers: async function(){
-      let result = await fetch("http://localhost:8080/rest/user/");
-      result = await result.json();
-      this.users = result;
-    }
-  }
-}
-</script>
 
 <style>
 #app {

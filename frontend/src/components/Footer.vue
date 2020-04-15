@@ -3,7 +3,7 @@
     <span class= "fab fa-facebook fa-3x "></span>
     <span class="fab fa-instagram fa-3x "></span>
     <span class="fab fa-twitter-square fa-3x"></span>
-      <div><span id="footer-text"> @Copyright Hoolitels {{currentYear}} </span> </div>
+    <div><span id="footer-text"> @Copyright Hoolitels {{currentYear}} </span> </div>
   </ul>
 
 </template>
@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style>
+.Footer{
+  position: relative;
+
+}
     ul{
        box-sizing: border-box;
          border: 1px solid black;
