@@ -6,6 +6,7 @@ import com.hoolitels.server.repository.BookingRepository;
 import com.hoolitels.server.repository.RoomRepository;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -37,6 +38,7 @@ public class BookingController {
     }
 
     @PostMapping
+    @Transactional
     public Booking createBooking(@RequestBody Booking booking) {
         Optional<User> userOpt = userRepository.findById(booking.getUser().getId());
         if (userOpt.isEmpty()) return null;
