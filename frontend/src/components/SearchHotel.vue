@@ -1,14 +1,7 @@
 <template>
     <div class="main" id="date">
         <div class="container">
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <div class="input-field col s6">
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">CITY</label>
-                    </div>
-                </div>
-            </div>
+            <DateSelector/>
             <div class="row">
                 <div class="col  s12 m12 l12">
                     <div class="input-field col s6">
@@ -53,10 +46,11 @@
 //     }
 //   }
 // }
-
+import DateSelector from '@/components/DateSelector.vue'
 import M from '@/assets/materialize.min.js'
 export default {
     components: {
+        DateSelector
     },
 
     data(){
@@ -68,8 +62,7 @@ export default {
     },
 
     mounted(){
-        let elems = document.querySelectorAll('.datepicker');
-        M.Datepicker.init(elems);
+
         let element = document.querySelectorAll('select');
         M.FormSelect.init(element);
     }
@@ -86,11 +79,20 @@ export default {
 
 
 <style>
-.row .col.s6 .input-class{
-    border: solid red 1px;
+#date .container{}
+#row-city{
+    justify-content: center;
+    align-content: center;
 }
+#city{
+    justify-content: center;
+    align-content: center;
+    border-radius: 0.6em;
+    border:solid #e0e0e0 0.08em;
+    align-content: space-around;
+}
+
 .main .container .row {
-    direction: flex;
 }
 .main .container .row .col .input-field{
     margin-right: auto;
