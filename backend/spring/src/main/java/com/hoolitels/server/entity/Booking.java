@@ -31,9 +31,11 @@ public class Booking {
     @Column(nullable = false)
     private int num_infants;
 
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date start_date;
 
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date end_date;
 

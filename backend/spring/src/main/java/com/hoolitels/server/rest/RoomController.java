@@ -1,13 +1,11 @@
 package com.hoolitels.server.rest;
 
 import com.hoolitels.server.entity.Room;
-import com.hoolitels.server.entity.Hotel;
 import com.hoolitels.server.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("rest/room") // Parent-URL:n för denna klass

@@ -1,8 +1,6 @@
 package com.hoolitels.server.rest;
 
 import com.hoolitels.server.entity.Booking;
-import com.hoolitels.server.entity.Hotel;
-import com.hoolitels.server.entity.Room;
 import com.hoolitels.server.entity.User;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

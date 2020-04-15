@@ -22,7 +22,7 @@ public class Room {
     private int number;
 
     @ManyToOne
-    @JoinColumn(name="hotel_id", nullable = false)
+    @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")
@@ -97,15 +97,16 @@ public class Room {
         return images;
     }
 
+    // TODO: 2020-04-15 TIll ev admin-UI Sprint 2
 //    public Set<Roombooking> getRoombookings() {
 //        return roombookings;
 //    }
 
-//    public boolean isBooked(Date start_date, Date end_date) {
-//        roombookings.stream()
-//                .filter(s -> s.getBooking().getStart_date())
-//        return false;
-//    }
+    public boolean isFree(Date start_date, Date end_date) {
+        return roombookings.stream()
+                .allMatch(s -> ((s.getBooking().getEnd_date()).before(start_date) || s.getBooking().getEnd_date().equals(start_date) && (end_date.before(s.getBooking().getStart_date()) || end_date.equals(s.getBooking().getStart_date()))));
+
+    }
 
     public void setType(RoomType type) {
         this.type = type;

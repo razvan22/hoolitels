@@ -117,4 +117,8 @@ public class User {
     public Set<Booking> getBookings() {
         return bookings;
     }
+
+    public boolean verifyPassword(String password) {
+        return getPassword().equals(password);
+    }
 }

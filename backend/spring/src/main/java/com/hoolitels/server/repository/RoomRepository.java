@@ -1,6 +1,5 @@
 package com.hoolitels.server.repository;
 
-import com.hoolitels.server.entity.City;
 import com.hoolitels.server.entity.Room;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

@@ -16,8 +16,6 @@ public class Hotel {
     @Column(nullable = false)
     private String zip;
 
-    //    @Column(nullable = false)
-//    private int city_id;
     @OneToMany(mappedBy = "hotel")
     private Set<Image> images;
 
@@ -91,14 +89,6 @@ public class Hotel {
     public int getDistance_to_town_center() {
         return distance_to_town_center;
     }
-
-    //    public int getCity_id() {
-//        return city_id;
-//    }
-//
-//    public void setCity_id(int city_id) {
-//        this.city_id = city_id;
-//    }
 
     public String getDesc() {
         return desc;
