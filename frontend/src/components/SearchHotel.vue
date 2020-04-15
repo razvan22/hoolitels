@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <input id="icon_prefix" type="text" class="validate">
                         <label for="icon_prefix">CITY</label>
                     </div>
@@ -11,21 +11,22 @@
             </div>
             <div class="row">
                 <div class="col  s12 m12 l12">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <input id="icon_prefix" type="number">
-                        <label for="icon_prefix">RUM</label>
+                        <label for="icon_prefix">ROOMS</label>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s6">
-                    <p> Avstånd till (meter)</p>
+            <div class="row s12">
+                <div class="col s4 l4">
+                     Avstånd till: 
                     <div class="input-field inline">
                         <input id="meter" type="number">
-                        <label for="meter" data-error="wrong" data-success="right">meter</label>
+                        <label for="meter" data-error="wrong" data-success="right">ange meter</label>  
                     </div>
+                    
                 </div>
-                <div class="col s6">
+                <div class="col s8 l8">
                     <div class="input-field col s12">
                         <select>
                         <option value="" disabled selected>Choose your option</option>
@@ -33,8 +34,21 @@
                         <option value="2">Option 2</option>
                         <option value="3">Option 3</option>
                         </select>
-                        <label>Materialize Select</label>
+                        <label>Platser</label>
                     </div>
+                 </div>
+
+                   <div class="input-field col s12">
+                        <select multiple>
+                        <option value="" disabled selected>Amenities</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        </select>
+                      
+                    </div>
+                 <div class="col s12">
+                 <a class="waves-effect waves-light btn">Sök</a>
                  </div>
             </div>
         </div>
@@ -86,18 +100,9 @@ export default {
 
 
 <style>
-.row .col.s6 .input-class{
-    border: solid red 1px;
-}
-.main .container .row {
-    direction: flex;
-}
-.main .container .row .col .input-field{
-    margin-right: auto;
-    display: block;
-    justify-content: center;
-    align-items: center;
-}
+
+
+
 .main{
     min-height: 20em;
 }
