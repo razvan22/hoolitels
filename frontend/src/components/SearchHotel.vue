@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main" id="date">
         <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12">
@@ -10,35 +10,62 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m12 l12">
-                    <label for="startDate" class="materialize-label">Start Date</label>
-                    <input id="startDate" ref="startDate" type="date" size="12" class="startDate timepicker">
+                <div class="col s3">
+                     <input type="text" class="datepicker">
                 </div>
+                
             </div>
-            <input type="text" class="datepicker">
+        
         </div>
-
     </div>
   
 </template>
 
 <script>
+// computed: {
+//   date: {
+//     get () {
+//       return this.$store.state.obj.date
+//     },
+//     set (value) {
+//       this.$store.commit('setDate', value)
+//     }
+//   }
+// }
+
+import M from '@/assets/materialize.min.js'
 export default {
+    components: {
+    },
+
+    data(){
+        return{
+         
+
+        }
+
+    },
+
     mounted(){
-  
+        let elems = document.querySelectorAll('.datepicker');
+        M.Datepicker.init(elems);
     }
     ,
     methods:{
-  
-        
+        date: function(){
+
+        }
     }
-    
 }
 
-  
+
 </script>
 
+
 <style>
+.row .col.s6 .input-class{
+    border: solid red 1px;
+}
 .main .container .row {
     direction: flex;
 }
