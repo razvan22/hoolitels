@@ -1,6 +1,12 @@
 package com.hoolitels.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -32,18 +38,14 @@ public class User {
     @Column(nullable = false)
     private int countryId;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @JsonManagedReference
+    private Set<Booking> bookings;
+
     public User(){}
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {
@@ -90,11 +92,11 @@ public class User {
         this.countryId = countryId;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -105,5 +107,22 @@ public class User {
 
     public long getId() {
         return id;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public boolean verifyPassword(String password) {
+        return getPassword().equals(password);
     }
 }
