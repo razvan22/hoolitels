@@ -3,72 +3,60 @@
     <div class="main" id="date">
         <div class="container">
             <div class="row">
-                <div class="col s12 m12 l12">
-                    <div class="input-field col s12">
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">CITY</label>
-                    </div>
-                </div>
-
-                <div class="col s8 m5 l3">
+                <div class="col s12 m5 l3">
                     <label>Antal personer</label>
-                    <div id="change">
-                        <span> Vuxna 12+ </span>
-                          <button v-on:click="countDownAdult"> -</button>
+                        <div class="col s11">
+                            <span> Vuxna 12+ år</span>
+                            <button v-on:click="countDownAdult">-</button>
                             <span> {{ counterAdult }}</span>
-                            <button v-on:click="countUpAdult"> +</button>   
-                    </div>
-                       <div id="change">
-                        <span> Barn 2+ </span>
-                          <button v-on:click="countDownChild"> -</button>
-                            <span> {{ counterChild }}</span>
-                            <button v-on:click="countUpChild"> +</button>   
-                    </div>
-                       <div id="change">
-                        <span> Småbarn 12+ </span>
-                          <button v-on:click="countDownBaby"> -</button>
+                            <button v-on:click="countUpAdult">+</button>   
+                        </div>
+                       <div class="col s12">
+                            <span> Barn 2+ år</span>
+                                <button v-on:click="countDownChild">-</button>
+                                <span> {{ counterChild }}</span>
+                                <button v-on:click="countUpChild">+</button>   
+                        </div>
+                       <div class="col s12 l12">
+                            <span> Barn -2 år</span>
+                            <button v-on:click="countDownBaby">-</button>
                             <span> {{ counterBaby }}</span>
-                            <button v-on:click="countUpBaby"> +</button>   
-                    </div>
+                            <button v-on:click="countUpBaby">+</button>   
+                        </div>
                 </div>
 
-  
             </div>
             <div class="row">
                 <div class="col  s12 m12 l12">
                     <div class="input-field col s12">
-                        <input id="icon_prefix" type="number">
-                        <label for="icon_prefix">ROOMS</label>
+                        <input id="icon_prefix" type="number" v-model="room">
+                        <label for="icon_prefix">Ange antal rum</label>
                     </div>
                 </div>
             </div>
             <div class="row s12">
                 <div class="col s4 l4">
-                     Avstånd till: 
-                    <div class="input-field inline">
-                        <input id="meter" type="number">
-                        <label for="meter" data-error="wrong" data-success="right">ange meter</label>  
+                    <div class="input-field">
+                        <input id="meter" type="number" v-model.number="meter">
+                        <label for="meter" data-error="wrong" data-success="right">Ange meter:</label>
+                        
                     </div>
                     
                 </div>
                 <div class="col s8 l8">
                     <div class="input-field col s12">
-                        <select>
+                        <select v-model="place">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option v-bind:value="{ option: 1}">option 1</option>
                         </select>
                         <label>Platser</label>
                     </div>
                  </div>
 
                    <div class="input-field col s12">
-                        <select multiple>
-                        <option value="" disabled selected>Amenities</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <select v-model="amenity" multiple>
+                        <option value="" disabled selected>Faciliteter</option>
+                        <option v-bind:value="{ option: 1}">option 1</option>
                         </select>
                       
                     </div>
@@ -99,7 +87,11 @@ export default {
        return{
             counterAdult: 0, 
             counterChild: 0, 
-            counterBaby: 0, 
+            counterBaby: 0,
+            room: "",
+            meter: "",
+            amenity: "",
+            place:"",
        }
     },
   
@@ -109,6 +101,7 @@ export default {
         M.Datepicker.init(elems);
         let element = document.querySelectorAll('select');
         M.FormSelect.init(element);
+      
     },
 
     methods:{
@@ -137,12 +130,7 @@ export default {
 
 }
 </script>
-
-
 <style>
-
-
-
 .main{
     min-height: 20em;
 }
