@@ -2,12 +2,13 @@ package com.hoolitels.server.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Set;
 
 @Entity
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -15,15 +16,21 @@ public class Hotel {
     @Column(nullable = false)
     private String zip;
 
-//    @Column(nullable = false)
-//    private int city_id;
+    @OneToMany(mappedBy = "hotel")
+    private Set<Image> images;
 
-    public String getCity() {
-        return city.getName();
-    }
+    @OneToMany(mappedBy = "hotel")
+    private Set<Room> rooms;
+
+    @ManyToMany()
+    @JoinTable(
+            name = "hotelamenity",
+            joinColumns = @JoinColumn(name = "hotel_id"),
+            inverseJoinColumns = @JoinColumn(name = "amenity_id"))
+    private Set<Amenity> amenities;
 
     @ManyToOne
-    @JoinColumn(name="city_id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     private String desc;
@@ -47,7 +54,15 @@ public class Hotel {
     public Hotel() {
     }
 
-    public int getId() {
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public String getCity() {
+        return city.getName();
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -67,13 +82,13 @@ public class Hotel {
         this.zip = zip;
     }
 
-//    public int getCity_id() {
-//        return city_id;
-//    }
-//
-//    public void setCity_id(int city_id) {
-//        this.city_id = city_id;
-//    }
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public int getDistance_to_town_center() {
+        return distance_to_town_center;
+    }
 
     public String getDesc() {
         return desc;
@@ -131,5 +146,7 @@ public class Hotel {
         this.checkout_time = checkout_time;
     }
 
-
+    public Set<Amenity> getAmenities() {
+        return amenities;
+    }
 }

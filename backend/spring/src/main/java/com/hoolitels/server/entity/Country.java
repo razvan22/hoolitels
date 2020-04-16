@@ -24,7 +24,6 @@ public class Country {
         this.name = name;
     }
 
-//    @Enumerated
     @Column(columnDefinition = "VARCHAR")
     private String name;
 
