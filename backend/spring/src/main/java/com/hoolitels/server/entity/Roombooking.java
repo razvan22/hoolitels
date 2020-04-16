@@ -11,10 +11,9 @@ public class Roombooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "booking_id", nullable = false)
     @JsonBackReference
-    @MapsId
     private Booking booking;
 
     @ManyToOne
@@ -26,6 +25,16 @@ public class Roombooking {
 
     @Column(nullable = false)
     private Integer food_cost;
+
+    public Roombooking() {
+    }
+
+    public Roombooking(Booking booking, Room room, boolean extra_bed, Integer food_cost) {
+        this.booking = booking;
+        this.room = room;
+        this.extra_bed = extra_bed;
+        this.food_cost = food_cost;
+    }
 
     public long getId() {
         return id;

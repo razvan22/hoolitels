@@ -1,7 +1,9 @@
 package com.hoolitels.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -94,6 +96,7 @@ public class User {
         this.name = name;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -106,6 +109,7 @@ public class User {
         return id;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }

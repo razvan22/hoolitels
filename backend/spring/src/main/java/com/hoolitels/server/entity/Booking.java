@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Booking {
@@ -13,14 +14,14 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "booking")
     @JsonManagedReference
-    private Set<Roombooking> roombookings;
+    private List<Roombooking> roombookings = new ArrayList<>();
 
     @Column(nullable = false)
     private int num_adults;
@@ -77,7 +78,7 @@ public class Booking {
         return comment;
     }
 
-    public Set<Roombooking> getRoombookings() {
+    public List<Roombooking> getRoombookings() {
         return roombookings;
     }
 
@@ -87,6 +88,10 @@ public class Booking {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setRoomBookings(List<Roombooking> roombookings) {
+        this.roombookings = roombookings;
     }
 }
 

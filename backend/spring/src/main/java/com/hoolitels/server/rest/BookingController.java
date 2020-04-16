@@ -1,7 +1,6 @@
 package com.hoolitels.server.rest;
 
 import com.hoolitels.server.entity.*;
-import com.hoolitels.server.repository.AmenityRepository;
 import com.hoolitels.server.repository.BookingRepository;
 import com.hoolitels.server.repository.RoomRepository;
 import com.hoolitels.server.repository.UserRepository;
@@ -9,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.*;
 
 @RestController
 @RequestMapping("rest/booking") // Parent-URL:n för denna klass
@@ -45,10 +41,12 @@ public class BookingController {
 
         booking.setUser(userOpt.get());
 
-        Set<Roombooking> rbs = booking.getRoombookings();
-        System.out.println("Hej hopp när vi ska skapa en bokning!!! " + rbs);
+        ArrayList<Roombooking> rbLocal = new ArrayList<Roombooking>();
+        booking.getRoombookings().forEach(rb -> rbLocal.add(new Roombooking(booking, (roomRepository.findById(rb.getRoom().getId())).get(), rb.isExtra_bed(), rb.getFood_cost())));
+        booking.setRoomBookings(rbLocal);
+
+        List<Roombooking> rbs = booking.getRoombookings();
         if (!rbs.stream().allMatch(rb -> checkMatches(rb, booking.getStart_date(), booking.getEnd_date()))) return null;
-        System.out.println("Hej efter allMatch....");
         return bookingRepository.save(booking);
     } // createBooking
 
@@ -56,8 +54,6 @@ public class BookingController {
         Optional<Room> roomOpt = roomRepository.findById(rb.getRoom().getId());
 
         if (roomOpt.isEmpty()) return false;
-        System.out.println("Optional not empty - wohoo!");
-        System.out.println("Is room free? " +  roomOpt.get().isFree(start, end));
         return roomOpt.get().isFree(start, end);
     } // checkMatches
 }
