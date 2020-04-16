@@ -18,7 +18,6 @@ CREATE DATABASE IF NOT EXISTS `hoolitels` /*!40100 DEFAULT CHARACTER SET utf8mb4
 USE `hoolitels`;
 
 -- Dumpar struktur för tabell hoolitels.amenity
-DROP TABLE IF EXISTS `amenity`;
 CREATE TABLE IF NOT EXISTS `amenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -27,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `amenity` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.amenity: ~4 rows (ungefär)
-DELETE FROM `amenity`;
 /*!40000 ALTER TABLE `amenity` DISABLE KEYS */;
 INSERT INTO `amenity` (`id`, `name`) VALUES
 	(3, 'Barnklubb'),
@@ -37,7 +35,6 @@ INSERT INTO `amenity` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `amenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.booking
-DROP TABLE IF EXISTS `booking`;
 CREATE TABLE IF NOT EXISTS `booking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT 0,
@@ -47,19 +44,31 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `comment` varchar(500) DEFAULT '0',
-  `paid` bit(1) NOT NULL,
+  `paid` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK_booking_user` (`user_id`) USING BTREE,
   CONSTRAINT `FK_booking_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.booking: ~0 rows (ungefär)
-DELETE FROM `booking`;
+-- Dumpar data för tabell hoolitels.booking: ~4 rows (ungefär)
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+INSERT INTO `booking` (`id`, `user_id`, `num_adults`, `num_children`, `num_infants`, `start_date`, `end_date`, `comment`, `paid`) VALUES
+	(1, 1331, 1, 0, 0, '2020-04-18', '2020-04-20', '0', b'0'),
+	(2, 1841, 2, 2, 0, '2020-04-25', '2020-04-29', '0', b'0'),
+	(4, 1063, 1, 0, 0, '2020-05-10', '2020-05-20', '0', b'0'),
+	(5, 1063, 1, 0, 0, '2020-05-22', '2020-05-25', '0', b'0'),
+	(10, 1064, 2, 2, 0, '2020-05-22', '2020-05-25', '0', b'0'),
+	(11, 1064, 2, 2, 0, '2020-05-22', '2020-05-25', '0', b'0'),
+	(13, 1064, 2, 2, 0, '2020-06-12', '2020-06-15', '0', b'0'),
+	(14, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
+	(17, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
+	(18, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
+	(19, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
+	(21, 1064, 2, 2, 0, '2020-06-12', '2020-06-15', '0', b'0'),
+	(22, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.city
-DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -67,8 +76,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.city: ~10 rows (ungefär)
-DELETE FROM `city`;
+-- Dumpar data för tabell hoolitels.city: ~8 rows (ungefär)
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `name`) VALUES
 	(115, 'Göteborg'),
@@ -84,7 +92,6 @@ INSERT INTO `city` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.country
-DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -93,7 +100,6 @@ CREATE TABLE IF NOT EXISTS `country` (
 ) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- Dumpar data för tabell hoolitels.country: ~246 rows (ungefär)
-DELETE FROM `country`;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
 INSERT INTO `country` (`id`, `name`) VALUES
 	(16, 'Afghanistan'),
@@ -345,7 +351,6 @@ INSERT INTO `country` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotel
-DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -366,7 +371,6 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1898 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.hotel: ~100 rows (ungefär)
-DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
 INSERT INTO `hotel` (`id`, `name`, `address`, `zip`, `city_id`, `desc`, `email`, `phone`, `distance_to_beach`, `distance_to_town_center`, `checkin_time`, `checkout_time`) VALUES
 	(1798, 'Beer-Dickinson hotell', '85 Upham Point', '91550', 113, '0', 'tcaro0@ft.com', '4644587049', 3355, 3264, '00:00:00', '00:00:00'),
@@ -472,7 +476,6 @@ INSERT INTO `hotel` (`id`, `name`, `address`, `zip`, `city_id`, `desc`, `email`,
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.hotelamenity
-DROP TABLE IF EXISTS `hotelamenity`;
 CREATE TABLE IF NOT EXISTS `hotelamenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hotel_id` int(11) NOT NULL,
@@ -484,8 +487,7 @@ CREATE TABLE IF NOT EXISTS `hotelamenity` (
   CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.hotelamenity: ~99 rows (ungefär)
-DELETE FROM `hotelamenity`;
+-- Dumpar data för tabell hoolitels.hotelamenity: ~92 rows (ungefär)
 /*!40000 ALTER TABLE `hotelamenity` DISABLE KEYS */;
 INSERT INTO `hotelamenity` (`id`, `hotel_id`, `amenity_id`) VALUES
 	(62, 1799, 2),
@@ -591,12 +593,11 @@ INSERT INTO `hotelamenity` (`id`, `hotel_id`, `amenity_id`) VALUES
 /*!40000 ALTER TABLE `hotelamenity` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.image
-DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL DEFAULT '0',
-  `desc` varchar(500) NOT NULL DEFAULT '0',
+  `desc` varchar(500) DEFAULT '0',
   `hotel_id` int(11) DEFAULT 0,
   `room_id` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -607,7 +608,6 @@ CREATE TABLE IF NOT EXISTS `image` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4001 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.image: ~982 rows (ungefär)
-DELETE FROM `image`;
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
 INSERT INTO `image` (`id`, `url`, `name`, `desc`, `hotel_id`, `room_id`) VALUES
 	(3001, '168', 'Dozedaisy', '0', NULL, 3921),
@@ -1595,7 +1595,6 @@ INSERT INTO `image` (`id`, `url`, `name`, `desc`, `hotel_id`, `room_id`) VALUES
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.room
-DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` enum('Single','Double','Triple','Family') NOT NULL,
@@ -1615,7 +1614,6 @@ CREATE TABLE IF NOT EXISTS `room` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4863 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpar data för tabell hoolitels.room: ~982 rows (ungefär)
-DELETE FROM `room`;
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
 INSERT INTO `room` (`id`, `type`, `floor`, `number`, `hotel_id`, `price`, `max_occupancy`, `cost_extra_bed`, `cost_half_board`, `cost_full_board`, `cost_all_inclusive`) VALUES
 	(3863, 'Single', 7, 704, 1818, 1332, 1, 289, NULL, 676, NULL),
@@ -2603,7 +2601,6 @@ INSERT INTO `room` (`id`, `type`, `floor`, `number`, `hotel_id`, `price`, `max_o
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.roombooking
-DROP TABLE IF EXISTS `roombooking`;
 CREATE TABLE IF NOT EXISTS `roombooking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `booking_id` int(11) NOT NULL DEFAULT 0,
@@ -2611,19 +2608,30 @@ CREATE TABLE IF NOT EXISTS `roombooking` (
   `extra_bed` bit(1) DEFAULT b'0',
   `food_cost` int(11) DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `booking_id_room_id` (`booking_id`,`room_id`),
   KEY `FK__booking` (`booking_id`) USING BTREE,
   KEY `FK__room` (`room_id`) USING BTREE,
   CONSTRAINT `FK__booking` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`),
   CONSTRAINT `FK__room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.roombooking: ~0 rows (ungefär)
-DELETE FROM `roombooking`;
+-- Dumpar data för tabell hoolitels.roombooking: ~4 rows (ungefär)
 /*!40000 ALTER TABLE `roombooking` DISABLE KEYS */;
+INSERT INTO `roombooking` (`id`, `booking_id`, `room_id`, `extra_bed`, `food_cost`) VALUES
+	(1, 1, 3863, b'0', 676),
+	(2, 2, 3868, b'1', 0),
+	(3, 2, 3874, b'0', 0),
+	(5, 4, 3866, b'0', 676),
+	(6, 5, 3866, b'0', 676),
+	(7, 10, 3869, b'0', 600),
+	(8, 11, 4002, b'1', 333),
+	(9, 21, 4002, b'1', 333),
+	(10, 21, 3865, b'0', 0),
+	(12, 22, 3869, b'0', 600),
+	(13, 22, 4002, b'1', 333);
 /*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '0',
@@ -2639,10 +2647,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `phone` (`phone`),
   KEY `FK__country` (`country_id`) USING BTREE,
   CONSTRAINT `FK__country` FOREIGN KEY (`country_id`) REFERENCES `country` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2063 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2064 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.user: ~1 000 rows (ungefär)
-DELETE FROM `user`;
+-- Dumpar data för tabell hoolitels.user: ~1 001 rows (ungefär)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `name`, `email`, `address`, `zip`, `city`, `phone`, `password`, `country_id`) VALUES
 	(1063, 'Winifred Boath', 'wboath0@house.gov', '296 Sunnyside Point', '14521', 'Sawara', '2123758293', '0bVsmQ', 176),
@@ -3644,7 +3651,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `address`, `zip`, `city`, `phone`, `p
 	(2059, 'Elfrieda Ixer', 'eixerro@about.me', '9 Harper Plaza', '82395', 'Manicaragua', '5658816088', '662O8n1qN', 237),
 	(2060, 'Deloria MacNeilly', 'dmacneillyrp@scientificamerican.com', '6 Hauk Street', '42910', 'Korba', '2869023346', 'vfPuWfv', 205),
 	(2061, 'Daniela Buddock', 'dbuddockrq@economist.com', '18964 Morningstar Alley', '66950', 'Nangakeo', '4178183288', 'A9rt4HiTL', 135),
-	(2062, 'Melantha Dobbie', 'mdobbierr@eventbrite.com', '846 Morning Drive', '80618', 'Mariental', '6284872654', 'oHY1qTSfR2', 194);
+	(2062, 'Melantha Dobbie', 'mdobbierr@eventbrite.com', '846 Morning Drive', '80618', 'Mariental', '6284872654', 'oHY1qTSfR2', 194),
+	(2063, 'user', 'user', 'uservejen 1', '11111', 'usercity', '012345678', 'user', 227);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
