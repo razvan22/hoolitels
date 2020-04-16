@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row row-1">
                 <div class="col s4 m2 l2 sign_up">
-                    <router-link to="" class="waves-effect waves-light btn-small blue-grey darken-4">Register
+                    <router-link to="/signup" class="waves-effect waves-light btn-small blue-grey darken-4">Register
                         <i class="material-icons right">person_add</i>
                     </router-link>
                 </div>
