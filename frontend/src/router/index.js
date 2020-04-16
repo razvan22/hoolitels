@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Result from '../views/Result.vue'
 
 
 Vue.use(VueRouter)
@@ -17,6 +18,13 @@ Vue.use(VueRouter)
     name: 'Login',
     component: Login
   },
+
+  {
+    path: '/result',
+    name: 'Result',
+    component: Result 
+  },
+
   {
     path: '/about',
     name: 'About',
