@@ -2,36 +2,49 @@
     <div class="main" id="date">
         <div class="container">
             <DateSelector/>
-            <div class="row">
+                    <div class="row">
                 <div class="col  s12 m12 l12">
-                    <div class="input-field col s6">
-                        <input id="icon_prefix" type="number">
-                        <label for="icon_prefix">RUM</label>
+                    <div class="input-field col s12">
+                        <input id="icon_prefix" type="number" v-model="room">
+                        <label for="icon_prefix">Ange antal rum</label>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s6">
-                    <p> Avstånd till (meter)</p>
-                    <div class="input-field inline">
-                        <input id="meter" type="number">
-                        <label for="meter" data-error="wrong" data-success="right">meter</label>
+            <div class="row s12">
+                <div class="col s4 l4">
+                    <div class="input-field">
+                        <input id="meter" type="number" v-model.number="meter">
+                        <label for="meter" data-error="wrong" data-success="right">Ange meter:</label>
+                        
                     </div>
+                    
                 </div>
-                <div class="col s6">
+                <div class="col s8 l8">
                     <div class="input-field col s12">
-                        <select>
+                        <select v-model="place">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option v-bind:value="{ option: 1}">option 1</option>
                         </select>
-                        <label>Materialize Select</label>
+                        <label>Platser</label>
                     </div>
+                 </div>
+
+                   <div class="input-field col s12">
+                        <select v-model="amenity" multiple>
+                        <option value="" disabled selected>Faciliteter</option>
+                        <option v-bind:value="{ option: 1}">option 1</option>
+                        </select>
+                      
+                    </div>
+                 <div class="col s12">
+                 <a class="waves-effect waves-light btn">Sök</a>
                  </div>
             </div>
         </div>
     </div>
+            
+        
+    
   
 </template>
 
