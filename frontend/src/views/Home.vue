@@ -3,10 +3,14 @@
     <header>
         <div class="container">
             <div class="row row-1">
-                <div class="col s8 m10 l10"></div>
+                <div class="col s4 m2 l2 sign_up">
+                    <router-link to="" class="waves-effect waves-light btn-small blue-grey darken-4">Register
+                        <i class="material-icons right">person_add</i>
+                    </router-link>
+                </div>
                 <div class="col s4 m2 l2 col-login">
-                    <router-link to="/login" class="btn-floating btn-large waves-effect waves-light cyan darken-3">
-                        <i class="large material-icons ">account_circle</i>
+                    <router-link to="/login" class="waves-effect waves-light btn-small blue-grey darken-4">Sign in
+                        <i class="material-icons right">person</i>
                     </router-link>
                 </div>
             </div>
@@ -41,6 +45,12 @@ export default {
 </script>
 
 <style>
+.row-1{
+    display: flex;
+    justify-content: end;
+
+
+}
 header .container {
 border-radius: 0.30em;
 /* margin-top: 1em;  */
@@ -57,11 +67,23 @@ justify-content: space-around;
 }
 
 header .container .row-1 .col-login{
-margin-top: 1em;
+    margin-left: 0em;
+    margin-right: 0em;
+    padding: 0em;
+    margin-top: 1em;
 }
 
-.row .col-login i{
-    font-size: 3.50em;
+header .container .row-1 .sign_up{
+    margin-left: 0em;
+    margin-right: 0em;
+    padding: 0em;
+    margin-top: 1em;
+}
+.row .sign_up  i{
+    font-size: 2em;
+}
+.row .col-login  i{
+    font-size: 2em;
 }   
 
 .responsive {
