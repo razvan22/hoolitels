@@ -22,7 +22,7 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             .httpBasic()
             .and()
             .authorizeRequests()
-            .antMatchers("/rest/city").permitAll()
+            .antMatchers("/rest/city/**").permitAll()
             .antMatchers("/rest/**").authenticated()
             .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
             .antMatchers("/").permitAll()

@@ -1,15 +1,11 @@
 <template>
 
 <div class="result">
- 
   <div class="container">
-      <Logo/>
-    
-              <DisplayHotelFromSearch/>
-         
+    <Logo/>
+      <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
       <Footer/>
   </div>
- 
 </div>
 
 </template>
@@ -20,24 +16,36 @@ import DisplayHotelFromSearch from '@/components/DisplayHotelFromSearch.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
+    data(){
+        return{
+          city:{}
+        }
+
+    },
+    
+    mounted(){
+      this.getCity()
+    },
  
     components:{
         Logo,
         Footer,
         DisplayHotelFromSearch
-        
-      
+    },
+    methods:{
+       getCity: async function(){
+
+            let response = await fetch('http://localhost:8070/rest/city/'+ this.$store.state.dateSelected.selectedCity);
+            response = await response.json();
+            this.city = response;
+            console.log(this.city)
+        },
     }
-    
 
 }
 </script>
 
 <style>
-.result{
-  
-    height: 100vh;
- 
-}
+
 
 </style>

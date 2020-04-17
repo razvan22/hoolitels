@@ -24,6 +24,9 @@
     <section class="main">
      
         <SearchHotel/>
+        <router-link to="/result" class="waves-effect waves-light btn-small blue-grey darken-4">Sök
+            <i class="material-icons right">search</i>
+        </router-link>
     </section>
     <Footer/>
 </body>
@@ -38,7 +41,6 @@ export default {
     components: {
         Footer,
         SearchHotel,
-       
         
     }
 }

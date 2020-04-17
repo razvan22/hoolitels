@@ -5,10 +5,15 @@
       <div class="card">
         <div class="card-image">
           <img src="https://static.thatsup.co/content/img/article/15/jul/guiden-till-prisvarda-hotell-i-stockholm.jpg">
-          <span class="card-title">Hotel namn</span>
+          <span class="card-title">{{hotel.name}}</span>
         </div>
-        <div class="card-content">
-          <p>information om hotel</p>
+        <div class="card-content " >
+          <div>
+            <ul class="browser-default">
+              <li v-for="a in hotel.amenities" :key="a.id">{{a.name}}</li>
+          
+          </ul>
+          </div>
         </div>
         <div class="card-action">
           <a href="#">link to hotel vy</a>
@@ -22,7 +27,8 @@
 
 <script>
 export default {
-    name: 'DisplayHotelFromSearch'
+    name: 'DisplayHotelFromSearch',
+    props: [`hotel`]
 
 }
 </script>

@@ -2,13 +2,13 @@
 <div class="date_selector container">
     <div class="row" id="date-city-selector">
         
-         <div class="input-field col s12">
-            <select v-model="selected" class="browser-default" id="citySelected">
+         <div class="input-field col s12 m6 l6">
+            <select v-model="selectedCity" class="browser-default" id="citySelected">
                 <option value="" disabled selected>välj stad</option>
                 <option  v-for="city in cities" :key='city.id' :value='city.id' >{{city.name}}</option>
             </select>
-            
         </div>
+        
         
         <div class="input-field col s6 m3 l3">
             <input id="from" type="text" class="datepicker" v-model='booking.check_in'  >
@@ -25,6 +25,18 @@
 <script>
 import M from '@/assets/materialize.min.js'
 export default {
+    computed:{
+      selectedCity:{
+        get(){
+         return this.$store.state.dateSelected.selectedCity
+        },
+        set(value){
+          this.$store.commit('setSelectedCity',value)
+        }
+        
+      }
+    },
+
     data(){
         return{
             booking:{
@@ -32,8 +44,6 @@ export default {
                 check_in:'',
                 check_out:'' 
             },
-            selected:''
-            ,
             cities:[]
         }
     },
@@ -49,8 +59,7 @@ export default {
             let response = await fetch('http://localhost:8070/rest/city');
             response = await response.json();
             this.cities  = response;
-            console.log(this.cities)
-        }
+        },
     }
 }
 </script>
