@@ -1,6 +1,6 @@
 <template>
   <div class="container hotel-from-search">
-        <!-- <div class="row">
+        <div class="row">
     <div class="col s12 m12 l12">
       <div class="card">
         <div class="card-image">
@@ -19,9 +19,9 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
-    <div class="card" >
+    <!-- <div class="card" >
       <div class="card-image">
         <img src="https://static.thatsup.co/content/img/article/15/jul/guiden-till-prisvarda-hotell-i-stockholm.jpg">
         <span class="card-title">{{hotel.name}}</span>
@@ -34,7 +34,7 @@
       <div class="card-action">
            <a href="#">This is a link</a>
       </div>
-    </div>
+    </div> -->
        
   </div>
 </template>
