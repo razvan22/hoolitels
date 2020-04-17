@@ -1,51 +1,47 @@
 <template>
-
-<div class="result">
-  <div class="container">
-    <Logo/>
+  <div class="result">
+    <div class="container">
+      <Logo />
       <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
-      <Footer/>
+      <Footer />
+    </div>
   </div>
-</div>
-
 </template>
 
 <script>
-import Logo from '@/components/Logo.vue'
-import DisplayHotelFromSearch from '@/components/DisplayHotelFromSearch.vue'
-import Footer from '@/components/Footer.vue'
+import Logo from "@/components/Header.vue";
+// import Logo from '@/components/Logo.vue'
+import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
-    data(){
-        return{
-          city:{}
-        }
+  data() {
+    return {
+      city: {},
+    };
+  },
 
-    },
-    
-    mounted(){
-      this.getCity()
-    },
- 
-    components:{
-        Logo,
-        Footer,
-        DisplayHotelFromSearch
-    },
-    methods:{
-       getCity: async function(){
+  mounted() {
+    this.getCity();
+  },
 
-            let response = await fetch('http://localhost:8070/rest/city/'+ this.$store.state.dateSelected.selectedCity);
-            response = await response.json();
-            this.city = response;
-            console.log(this.city)
-        },
-    }
-
-}
+  components: {
+    Logo,
+    Footer,
+    DisplayHotelFromSearch,
+  },
+  methods: {
+    getCity: async function() {
+      let response = await fetch(
+        "http://localhost:8070/rest/city/" +
+          this.$store.state.dateSelected.selectedCity
+      );
+      response = await response.json();
+      this.city = response;
+      console.log(this.city);
+    },
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>
