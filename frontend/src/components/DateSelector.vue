@@ -49,52 +49,88 @@
         <i class="material-icons right">search</i>
       </router-link>
     </div>
+
+    <vc-date-picker
+      mode="range"
+      v-model="range"
+      color="teal"
+      :min-date="new Date()"
+      :columns="$screens({ default: 1, md: 2 })"
+      :is-expanded="$screens({ default: true, md: false })"
+      :input-props="{
+        class:
+          'w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 hover:border-blue-5',
+        placeholder: 'Please enter your birthday',
+        readonly: true,
+      }"
+    >
+    </vc-date-picker>
   </div>
 </template>
 
 <script>
-import M from "materialize-css";
-export default {
-  computed: {
-    selectedCity: {
-      get() {
-        return this.$store.state.dateSelected.selectedCity;
-      },
-      set(value) {
-        this.$store.commit("setSelectedCity", value);
+  import M from 'materialize-css'
+  import Vue from 'vue'
+  import VCalendar from 'v-calendar'
+  Vue.use(VCalendar, {
+    componentPrefix: 'vc',
+  })
+  export default {
+    computed: {
+      selectedCity: {
+        get() {
+          return this.$store.state.dateSelected.selectedCity
+        },
+        set(value) {
+          this.$store.commit('setSelectedCity', value)
+        },
       },
     },
-  },
 
-  data() {
-    return {
-      selected: {
-        id: 0,
-        name: "Välj",
-      },
+    data() {
+      return {
+        range: {
+          start: new Date(), // Jan 16th, 2018
+          end: this.getTomorrow(),
+        },
+        selectedDate: new Date(2018, 0, 10),
+        selected: {
+          id: 0,
+          name: 'Välj',
+        },
 
-      booking: {
-        rooms: 1,
-        check_in: "",
-        check_out: "",
+        booking: {
+          rooms: 1,
+          check_in: '',
+          check_out: '',
+        },
+      }
+    },
+    mounted() {
+      var elems = document.querySelectorAll('.datepicker')
+      M.Datepicker.init(elems)
+      elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
+    },
+    updated() {
+      var elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
+    },
+    methods: {
+      getTomorrow() {
+        let d = new Date()
+        d.setDate(d.getDate() + 1)
+        return d
       },
-    };
-  },
-  mounted() {
-    var elems = document.querySelectorAll(".datepicker");
-    M.Datepicker.init(elems);
-    elems = document.querySelectorAll("select");
-    M.FormSelect.init(elems);
-  },
-  updated() {
-    var elems = document.querySelectorAll("select");
-    M.FormSelect.init(elems);
-  },
-};
+    },
+  }
 </script>
 
 <style>
-/* #date-city-selector{
+  .myicon {
+    font-size: 3rem !important;
+  }
+  /* #date-city-selector{
     margin-top: 1em;
     border: solid 1px #e0e0e0 ;
     border-radius: 0.30em;
