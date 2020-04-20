@@ -1,6 +1,5 @@
 <template>
     <div class="signup">
-        <Logo/>
         <div id="signup-form">
             <div class="row">
                 <div class="col s12 m6 l6">
@@ -73,13 +72,11 @@
 
 
 <script>
-import Logo from '@/components/Logo.vue'
 
 export default {
     name:'Signup',
 
     components:{
-        Logo,
     },
     data(){
         return{
