@@ -1,40 +1,35 @@
 <template>
-  <div id="app">
-    <h1>Hoolitels</h1>
-    <a @click="getUsers" class="waves-effect waves-light btn">button</a>
-    <h3 v-for="user in users" :key="user.id" >{{user.name}}</h3>
-    <router-link to="/about">About</router-link>
-   
+  <div id="app" class="back">
+    <div id="fade">
+      <router-view />
+    </div>
   </div>
 </template>
-
-
-
-
 <script>
-export default {
-  data(){
-    return{
-      users: []
-    }
-  },
-
-  methods:{
-    getUsers: async function(){
-      let result = await fetch("http://localhost:8080/rest/user/");
-      result = await result.json();
-      this.users = result;
-    }
+  export default {
+    created() {
+      this.$store.dispatch('getCities')
+    },
   }
-}
 </script>
 
+<style src="materialize-css/dist/css/materialize.css"></style>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  #app {
+    flex: 1 0 auto;
+  }
+  .back {
+    background-image: url("../src/assets/header-img.jpg");
+    background-size: cover;
+  }
+  #fade {
+    background: rgb(236, 236, 236, 0.3);
+  }
 </style>
