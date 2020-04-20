@@ -1,16 +1,24 @@
 <template>
-  <div class="result">
-      <Logo />
+<body>
+    <Header/>
+    <main>
+
+        <SideNavAmenities/>
       <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
+
+      </main>
       <Footer />
-    </div>
+</body>
 </template>
 
 <script>
-import Logo from "@/components/Header.vue";
+
 // import Logo from '@/components/Logo.vue'
 import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
 import Footer from "@/components/Footer.vue";
+import SideNavAmenities from "@/components/SideNavAmenities.vue";
+import Header from "@/components/Header.vue";
+
 
 export default {
   data() {
@@ -24,9 +32,11 @@ export default {
   },
 
   components: {
-    Logo,
     Footer,
     DisplayHotelFromSearch,
+    SideNavAmenities,
+    Header,
+ 
   },
   methods: {
     getCity: async function() {

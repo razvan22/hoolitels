@@ -38,6 +38,7 @@
 <script>
 import RoomView from "@/components/RoomView.vue";
 
+
 export default {
   name: "DisplayHotelFromSearch",
   props: [`hotel`],
@@ -47,6 +48,7 @@ export default {
   mounted() {},
   components: {
     RoomView,
+ 
   },
 };
 </script>
