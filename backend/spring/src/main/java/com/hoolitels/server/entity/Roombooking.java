@@ -11,7 +11,7 @@ public class Roombooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "booking_id", nullable = false)
     @JsonBackReference
     private Booking booking;

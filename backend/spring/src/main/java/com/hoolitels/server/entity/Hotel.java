@@ -2,7 +2,10 @@ package com.hoolitels.server.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Hotel {
@@ -148,5 +151,21 @@ public class Hotel {
 
     public Set<Amenity> getAmenities() {
         return amenities;
+    }
+
+    public List<Room> getFreeRooms(Date start_date, Date end_date) {
+        return rooms.stream()
+                .filter(r -> r.isFree(start_date, end_date))
+                .collect(Collectors.toList());
+    }
+
+    public boolean hasAmenity(long amenity_id) {
+        return amenities.stream()
+                .anyMatch(amenity -> amenity.getId() == amenity_id);
+    }
+
+    public boolean hasAllAmenities(List<Long> list) {
+        return list.stream()
+                .allMatch(this::hasAmenity);
     }
 }
