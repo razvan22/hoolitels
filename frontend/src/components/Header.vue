@@ -88,8 +88,4 @@ export default {
    font-size: 4em;
   color: #006064;
 }
-
-
-
-
 </style>

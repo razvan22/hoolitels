@@ -24,9 +24,14 @@
   }
 </script>
 
-<style>
+<style scoped> 
+  .footer{
+    position:sticky;
+  }
+
 
   .footer ul {
+    
     background: rgba(255, 255, 255, 0.5);
     padding-top: 5px;
     bottom: 0;
