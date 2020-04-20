@@ -20,7 +20,7 @@ public class Booking {
     private User user;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "booking")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<Roombooking> roombookings = new ArrayList<>();
 
     @Column(nullable = false)

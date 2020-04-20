@@ -11,7 +11,7 @@ public class SearchModel {
 
     private Integer distance_to_town_center;
 
-    private Integer nr_rooms;
+    private Integer nr_of_rooms;
 
     private List<Long> amenities;
 
