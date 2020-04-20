@@ -1,11 +1,16 @@
 <template>
-<div class="container">
     <div class="main" id="date">
         <div class="container">
             <DateSelector/>
+                    <div class="row">
+            </div>
+          
         </div>
     </div>
-    </div>
+            
+        
+    
+  
 </template>
 
 <script>
@@ -19,7 +24,7 @@
 
     data() {
       return {
-
+        room: '',
       }
     },
 
@@ -49,7 +54,6 @@
     display: block;
     justify-content: center;
     align-items: center;
-    
   }
   .main {
     min-height: 20em;

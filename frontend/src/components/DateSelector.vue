@@ -92,6 +92,7 @@
 
   .input-field {
     background: rgb(255, 255, 255);
+    
   }
   .myicon {
     font-size: 3rem !important;
@@ -104,7 +105,8 @@
   }
 
   .search-btn {
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 3%;
+    width: 30%;
+     border-radius: 25px;
   }
 </style>
