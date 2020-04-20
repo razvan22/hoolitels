@@ -49,72 +49,54 @@
 </template>
 
 <script>
-// computed: {
-//   date: {
-//     get () {
-//       return this.$store.state.obj.date
-//     },
-//     set (value) {
-//       this.$store.commit('setDate', value)
-//     }
-//   }
-// }
-import DateSelector from '@/components/DateSelector.vue'
-import M from '@/assets/materialize.min.js'
-export default {
+  import DateSelector from '@/components/DateSelector.vue'
+  import M from 'materialize-css/dist/js/materialize.js'
+
+  export default {
     components: {
-        DateSelector
+      DateSelector,
     },
 
-    data(){
-        return{
-         
-
-        }
-
+    data() {
+      return {
+        counterAdult: 0,
+        counterChild: 0,
+        counterBaby: 0,
+        room: '',
+        meter: '',
+        amenity: [],
+        place: '',
+      }
     },
 
-    mounted(){
-
-        let element = document.querySelectorAll('select');
-        M.FormSelect.init(element);
-    }
-    ,
-    methods:{
-        date: function(){
-
-        }
-    }
-}
-
-
+    mounted() {
+      let element = document.querySelectorAll('select')
+      M.FormSelect.init(element)
+    },
+    methods: {},
+  }
 </script>
 
-
 <style>
-#date .container{}
-#row-city{
+  #row-city {
     justify-content: center;
     align-content: center;
-}
-#city{
+  }
+  #city {
     justify-content: center;
     align-content: center;
     border-radius: 0.6em;
-    border:solid #e0e0e0 0.08em;
+    border: solid #e0e0e0 0.08em;
     align-content: space-around;
-}
+  }
 
-.main .container .row {
-}
-.main .container .row .col .input-field{
+  .main .container .row .col .input-field {
     margin-right: auto;
     display: block;
     justify-content: center;
     align-items: center;
-}
-.main{
+  }
+  .main {
     min-height: 20em;
-}
-
+  }
 </style>

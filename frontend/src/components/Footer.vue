@@ -1,51 +1,52 @@
 <template>
-<ul class ="Footer">
-    <span class= "fab fa-facebook fa-3x "></span>
-    <span class="fab fa-instagram fa-3x "></span>
-    <span class="fab fa-twitter-square fa-3x"></span>
-    <div><span id="footer-text"> @Copyright Hoolitels {{currentYear}} </span> </div>
-  </ul>
-
+  <footer class="footer">
+    <ul class="container s12 center-align">
+      <span class="fab fa-facebook fa-2x"></span>
+      <span class="fab fa-instagram fa-2x"></span>
+      <span class="fab fa-twitter fa-2x"></span>
+      <div>
+        <span id="footer-text">@Copyright Hoolitels {{ currentYear }}</span>
+      </div>
+    </ul>
+  </footer>
 </template>
 
-
-
 <script>
-export default {
-    name:'Footer',
-    data(){
-      return{
+  export default {
+    name: 'Footer',
+    data() {
+      return {
         currentYear: new Date().getFullYear(),
       }
-    }
-}
+    },
+  }
 </script>
 
 <style>
-.Footer{
-  position: relative;
+  .footer {
+    /* margin-top: 1em; */
+  }
+  .footer ul {
+    background: rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    padding-top: 5px;
+    /* border: 1px solid black; */
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+  }
+  .footer span {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .footer .fa-facebook {
+    color: rgb(102, 102, 105);
+  }
+  .footer .fa-instagram {
+    color: purple;
+  }
 
-}
-    ul{
-       box-sizing: border-box;
-         border: 1px solid black;
-         bottom: 0;
-         position: absolute;
-        width: 100%;
-       
-    }
-    span  {
-      padding: 5%;
-    }
-    .fa-facebook {
-      color: blue;
-    }
-     .fa-instagram{
-      color:purple;
-    }
-    
-     .fa-twitter-square{
-      color:lightblue;
-    }
-  
+  .footer .fa-twitter {
+    color: lightblue;
+  }
 </style>

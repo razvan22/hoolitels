@@ -1,43 +1,47 @@
 <template>
-
-<div class="result">
- 
-  <div class="container">
-      <Logo/>
-    
-              <DisplayHotelFromSearch/>
-         
-      <Footer/>
+  <div class="result">
+    <div class="container">
+      <Logo />
+      <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
+      <Footer />
+    </div>
   </div>
- 
-</div>
-
 </template>
 
 <script>
-import Logo from '@/components/Logo.vue'
-import DisplayHotelFromSearch from '@/components/DisplayHotelFromSearch.vue'
-import Footer from '@/components/Footer.vue'
+import Logo from "@/components/Header.vue";
+// import Logo from '@/components/Logo.vue'
+import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
- 
-    components:{
-        Logo,
-        Footer,
-        DisplayHotelFromSearch
-        
-      
-    }
-    
+  data() {
+    return {
+      city: {},
+    };
+  },
 
-}
+  mounted() {
+    this.getCity();
+  },
+
+  components: {
+    Logo,
+    Footer,
+    DisplayHotelFromSearch,
+  },
+  methods: {
+    getCity: async function() {
+      let response = await fetch(
+        "http://localhost:8070/rest/city/" +
+          this.$store.state.dateSelected.selectedCity
+      );
+      response = await response.json();
+      this.city = response;
+      console.log(this.city);
+    },
+  },
+};
 </script>
 
-<style>
-.result{
-  
-    height: 100vh;
- 
-}
-
-</style>
+<style></style>
