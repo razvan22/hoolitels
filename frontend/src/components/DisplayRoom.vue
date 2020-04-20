@@ -7,7 +7,7 @@
             <img
               src="https://static.thatsup.co/content/img/article/15/jul/guiden-till-prisvarda-hotell-i-stockholm.jpg"
             />
-            <span class="card-title">{{ hotel.name }}</span>
+            <span class="card-title">{{ hotel.name }}</span>   
           </div>
           <div class="card-content">
             <div class="row">
@@ -31,7 +31,6 @@
               <div class="col s12">
                    <h5> Tillgängliga rum</h5>
                 <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r"/>
-                
               </div>
             </div>
           </div>
@@ -48,7 +47,9 @@ export default {
   name: "DisplayHotelFromSearch",
   props: [`hotel`],
   data() {
-    return {};
+    return {
+    
+    };
   },
   mounted() {},
   components: {

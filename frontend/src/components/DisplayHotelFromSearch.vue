@@ -23,8 +23,7 @@
             </div>
           </div>
           <div class="card-action align-center">
-            <router-link to=
-            "/hotelVy/">Välj</router-link>
+            <router-link :to="{ name: 'HotelVy', params: {id: this.hotel.id}}">Välj</router-link>
           </div>
         </div>
       </div>
@@ -35,6 +34,8 @@
 
 
 export default {
+
+ 
   name: "DisplayHotelFromSearch",
   props: [`hotel`],
   data() {
@@ -43,6 +44,7 @@ export default {
   mounted() {},
   components: {
  
+
   },
   methods(){
 

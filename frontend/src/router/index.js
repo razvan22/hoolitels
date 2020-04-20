@@ -27,11 +27,14 @@ Vue.use(VueRouter)
     name: 'Signup',
     component: Signup
   },
+
+
  
 
   {
-    path: '/hotelVy',
+    path: '/hotelVy/:id',
     name: 'HotelVy',
+    props:true, 
     component: HotelVy
   },
   {
