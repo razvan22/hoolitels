@@ -80,7 +80,7 @@ export default {
   display: flex;
 }
 #header .container .row .responsive{
-  width: 80%;
+  width: 70%;
   height: auto;
 }
 
