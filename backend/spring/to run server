@@ -1,0 +1,2 @@
+backend\spring
+java -jar server-0.1.jar
