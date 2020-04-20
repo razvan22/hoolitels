@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <ul class="row s12 center-align">
+    <ul class="row center-align">
       <div class="col l12 m12 s12">
         <span class="fab fa-facebook fa-2x"></span>
         <span class="fab fa-instagram fa-2x"></span>
@@ -25,9 +25,7 @@
 </script>
 
 <style>
-  .footer {
-    /* margin-top: 1em; */
-  }
+
   .footer ul {
     background: rgba(255, 255, 255, 0.5);
     padding-top: 5px;

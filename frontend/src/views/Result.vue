@@ -1,11 +1,9 @@
 <template>
   <div class="result">
-    <div class="container">
       <Logo />
       <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
       <Footer />
     </div>
-  </div>
 </template>
 
 <script>
