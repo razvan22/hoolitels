@@ -1,24 +1,16 @@
 <template>
-<body>
-    <Header/>
-    <main>
-    
-    
-      <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
-
-      </main>
+  <div class="result">
+      <Logo />
+      <DisplayRoom v-for="h in city.hotels" :key="h.id" :hotel="h" />
       <Footer />
-</body>
+    </div>
 </template>
 
 <script>
-
+import Logo from "@/components/Header.vue";
 // import Logo from '@/components/Logo.vue'
-import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
+import DisplayRoom from "@/components/DisplayRoom.vue";
 import Footer from "@/components/Footer.vue";
-
-import Header from "@/components/Header.vue";
-
 
 export default {
   data() {
@@ -32,11 +24,9 @@ export default {
   },
 
   components: {
+    Logo,
     Footer,
-    DisplayHotelFromSearch,
- 
-    Header,
- 
+    DisplayRoom,
   },
   methods: {
     getCity: async function() {

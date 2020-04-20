@@ -12,7 +12,7 @@
           <div class="card-content">
             <div class="row">
               <ul class="amenities">
-                <h4> Bekvämligheter</h4>
+                 <h5> Bekvämligheter</h5>
                 <li v-for="a in hotel.amenities" :key="a.id">
                   <div class="valign-wrapper">
                     <i class="material-icons teal-text">check_circle</i
@@ -21,18 +21,28 @@
                 </li>
               </ul>
             </div>
-          </div>
-          <div class="card-action align-center">
-            <router-link to=
-            "/hotelVy/">Välj</router-link>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Betyg</h5>
+                    <h5>8/10</h5>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                   <h5> Tillgängliga rum</h5>
+                <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r"/>
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
 
+<script>
+import RoomView from "@/components/RoomView.vue";
 
 export default {
   name: "DisplayHotelFromSearch",
@@ -42,11 +52,8 @@ export default {
   },
   mounted() {},
   components: {
- 
+    RoomView,
   },
-  methods(){
-
-  }
 };
 </script>
 

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
+import HotelVy from '../views/HotelVy.vue'
+
 
 
 Vue.use(VueRouter)
@@ -24,6 +26,13 @@ Vue.use(VueRouter)
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+ 
+
+  {
+    path: '/hotelVy',
+    name: 'HotelVy',
+    component: HotelVy
   },
   {
     path: '/about',
