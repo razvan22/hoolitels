@@ -7,13 +7,13 @@
                     <div class="row">
                     <div class="col s12 m12 l12">
                         <div class="input-field">
-                            <input id="full_name" type="text" class="validate">
+                            <input id="full_name" type="text" class="validate" v-model="user.name">
                             <label for="full_name">Full Name</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
-                            <input id="email" type="email" class="validate">
+                            <input id="email" type="email" class="validate" v-model="user.email">
                             <label for="email">Email</label>
                         </div>
                     </div>
@@ -21,13 +21,13 @@
                 <div class="row">
                     <div class="col s12 m6 l6">
                         <div class="input-field">
-                            <input id="country" type="text" class="validate">
+                            <input id="country" type="text" class="validate" v-model="user.country">
                             <label for="country">Country</label>
                         </div>
                     </div>
                     <div class="col s12 m6 l6">
                         <div class="input-field">
-                            <input id=" city" type="text" class="validate">
+                            <input id=" city" type="text" class="validate" v-model="user.city">
                             <label for=" city">City</label>
                         </div>
                     </div>
@@ -35,13 +35,13 @@
                 <div class="row">
                     <div class="col s12 m9 l9">
                         <div class="input-field">
-                            <input id="address" type="text" class="validate">
+                            <input id="address" type="text" class="validate" v-model="user.address">
                             <label for="address">Address</label>
                         </div>
                     </div>
                     <div class="col s12 m3 l3">
                         <div class="input-field">
-                            <input id="zip" type="text" class="validate">
+                            <input id="zip" type="text" class="validate" v-model="user.zip">
                             <label for="zip">Zip</label>
                         </div>
                     </div>
@@ -49,13 +49,13 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <div class="input-field">
-                            <input id="password" type="password" class="validate">
+                            <input id="password" type="password" class="validate" v-model="user.password">
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
-                            <input id="confirm_password" type="password" class="validate">
+                            <input id="confirm_password" type="password" class="validate" v-model="user.confirmPassword">
                             <label for="confirm_password">Confirm Password</label>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                             <div class="input-field">
-                                <input id="telephone" type="tel" class="validate">
+                                <input id="telephone" type="tel" class="validate" v-model="user.phone">
                                 <label for="telephone">Phone</label>
                             </div>
                     </div>
@@ -75,7 +75,7 @@
             <div class="container">
                 <div class="row" id="submit-btn">
                     <div class="col">
-                        <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+                        <button v-on:click='consoleLogForm()' class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -112,16 +112,16 @@ export default {
                 address:'',
                 zip:'',
                 password:'',
-                confirmPassword:''
+                confirmPassword:'',
+                phone:''
             }
         }
     },
     mounted(){
-        this.getUser();
     },
     methods:{
-        getUser: function(){
-            console.log("SignUp")
+        consoleLogForm: function(){
+            console.log(this.user)
         }
     }
     

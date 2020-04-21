@@ -28,6 +28,9 @@
                                    <button class="btn waves-effect waves-light" type="submit" v-on:click='loginSubmit()' name="action">Login
                                     </button>
                               </div>
+                              <div class="col s12 m12 l12">
+                                <router-link to="/signup"><p>Don't have an account ?</p></router-link>
+                              </div>
                         </div>
                       </div>
                   </div>
@@ -44,6 +47,7 @@
 </template>
 
 <script>
+// import Signup from '../views/Signup.vue'
 import M from 'materialize-css/dist/js/materialize.js'
 export default {
  
