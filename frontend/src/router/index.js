@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
+import UserProfile from '../views/UserProfile.vue'
+import UserInformationForm from '../components/UserInformationForm.vue'
 
 
 Vue.use(VueRouter)
@@ -12,6 +14,16 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/user/form',
+    name: 'UserInformationForm',
+    component: UserInformationForm 
+  },
+  {
+    path: '/userprofile',
+    name: 'UserProfile',
+    component: UserProfile 
   },
 
   {
