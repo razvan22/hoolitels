@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,9 +40,13 @@ public class User {
     @Column(nullable = false)
     private int countryId;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
     private Set<Booking> bookings;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference("userBackReference")
+    private Set<Review> reviews;
 
     public User(){}
 
@@ -124,5 +130,9 @@ public class User {
 
     public boolean verifyPassword(String password) {
         return getPassword().equals(password);
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
     }
 }

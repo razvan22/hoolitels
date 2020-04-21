@@ -1,5 +1,8 @@
 package com.hoolitels.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -54,6 +57,10 @@ public class Hotel {
 
     @Column(nullable = false)
     private Time checkout_time;
+
+    @OneToMany(mappedBy = "hotel")
+    @JsonManagedReference
+    private List<Review> reviews = new ArrayList<>();
 
     public Hotel() {
     }
@@ -172,5 +179,9 @@ public class Hotel {
     public boolean hasAllAmenities(List<Long> list) {
         return list.stream()
                 .allMatch(this::hasAmenity);
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 }
