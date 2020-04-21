@@ -11,7 +11,7 @@
           </div>
           <div class="card-content">
             <div class="row">
-              <ul class="col l6 amenities">
+              <ul class="col l5  amenities">
                 <h4> Bekvämligheter</h4>
                 <li v-for="a in hotel.amenities" :key="a.id">
                   <div class="valign-wrapper">
@@ -20,34 +20,40 @@
                   </div>
                 </li>
               </ul>
+             
               <div class="col  distance">
                   <h4>Avstånd</h4>
                 <ul>
-                  <li>{{hotel.distance_to_town_center}} meter till centrum</li>
-                  <li>{{hotel.distance_to_beach}} meter till stranden</li>
+                  <li><i class="material-icons tiny">location_city</i>{{hotel.distance_to_town_center}} meter till centrum</li>
+                  <li><i class="material-icons tiny">beach_access</i>{{hotel.distance_to_beach}} meter till stranden</li>
                 </ul>
               </div>
                <div class="contact col">
                  <h4>Kontakt</h4>
                 <ul>
-                  <li>{{hotel.email}}</li>
-                  <li>{{hotel.zip}}</li>
-                  <li>{{hotel.phone}}</li>
+                  <li> <i class="material-icons tiny">email</i>{{hotel.email}}</li>
+                  <li><i class="material-icons tiny">contact_phone</i>{{hotel.phone}}</li>
                 </ul>
+               </div>
+               <div class="contact col">
+                 <h4>Betyg</h4>
+                 <h5> 8/10</h5>
                </div>
             </div>
             <div v-if="DisplayRooms">
                 <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
                 
             </div>
+               
           </div>
-          <div class="card-action align-center">
-             <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Välj</router-link>
+          <div class="card-action align-center" >
+             <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Läs mer</router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
 </template>
 <script>
  import RoomView from "@/components/RoomView.vue";
@@ -67,9 +73,11 @@ export default {
 
   },
   methods:{
-
+    clickHotel(){
+     this.$store.commit('setSelectedHotel', this.hotel)
+     console.log("hotell", this.hotel)
     
-    
+    }
   }
 };
 </script>
@@ -77,13 +85,26 @@ export default {
 <style>
 .amenities {
   font-size: smaller;
+
+}
+.amenities h4{
+  font-size: large;
 }
 
 .distance{
   font-size:smaller;
 }
+.distance h4{
+  font-size: large;
+}
 
 .contact{
   font-size:smaller;
 }
+
+.contact h4{
+  font-size:large;
+}
+
+
 </style>
