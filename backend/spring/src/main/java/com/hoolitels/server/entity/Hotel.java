@@ -2,7 +2,11 @@ package com.hoolitels.server.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Hotel {
@@ -20,7 +24,7 @@ public class Hotel {
     private Set<Image> images;
 
     @OneToMany(mappedBy = "hotel")
-    private Set<Room> rooms;
+    private List<Room> rooms = new ArrayList<>();
 
     @ManyToMany()
     @JoinTable(
@@ -54,7 +58,7 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Set<Room> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
@@ -148,5 +152,25 @@ public class Hotel {
 
     public Set<Amenity> getAmenities() {
         return amenities;
+    }
+
+    public List<Room> getFreeRooms(Date start_date, Date end_date) {
+        List<Room> list = rooms.stream()
+                .filter(r -> r.isFree(start_date, end_date))
+                .collect(Collectors.toList());
+
+        this.rooms = list;
+
+        return list;
+    }
+
+    public boolean hasAmenity(long amenity_id) {
+        return amenities.stream()
+                .anyMatch(amenity -> amenity.getId() == amenity_id);
+    }
+
+    public boolean hasAllAmenities(List<Long> list) {
+        return list.stream()
+                .allMatch(this::hasAmenity);
     }
 }

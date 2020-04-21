@@ -11,6 +11,7 @@ import com.hoolitels.server.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,11 +32,18 @@ public class HotelController {
     }
 
     @GetMapping("{id}/rooms")
-    public Set<Room> getHotelsBySpecificCity(@PathVariable long id) {
+    public List<Room> getHotelsBySpecificCity(@PathVariable long id) {
         Optional<Hotel> hotel = hotelRepository.findById(id);
         // TODO: 2020-04-09 Bra att returnera null när hotellet inte finns?
         return (hotel.isEmpty() ? null : hotel.get().getRooms());
     }
+
+//    @GetMapping("{id}/rooms/free")
+//    public Set<Room> getHotelsFreeRooms(@PathVariable long id) {
+//        Optional<Hotel> hotel = hotelRepository.findById(id);
+//        // TODO: 2020-04-09 Bra att returnera null när hotellet inte finns?
+//        return (hotel.isEmpty() ? null : hotel.get().getFreeRooms());
+//    }
 
     @PostMapping
     public Hotel createHotel(@RequestBody Hotel hotelToBeCreated) {

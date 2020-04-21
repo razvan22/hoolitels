@@ -11,10 +11,11 @@ public class Roombooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "booking_id", nullable = false)
     @JsonBackReference
     private Booking booking;
+//    private long booking_id;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
@@ -29,7 +30,9 @@ public class Roombooking {
     public Roombooking() {
     }
 
+//    public Roombooking(long booking, Room room, boolean extra_bed, Integer food_cost) {
     public Roombooking(Booking booking, Room room, boolean extra_bed, Integer food_cost) {
+//        this.booking_id = booking;
         this.booking = booking;
         this.room = room;
         this.extra_bed = extra_bed;
@@ -55,4 +58,12 @@ public class Roombooking {
     public Integer getFood_cost() {
         return food_cost;
     }
+
+//    public long getBooking_id() {
+//        return booking_id;
+//    }
+//
+//    public void setBooking_id(long booking_id) {
+//        this.booking_id = booking_id;
+//    }
 }

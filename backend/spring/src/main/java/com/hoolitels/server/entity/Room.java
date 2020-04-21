@@ -1,7 +1,12 @@
 package com.hoolitels.server.entity;
 
+import com.hoolitels.server.repository.BookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +31,7 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")
-    private Set<Roombooking> roombookings;
+    private List<Roombooking> roombookings = new ArrayList<>();
 
     @Column(nullable = false)
     private int price;
@@ -103,9 +108,16 @@ public class Room {
 //    }
 
     public boolean isFree(Date start_date, Date end_date) {
-        return roombookings.stream()
-            .allMatch(s -> ((s.getBooking().getEnd_date()).before(start_date) || s.getBooking().getEnd_date().equals(start_date) &&
-                    (end_date.before(s.getBooking().getStart_date()) || end_date.equals(s.getBooking().getStart_date()))));
+        for (int i = 0; i < roombookings.size(); i++) {
+            Roombooking rb = roombookings.get(i);
+            if (!checkFree(rb, start_date, end_date)) return false;
+        }
+        return true;
+    }
+
+    private boolean checkFree(Roombooking s, Date start_date, Date end_date) {
+        return  ((s.getBooking().getEnd_date()).before(start_date) || s.getBooking().getEnd_date().equals(start_date) ||
+                (end_date.before(s.getBooking().getStart_date()) || end_date.equals(s.getBooking().getStart_date())));
     }
 
     public void setType(RoomType type) {

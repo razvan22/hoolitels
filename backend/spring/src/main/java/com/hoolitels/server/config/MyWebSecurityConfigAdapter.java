@@ -24,10 +24,11 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/rest/city/**").permitAll()
             .antMatchers("/rest/**").authenticated()
+            .antMatchers("/rest/city").permitAll()
             .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
-            .antMatchers("/").permitAll()
-            .and()// Ta bort när vi har eget formulär
-            .formLogin(); // Ta bort när vi har eget formulär
+            .antMatchers("/").permitAll();
+//            .and()// Ta bort när vi har eget formulär
+//            .formLogin(); // Ta bort när vi har eget formulär
     }
 
     @Override
