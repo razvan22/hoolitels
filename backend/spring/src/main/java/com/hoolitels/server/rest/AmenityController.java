@@ -13,7 +13,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("rest/amenity") // Parent-URL:n för denna klass
 public class AmenityController {
-
     @Autowired
     private AmenityRepository amenityRepository;
 

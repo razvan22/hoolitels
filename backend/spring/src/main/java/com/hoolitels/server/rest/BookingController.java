@@ -24,7 +24,7 @@ public class BookingController {
     private UserRepository userRepository;
 
     @GetMapping
-    public Iterable<Booking> getAllUsers() {
+    public Iterable<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
