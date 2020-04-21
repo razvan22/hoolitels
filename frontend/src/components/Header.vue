@@ -64,7 +64,8 @@ export default {
   methods:{
     loginSubmit(){
       console.log(this.password, this.email)
-    }
+    },
+    
   }
 
 

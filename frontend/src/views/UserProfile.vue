@@ -12,7 +12,8 @@
                 <img src="../assets/logo_minimal.gif">
             </div>
             <div class="col s12 m12 l12" id="userName">
-                <h3 v-bind='user.name'>{{user.name}}</h3>
+                <!-- <h3 v-bind='user.name'>{{user.name}}</h3>
+                <h5 v-bind='user.email'>{{user.email}}</h5> -->
             </div>
         </div>
     </div>
@@ -25,7 +26,7 @@ export default {
         return{
              user:{
                 name:'Johnny Bravo',
-                email: '',
+                email: 'johhny@.com',
                 country:'',
                 city:'',
                 address:'',
@@ -35,6 +36,16 @@ export default {
                 phone:''
             }
         }
+    },
+    mounted(){
+        this.getUser()
+    },
+    methods:{
+        getUser: async function(){
+            // let rawResponse = await fetch('http://localhost:8070/rest/user/');
+            let response = await rawResponse.json();
+            console.log(response)
+        } 
     }
 
 }
@@ -49,8 +60,10 @@ img{
     height: auto;
 }
 body #userName{
+    flex-direction: column;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 body #profile{
     display: flex;

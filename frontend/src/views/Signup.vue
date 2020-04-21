@@ -17,7 +17,9 @@ export default {
         Footer,
         Header,
         UserInformationForm
-    }
+    },
+
+
 
 }
 </script>
