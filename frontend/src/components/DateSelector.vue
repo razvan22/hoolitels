@@ -1,7 +1,7 @@
 <template>
   <div class="container">  
     <div class="row">
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12 m12 l12">
         <select v-model="selectedCity">
           <option value="" disabled selected>Välj stad</option>
           <option
@@ -12,7 +12,7 @@
           >
         </select>
       </div>
-      <div class="input-field col s12 m6">
+      <div class="input-field col s12 m12 l12">
         <select v-model="booking.rooms">
           <option v-for="n in 5" :key="n" :value="n" selected
             >{{ n }} rum</option
@@ -88,8 +88,11 @@
 </script>
 
 <style>
+
+
   .input-field {
     background: rgb(255, 255, 255);
+    
   }
   .myicon {
     font-size: 3rem !important;
@@ -102,7 +105,8 @@
   }
 
   .search-btn {
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 3%;
+    width: 30%;
+     border-radius: 25px;
   }
 </style>

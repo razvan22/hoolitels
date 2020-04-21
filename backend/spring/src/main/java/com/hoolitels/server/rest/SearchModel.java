@@ -44,11 +44,11 @@ public class SearchModel {
     }
 
     public Integer getNr_rooms() {
-        return nr_rooms;
+        return nr_of_rooms;
     }
 
     public void setNr_rooms(Integer nr_rooms) {
-        this.nr_rooms = nr_rooms;
+        this.nr_of_rooms = nr_rooms;
     }
 
     public List<Long> getAmenities() {

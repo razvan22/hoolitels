@@ -1,11 +1,13 @@
 <template>
   <footer class="footer">
-    <ul class="container s12 center-align">
-      <span class="fab fa-facebook fa-2x"></span>
-      <span class="fab fa-instagram fa-2x"></span>
-      <span class="fab fa-twitter fa-2x"></span>
+    <ul class="row center-align">
+      <div class="col l12 m12 s12">
+        <span class="fab fa-facebook fa-2x"></span>
+        <span class="fab fa-instagram fa-2x"></span>
+        <span class="fab fa-twitter fa-2x"></span>
       <div>
         <span id="footer-text">@Copyright Hoolitels {{ currentYear }}</span>
+      </div>
       </div>
     </ul>
   </footer>
@@ -22,22 +24,18 @@
   }
 </script>
 
-<style>
-  .footer {
-    /* margin-top: 1em; */
-  }
+<style scoped> 
+
   .footer ul {
+    
     background: rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
     padding-top: 5px;
-    /* border: 1px solid black; */
     bottom: 0;
-    position: fixed;
     width: 100%;
   }
   .footer span {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 8%;
+    padding-right: 8%;
   }
   .footer .fa-facebook {
     color: rgb(102, 102, 105);

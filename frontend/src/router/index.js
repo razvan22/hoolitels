@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
+import HotelVy from '../views/HotelVy.vue'
+
 
 
 Vue.use(VueRouter)
@@ -13,11 +14,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
   },
 
   {
@@ -31,6 +27,12 @@ Vue.use(VueRouter)
     name: 'Signup',
     component: Signup
   },
+{
+  path: '/hotelVy/:hotel',
+  name: 'HotelVy',
+  props:true, 
+  component: HotelVy
+},
   {
     path: '/about',
     name: 'About',
