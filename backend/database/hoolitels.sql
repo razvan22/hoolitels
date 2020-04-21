@@ -48,9 +48,9 @@ CREATE TABLE IF NOT EXISTS `booking` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK_booking_user` (`user_id`) USING BTREE,
   CONSTRAINT `FK_booking_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.booking: ~4 rows (ungefär)
+-- Dumpar data för tabell hoolitels.booking: ~15 rows (ungefär)
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
 INSERT INTO `booking` (`id`, `user_id`, `num_adults`, `num_children`, `num_infants`, `start_date`, `end_date`, `comment`, `paid`) VALUES
 	(1, 1331, 1, 0, 0, '2020-04-18', '2020-04-20', '0', b'0'),
@@ -65,7 +65,9 @@ INSERT INTO `booking` (`id`, `user_id`, `num_adults`, `num_children`, `num_infan
 	(18, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
 	(19, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
 	(21, 1064, 2, 2, 0, '2020-06-12', '2020-06-15', '0', b'0'),
-	(22, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0');
+	(22, 1065, 2, 2, 0, '2020-07-22', '2020-07-25', '0', b'0'),
+	(23, 1406, 1, 1, 0, '2020-08-10', '2020-08-15', '0', b'0'),
+	(24, 1732, 1, 0, 0, '2020-09-01', '2020-09-03', '0', b'0');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.city
@@ -76,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.city: ~8 rows (ungefär)
+-- Dumpar data för tabell hoolitels.city: ~10 rows (ungefär)
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `name`) VALUES
 	(115, 'Göteborg'),
@@ -487,7 +489,7 @@ CREATE TABLE IF NOT EXISTS `hotelamenity` (
   CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.hotelamenity: ~92 rows (ungefär)
+-- Dumpar data för tabell hoolitels.hotelamenity: ~100 rows (ungefär)
 /*!40000 ALTER TABLE `hotelamenity` DISABLE KEYS */;
 INSERT INTO `hotelamenity` (`id`, `hotel_id`, `amenity_id`) VALUES
 	(62, 1799, 2),
@@ -2613,9 +2615,9 @@ CREATE TABLE IF NOT EXISTS `roombooking` (
   KEY `FK__room` (`room_id`) USING BTREE,
   CONSTRAINT `FK__booking` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`),
   CONSTRAINT `FK__room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.roombooking: ~4 rows (ungefär)
+-- Dumpar data för tabell hoolitels.roombooking: ~15 rows (ungefär)
 /*!40000 ALTER TABLE `roombooking` DISABLE KEYS */;
 INSERT INTO `roombooking` (`id`, `booking_id`, `room_id`, `extra_bed`, `food_cost`) VALUES
 	(1, 1, 3863, b'0', 676),
@@ -2628,7 +2630,11 @@ INSERT INTO `roombooking` (`id`, `booking_id`, `room_id`, `extra_bed`, `food_cos
 	(9, 21, 4002, b'1', 333),
 	(10, 21, 3865, b'0', 0),
 	(12, 22, 3869, b'0', 600),
-	(13, 22, 4002, b'1', 333);
+	(13, 22, 4002, b'1', 333),
+	(16, 23, 4101, b'0', 0),
+	(17, 23, 4027, b'0', 0),
+	(18, 24, 4744, b'0', 0),
+	(19, 24, 4779, b'0', 0);
 /*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell hoolitels.user
@@ -3654,6 +3660,28 @@ INSERT INTO `user` (`id`, `name`, `email`, `address`, `zip`, `city`, `phone`, `p
 	(2062, 'Melantha Dobbie', 'mdobbierr@eventbrite.com', '846 Morning Drive', '80618', 'Mariental', '6284872654', 'oHY1qTSfR2', 194),
 	(2063, 'user', 'user', 'uservejen 1', '11111', 'usercity', '012345678', 'user', 227);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+-- Dumpar struktur för vy hoolitels.vwhotelroombookings
+-- Skapar temporärtabell för att hantera VIEW-beroendefel
+CREATE TABLE `vwhotelroombookings` (
+	`HotelId` INT(11) NOT NULL,
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`RoomId` INT(11) NULL,
+	`RBId` INT(11) NULL,
+	`BookingId` INT(11) NULL,
+	`start_date` DATE NULL,
+	`end_date` DATE NULL
+) ENGINE=MyISAM;
+
+-- Dumpar struktur för vy hoolitels.vwhotelroombookings
+-- Tar bort temporärtabell och skapar slutgiltlig VIEW-struktur
+DROP TABLE IF EXISTS `vwhotelroombookings`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vwhotelroombookings` AS SELECT hotel.id AS HotelId, hotel.name, room.id AS RoomId, roombooking.id AS RBId, booking.id AS BookingId, booking.start_date, booking.end_date FROM hotel  
+LEFT JOIN room ON hotel.id = room.hotel_id
+LEFT JOIN roombooking ON room.id = roombooking.room_id
+LEFT JOIN booking ON roombooking.booking_id = booking.id
+WHERE roombooking.id IS NOT NULL
+ORDER BY HotelId, room.id, booking.start_date ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
