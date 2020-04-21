@@ -42,6 +42,16 @@
           </li>   
         </ul>
       </div>
+      <div class="col offset-s4 ">
+             <router-link
+        to="/"
+        class="waves-effect waves-light  cyan darken-2 btn-small"
+        >Boka
+      </router-link>
+        
+        
+       
+      </div>
     </div>
     <div class="row">
     </div>
