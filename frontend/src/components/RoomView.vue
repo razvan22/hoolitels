@@ -20,25 +20,31 @@
       <div class="col s10 offset-s1">
         <span>Här kommer rumsbeskrivningen</span>
       </div>
-    </div>
-    <div class="row" v-if="hasExtras()">
+      </div>
+     <div class="row" v-if="hasExtras()">
       <div class="col s10 offset-s1 m5 offset-m1 z-depth-1">
         <span><u>Tillval</u></span>
         <ul>
           <li v-for="e in extras" :key="e.kind">
             <div class="row">
               <div class="col s4 m4">
-                <span>{{ e.kind }}:</span>
+                <p>
+                  <label>
+                    <input type="checkbox" class="filled-in"   />
+                    <span>{{ e.kind }}:</span>
+                 </label>
+                </p>
               </div>
               <div class="col s8 m8 right-align">
                 <span>{{ numFormatter.format(e.price) }}</span>
               </div>
             </div>
-          </li>
+          </li>   
         </ul>
       </div>
     </div>
-    <div class="row"></div>
+    <div class="row">
+    </div>
   </div>
 </template>
 
@@ -83,6 +89,7 @@ export default {
         price: this.room.cost_all_inclusive,
       });
     }
+
   },
 
   methods: {

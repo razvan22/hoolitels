@@ -1,16 +1,20 @@
 <template>
-  <div class="result">
-      <Logo />
-      <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
+<body>
+    <Header/>
+    <main>
+      <DisplayHotel v-for="h in city.hotels" :key="h.id" :hotel="h" :DisplayRooms="false"/>
+      </main>
       <Footer />
-    </div>
+</body>
 </template>
 
 <script>
-import Logo from "@/components/Header.vue";
+
 // import Logo from '@/components/Logo.vue'
-import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
+import DisplayHotel from "@/components/DisplayHotel.vue";
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/Header.vue";
+
 
 export default {
   data() {
@@ -24,9 +28,10 @@ export default {
   },
 
   components: {
-    Logo,
     Footer,
-    DisplayHotelFromSearch,
+    DisplayHotel,
+    Header,
+ 
   },
   methods: {
     getCity: async function() {
@@ -36,7 +41,6 @@ export default {
       );
       response = await response.json();
       this.city = response;
-      console.log(this.city);
     },
   },
 };
