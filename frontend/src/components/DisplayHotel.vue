@@ -38,6 +38,7 @@
             </div>
             <div v-if="DisplayRooms">
                 <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
+                
             </div>
           </div>
           <div class="card-action align-center">
