@@ -89,6 +89,7 @@ export default {
         price: this.room.cost_all_inclusive,
       });
     }
+
   },
 
   methods: {

@@ -2,10 +2,7 @@
 <body>
     <Header/>
     <main>
-    
-    
-      <DisplayHotelFromSearch v-for="h in city.hotels" :key="h.id" :hotel="h" />
-
+      <DisplayHotel v-for="h in city.hotels" :key="h.id" :hotel="h" :DisplayRooms="false"/>
       </main>
       <Footer />
 </body>
@@ -14,9 +11,8 @@
 <script>
 
 // import Logo from '@/components/Logo.vue'
-import DisplayHotelFromSearch from "@/components/DisplayHotelFromSearch.vue";
+import DisplayHotel from "@/components/DisplayHotel.vue";
 import Footer from "@/components/Footer.vue";
-
 import Header from "@/components/Header.vue";
 
 
@@ -33,8 +29,7 @@ export default {
 
   components: {
     Footer,
-    DisplayHotelFromSearch,
- 
+    DisplayHotel,
     Header,
  
   },
@@ -46,7 +41,6 @@ export default {
       );
       response = await response.json();
       this.city = response;
-      console.log(this.city);
     },
   },
 };
