@@ -66,11 +66,9 @@ export default {
 
   },
   methods:{
-    clickHotel(){
-     this.$store.commit('setSelectedHotel', this.hotel)
-     console.log("hotell", this.hotel)
+
     
-    }
+    
   }
 };
 </script>

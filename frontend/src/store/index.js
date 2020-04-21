@@ -6,10 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     cities: [],
-    displayHotel:{selectedHotel: {}},
-
     dateSelected: {
-      selectedCity: 0,
+    selectedCity: 0,
     },
 
     hotels: [],
@@ -21,9 +19,7 @@ export default new Vuex.Store({
     setCities(state, value) {
       state.cities = value
     },
-    setSelectedHotel(state, value){
-    state.displayHotel.selectedHotel = value
-    }
+
   },
 
   actions: {
