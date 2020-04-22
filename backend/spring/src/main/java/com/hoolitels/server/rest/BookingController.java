@@ -24,7 +24,7 @@ public class BookingController {
     private UserRepository userRepository;
 
     @GetMapping
-    public Iterable<Booking> getAllUsers() {
+    public Iterable<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
@@ -34,7 +34,6 @@ public class BookingController {
     }
 
     @PostMapping
-    @Transactional
     public Booking createBooking(@RequestBody Booking booking) {
         Optional<User> userOpt = userRepository.findById(booking.getUser().getId());
         if (userOpt.isEmpty()) return null;
@@ -42,7 +41,11 @@ public class BookingController {
         booking.setUser(userOpt.get());
 
         ArrayList<Roombooking> rbLocal = new ArrayList<Roombooking>();
-        booking.getRoombookings().forEach(rb -> rbLocal.add(new Roombooking(booking, (roomRepository.findById(rb.getRoom().getId())).get(), rb.isExtra_bed(), rb.getFood_cost())));
+        booking.getRoombookings().forEach(rb ->
+                rbLocal.add(new Roombooking(booking,
+                                            (roomRepository.findById(rb.getRoom().getId())).get(),
+                                            rb.isExtra_bed(),
+                                            rb.getFood_cost())));
         booking.setRoomBookings(rbLocal);
 
         List<Roombooking> rbs = booking.getRoombookings();

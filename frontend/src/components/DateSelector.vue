@@ -1,51 +1,112 @@
 <template>
-<div class="date_selector container">
-    <div class="row" id="date-city-selector">
-        <div class="input-field col s12 m6 l6">
-            <input id="textarea1" type="text" class="validate" v-model='booking.city' @keyup.enter="getCity">
-            <label for="textarea1">City</label>
-        </div>
-        <div class="input-field col s6 m3 l3">
-            <input id="from" type="text" class="datepicker" v-model='booking.check_in'  >
-            <label for="from">Check-in Date</label>
-        </div>
-         <div class="input-field col s6 m3 l3">
-            <input id="to" type="text" class="datepicker" v-model='booking.check_out'>
-            <label for="to">Check-out Date</label>
-        </div>
+  <div class="container">  
+    <div class="row">
+      <div class="input-field col s12 m12 l12">
+        <select v-model="selectedCity">
+          <option value="" disabled selected>Välj stad</option>
+          <option
+            v-for="city in $store.state.cities"
+            :key="city.id"
+            :value="city.id"
+            >{{ city.name }}</option
+          >
+        </select>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <select v-model="booking.rooms">
+          <option v-for="n in 5" :key="n" :value="n" selected
+            >{{ n }} rum</option
+          >
+        </select>
+      </div>
     </div>
-</div>
+    <HotelDatePicker
+      :showYear="true"
+      :displayClearButton="false"
+      :firstDayOfWeek="1"
+    />
+    <div class="center-align">
+      <router-link
+        to="/result"
+        class="search-btn waves-effect waves-light btn cyan darken-2"
+        >Sök
+        <i class="material-icons right">search</i>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
-import M from '@/assets/materialize.min.js'
-export default {
-    data(){
-        return{
-            booking:{
-                city: '',
-                check_in:'',
-                check_out:'' 
-            }
-        }
+  import M from 'materialize-css'
+  import HotelDatePicker from 'vue-hotel-datepicker'
+
+  export default {
+    components: {
+      HotelDatePicker,
     },
-    mounted(){
-        let elems = document.querySelectorAll('.datepicker');
-        M.Datepicker.init(elems);
+    computed: {
+      selectedCity: {
+        get() {
+          return this.$store.state.dateSelected.selectedCity
+        },
+        set(value) {
+          this.$store.commit('setSelectedCity', value)
+        },
+      },
     },
-    methods:{
-        getCity: function(){
-            console.log(this.booking.city,this.booking.check_in,this.booking.check_out)
-            this.city = ''
-        }
-    }
-}
+
+    data() {
+      return {
+        selected: {
+          id: 0,
+          name: 'Välj',
+        },
+
+        booking: {
+          rooms: 1,
+          check_in: '',
+          check_out: '',
+        },
+      }
+    },
+    mounted() {
+      var elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
+    },
+    updated() {
+      var elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
+    },
+    methods: {
+      getTomorrow() {
+        let d = new Date()
+        d.setDate(d.getDate() + 4)
+        return d
+      },
+    },
+  }
 </script>
 
 <style>
-#date-city-selector{
-    margin-top: 1em;
-    border: solid 1px #e0e0e0 ;
-    border-radius: 0.30em;
-}
+
+
+  .input-field {
+    background: rgb(255, 255, 255);
+    
+  }
+  .myicon {
+    font-size: 3rem !important;
+  }
+
+  .card {
+    margin: 20px;
+    padding: 10px;
+    background: rgb(255, 255, 255, 1);
+  }
+
+  .search-btn {
+    margin-top: 3%;
+    width: 30%;
+     border-radius: 25px;
+  }
 </style>
