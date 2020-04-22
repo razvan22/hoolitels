@@ -3,10 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
-import UserProfile from '../views/UserProfile.vue'
-import UserInformationForm from '../components/UserInformationForm.vue'
-
-
+import HotelVy from '../views/HotelVy.vue'
+import Payment from '../views/Payment.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -37,6 +35,18 @@ Vue.use(VueRouter)
     name: 'Signup',
     component: Signup
   },
+{
+  path: '/hotelVy/:hotel',
+  name: 'HotelVy',
+  props:true, 
+  component: HotelVy
+},
+
+{
+  path: '/payment',
+  name: 'Payment',
+  component: Payment
+},
   {
     path: '/about',
     name: 'About',
