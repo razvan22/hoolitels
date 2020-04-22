@@ -29,8 +29,7 @@
       <router-link
         to="/result"
         class="search-btn waves-effect waves-light btn cyan darken-2"
-        >Sök
-        <i class="material-icons right">search</i>
+        >Sök        
       </router-link>
     </div>
   </div>
