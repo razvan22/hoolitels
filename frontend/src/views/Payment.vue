@@ -2,6 +2,12 @@
     <div class="body">
         <Header/>
             <div class="container payment-form">
+                 <div class="row">
+                    <div class="input-field col s12">
+                    <input placeholder="Förnamn och efternamn"  type="text" class="validate">
+                    <label for="first_name">Kortinnehavare</label>
+                 </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s12">
                     <input placeholder="XXXX-XXXX-XXXX-XXXX"  type="text" class="validate">
