@@ -42,15 +42,12 @@
           </li>   
         </ul>
       </div>
-      <div class="col offset-s4 ">
+      <div class="button-book col offset-s4 ">
              <router-link
         to="/"
         class="waves-effect waves-light  cyan darken-2 btn-small"
         >Boka
       </router-link>
-        
-        
-       
       </div>
     </div>
     <div class="row">
@@ -131,5 +128,10 @@ ul {
 
 li .row {
   margin-bottom: 0;
+}
+
+.button-book{
+  padding: 2vh;
+ 
 }
 </style>

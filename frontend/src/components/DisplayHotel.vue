@@ -12,7 +12,8 @@
           <div class="card-content">
             <div class="row">
               <ul class="col l5  amenities">
-                <h4> Bekvämligheter</h4>
+                <h4 v-if=" !amenitiesIsEmpty"> Ej bekvämligheter</h4>
+                <h4 v-if="amenitiesIsEmpty"> Bekvämligheter </h4>
                 <li v-for="a in hotel.amenities" :key="a.id">
                   <div class="valign-wrapper">
                     <i class="material-icons teal-text">check_circle</i
@@ -20,7 +21,10 @@
                   </div>
                 </li>
               </ul>
-             
+                <div class="contact col s2">
+                 <h4>Betyg</h4>
+                 <h5> 8/10</h5>
+               </div>
               <div class="col  distance">
                   <h4>Avstånd</h4>
                 <ul>
@@ -35,16 +39,10 @@
                   <li><i class="material-icons tiny">contact_phone</i>{{hotel.phone}}</li>
                 </ul>
                </div>
-               <div class="contact col">
-                 <h4>Betyg</h4>
-                 <h5> 8/10</h5>
-               </div>
             </div>
             <div v-if="DisplayRooms">
-                <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
-                
-            </div>
-               
+                <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />  
+            </div>    
           </div>
           <div class="card-action align-center" >
              <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Läs mer</router-link>
@@ -59,12 +57,18 @@
  import RoomView from "@/components/RoomView.vue";
 
 export default {
-
- 
   name: "DisplayHotel",
   props: [`hotel`, `DisplayRooms`],
   data() {
-    return {};
+    return {
+    isHidden: false
+    };
+  },
+  computed:{
+    amenitiesIsEmpty(){
+      return this.hotel.amenities && this.hotel.amenities.length 
+    }
+
   },
   mounted() {},
   components: {
@@ -77,18 +81,21 @@ export default {
      this.$store.commit('setSelectedHotel', this.hotel)
      console.log("hotell", this.hotel)
     
-    }
+    }, 
   }
+
 };
 </script>
 
 <style>
 .amenities {
   font-size: smaller;
-
 }
+
+
 .amenities h4{
   font-size: large;
+ 
 }
 
 .distance{
