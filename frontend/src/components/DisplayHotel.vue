@@ -42,6 +42,7 @@
             </div>
             <div v-if="DisplayRooms">
                 <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
+                
             </div>
                
           </div>
@@ -72,9 +73,11 @@ export default {
 
   },
   methods:{
-
+    clickHotel(){
+     this.$store.commit('setSelectedHotel', this.hotel)
+     console.log("hotell", this.hotel)
     
-    
+    }
   }
 };
 </script>
