@@ -40,11 +40,26 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"bubba\",\n    \"password\": \"password\",\n    \"email\": \"mail21@email.com\",\n    \"address\": \"296 Sunnyside Point\",\n    \"zip\": \"14521\",\n    \"city\": \"Sawara\",\n    \"phone\": \"12341256\",\n    \"countryId\": 176,\n    \"bookings\": []\n}",
+					"raw": "{\n    \"name\": \"bubba\",\n    \"password\": \"password\",\n    \"email\": \"mail2781@email.com\",\n    \"address\": \"296 Sunnyside Point\",\n    \"zip\": \"14521\",\n    \"city\": \"Sawara\",\n    \"phone\": \"123489078\",\n    \"countryId\": 176,\n    \"bookings\": []\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,6 +116,21 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -136,10 +166,25 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8070/rest/user/1075",
+					"raw": "http://localhost:8070/rest/user/1063",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -148,7 +193,7 @@
 					"path": [
 						"rest",
 						"user",
-						"1075"
+						"1063"
 					]
 				}
 			},
@@ -166,10 +211,10 @@
 							"    pm.response.to.have.status(405);",
 							"});",
 							"",
-							"pm.test(\"Test to see if row is changed\", function () {",
+							"/*pm.test(\"Test to see if row is changed\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.changedRows).to.eql(1);",
-							"});"
+							"});*/"
 						],
 						"type": "text/javascript"
 					}
@@ -195,15 +240,59 @@
 			"response": []
 		},
 		{
-			"name": "get list of hotels (no auth) Copy",
+			"name": "Search med andra parameter Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d2eeb7be-e3b9-4ff5-802d-3f66c2967e15",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city_id\":50,\r\n    \"amenities\": [2,3],\r\n    \"nr_of_rooms\": 3,\r\n    \"distance_to_beach\": 500,\r\n    \"distance_to_town_center\": 1000,\r\n    \"start_date\": \"2020-01-20\",\r\n    \"end_date\": \"2020-08-24\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8070/rest/hotel",
+					"raw": "http://localhost:8070/rest/search",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -211,19 +300,8 @@
 					"port": "8070",
 					"path": [
 						"rest",
-						"hotel"
+						"search"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get list of hotels (auth) Copy",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
 				}
 			},
 			"response": []
