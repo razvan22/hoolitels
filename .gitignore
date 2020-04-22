@@ -30,4 +30,9 @@ build/
 
 ### VS Code ###
 .vscode/
+<<<<<<< Updated upstream
+=======
+
+### NPM ###
+>>>>>>> Stashed changes
 /frontend/node_modules
