@@ -8,13 +8,13 @@
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="full_name" type="text" class="validate" v-model="user.name">
-                            <label for="full_name">Full Name</label>
+                            <label for="full_name">Förnamn och efternamn</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="email" type="email" class="validate" v-model="user.email">
-                            <label for="email">Email</label>
+                            <label for="email">Epost</label>
                         </div>
                     </div>
                 </div>
@@ -22,13 +22,13 @@
                     <div class="col s12 m6 l6">
                         <div class="input-field">
                             <input id="country" type="text" class="validate" v-model="user.country">
-                            <label for="country">Country</label>
+                            <label for="country">Land</label>
                         </div>
                     </div>
                     <div class="col s12 m6 l6">
                         <div class="input-field">
                             <input id=" city" type="text" class="validate" v-model="user.city">
-                            <label for=" city">City</label>
+                            <label for=" city">Stad</label>
                         </div>
                     </div>
                 </div>
@@ -36,13 +36,13 @@
                     <div class="col s12 m9 l9">
                         <div class="input-field">
                             <input id="address" type="text" class="validate" v-model="user.address">
-                            <label for="address">Address</label>
+                            <label for="address">Adress</label>
                         </div>
                     </div>
                     <div class="col s12 m3 l3">
                         <div class="input-field">
                             <input id="zip" type="text" class="validate" v-model="user.zip">
-                            <label for="zip">Zip</label>
+                            <label for="zip">Postnummer</label>
                         </div>
                     </div>
                 </div>
@@ -50,25 +50,24 @@
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="password" type="password" class="validate" v-model="user.password">
-                            <label for="password">Password</label>
+                            <label for="password">Lösenord</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="confirm_password" type="password" class="validate" v-model="user.confirmPassword">
-                            <label for="confirm_password">Confirm Password</label>
+                            <label for="confirm_password">Bekräfta lösenord</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 m12 l12">
+                            <div class="col s12 m12 l12">
                             <div class="input-field">
                                 <input id="telephone" type="tel" class="validate" v-model="user.phone">
-                                <label for="telephone">Phone</label>
+                                <label for="telephone">Telefonnummer</label>
                             </div>
-                    </div>
-                    <div class="col s12 m12 l12">
-                      
+                        </div>
                     </div>
                 </div>
             </div>
