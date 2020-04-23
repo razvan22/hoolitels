@@ -2,6 +2,7 @@
   <div id="header">
     <div class="container">
       <div class="row row-form">
+            class="large material-icons sidenav-trigger waves-effect waves-light"
         <div class="col s3 m2 l2">
           <i
             data-target="slide-out"
