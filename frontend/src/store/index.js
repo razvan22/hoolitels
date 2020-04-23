@@ -24,7 +24,7 @@ export default new Vuex.Store({
 
   actions: {
     async getCities({ commit }) {
-      let response = await fetch('http://localhost:8070/rest/city')
+      let response = await fetch('rest/city')
       response = await response.json()
       commit('setCities', response)
     },

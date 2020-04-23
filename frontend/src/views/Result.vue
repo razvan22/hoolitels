@@ -36,11 +36,12 @@ export default {
   methods: {
     getCity: async function() {
       let response = await fetch(
-        "http://localhost:8070/rest/city/" +
+        "/city" +
           this.$store.state.dateSelected.selectedCity
       );
       response = await response.json();
       this.city = response;
+      console.log(this.city)
     },
   },
 };

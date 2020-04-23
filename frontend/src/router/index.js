@@ -5,6 +5,7 @@ import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
 import HotelVy from '../views/HotelVy.vue'
 import Payment from '../views/Payment.vue'
+import UserProfile from '../views/UserProfile.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -12,11 +13,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/user/form',
-    name: 'UserInformationForm',
-    component: UserInformationForm 
   },
   {
     path: '/userprofile',
