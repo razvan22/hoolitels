@@ -20,6 +20,4 @@ public class LoggedController {
     public User getLoggedInUser(Principal principal) {
         return userRepository.findByName(principal.getName());
     }
-
-
 }
