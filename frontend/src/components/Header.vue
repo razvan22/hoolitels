@@ -2,13 +2,13 @@
   <div id="header">
     <div class="container">
       <div class="row row-form">
-                <div class="col s8">
+        <div class="col s8">
           <img src="../assets/logo_minimal.gif" class="responsive" />
         </div>
         <div class="col s3 m2 l2">
           <i
             data-target="slide-out"
-            class="cyan darken-2 medium material-icons sidenav-trigger waves-effect waves-light"
+            class="cyan-text text-darken-2 medium material-icons sidenav-trigger waves-effect waves-light"
           >account_circle</i>
           <ul id="slide-out" class="sidenav">
             <div class="row">
@@ -79,7 +79,7 @@ export default {
         encodeURIComponent(username) +
         "&password=" +
         encodeURIComponent(password);
-
+        
       let response = await fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
