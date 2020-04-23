@@ -8,7 +8,8 @@
 <script>
   export default {
     created() {
-      this.$store.dispatch('getCities')
+      this.$store.dispatch('getCities'),
+      this.$store.dispatch('getAmenities')
     },
   }
 </script>

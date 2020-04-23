@@ -2,6 +2,7 @@
 <body>
     <Header/>
     <main>
+      <SortAndFilter/>
       <DisplayHotel v-for="h in city.hotels" :key="h.id" :hotel="h" :DisplayRooms="false"/>
       </main>
       <Footer />
@@ -14,6 +15,7 @@
 import DisplayHotel from "@/components/DisplayHotel.vue";
 import Footer from "@/components/Footer.vue";
 import Header from "@/components/Header.vue";
+import SortAndFilter from "@/components/SortAndFilter.vue";
 
 
 export default {
@@ -31,6 +33,7 @@ export default {
     Footer,
     DisplayHotel,
     Header,
+    SortAndFilter,
  
   },
   methods: {
