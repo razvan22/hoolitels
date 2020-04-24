@@ -2,14 +2,12 @@
   <div id="header">
     <div class="container">
       <div class="row row-form">
-        <div class="col s8">
-          <img src="../assets/logo_minimal.gif" class="responsive" />
-        </div>
         <div class="col s3 m2 l2">
           <i
             data-target="slide-out"
-            class="cyan-text text-darken-2 medium material-icons sidenav-trigger waves-effect waves-light"
-          >account_circle</i>
+            class="large material-icons sidenav-trigger waves-effect waves-light"
+            >account_circle</i
+          >
           <ul id="slide-out" class="sidenav">
             <div class="row">
               <div class="col s12 m12 l12">
@@ -24,7 +22,12 @@
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="validate" v-model="email" />
+                    <input
+                      id="email"
+                      type="email"
+                      class="validate"
+                      v-model="email"
+                    />
                   </div>
                   <div class="input-field col s12 m12 l12">
                     <label for="password" class="validate">Password</label>
@@ -36,17 +39,24 @@
                       type="submit"
                       v-on:click="loginSubmit()"
                       name="action"
-                    >Login</button>
+                    >
+                      Login
+                    </button>
                   </div>
                   <div class="col s12 m12 l12">
-                    <router-link to="/signup">
-                      <p>Don't have an account ?</p>
-                    </router-link>
+                    <router-link to="/signup"
+                      ><p>Don't have an account ?</p></router-link
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <img src="../assets/logo_minimal.gif" class="responsive" />
         </div>
       </div>
     </div>
@@ -60,44 +70,36 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   mounted() {
-    this.springLogin();
-
     let loginForm = document.querySelectorAll(".sidenav");
     M.Sidenav.init(loginForm, { edge: "right" });
   },
   methods: {
-    async springLogin() {
-      let username = "tsuddickdw@accuweather.com";
-      let password = "9swmyDhmvTp";
+    transformRequest: function (jsonData = {}) {
+      return Object.entries(jsonData)
+        .map((x) => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+        .join("&");
+    },
 
-      const credentials =
-        "username=" +
-        encodeURIComponent(username) +
-        "&password=" +
-        encodeURIComponent(password);
-        
-      let response = await fetch("/login", {
+    loginSubmit() {
+      fetch("/login", {
         method: "POST",
+        body: transformRequest({
+          username: this.email,
+          password: this.password,
+        }),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: credentials,
-        redirect: "manual"
-      });
+      }).then(function (response) {
+        let successfulLogin = !response.url.includes("error");
 
-      try {
-        response = await fetch("api/whoami");
-        response = await response.json();
-        console.log(response);
-        return true;
-      } catch {
-        console.log("Login failed");
-        return false;
-      }
-    }
-  }
+        console.log("the login result is:", successfulLogin);
+      });
+      console.log(this.password, this.email);
+    },
+  },
 };
 </script>
 
@@ -118,7 +120,7 @@ export default {
 }
 
 #header .container .row i {
-  /* font-size: 2em; */
-  /* color: #006064; */
+  font-size: 4em;
+  color: #006064;
 }
 </style>
