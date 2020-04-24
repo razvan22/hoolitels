@@ -12,21 +12,16 @@
             "keyword": "Given ",
             "name": "that I am at the homepage",
             "result": {
-              "status": "passed",
-              "duration": 4844201599
+              "status": "ambiguous"
             },
-            "line": 3,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:3"
-            }
+            "line": 3
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "name": "I should see the Hoolitels logo",
             "result": {
-              "status": "passed",
-              "duration": 3945401
+              "status": "skipped"
             },
             "line": 4,
             "match": {
@@ -38,7 +33,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 757800600
+              "duration": 4370442999
             },
             "hidden": true,
             "match": {
@@ -56,5 +51,149 @@
     "name": "There is a website",
     "tags": [],
     "uri": "C:/Users/srcha/Google Drive/Skola/dev/hoolitels/frontend/tests/selenium/features/home.feature"
+  },
+  {
+    "elements": [
+      {
+        "id": "login-of-user;logging-in",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Logging in",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "ambiguous"
+            },
+            "line": 4
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on the user icon",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I enter user in the email field",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I enter user in the password field",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should be logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 4238291299
+            },
+            "hidden": true,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "login-of-user;logging-in",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Logging in",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "ambiguous"
+            },
+            "line": 4
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on the user icon",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I enter tdinsdaleg@naver.com in the email field",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I enter 3uROILP in the password field",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should be logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 4761961500
+            },
+            "hidden": true,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-of-user",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Login of user",
+    "tags": [],
+    "uri": "C:/Users/srcha/Google Drive/Skola/dev/hoolitels/frontend/tests/selenium/features/login.feature"
   }
 ]
