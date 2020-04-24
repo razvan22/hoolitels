@@ -2,20 +2,18 @@
   <div id="header" >
     <div class="container">
       <div class="row row-form">
+        <div class="col s8">
+          <img src="../assets/logo_minimal.gif" class="responsive" />
+        </div>
         <div class="col s3 m2 l2">
           <i
             data-target="slide-out"
-            class="large material-icons  sidenav-trigger waves-effect waves-light"
-            >account_circle</i>
+            class="cyan-text text-darken-2 medium material-icons sidenav-trigger waves-effect waves-light"
+          >account_circle</i>
           <ul id="slide-out" class="sidenav">
             <login-form-component v-if="!userLogged" />
             <logged-form-component v-if="userLogged"/>
           </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <img src="../assets/logo_minimal.gif" class="responsive" />
         </div>
       </div>
     </div>
@@ -51,9 +49,23 @@
 </script>
 
 <style scoped>
+#header .container .row-form {
+  display: flex;
+  align-content: flex-end;
+  justify-content: end;
+}
+
+#header .container .row .col {
+  justify-content: center;
+  display: flex;
+}
 #header .container .row .responsive {
-    width: 40%;
-    height: auto;
-  }
- 
+  width: 70%;
+  height: auto;
+}
+
+#header .container .row i {
+  /* font-size: 2em; */
+  /* color: #006064; */
+}
 </style>

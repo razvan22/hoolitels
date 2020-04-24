@@ -1,10 +1,7 @@
 <template>
 <body>
-    <main>
       <SortAndFilter/>
       <DisplayHotel v-for="h in city.hotels" :key="h.id" :hotel="h" :DisplayRooms="false"/>
-    </main>
-    <Footer />
 </body>
 </template>
 
@@ -12,7 +9,6 @@
 
 
 import DisplayHotel from "@/components/DisplayHotel.vue";
-import Footer from "@/components/Footer.vue";
 import SortAndFilter from "@/components/SortAndFilter.vue";
 
 
@@ -28,15 +24,13 @@ export default {
   },
 
   components: {
-    Footer,
     DisplayHotel,
-    SortAndFilter,
- 
+    SortAndFilter 
   },
   methods: {
     getCity: async function() {
-       let response = await fetch(
-        "http://localhost:8070/rest/city/" +
+      let response = await fetch(
+        "/rest/city/" +
           this.$store.state.dateSelected.selectedCity
       );
       response = await response.json();

@@ -1,8 +1,6 @@
 <template>
 <body>
-
    <UserInformationForm/>
-
     <Footer/>
 </body>
 </template>

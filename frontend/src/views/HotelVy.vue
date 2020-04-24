@@ -1,36 +1,15 @@
 <template>
-  <div class="result">
-      <Logo />
+  <div class="result"> 
       <DisplayHotel :hotel="this.$route.params.hotel" :DisplayRooms="true" /> 
-      <Footer />
     </div>
 </template>
 
 <script>
-import Logo from "@/components/Header.vue";
 import DisplayHotel from "@/components/DisplayHotel.vue";
-import Footer from "@/components/Footer.vue";
 
 export default {
-  data() {
-    return {
-    
-    };
-  },
-
-  mounted() {
-   
-  },
-
-  components: {
-    Logo,
-    Footer,
-    DisplayHotel,
-  },
-  methods: {
-   
-}
+  components: {   
+    DisplayHotel
+  }
 };
 </script>
-
-<style></style>
