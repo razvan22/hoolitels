@@ -9,6 +9,8 @@
 <script>
 import FirstSearch from "@/components/FirstSearch.vue";
 
+import FirstSearch from "@/components/FirstSearch.vue";
+
 export default {
   name: "Home",
   components: {  
