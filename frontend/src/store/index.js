@@ -35,6 +35,7 @@ export default new Vuex.Store({
     setUser(state, value){
       state.user = value;
     },
+
     disableHeader(state, value){
       state.headerDisabled = value;
     }
@@ -69,7 +70,6 @@ export default new Vuex.Store({
        this.state.disable.headerDisabled = true;
       }
     },
-
    
     async getAmenities({ commit }) {
       let response = await fetch('/rest/amenity')
