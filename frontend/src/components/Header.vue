@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <div id="header" >
     <div class="container">
       <div class="row row-form">
         <div class="col s3 m2 l2">
@@ -29,6 +29,7 @@
       LoginFormComponent
       
     },
+
  
     mounted() {
       let loginForm = document.querySelectorAll('.sidenav')
@@ -41,5 +42,9 @@
 </script>
 
 <style scoped>
+#header .container .row .responsive {
+    width: 40%;
+    height: auto;
+  }
  
 </style>

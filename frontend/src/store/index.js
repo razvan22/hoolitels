@@ -9,8 +9,14 @@ export default new Vuex.Store({
     dateSelected: {
     selectedCity: 0,
     },
-
     hotels: [],
+    user:{},
+    disable:{
+      headerDisabled: false,
+      editUserInfo: true
+    }
+    
+
   },
   mutations: {
     setSelectedCity(state, value) {
@@ -20,6 +26,13 @@ export default new Vuex.Store({
       state.cities = value
     },
 
+    setUser(state, value){
+      state.user = value;
+    },
+    disableHeader(state, value){
+      state.headerDisabled = value;
+    }
+    
   },
 
   actions: {
@@ -28,6 +41,30 @@ export default new Vuex.Store({
       response = await response.json()
       commit('setCities', response)
     },
+    
+    async springLogin({ commit },credent) {
+     let credentials =
+        'username=' + encodeURIComponent(credent.email) +
+        '&password=' + encodeURIComponent(credent.password)
+
+      let response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: credentials,
+        redirect: 'manual',
+      })
+      if (response.url.includes('error')) {
+        console.log('Wrong username/password')
+      } else {
+        response = await fetch('api/whoami')
+        let responsee = await response.json()
+       commit('setUser', responsee)
+       console.log(responsee)
+       this.state.disable.headerDisabled = true;
+      }
+    },
+
+   
   },
 
   modules: {},

@@ -7,13 +7,15 @@
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="full_name" type="text" class="validate" v-model="user.name">
-                            <label for="full_name">Full Name</label>
+                            <label v-if="!editMode" for="full_name">Full Name</label>
+                            <label v-if="editMode" for="full_name"></label>
                         </div>
                     </div>
-                    <div class="col s12 m12 l12" v-if='!isUserLogged'>
+                    <div class="col s12 m12 l12" v-if='!editMode'>
                         <div class="input-field">
                             <input id="email" type="email" class="validate" v-model="user.email">
-                            <label for="email">Email</label>
+                            <label v-if="!editMode" for="email">Email</label>
+                            <label v-if="editMode" for="email"></label>
                         </div>
                     </div>
                 </div>
@@ -21,13 +23,15 @@
                     <div class="col s12 m6 l6">
                         <div class="input-field">
                             <input id="country" type="text" class="validate" v-model="user.country">
-                            <label for="country">Country</label>
+                            <label v-if="!editMode" for="country">Country</label>
+                            <label v-if="editMode" for="country"></label>
                         </div>
                     </div>
                     <div class="col s12 m6 l6">
                         <div class="input-field">
                             <input id=" city" type="text" class="validate" v-model="user.city">
-                            <label for=" city">City</label>
+                            <label v-if="!editMode" for="city">City</label>
+                            <label v-if="editMod" for="city"></label>
                         </div>
                     </div>
                 </div>
@@ -35,27 +39,35 @@
                     <div class="col s12 m9 l9">
                         <div class="input-field">
                             <input id="address" type="text" class="validate" v-model="user.address">
-                            <label for="address">Address</label>
+                            <label v-if="!editMode" for="address">Address</label>
+                            <label v-if="editMode" for="address"></label>
                         </div>
                     </div>
                     <div class="col s12 m3 l3">
                         <div class="input-field">
                             <input id="zip" type="text" class="validate" v-model="user.zip">
-                            <label for="zip">Zip</label>
+                            <label v-if="!editMode" for="zip">Zip</label>
+                            <label v-if="editMode" for="zip"></label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div v-if="editMode" class="col s12 m12 l12">
+                        <div class="input-field">
+                            <input id="password" type="password" class="validate" v-model="user.password">
+                            <label for="password">gammalt lösenord</label>
+                        </div>
+                    </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="password" type="password" class="validate" v-model="user.password">
-                            <label for="password">Password</label>
+                            <label for="password">lösenord</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
                         <div class="input-field">
                             <input id="confirm_password" type="password" class="validate" v-model="user.confirmPassword">
-                            <label for="confirm_password">Confirm Password</label>
+                            <label for="confirm_password">bekräfta lösenord</label>
                         </div>
                     </div>
                 </div>
@@ -63,7 +75,8 @@
                     <div class="col s12 m12 l12">
                             <div class="input-field">
                                 <input id="telephone" type="tel" class="validate" v-model="user.phone">
-                                <label for="telephone">Phone</label>
+                                <label v-if="!editMode" for="telephone">Phone</label>
+                                <label v-if="editMode" for="telephone"></label>
                             </div>
                     </div>
                     <div class="col s12 m12 l12">
@@ -98,23 +111,28 @@ data(){
         return{
             isUserLogged:'' ,
             user:{
-                name:'',
-                email: '',
-                country:'',
-                city:'',
-                address:'',
-                zip:'',
+                name:this.$store.state.user.name,
+                email: this.$store.state.user.email,
+                country:this.$store.state.user.country,
+                city:this.$store.state.user.city,
+                address:this.$store.state.user.address,
+                zip:this.$store.state.user.zip,
                 password:'',
                 confirmPassword:'',
-                phone:''
+                phone: this.$store.state.user.phone
             }
         }
     },
+    computed:{
+        editMode(){
+            return this.$store.state.disable.editUserInfo
+        },
+    },
+    mounted(){
+        
+    },
 
     methods:{
-        consoleLogForm: function(){
-            console.log(this.user)
-        }
     }
     
 }

@@ -12,32 +12,32 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
-                    <label for="email">Email</label>
+                    <label for="username">Email</label>
                     <input
-                      id="email"
-                      type="email"
+                      id="username"
+                      type="text"
                       class="validate"
-                      v-model="email"
+                      v-model="user.email"
                     />
                   </div>
                   <div class="input-field col s12 m12 l12">
                     <label for="password" class="validate">Password</label>
-                    <input id="password" type="password" v-model="password" />
+                    <input id="password" type="password" v-model="user.password" />
                   </div>
                   <div class="input-field col s12 m12 l12">
-                    <button
+                    <router-link to="/userprofile"><button
                       class="btn waves-effect waves-light"
                       type="submit"
-                      v-on:click="loginSubmit()"
+                      v-on:click="login()"
                       name="action"
                     >
                       Login
-                    </button>
+                    </button></router-link>
+                   
                   </div>
                   <div class="col s12 m12 l12">
                     <router-link to="/signup"
-                      ><p>Don't have an account ?</p></router-link
-                    >
+                      ><p>Don't have an account ?</p></router-link>
                   </div>
                 </div>
               </div>
@@ -48,50 +48,18 @@
 <script>
 export default {
     name: 'LoginFormComponent',
+        data() {
+        return {
+          user:{
+            email:'',
+            password:''
+          },
 
-
-
-    mounted() {
-      this.springLogin()
-
-    },
-
-    data() {
-      return {
-        email: '',
-        password: '',
-      }
-    },
-    
-
-    methods: {
-      async springLogin() {
-        let username = 'user'
-        let password = 'user'
-
-        const credentials =
-          'username=' +
-          encodeURIComponent(username) +
-          '&password=' +
-          encodeURIComponent(password)
-
-        let response = await fetch('/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: credentials,
-          redirect: 'manual',
-        })
-
-        if (response.url.includes('error')) {
-          console.log('Wrong username/password')
-        } else {
-          response = await fetch('api/whoami')
-          response = await response.json()
-          console.log(response)
         }
-      },
-      loginSubmit() {
-        console.log(this.password, this.email)
+    },
+    methods: {
+      login(){
+        this.$store.dispatch('springLogin',this.user )
       },
     },
 }
@@ -102,7 +70,7 @@ export default {
     display: flex;
     align-content: flex-end;
     justify-content: end;
-    margin-top: 2em;
+    padding-top: 2em;
   }
 
   #header .container .row .col {

@@ -1,17 +1,31 @@
 <template>
   <div id="app" class="back">
     <div id="fade">
+      <Header v-if="!headerState"/>
       <router-view />
     </div>
   </div>
 </template>
 <script>
+import Header from './components/Header.vue'
+
   export default {
+    components:{
+      Header
+    },
     created() {
       this.$store.dispatch('getCities')
     },
+
+    computed:{
+      headerState(){
+       return this.$store.state.disable.headerDisabled
+      }
+    },
+  
   }
 </script>
+
 
 <style src="materialize-css/dist/css/materialize.css"></style>
 <style>
