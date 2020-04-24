@@ -14,7 +14,8 @@ import Header from './components/Header.vue'
       Header
     },
     created() {
-      this.$store.dispatch('getCities')
+      this.$store.dispatch('getCities'),
+      this.$store.dispatch('getAmenities')
     },
 
     computed:{

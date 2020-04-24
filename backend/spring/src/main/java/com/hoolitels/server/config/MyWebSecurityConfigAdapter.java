@@ -20,8 +20,6 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .csrf().disable()
-                .httpBasic()
-                .and()
                 .authorizeRequests()
                 .antMatchers("/rest/city/**").permitAll()
                 .antMatchers("/rest/**").authenticated()
