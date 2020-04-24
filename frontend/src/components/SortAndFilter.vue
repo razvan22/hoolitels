@@ -14,15 +14,11 @@
             <li><h6>Filtrera</h6></li>
              <label v-for="a in $store.state.amenities" :key="a.id">
                  <p>
-                      <input type="checkbox" class="filled-in" id="checkbox" v-model="checked"/>
+                      <input type="checkbox" class="filled-in" id="checkbox" v-model="checkedAmenities"/>
                      <span> {{a.name}}</span>
                  </p>
                     
             </label>  
-           
-               
-          
-            
             <p>
        
              <li><div class="divider"></div></li>
@@ -52,8 +48,7 @@
                         <span>Omdöme (lägst till högst )</span>
                     </label>
                     </p>
-                    <button @click="unckeckAll"> Rensa sortering</button>
-  
+                    <a class="waves-effect waves-light btn-small cyan darken-2" v-on:click="uncheckAll()">Rensa</a>
                 </form>
             <li><a class="waves-effect waves-light btn cyan darken-2">Tillämpa</a></li>
         </ul>
@@ -77,7 +72,8 @@ export default {
 
      methods:{
          uncheckAll: function(){
-             this.selected = false;
+           this.selected = false; 
+           
          }
      },
 

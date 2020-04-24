@@ -18,6 +18,7 @@ import Header from "@/components/Header.vue";
 import SortAndFilter from "@/components/SortAndFilter.vue";
 
 
+
 export default {
   data() {
     return {
@@ -34,6 +35,8 @@ export default {
     DisplayHotel,
     Header,
     SortAndFilter,
+  
+ 
  
   },
   methods: {
