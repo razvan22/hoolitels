@@ -1,7 +1,8 @@
 <template>
   <div class="container">
+
     <div class="row">
-      <div class="input-field col s12 m12 l12">
+      <div class="input-field col s12">            
         <select v-model="selectedCity">
           <option value disabled selected>Välj stad</option>
           <option
@@ -9,7 +10,7 @@
             :key="city.id"
             :value="city.id"
           >{{ city.name }}</option>
-        </select>
+        </select>  
       </div>
       <div class="input-field col s12 m12 l12">
         <select v-model="booking.rooms">
@@ -79,6 +80,19 @@ export default {
 .select-wrapper input.select-dropdown {
   border-bottom: none !important;
 }
+</style>
+
+<style scoped>
+.row {
+  margin-bottom: 10px;
+}
+.datepicker__wrapper {
+  height: 50px !important;
+}
+
+.datepicker__wrapper >>> .datepicker__dummy-wrapper {
+  border: none !important;
+}
 
 .input-field {
   background: rgb(255, 255, 255);
@@ -87,14 +101,8 @@ export default {
   font-size: 3rem !important;
 }
 
-.card {
-  margin: 20px;
-  padding: 10px;
-  background: rgb(255, 255, 255, 1);
-}
-
 .search-btn {
-  margin-top: 3%;
+  margin-top: 7%;
   width: 30%;
   border-radius: 25px;
 }

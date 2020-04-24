@@ -1,8 +1,6 @@
 <template>
-  <body>
-    <main>
-      <FirstSearch />
-    </main> 
+  <body>    
+      <FirstSearch />    
   </body>
 </template>
 

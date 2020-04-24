@@ -2,7 +2,9 @@
   <div id="app" class="back">
     <div id="fade">
       <Header />
-      <router-view />
+      <main>
+        <router-view />
+      </main>
       <Footer />
     </div>
   </div>
@@ -11,11 +13,11 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
-  export default {
-    components: {
-      Header,
-      Footer
-    },
+export default {
+  components: {
+    Header,
+    Footer
+  },
   created() {
     this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
   }
@@ -23,7 +25,7 @@ import Footer from "@/components/Footer.vue";
 </script>
 
 <style src="materialize-css/dist/css/materialize.css"></style>
-<style>
+<style scoped>
 body {
   display: flex;
   min-height: 100vh;
@@ -31,7 +33,7 @@ body {
 }
 
 #app {
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
 }
 .back {
   background-image: url("../src/assets/header-img.jpg");

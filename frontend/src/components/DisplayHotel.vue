@@ -1,5 +1,4 @@
 <template>
-  <div class="container hotel-from-search">
     <div class="row">
       <div class="col s12 m12 l12">
         <div class="card hoverable">
@@ -60,7 +59,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import RoomView from "@/components/RoomView.vue";
