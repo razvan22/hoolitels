@@ -30,28 +30,29 @@
                <form action="#">
                     <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Pris (högst till lägst)</span>
                     </label>
                     </p>
                       <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Pris (lägst till högst)</span>
                     </label>
                     </p>
                        <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (högst till lägst)</span>
                     </label>
                     </p>
                           <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (lägst till högst )</span>
                     </label>
                     </p>
+                    <button @click="unckeckAll"> Rensa sortering</button>
   
                 </form>
             <li><a class="waves-effect waves-light btn cyan darken-2">Tillämpa</a></li>
@@ -69,13 +70,22 @@ export default {
      props: [`hotel`],
      data(){
           return{
-             checkedAmenities:[]
+             checkedAmenities:[],
+             selected: '',
           }  
      },
+
+     methods:{
+         uncheckAll: function(){
+             this.selected = false;
+         }
+     },
+
+    
        mounted() {
         var el = document.querySelectorAll('sidenav')
       M.FormSelect.init(el)
-      console.log('amenities', this.$store.state.amenities)
+    
     },
  
      
