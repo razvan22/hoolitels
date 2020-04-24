@@ -74,7 +74,7 @@ export default {
      },
        mounted() {
         var el = document.querySelectorAll('sidenav')
-      M.FormSelect.init(el)
+        M.FormSelect.init(el)
       console.log('amenities', this.$store.state.amenities)
     },
  

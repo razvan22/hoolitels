@@ -87,9 +87,11 @@
             <div class="container">
                 <div class="row" id="submit-btn">
                     <div class="col">
-                        <button v-on:click='consoleLogForm()' class="btn-large waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
+                        <router-link to="userprofile">
+                            <button v-on:click='consoleLogForm()' class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -107,9 +109,8 @@
 export default {
     name:'UserInformationForm',
 
-data(){
+    data(){
         return{
-            isUserLogged:'' ,
             user:{
                 name:this.$store.state.user.name,
                 email: this.$store.state.user.email,
@@ -125,7 +126,7 @@ data(){
     },
     computed:{
         editMode(){
-            return this.$store.state.disable.editUserInfo
+            return this.$store.state.userLogged
         },
     },
     mounted(){

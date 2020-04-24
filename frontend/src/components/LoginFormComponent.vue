@@ -25,15 +25,14 @@
                     <input id="password" type="password" v-model="user.password" />
                   </div>
                   <div class="input-field col s12 m12 l12">
-                    <router-link to="/userprofile"><button
-                      class="btn waves-effect waves-light"
-                      type="submit"
-                      v-on:click="login()"
-                      name="action"
-                    >
-                      Login
-                    </button></router-link>
-                   
+                    <router-link to="/userprofile">
+                        <button
+                          class="btn waves-effect waves-light"
+                          type="submit"
+                          v-on:click="login()"
+                          name="action">Login
+                      </button>
+                    </router-link>
                   </div>
                   <div class="col s12 m12 l12">
                     <router-link to="/signup"

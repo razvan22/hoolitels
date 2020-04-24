@@ -8,7 +8,8 @@
             class="large material-icons  sidenav-trigger waves-effect waves-light"
             >account_circle</i>
           <ul id="slide-out" class="sidenav">
-            <login-form-component/>
+            <login-form-component v-if="!userLogged" />
+            <logged-form-component v-if="userLogged"/>
           </ul>
         </div>
       </div>
@@ -24,12 +25,19 @@
 <script>
   import M from 'materialize-css/dist/js/materialize.js'
   import LoginFormComponent from '../components/LoginFormComponent.vue'
+  import LoggedFormComponent from '../components/LoggedFormComponent.vue'
   export default {
     components:{
-      LoginFormComponent
+      LoginFormComponent,
+      LoggedFormComponent
       
     },
-
+    computed:{
+      userLogged(){
+        return this.$store.state.userLogged
+      }
+      
+    },
  
     mounted() {
       let loginForm = document.querySelectorAll('.sidenav')

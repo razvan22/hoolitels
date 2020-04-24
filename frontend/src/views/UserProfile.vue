@@ -35,7 +35,7 @@ export default {
     },
     methods:{
         headerState(){
-           this.$store.state.disable.headerDisabled = false;
+           this.$store.state.headerDisabled = false;
         },
         editUserInfo(){
             this.$store.state.disable.editUserInfo = true;

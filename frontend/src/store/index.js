@@ -12,10 +12,8 @@ export default new Vuex.Store({
     },
     hotels: [],
     user:{},
-    disable:{
-      headerDisabled: false,
-      editUserInfo: true
-    }
+    userLogged: false,
+    headerDisabled: false
     
 
   },
@@ -23,17 +21,21 @@ export default new Vuex.Store({
     setSelectedCity(state, value) {
       state.dateSelected.selectedCity = value
     },
+
     setCities(state, value) {
       state.cities = value
-      console.log('city', state.cities)
     },
+
     setAmenities(state, value) {
       state.amenities = value
-      console.log('amenities', state.amenities)
     },
 
     setUser(state, value){
       state.user = value;
+    },
+
+    userLogStatus(state, value){
+      state.userLogged = value
     },
 
     disableHeader(state, value){
@@ -67,7 +69,9 @@ export default new Vuex.Store({
         let responsee = await response.json()
        commit('setUser', responsee)
        console.log(responsee)
-       this.state.disable.headerDisabled = true;
+       this.state.userLogged = true;
+       this.state.headerDisabled = true;
+       console.log(responsee)
       }
     },
    

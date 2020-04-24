@@ -20,7 +20,7 @@ import Header from './components/Header.vue'
 
     computed:{
       headerState(){
-       return this.$store.state.disable.headerDisabled
+       return this.$store.state.headerDisabled
       }
     },
   
