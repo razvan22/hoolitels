@@ -52,7 +52,7 @@ export default {
     },
     methods: {
       logout(){
-        this.$store.commit('setUser', null);
+        this.$store.commit('setUser', '');
         this.$store.commit('userLogStatus', false);
       },
       headerStatus(){

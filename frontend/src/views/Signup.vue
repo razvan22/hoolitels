@@ -1,6 +1,5 @@
 <template>
 <body>
-    <Header/>
 
    <UserInformationForm/>
 
@@ -11,11 +10,9 @@
 <script>
 import UserInformationForm from '../components/UserInformationForm.vue'
 import Footer from '../components/Footer.vue'
-import Header from '../components/Header.vue'
 export default {
     components:{
         Footer,
-        Header,
         UserInformationForm
     },
 

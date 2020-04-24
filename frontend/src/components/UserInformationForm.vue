@@ -88,7 +88,7 @@
                 <div class="row" id="submit-btn">
                     <div class="col">
                         <router-link to="userprofile">
-                            <button v-on:click='consoleLogForm()' class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+                            <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                                 <i class="material-icons right">send</i>
                             </button>
                         </router-link>

@@ -50,8 +50,8 @@ export default {
         data() {
         return {
           user:{
-            email:'',
-            password:''
+            email:'mfinkle2@msn.com',
+            password:'IZF9XJ'
           },
 
         }

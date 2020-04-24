@@ -68,10 +68,8 @@ export default new Vuex.Store({
         response = await fetch('api/whoami')
         let responsee = await response.json()
        commit('setUser', responsee)
-       console.log(responsee)
        this.state.userLogged = true;
        this.state.headerDisabled = true;
-       console.log(responsee)
       }
     },
    

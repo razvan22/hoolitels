@@ -22,15 +22,22 @@
                 <h5 class="">{{currentUser.email}}</h5>
                 <h5 class="">{{currentUser.city}} {{currentUser.address}} {{currentUser.zip}}</h5>
                 <h5>{{currentUser.phone}}</h5>
-               
+            </div>
+            <div class="col">
+                <booking-componet></booking-componet>
             </div>
         </div>
+        
     </div>
 </div>
 </template>
 
 <script>
+import BookingComponet from  '../components/BookingComponent.vue'
 export default {
+    components:{
+        BookingComponet
+    },
     computed:{
         currentUser(){
             return this.$store.state.user
