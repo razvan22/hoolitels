@@ -1,0 +1,60 @@
+[
+  {
+    "elements": [
+      {
+        "id": "there-is-a-website;homepage",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "homepage",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 4844201599
+            },
+            "line": 3,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:3"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should see the Hoolitels logo",
+            "result": {
+              "status": "passed",
+              "duration": 3945401
+            },
+            "line": 4,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 757800600
+            },
+            "hidden": true,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "there-is-a-website",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "There is a website",
+    "tags": [],
+    "uri": "C:/Users/srcha/Google Drive/Skola/dev/hoolitels/frontend/tests/selenium/features/home.feature"
+  }
+]
