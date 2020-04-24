@@ -12,7 +12,8 @@
             "keyword": "Given ",
             "name": "that I am at the homepage",
             "result": {
-              "status": "ambiguous"
+              "status": "passed",
+              "duration": 3875867400
             },
             "line": 3
           },
@@ -21,7 +22,8 @@
             "keyword": "Then ",
             "name": "I should see the Hoolitels logo",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 2010904400
             },
             "line": 4,
             "match": {
@@ -33,7 +35,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 4370442999
+              "duration": 880927600
             },
             "hidden": true,
             "match": {
@@ -65,7 +67,8 @@
             "keyword": "Given ",
             "name": "that I am at the homepage",
             "result": {
-              "status": "ambiguous"
+              "status": "passed",
+              "duration": 4242203900
             },
             "line": 4
           },
@@ -74,7 +77,8 @@
             "keyword": "When ",
             "name": "I click on the user icon",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 5906101
             },
             "line": 5
           },
@@ -83,7 +87,8 @@
             "keyword": "And ",
             "name": "I enter user in the email field",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 730096499
             },
             "line": 6
           },
@@ -92,16 +97,32 @@
             "keyword": "And ",
             "name": "I enter user in the password field",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 516228800
             },
             "line": 7
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the login button",
+            "result": {
+              "status": "passed",
+              "duration": 2042763901
+            },
+            "line": 8,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:31"
+            }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "name": "I should be logged in",
             "result": {
-              "status": "undefined"
+              "status": "failed",
+              "duration": 12007299,
+              "error_message": "AssertionError: Expected to be logged in\n    at createWorld.<anonymous> (C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:42:9)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)"
             },
             "line": 8
           },
@@ -110,7 +131,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 4238291299
+              "duration": 1846990900
             },
             "hidden": true,
             "match": {
@@ -132,7 +153,8 @@
             "keyword": "Given ",
             "name": "that I am at the homepage",
             "result": {
-              "status": "ambiguous"
+              "status": "passed",
+              "duration": 4242949201
             },
             "line": 4
           },
@@ -141,7 +163,8 @@
             "keyword": "When ",
             "name": "I click on the user icon",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 6939601
             },
             "line": 5
           },
@@ -150,7 +173,8 @@
             "keyword": "And ",
             "name": "I enter tdinsdaleg@naver.com in the email field",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 720428100
             },
             "line": 6
           },
@@ -159,16 +183,32 @@
             "keyword": "And ",
             "name": "I enter 3uROILP in the password field",
             "result": {
-              "status": "undefined"
+              "status": "passed",
+              "duration": 512648600
             },
             "line": 7
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the login button",
+            "result": {
+              "status": "passed",
+              "duration": 2026180000
+            },
+            "line": 8,
+            "match": {
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:31"
+            }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "name": "I should be logged in",
             "result": {
-              "status": "undefined"
+              "status": "failed",
+              "duration": 7195400,
+              "error_message": "AssertionError: Expected to be logged in\n    at createWorld.<anonymous> (C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:42:9)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)"
             },
             "line": 8
           },
@@ -177,7 +217,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 4761961500
+              "duration": 1800341600
             },
             "hidden": true,
             "match": {
