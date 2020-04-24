@@ -18,8 +18,11 @@
                 <img src="../assets/logo_minimal.gif">
             </div>
             <div class="col s12 m12 l12" id="userName">
-                <h3>{{currentUser.name}}</h3>
-                <h5>{{currentUser.email}}</h5>
+                <h3 class="">{{currentUser.name}}</h3>
+                <h5 class="">{{currentUser.email}}</h5>
+                <h5 class="">{{currentUser.city}} {{currentUser.address}} {{currentUser.zip}}</h5>
+                <h5>{{currentUser.phone}}</h5>
+               
             </div>
         </div>
     </div>
