@@ -1,6 +1,7 @@
 <template>
+<div class="container">
   <div class="row">
-    <div class="col s12">
+    <div class="col s12 l12  center-align">
       <div class="card-background">
         <h3> Vem kommer med?</h3>
          <h4> Gäster {{counterAdult + counterChild +counterBaby}}</h4>
@@ -22,11 +23,9 @@
              <i class="material-icons">remove</i></a> {{counterBaby}} <a class="btn-floating"
               v-on:click="counterBaby+=1"><i class="material-icons">add</i></a>
          </div>
-         <div class="row"></div>
-         <div class="divider"></div>
-             
+         <div class="divider"></div>    
       <div class="row">
-        <form class="col s12">
+        <form class="col s12 ">
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
             <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
@@ -35,11 +34,11 @@
            </form>
         <div class="col s12 center-align">
           <router-link to="/payment">  <a class="waves-effect waves-light btn-small">Fortsätt till betalning</a></router-link>
-        </div>
-          
+        </div> 
       </div> 
       </div>
-      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -85,6 +84,13 @@ export default {
 <style>
 .card-background{
   background:white;
+  padding-bottom: 1%;
+  
+
+
+  
+
+
   
 
 }
