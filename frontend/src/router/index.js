@@ -4,9 +4,7 @@ import Home from '../views/Home.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
 import HotelVy from '../views/HotelVy.vue'
-
-
-
+import Payment from '../views/Payment.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -32,6 +30,12 @@ Vue.use(VueRouter)
   name: 'HotelVy',
   props:true, 
   component: HotelVy
+},
+
+{
+  path: '/payment',
+  name: 'Payment',
+  component: Payment
 },
   {
     path: '/about',

@@ -6,6 +6,7 @@ import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,6 +30,11 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User userToBeCreated) {
         return userRepository.save(userToBeCreated);
+    }
+
+    @GetMapping("/whoami")
+    public User getLoggedInUser(Principal principal) {
+        return userRepository.findByName(principal.getName());
     }
 
     @DeleteMapping("all")

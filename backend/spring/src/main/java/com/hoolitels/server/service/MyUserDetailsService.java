@@ -21,11 +21,13 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(s);
+
         if (user == null) {
             throw new UsernameNotFoundException("Login failed!");
         }
         return toUserDetails(user);
     }
+
 
     @PostConstruct
     private void addDefaultUser() {
@@ -43,14 +45,14 @@ public class MyUserDetailsService implements UserDetailsService {
         u.setCountryId(227);
         try {
             userRepository.save(u);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private UserDetails toUserDetails(User user) {
-        return org.springframework.security.core.userdetails.User.
-                withUsername(user.getEmail())
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getName())
                 .password(getEncoder().encode(user.getPassword())) // Fusk eftersom vi har genererade lösenord i databasen - gör inte detta "pauw riktigt".
                 .roles("USER")
                 .build();
