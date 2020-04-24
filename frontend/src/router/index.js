@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Result from '../views/Result.vue'
 import Signup from '../views/Signup.vue'
 import HotelVy from '../views/HotelVy.vue'
+import Order from '../views/Order.vue'
 import Payment from '../views/Payment.vue'
 Vue.use(VueRouter)
 
@@ -30,6 +31,12 @@ Vue.use(VueRouter)
   name: 'HotelVy',
   props:true, 
   component: HotelVy
+},
+
+{
+  path: '/order',
+  name: 'Order', 
+  component: Order
 },
 
 {
