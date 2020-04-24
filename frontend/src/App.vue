@@ -1,14 +1,26 @@
 <template>
   <div id="app" class="back">
     <div id="fade">
+      <Header/>
       <router-view />
+      <Footer/>
     </div>
   </div>
 </template>
+
+
 <script>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
   export default {
+    components: {
+      Header,
+      Footer
+    },
     created() {
-      this.$store.dispatch('getCities')
+      this.$store.dispatch('getCities'),
+      this.$store.dispatch('getAmenities')
     },
   }
 </script>
