@@ -1,18 +1,24 @@
 <template>
-  <body>    
+  <body>
+    <Header />
     <main>
-      <FirstSearch/>
-    </main>    
+      <SearchHotel />
+    </main>
+    <Footer />
   </body>
 </template>
 
 <script>
-import FirstSearch from "@/components/FirstSearch.vue";
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import SearchHotel from "@/components/SearchHotel.vue";
 
 export default {
   name: "Home",
-  components: {  
-    FirstSearch
+  components: {
+    Header,
+    SearchHotel,
+    Footer,
   },
 };
 </script>
