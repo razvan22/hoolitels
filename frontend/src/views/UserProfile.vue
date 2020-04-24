@@ -23,7 +23,7 @@
                 <h5 class="">{{currentUser.city}} {{currentUser.address}} {{currentUser.zip}}</h5>
                 <h5>{{currentUser.phone}}</h5>
             </div>
-            <div class="col">
+            <div class="col s12 m12 l12">
                 <booking-componet></booking-componet>
             </div>
         </div>

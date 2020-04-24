@@ -1,39 +1,42 @@
 <template>
   <div id="booking">
-      <div class="container">
-          <div class="row">
-                <div class="col s12 m6 l6">
-                    <p class="center">
-                         <em class="teal-text">Boknings id: </em>  {{bookings[1].id}}
-                    </p>
-                </div>
-                <div class="col s12 m6 l6">
-                    <p class="center">
-                         <em class="teal-text">Bokningsperiod: </em>  {{bookings[1].start_date}} - {{bookings[1].start_date}}
-                    </p>
-                </div>
-          </div>
-          <div class="row">
-                <div class="col s12 m6 l6">
-                    <ul>
-                        <li class="center"><h6 class="teal-text">Antal personer</h6></li>
-                        <li class="center"><p>vuxna: {{bookings[1].num_adults}}</p></li>
-                        <li class="center"><p>barn: {{bookings[1].num_children}}</p></li>
-                        <li class="center"><p>spädbarn: {{bookings[1].num_infants}}</p></li>
-                    </ul>
-                </div>
-              <div class="col">
+        <table class="responsive-table centered">
+            <thead>
+            <tr>
+                <th>Boknings id</th>
+                <th>Bokningsperiod</th>
+                <th>Vuxna</th>
+                <th>Barn</th>
+                <th>Spädbarn</th>
+                <th>Totalbelopp</th>
+            </tr>
+            </thead>
 
-              </div>
-          </div>
-
-        <div class="row">
-            <di class="col s12 m12 l12">
-                <h6>booking id:{{bookings[1]}}</h6>
-            </di>
-        </div>
-      </div>
-  </div>
+            <tbody>
+            <tr>
+                <td>{{bookings[0].id}}</td>
+                <td>{{bookings[0].start_date}} - {{bookings[1].start_date}}</td>
+                <td>{{bookings[0].num_adults}}</td>
+                <td>{{bookings[0].num_children}}</td>
+                <td>{{bookings[0].num_infants}}</td>
+                <td>{{bookings[0].paid}}</td>
+            </tr>
+            <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+            </tr>
+            <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+            </tr>
+            </tbody>
+        </table>
+        
+        <h6>booking id:{{bookings}}</h6>
+        
+    </div>
 </template>
 
 <script>
@@ -44,20 +47,19 @@ export default {
             bookings: this.$store.state.user.bookings
         }
     },
+    mounted(){
+        console.log(this.$store.state.user.bookings)
+    }
     
 }
 </script>
 
 
 <style scoped>
-#booking .container{
-    background: #eeeeee;
-}
-#booking .container .row {
+#booking{
     background: white;
-    border-radius: 0.20em;
-    border:solid #eeeeee 0.20em;
 }
+
 
 
 </style>>
