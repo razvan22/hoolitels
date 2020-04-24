@@ -35,8 +35,8 @@ public class ReviewController {
 
     @PostMapping
     public Review createReview(@RequestBody Review review) {
-        Optional<User> userOpt = userRepository.findById(review.getUser_id());
-        Optional<Hotel> hotelOpt = hotelRepository.findById(review.getHotel_id());
+        Optional<User> userOpt = userRepository.findById(review.getUser().getId());
+        Optional<Hotel> hotelOpt = hotelRepository.findById(review.getHotel().getId());
         if (userOpt.isEmpty()) return null;
         if (hotelOpt.isEmpty()) return null;
 

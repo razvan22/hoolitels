@@ -14,7 +14,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
@@ -93,6 +93,5 @@ public class Booking {
     public void setRoomBookings(List<Roombooking> roombookings) {
         this.roombookings = roombookings;
     }
-
 }
 

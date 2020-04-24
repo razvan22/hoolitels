@@ -18,19 +18,18 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .cors().and()
-            .csrf().disable()
-            .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/rest/city/**").permitAll()
-            .antMatchers(HttpMethod.GET,"/rest/amenity/**").permitAll()
-            .antMatchers(HttpMethod.GET,"/rest/country/**").permitAll()
-            .antMatchers("/rest/**").authenticated()
-            .antMatchers("/api/**").authenticated()
-            .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
-            .antMatchers(HttpMethod.POST,"/login").permitAll()
-            .antMatchers("/").permitAll()
-            .and()
-            .formLogin();
+                .cors().and()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/rest/city/**").permitAll()
+                .antMatchers("/rest/**").authenticated()
+                .antMatchers("/api/**").authenticated()
+                .antMatchers("/rest/city").permitAll()
+                .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
+                .antMatchers(HttpMethod.POST,"/login").permitAll()
+                .antMatchers("/").permitAll()
+                .and()// Ta bort när vi har eget formulär
+                .formLogin(); // Ta bort när vi har eget formulär
     }
 
     @Override

@@ -44,24 +44,16 @@ public class Review {
         return rating;
     }
 
-    public String getUser() {
-        return user.getName();
-    }
-
-    public long getUser_id() {
-        return user.getId();
+    public User getUser() {
+        return user;
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public String getHotel() {
-        return hotel.getName();
-    }
-
-    public long getHotel_id() {
-        return hotel.getId();
+    public Hotel getHotel() {
+        return hotel;
     }
 
     public void setHotel(Hotel hotel) {
