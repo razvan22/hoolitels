@@ -26,9 +26,10 @@ export default {
 
 <style scoped>
 .footer {
-  margin-top: auto;;
-  bottom: -10px;
+  position: sticky;  
   width: 100%;
+  bottom: 0;
+  overflow: hidden;
 }
 
 .footer ul {
@@ -36,12 +37,18 @@ export default {
   padding-top: 5px;
   width: 100%;
 }
+
+.footer .row {
+  margin-bottom: 0px !important;
+}
+
+
 .footer span {
   padding-left: 8%;
   padding-right: 8%;
 }
 .footer .fa-facebook {
-  color: rgb(102, 102, 105);
+  color: rgb(66, 103, 178);
 }
 .footer .fa-instagram {
   color: purple;

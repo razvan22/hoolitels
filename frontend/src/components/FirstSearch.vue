@@ -1,26 +1,39 @@
 <template>
   <div class="container">
-
-    <div class="row">
-      <div class="input-field col s12">            
-        <select v-model="selectedCity">
-          <option value disabled selected>Välj stad</option>
-          <option
-            v-for="city in $store.state.cities"
-            :key="city.id"
-            :value="city.id"
-          >{{ city.name }}</option>
-        </select>  
+    <div class="row selectors">
+      <div class="input-field col s12">
+        <span class="col s1 icon_in">
+          <i class="fas fa-map-marker-alt"></i>
+        </span>
+        <div class="col s11">
+          <select v-model="selectedCity">
+            <option value disabled selected>Välj stad</option>
+            <option
+              v-for="city in $store.state.cities"
+              :key="city.id"
+              :value="city.id"
+            >{{ city.name }}</option>
+          </select>
+        </div>
       </div>
       <div class="input-field col s12 m12 l12">
-        <select v-model="booking.rooms">
-          <option v-for="n in 5" :key="n" :value="n" selected>{{ n }} rum</option>
-        </select>
+        <span class="col s1 icon_in">
+          <i class="fas fa-home"></i>
+        </span>
+        <div class="col s11">
+          <select v-model="booking.rooms">
+            <option v-for="n in 5" :key="n" :value="n" selected>{{ n }} rum</option>
+          </select>
+        </div>
       </div>
     </div>
     <HotelDatePicker :showYear="true" :displayClearButton="false" :firstDayOfWeek="1" />
     <div class="center-align">
-      <router-link to="/result" class="search-btn waves-effect waves-light btn cyan darken-2">Sök</router-link>
+      <router-link
+        to="/result"
+        :disabled="!selectedCity"
+        class="search-btn waves-effect waves-light btn cyan darken-2"
+      >Sök</router-link>
     </div>
   </div>
 </template>
@@ -40,16 +53,17 @@ export default {
       },
       set(value) {
         this.$store.commit("setSelectedCity", value);
+        console.log("value" + value);
       }
     }
   },
 
   data() {
     return {
-      selected: {
-        id: 0,
-        name: "Välj"
-      },
+      // selected: {
+      //   id: 0,
+      //   name: "Välj"
+      // },
 
       booking: {
         rooms: 1,
@@ -83,9 +97,17 @@ export default {
 </style>
 
 <style scoped>
-.row {
-  margin-bottom: 10px;
+.selectors {
+  margin-bottom: 14px;
 }
+
+.icon_in {
+  margin-top: 10px;
+  font-size: 18px;
+  color: Turquoise;
+  padding-left: 5px;
+}
+
 .datepicker__wrapper {
   height: 50px !important;
 }
