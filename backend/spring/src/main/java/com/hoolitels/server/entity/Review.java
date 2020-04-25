@@ -1,6 +1,7 @@
 package com.hoolitels.server.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,12 +18,12 @@ public class Review {
 
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="hotel_id", nullable = false)
-    @JsonBackReference()
+    @JsonBackReference("reviewHotelBackReference")
     private Hotel hotel;
 
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="user_id", nullable = false)
-    @JsonBackReference("userBackReference")
+    @JsonBackReference("reviewBackReference")
     private User user;
 
     public Review() {
@@ -44,10 +45,11 @@ public class Review {
         return rating;
     }
 
-    public String getUser() {
+    public String getUserName() {
         return user.getName();
     }
 
+    @JsonIgnore
     public long getUser_id() {
         return user.getId();
     }
@@ -56,10 +58,11 @@ public class Review {
         this.user = user;
     }
 
-    public String getHotel() {
+    public String getHotelName() {
         return hotel.getName();
     }
 
+    @JsonIgnore
     public long getHotel_id() {
         return hotel.getId();
     }

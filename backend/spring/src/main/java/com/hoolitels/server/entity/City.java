@@ -1,5 +1,8 @@
 package com.hoolitels.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +16,7 @@ public class City {
     private String name;
 
     @OneToMany(mappedBy = "city")
+    @JsonManagedReference("hotelBackReference")
     private Set<Hotel> hotels;
 
     public Set<Hotel> getHotels() {
