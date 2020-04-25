@@ -1,5 +1,7 @@
 package com.hoolitels.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hoolitels.server.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,7 +19,6 @@ public class Room {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-//    @Type(type = "com.hoolitels.server.entity.RoomType")
     private RoomType type;
 
     @Column(nullable = false)
@@ -28,9 +29,11 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
+    @JsonBackReference("hotelRoomBackRerefence")
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")
+    @JsonManagedReference("roomBookingsRoomBackReference")
     private List<Roombooking> roombookings = new ArrayList<>();
 
     @Column(nullable = false)
@@ -52,6 +55,7 @@ public class Room {
     private Integer cost_all_inclusive;
 
     @OneToMany(mappedBy = "room")
+    @JsonManagedReference("imageRoomBackReference")
     private Set<Image> images;
 
     public long getId() {

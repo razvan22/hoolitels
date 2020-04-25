@@ -1,6 +1,7 @@
 package com.hoolitels.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,12 +14,12 @@ public class Roombooking {
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "booking_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("roomBookingBackReference")
     private Booking booking;
-//    private long booking_id;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
+    @JsonBackReference("roomBookingsRoomBackReference")
     private Room room;
 
     @Column(nullable = false)

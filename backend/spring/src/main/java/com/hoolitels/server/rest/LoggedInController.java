@@ -11,7 +11,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api") // Parent-URL:n för denna klass
-public class LoggedController {
+public class LoggedInController {
 
     @Autowired
     private UserRepository userRepository;
