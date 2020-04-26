@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="back">
-    <div class="all">
-      <div id="fade">
+    <div id="fade">
+      <div class="all">
         <Header />
         <main>
           <router-view />
@@ -28,7 +28,6 @@ export default {
 
 <style src="materialize-css/dist/css/materialize.css"></style>
 <style scoped>
-
 #app {
   /* flex: 1 0 auto; */
 }
@@ -47,12 +46,11 @@ export default {
   );
 }
 #fade {
-  background: rgb(236, 236, 236, 0.3);  
+  background: rgb(236, 236, 236, 0.3);
 }
 
 .all {
-min-height: calc(100vh - 69px) !important;
-flex: 1 0 auto;
+  min-height: calc(100vh - 69px) !important;
+  flex: 1 0 auto;
 }
-
 </style>
