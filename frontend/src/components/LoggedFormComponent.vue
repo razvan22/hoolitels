@@ -23,7 +23,7 @@
 
                     <div class="col s12 m12 l12">
                       <router-link to="/userprofile" >
-                        <p v-on:click="headerStatus" >Din profil </p>
+                        <p>Din profil </p>
                       </router-link>
                     </div>
                 </div>
@@ -61,10 +61,7 @@ export default {
        let response = await rawResponse.json();
        console.log(response);
 
-      },
-      headerStatus(){
-        this.$store.commit('disableHeader', false)
-      }    
+      }
     },
 }
 </script>

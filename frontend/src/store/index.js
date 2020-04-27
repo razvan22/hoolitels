@@ -13,7 +13,7 @@ export default new Vuex.Store({
     hotels: [],
     user:{},
     userLogged: false,
-    displayHeader: true
+   
   },
 
   mutations: {
@@ -37,9 +37,6 @@ export default new Vuex.Store({
       state.userLogged = value
     },
 
-    disableHeader(state, value){
-      state.displayHeader = value;
-    }
     
   },
 
@@ -77,11 +74,10 @@ export default new Vuex.Store({
 
         if(responsee == null){
           this.state.userLogged = false;
+          
         }else{
           this.state.userLogged = true;
-          this.state.displayHeader = false;
         }
-        console.log(responsee)
        commit('setUser', responsee)
     },
    

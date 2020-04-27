@@ -24,11 +24,6 @@ export default {
     this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
     this.$store.dispatch("isUserLogged")
   },
-  computed:{
-    headerStatus(){
-      return this.$store.state.displayHeader
-    }
-  }
 };
 </script>
 

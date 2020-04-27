@@ -59,13 +59,12 @@ export default {
     methods: {
       login(){
         this.$store.dispatch('springLogin',this.user )
-        this.$store.commit('disableHeader', false)
       },
     },
 }
 </script>
 
-<style>
+<style scoped>
   #header .container .row-form {
     display: flex;
     align-content: flex-end;
@@ -77,7 +76,7 @@ export default {
     justify-content: center;
     display: flex;
   }
-  #header .container .row .responsive {
+  #login .row .responsive {
     width: 70%;
     height: auto;
   }
