@@ -10,10 +10,10 @@ module.exports = function () {
       });
 
       this.When(/^I click on the user icon$/, async function () {
-        let loginButton = await $('#header > div > div > div.col.s3.m2.l2 > i');
+        let loginButton = await $('#header > div > div.col.s12.m6 > i');
         loginButton.click();
         assert(loginButton, 'Expected to find the user icon');
-
+          
       });
 
       this.When(/^I enter "([^"]*)" in the email field$/, async function (email) {

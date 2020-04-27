@@ -36,3 +36,4 @@ build/
 ### NPM ###
 >>>>>>> Stashed changes
 /frontend/node_modules
+node_modules
