@@ -4,9 +4,14 @@ import com.hoolitels.server.entity.Booking;
 import com.hoolitels.server.entity.User;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -24,7 +29,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public Optional<User> getSpecificUser(@PathVariable long id) {
-        return userRepository.findById(id);
+       return isCurrentUser(id) ? userRepository.findById(id) : null;
     }
 
     @PostMapping
@@ -32,25 +37,32 @@ public class UserController {
         return userRepository.save(userToBeCreated);
     }
 
-    @GetMapping("/whoami")
-    public User getLoggedInUser(Principal principal) {
-        return userRepository.findByName(principal.getName());
-    }
-
     @DeleteMapping("all")
     private void deleteAllUsers() {
-        userRepository.deleteAll();
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Collection<? extends GrantedAuthority> auth = user.getAuthorities();
+        if (user.getAuthorities().contains("ROLE_ADMIN")) userRepository.deleteAll();
+    }
+
+    public String currentUserName(Principal principal) {
+        return principal.getName();
     }
 
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable long id) {
-        userRepository.deleteById(id);
+        if (isCurrentUser(id)) userRepository.deleteById(id);
+    }
+
+    public boolean isCurrentUser(long id) {
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (userRepository.findByName(user.getUsername()).getId() == id);
     }
 
     @GetMapping("{id}/bookings")
     public Set<Booking> getBookingsBySpecificUser(@PathVariable long id) {
+        if (!isCurrentUser(id)) return null;
+
         Optional<User> user = userRepository.findById(id);
         return (user.isEmpty() ? null : user.get().getBookings());
     }
-
 }

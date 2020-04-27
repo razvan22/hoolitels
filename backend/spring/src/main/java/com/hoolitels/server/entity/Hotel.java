@@ -1,6 +1,6 @@
 package com.hoolitels.server.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -24,9 +24,11 @@ public class Hotel {
     private String zip;
 
     @OneToMany(mappedBy = "hotel")
+    @JsonManagedReference("imageHotelBackReference")
     private Set<Image> images;
 
     @OneToMany(mappedBy = "hotel")
+    @JsonManagedReference("hotelRoomBackRerefence")
     private List<Room> rooms = new ArrayList<>();
 
     @ManyToMany()
@@ -38,6 +40,7 @@ public class Hotel {
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
+    @JsonBackReference("hotelBackReference")
     private City city;
 
     private String desc;
@@ -48,8 +51,10 @@ public class Hotel {
     @Column(nullable = false)
     private String phone;
 
+    @Column(nullable = true)
     private int distance_to_beach;
 
+    @Column(nullable = true)
     private int distance_to_town_center;
 
     @Column(nullable = false)
@@ -59,7 +64,7 @@ public class Hotel {
     private Time checkout_time;
 
     @OneToMany(mappedBy = "hotel")
-    @JsonManagedReference
+    @JsonManagedReference("reviewHotelBackReference")
     private List<Review> reviews = new ArrayList<>();
 
     public Hotel() {
@@ -133,11 +138,7 @@ public class Hotel {
         this.distance_to_beach = distance_to_beach;
     }
 
-    public int getDistance_to_town() {
-        return distance_to_town_center;
-    }
-
-    public void setDistance_to_town(int distance_to_town_center) {
+    public void setDistance_to_town_center(int distance_to_town_center) {
         this.distance_to_town_center = distance_to_town_center;
     }
 
