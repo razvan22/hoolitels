@@ -1,5 +1,8 @@
 package com.hoolitels.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,10 +23,12 @@ public class Image {
 
     @ManyToOne
     @JoinColumn(name="room_id", nullable = true)
+    @JsonBackReference("imageRoomBackReference")
     private Room room;
 
     @ManyToOne
     @JoinColumn(name="hotel_id", nullable = true)
+    @JsonBackReference("imageHotelBackReference")
     private Hotel hotel;
 
     public Image() {

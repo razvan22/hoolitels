@@ -1,22 +1,22 @@
 <template>
-  <div id="header" >
-    <div class="container">
-      <div class="row row-form">
-        <div class="col s8">
-          <img src="../assets/logo_minimal.gif" class="responsive" />
-        </div>
-        <div class="col s3 m2 l2">
-          <i
-            data-target="slide-out"
-            class="cyan-text text-darken-2 medium material-icons sidenav-trigger waves-effect waves-light"
-          >account_circle</i>
-          <ul id="slide-out" class="sidenav">
-            <login-form-component v-if="!userLogged" />
-            <logged-form-component v-if="userLogged"/>
-          </ul>
-        </div>
+  <div id="header">
+    <div class="row row1">
+      <div class="col m3 no-pad"></div>
+      <div class="col s12 m6">
+        <div class="col s3"></div>
+        <img src="../assets/logo_minimal.gif" class="logo" />
+
+        <i
+          data-target="slide-out"
+          class="white-text medium material-icons sidenav-trigger waves-effect waves-light col s3"
+        >account_circle</i>
       </div>
+      <div class="col m3 no-pad"></div>
     </div>
+    <ul id="slide-out" class="sidenav">
+        <login-form-component v-if="!userLogged" />
+        <logged-form-component v-if="userLogged"/>
+    </ul>
   </div>
 </template>
 
@@ -49,22 +49,43 @@
 </script>
 
 <style scoped>
-#header .container .row-form {
-  display: flex;
-  align-content: flex-end;
-  justify-content: end;
+#header .logo {
+  /* display: block;
+    margin-left: auto;
+    margin-right: auto  */
+  margin-top: 30px;
+  width: 50%;
 }
 
-#header .container .row .col {
+#header .row1 .no-pad {
+  padding: 0px;
+}
+
+#header .sidenav-trigger {
+  margin: 10px;
+}
+
+#header .row1 {
+  display: flex;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
+
+/* #header >>> .row {
+  display: inline;
+} */
+
+#header .row .col {
   justify-content: center;
   display: flex;
+  padding-right: 0px;
 }
-#header .container .row .responsive {
+#header .row .responsive {
   width: 70%;
   height: auto;
 }
 
-#header .container .row i {
+#header .row i {
   /* font-size: 2em; */
   /* color: #006064; */
 }

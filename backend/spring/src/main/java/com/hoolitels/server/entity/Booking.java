@@ -1,6 +1,8 @@
 package com.hoolitels.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -14,13 +16,13 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("userBookingBackReference")
     private User user;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "booking")
-//    @JsonManagedReference
+    @JsonManagedReference("roomBookingBackReference")
     private List<Roombooking> roombookings = new ArrayList<>();
 
     @Column(nullable = false)
@@ -50,7 +52,12 @@ public class Booking {
         return id;
     }
 
-    public User getUser() {
+    public String getUserName() {
+        return user.getName();
+    }
+
+    @JsonIgnore
+    public User getUserRec() {
         return user;
     }
 
@@ -93,6 +100,4 @@ public class Booking {
     public void setRoomBookings(List<Roombooking> roombookings) {
         this.roombookings = roombookings;
     }
-
 }
-
