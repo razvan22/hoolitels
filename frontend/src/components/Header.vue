@@ -63,12 +63,10 @@ export default {
       password: ""
     };
   },
-  mounted() {
-    this.springLogin();
-
-    let loginForm = document.querySelectorAll("#slide-out");
-    M.Sidenav.init(loginForm, { edge: "right" });
+    mounted() {
+  
   },
+
 
   
   methods: {
