@@ -7,7 +7,7 @@
 
 <script>
 
-// import Logo from '@/components/Logo.vue'
+
 import DisplayHotel from "@/components/DisplayHotel.vue";
 import SortAndFilter from "@/components/SortAndFilter.vue";
 
