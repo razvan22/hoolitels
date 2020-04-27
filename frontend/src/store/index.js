@@ -78,7 +78,6 @@ export default new Vuex.Store({
         }else{
           this.state.userLogged = true;
         }
-        console.log(responsee)
        commit('setUser', responsee)
     },
    
