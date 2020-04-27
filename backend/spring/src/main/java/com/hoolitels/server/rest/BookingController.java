@@ -35,7 +35,7 @@ public class BookingController {
 
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
-        Optional<User> userOpt = userRepository.findById(booking.getUser().getId());
+        Optional<User> userOpt = userRepository.findById(booking.getUserRec().getId());
         if (userOpt.isEmpty()) return null;
 
         booking.setUser(userOpt.get());

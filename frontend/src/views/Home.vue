@@ -1,23 +1,22 @@
 <template>
-  <body>    
-    <main>
-      <FirstSearch/>
-    </main>    
-  </body>
+<body>
+  <FirstSearch />
+</body>
 </template>
 
 <script>
 import FirstSearch from "@/components/FirstSearch.vue";
 
-import FirstSearch from "@/components/FirstSearch.vue";
-
 export default {
   name: "Home",
-  components: {  
+  components: {
     FirstSearch
-  },
+  }
 };
 </script>
 
-<style>
+<style scoped>
+body {
+  /* background-image: url("@/../../assets/header-img.jpg") !important; */
+}
 </style>

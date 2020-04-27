@@ -1,6 +1,7 @@
 package com.hoolitels.server.service;
 
 import com.hoolitels.server.entity.User;
+import com.hoolitels.server.repository.CountryRepository;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,9 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CountryRepository countryRepository;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(s);
@@ -27,7 +31,6 @@ public class MyUserDetailsService implements UserDetailsService {
         }
         return toUserDetails(user);
     }
-
 
     @PostConstruct
     private void addDefaultUser() {
@@ -42,7 +45,7 @@ public class MyUserDetailsService implements UserDetailsService {
         u.setZip("11111");
         u.setCity("usercity");
         u.setPhone("012345678");
-        u.setCountryId(227);
+        u.setCountry(countryRepository.findById(227L));
         try {
             userRepository.save(u);
         } catch (Exception e) {
