@@ -1,16 +1,18 @@
 <template>
 <body>
-  <FirstSearch />
+  <!-- <FirstSearch /> -->
+  <Review />
 </body>
 </template>
 
 <script>
-import FirstSearch from "@/components/FirstSearch.vue";
-
+// import FirstSearch from "@/components/FirstSearch.vue";
+import Review from "@/components/Review.vue"
 export default {
   name: "Home",
   components: {
-    FirstSearch
+    // FirstSearch
+    Review
   }
 };
 </script>
