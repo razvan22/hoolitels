@@ -12,16 +12,15 @@
             <h5 id="heading-filter-and-sort">Hitta rätt hotell för dig</h5>
         
             <li><h6>Filtrera</h6></li>
+          
              <label v-for="a in $store.state.amenities" :key="a.id">
                  <p>
-                      <input type="checkbox" class="filled-in" id="checkbox" v-model="checked"/>
+                    <input type="checkbox" class="filled-in" id="checkbox" value="a.id"  />
                      <span> {{a.name}}</span>
+                   
                  </p>
                     
-            </label>  
-           
-               
-          
+            </label> 
             
             <p>
        
@@ -29,8 +28,8 @@
              <li><h6>Sortera</h6></li>
                <form action="#">
                     <p>
-                    <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                    <label >
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"/>
                         <span>Pris (högst till lägst)</span>
                     </label>
                     </p>
@@ -54,9 +53,12 @@
                     </p>
   
                 </form>
-            <li><a class="waves-effect waves-light btn cyan darken-2">Tillämpa</a></li>
+           
         </ul>
+
+        
   </ul>
+  
 </div>
 
 </template>
@@ -69,19 +71,33 @@ export default {
      props: [`hotel`],
      data(){
           return{
-             checkedAmenities:[]
-          }  
+            checked: '',
+             selected: '',
+            
+          }
+        
+     },
+     methods:{
+         uncheckAll: function(){
+           this.selected = false;
+          
+         },
+     
+  
      },
        mounted() {
-        var el = document.querySelectorAll('sidenav')
-      M.FormSelect.init(el)
-      console.log('amenities', this.$store.state.amenities)
+        let el = document.querySelectorAll('sidenav')
+        M.FormSelect.init(el)
+        
+       
+       
+      
     },
- 
-     
-   
+  
+    
     
 
+     
 }
 </script>
 
