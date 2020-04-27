@@ -1,4 +1,5 @@
 <template>
+
   <div class="z-depth-1">
     <img class="room-img" :src="require('@/assets/' + room.images[0].url)" />
     <!-- <div class="divider"></div> -->
@@ -116,6 +117,7 @@ export default {
 } */
 .room-img {
   width: 210px;
+
 }
 
 span em {

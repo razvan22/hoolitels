@@ -109,6 +109,8 @@ export default {
 .headline {
   color: rgb(253, 253, 253);
   margin: 20px;
+
+
 }
 
 .icon_in {

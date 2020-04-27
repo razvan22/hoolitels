@@ -66,9 +66,11 @@ export default {
   mounted() {
     this.springLogin();
 
-    let loginForm = document.querySelectorAll(".sidenav");
+    let loginForm = document.querySelectorAll("#slide-out");
     M.Sidenav.init(loginForm, { edge: "right" });
   },
+
+  
   methods: {
     async springLogin() {
       let username = "tsuddickdw@accuweather.com";
