@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <div class="row row1">
-      <div class="col m3"></div>
+      <div class="col m3 no-pad"></div>
       <div class="col s12 m6">
         <div class="col s3"></div>
         <img src="../assets/logo_minimal.gif" class="logo" />
@@ -11,10 +11,10 @@
           class="white-text medium material-icons sidenav-trigger waves-effect waves-light col s3"
         >account_circle</i>
       </div>
-      <div class="col m3"></div>
+      <div class="col m3 no-pad"></div>
     </div>
     <ul id="slide-out" class="sidenav">
-      <div class="row side2">
+      <div class="row">
         <div class="col s12 m12 l12">
           <img src="../assets/logo_minimal.gif" class="responsive" />
         </div>
@@ -107,7 +107,11 @@ export default {
     margin-left: auto;
     margin-right: auto  */
   margin-top: 30px;
-  width: 70%;
+  width: 50%;
+}
+
+#header .row1 .no-pad {
+  padding: 0px;
 }
 
 #header .sidenav-trigger {
@@ -127,6 +131,7 @@ export default {
 #header .row .col {
   justify-content: center;
   display: flex;
+  padding-right: 0px;
 }
 #header .row .responsive {
   width: 70%;
