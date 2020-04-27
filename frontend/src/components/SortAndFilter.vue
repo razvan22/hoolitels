@@ -14,15 +14,11 @@
             <li><h6>Filtrera</h6></li>
              <label v-for="a in $store.state.amenities" :key="a.id">
                  <p>
-                      <input type="checkbox" class="filled-in" id="checkbox" v-model="checked"/>
+                      <input type="checkbox" class="filled-in" id="checkbox" v-model="checkedAmenities"/>
                      <span> {{a.name}}</span>
                  </p>
                     
             </label>  
-           
-               
-          
-            
             <p>
        
              <li><div class="divider"></div></li>
@@ -30,29 +26,29 @@
                <form action="#">
                     <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Pris (högst till lägst)</span>
                     </label>
                     </p>
                       <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Pris (lägst till högst)</span>
                     </label>
                     </p>
                        <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (högst till lägst)</span>
                     </label>
                     </p>
                           <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (lägst till högst )</span>
                     </label>
                     </p>
-  
+                    <a class="waves-effect waves-light btn-small cyan darken-2" v-on:click="uncheckAll()">Rensa</a>
                 </form>
             <li><a class="waves-effect waves-light btn cyan darken-2">Tillämpa</a></li>
         </ul>
@@ -69,13 +65,23 @@ export default {
      props: [`hotel`],
      data(){
           return{
-             checkedAmenities:[]
+             checkedAmenities:[],
+             selected: '',
           }  
      },
+
+     methods:{
+         uncheckAll: function(){
+           this.selected = false; 
+           
+         }
+     },
+
+    
        mounted() {
         var el = document.querySelectorAll('sidenav')
       M.FormSelect.init(el)
-      console.log('amenities', this.$store.state.amenities)
+    
     },
  
      
