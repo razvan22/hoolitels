@@ -1,19 +1,17 @@
 <template>
-  <div class="container hotel-from-search">
-    <div class="row">
-      <div class="col s12 m12 l12">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img
-              src="https://static.thatsup.co/content/img/article/15/jul/guiden-till-prisvarda-hotell-i-stockholm.jpg"
-            />
-            <span class="card-title">{{ hotel.name }}</span>
-          </div>
-          <div class="card-content">
-            <div class="row">
-              <ul class="col l5  amenities">
-                <h4 v-if=" !amenitiesIsEmpty"> Ej bekvämligheter</h4>
-                <h4 v-if="amenitiesIsEmpty"> Bekvämligheter </h4>
+  <div class="row">
+    <div class="col m3"></div>
+    <div class="col s12 m6">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img :src="require('@/assets/' + hotel.images[0].url)" />
+          <span class="card-title">{{ hotel.name }}</span>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <div class="col s5 m4 l3">
+              <ul class="amenities">
+                <h4 v-if="amenitiesIsEmpty">Bekvämligheter</h4>
                 <li v-for="a in hotel.amenities" :key="a.id">
                   <div class="valign-wrapper">
                     <i class="material-icons teal-text">check_circle</i
@@ -21,35 +19,56 @@
                   </div>
                 </li>
               </ul>
-                <div class="contact col s2">
-                 <h4>Betyg</h4>
-                 <h5> 8/10</h5>
-               </div>
-              <div class="col  distance">
-                  <h4>Avstånd</h4>
-                <ul>
-                  <li><i class="material-icons tiny">location_city</i>{{hotel.distance_to_town_center}} meter till centrum</li>
-                  <li><i class="material-icons tiny">beach_access</i>{{hotel.distance_to_beach}} meter till stranden</li>
-                </ul>
+            </div>            
+            <div class="contact col s5 m4 l3">
+              <h4>Omdöme</h4>
+              <div>
+                <i
+                  v-for="n in 4"
+                  :key="n"                  
+                  class=" rating__icon--star fa fa-star"
+                ></i>                
               </div>
-               <div class="contact col">
-                 <h4>Kontakt</h4>
-                <ul>
-                  <li> <i class="material-icons tiny">email</i>{{hotel.email}}</li>
-                  <li><i class="material-icons tiny">contact_phone</i>{{hotel.phone}}</li>
-                </ul>
-               </div>
             </div>
-            <div v-if="DisplayRooms">
-                <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />  
-            </div>    
           </div>
-          <div class="card-action align-center" >
-             <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Läs mer</router-link>
+          <div class="row">
+            <div class="col distance">
+              <h4>Avstånd</h4>
+              <ul>
+                <li>
+                  <i class="material-icons tiny">location_city</i>
+                  {{hotel.distance_to_town_center}} meter till centrum
+                </li>
+                <li>
+                  <i class="material-icons tiny">beach_access</i>
+                  {{hotel.distance_to_beach}} meter till stranden
+                </li>
+              </ul>
+            </div>
+            <div class="contact col">
+              <h4>Kontakt</h4>
+              <ul>
+                <li>
+                  <i class="material-icons tiny">email</i>
+                  {{hotel.email}}
+                </li>
+                <li>
+                  <i class="material-icons tiny">contact_phone</i>
+                  {{hotel.phone}}
+                </li>
+              </ul>
+            </div>
           </div>
+          <div v-if="DisplayRooms">
+            <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
+          </div>
+        </div>
+        <div class="card-action align-center">
+          <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Boka rum</router-link>
         </div>
       </div>
     </div>
+    <div class="col m3"></div>
   </div>
   
 </template>
@@ -87,7 +106,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/* ändra h4 till en klass */
+h4 {
+  margin-top: 10px;
+}
+
+.row {
+  margin-bottom: 0px;
+}
+.rating__icon--star {
+  color: orange;
+  font-size: 18px;
+}
+
 .amenities {
   font-size: smaller;
 }
