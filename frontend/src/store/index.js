@@ -13,10 +13,9 @@ export default new Vuex.Store({
     hotels: [],
     user:{},
     userLogged: false,
-    headerDisabled: false
-    
-
+    displayHeader: true
   },
+
   mutations: {
     setSelectedCity(state, value) {
       state.dateSelected.selectedCity = value
@@ -39,7 +38,7 @@ export default new Vuex.Store({
     },
 
     disableHeader(state, value){
-      state.headerDisabled = value;
+      state.displayHeader = value;
     }
     
   },
@@ -69,8 +68,21 @@ export default new Vuex.Store({
         let responsee = await response.json()
        commit('setUser', responsee)
        this.state.userLogged = true;
-       this.state.headerDisabled = true;
       }
+
+    },
+      async isUserLogged({ commit }){
+        let response = await fetch('api/whoami')
+        let responsee = await response.json()
+
+        if(responsee == null){
+          this.state.userLogged = false;
+        }else{
+          this.state.userLogged = true;
+          this.state.displayHeader = false;
+        }
+        console.log(responsee)
+       commit('setUser', responsee)
     },
    
     async getAmenities({ commit }) {

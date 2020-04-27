@@ -51,12 +51,19 @@ export default {
         }
     },
     methods: {
-      logout(){
-        this.$store.commit('setUser', '');
-        this.$store.commit('userLogStatus', false);
+     async logout(){
+        let data= { sender:'' , message: ''};
+        let rawResponse = await fetch('http://localhost:8070/logout', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+       let response = await rawResponse.json();
+       console.log(response);
+
       },
       headerStatus(){
-        this.$store.commit('disableHeader', true)
+        this.$store.commit('disableHeader', false)
       }    
     },
 }

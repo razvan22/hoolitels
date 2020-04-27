@@ -59,6 +59,7 @@ export default {
     methods: {
       login(){
         this.$store.dispatch('springLogin',this.user )
+        this.$store.commit('disableHeader', false)
       },
     },
 }

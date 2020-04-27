@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="back">
     <div id="fade">
-      <Header />
+      <Header v-if="headerStatus"/>
       <router-view />
       <Footer />
     </div>
@@ -18,6 +18,12 @@ import Footer from "@/components/Footer.vue";
     },
   created() {
     this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
+    this.$store.dispatch("isUserLogged")
+  },
+  computed:{
+    headerStatus(){
+      return this.$store.state.displayHeader
+    }
   }
 };
 </script>

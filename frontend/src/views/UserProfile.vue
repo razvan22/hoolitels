@@ -45,12 +45,14 @@ export default {
     },
     methods:{
         headerState(){
-           this.$store.state.headerDisabled = false;
+           this.$store.commit('disableHeader', true)
+           this.$store.state.displayHeader = true;
         },
         editUserInfo(){
             this.$store.state.disable.editUserInfo = true;
         }
-    }
+    },
+  
 }
 </script>
 
