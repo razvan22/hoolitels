@@ -35,23 +35,26 @@
                     </p>
                       <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Pris (lägst till högst)</span>
                     </label>
                     </p>
                        <p>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (högst till lägst)</span>
                     </label>
                     </p>
                           <p>
+                            
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+
+                        <input class="with-gap" name="group1" type="radio" v-model="selected"  />
                         <span>Omdöme (lägst till högst )</span>
+                         
                     </label>
                     </p>
-  
+                      <a class="waves-effect waves-light btn-small cyan darken-2" v-on:click="uncheckAll()">Rensa</a>
                 </form>
            
         </ul>
@@ -88,16 +91,9 @@ export default {
        mounted() {
         let el = document.querySelectorAll('sidenav')
         M.FormSelect.init(el)
-        
        
-       
-      
     },
-  
     
-    
-
-     
 }
 </script>
 
