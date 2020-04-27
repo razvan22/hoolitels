@@ -78,6 +78,7 @@ export default new Vuex.Store({
         }else{
           this.state.userLogged = true;
         }
+        console.log(responsee)
        commit('setUser', responsee)
     },
    
@@ -86,6 +87,16 @@ export default new Vuex.Store({
       response = await response.json()
       commit('setAmenities', response)
     },
+
+    async logout( {commit} ){
+      await fetch('http://localhost:8070/logout', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      this.state.userLogged = false;
+      commit('setUser', null)
+    }
   },
 
 

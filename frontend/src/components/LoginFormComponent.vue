@@ -1,18 +1,18 @@
 <template>
   <div id="login">
       <div class="row">
-              <div class="col s12 m12 l12">
+              <div class="col s12 m12 l12 center">
                 <img src="../assets/logo_minimal.gif" class="responsive" />
               </div>
               <div class="container">
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
-                    <h5>Login</h5>
+                    <h5>Logga in</h5>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l12">
-                    <label for="username">Email</label>
+                    <label for="username">E-post</label>
                     <input
                       id="username"
                       type="text"
@@ -21,7 +21,7 @@
                     />
                   </div>
                   <div class="input-field col s12 m12 l12">
-                    <label for="password" class="validate">Password</label>
+                    <label for="password" class="validate">Lösenord</label>
                     <input id="password" type="password" v-model="user.password" />
                   </div>
                   <div class="input-field col s12 m12 l12">
@@ -30,13 +30,13 @@
                             class="btn waves-effect waves-light"
                             type="submit"
                             v-on:click="login()"
-                            name="action">Login
+                            name="action">Logga in
                         </button>
                       </router-link>
                   </div>
                   <div class="col s12 m12 l12">
                     <router-link to="/signup"
-                      ><p>Don't have an account ?</p></router-link>
+                      ><p>Skapa konto</p></router-link>
                   </div>
                 </div>
               </div>
@@ -50,8 +50,8 @@ export default {
         data() {
         return {
           user:{
-            email:'autley1@hibu.com',
-            password:'nTJNrfMPiDJC'
+            email:'',
+            password:''
           },
 
         }
