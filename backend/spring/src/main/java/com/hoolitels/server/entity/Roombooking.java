@@ -1,7 +1,6 @@
 package com.hoolitels.server.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,7 +16,7 @@ public class Roombooking {
     @JsonBackReference("roomBookingBackReference")
     private Booking booking;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "room_id", nullable = false)
     @JsonBackReference("roomBookingsRoomBackReference")
     private Room room;
@@ -48,6 +47,14 @@ public class Roombooking {
         return booking;
     }
 
+    public long getBooking_id(){
+        return booking.getId();
+    }
+
+    public long getRoom_id() {
+        return room.getId();
+    }
+
     public Room getRoom() {
         return room;
     }
@@ -59,12 +66,4 @@ public class Roombooking {
     public Integer getFood_cost() {
         return food_cost;
     }
-
-//    public long getBooking_id() {
-//        return booking_id;
-//    }
-//
-//    public void setBooking_id(long booking_id) {
-//        this.booking_id = booking_id;
-//    }
 }

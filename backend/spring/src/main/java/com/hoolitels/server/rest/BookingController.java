@@ -43,7 +43,7 @@ public class BookingController {
         ArrayList<Roombooking> rbLocal = new ArrayList<Roombooking>();
         booking.getRoombookings().forEach(rb ->
                 rbLocal.add(new Roombooking(booking,
-                                            (roomRepository.findById(rb.getRoom().getId())).get(),
+                                            (roomRepository.findById(rb.getRoom_id())).get(),
                                             rb.isExtra_bed(),
                                             rb.getFood_cost())));
         booking.setRoomBookings(rbLocal);
@@ -54,7 +54,7 @@ public class BookingController {
     } // createBooking
 
     private boolean checkMatches(Roombooking rb, Date start, Date end) {
-        Optional<Room> roomOpt = roomRepository.findById(rb.getRoom().getId());
+        Optional<Room> roomOpt = roomRepository.findById(rb.getRoom_id());
 
         if (roomOpt.isEmpty()) return false;
         return roomOpt.get().isFree(start, end);
