@@ -10,8 +10,8 @@ export default new Vuex.Store({
     dateSelected: {
     selectedCity: 0,
     },
-
     hotels: [],
+
   },
   mutations: {
     setSelectedCity(state, value) {
@@ -25,6 +25,8 @@ export default new Vuex.Store({
       state.amenities = value
       console.log('amenities', state.amenities)
     },
+
+
 
   },
 
@@ -40,6 +42,8 @@ export default new Vuex.Store({
       commit('setAmenities', response)
     },
   },
+
+
 
   modules: {},
 })
