@@ -1,14 +1,6 @@
 let { $, sleep } = require('./funcs');
 module.exports = function () {
 
-    this.Given(/^that I am at the Hoolitels homepage$/, async function () {
-        let homepage = await helpers.loadPage('http://localhost:8081/');
-        //await sleep(10000);
-        let logo = await driver.findElement(by.css('#app'));
-        assert(logo, 'Expected there to be a div element named "app"');
-        assert(homepage, 'Expected the homepage to load');
-      });
-
       this.When(/^I click on the user icon$/, async function () {
         let loginButton = await $('#header > div > div.col.s12.m6 > i');
         loginButton.click();

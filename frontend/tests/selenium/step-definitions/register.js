@@ -3,6 +3,7 @@ module.exports = function () {
 
  sleepTime = 1000;
 
+
  this.Given(/^I click on Don't have an account\? link text$/, async function () {
   let newAccount = await $('#slide-out > div > div.container > div:nth-child(2) > div:nth-child(4) > a > p');
   newAccount.click()
@@ -31,8 +32,8 @@ module.exports = function () {
   assert.instanceOf(emailfield, emailfield.constructor, "could not enter email adress");
   await sleep(sleepTime)
  });
-
 */
+
  
  this.When(/^I enter my land$/, async function () {
   let land = 'Sverige';
