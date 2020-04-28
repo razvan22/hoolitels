@@ -23,6 +23,7 @@ export default {
   created() {
     this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
     this.$store.dispatch("isUserLogged")
+    this.$store.dispatch("getCountries")
   },
 };
 </script>

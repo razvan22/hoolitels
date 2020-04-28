@@ -13,6 +13,7 @@ export default new Vuex.Store({
     hotels: [],
     user:{},
     userLogged: false,
+    countries:[]
    
   },
 
@@ -36,6 +37,9 @@ export default new Vuex.Store({
     userLogStatus(state, value){
       state.userLogged = value
     },
+    setCountries(state, value){
+      state.countries = value;
+    }
 
     
   },
@@ -96,6 +100,11 @@ export default new Vuex.Store({
       this.state.userLogged = false;
       commit('setUser', null)
     }
+  },
+  async getCountries({ commit }) {
+    let response = await fetch('/rest/country/')
+    response = await response.json()
+    commit('setCountries', response)
   },
 
 

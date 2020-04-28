@@ -53,6 +53,16 @@
                             <label for="disabled"></label>
                         </div>
                     </div>
+                    <div class="col s12 m12 l12" >
+                        <div class="input-field">
+                            <select>
+                                <option value="" disabled selected>Välj ditt land</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="col s12 m6 l6">
                         <div class="input-field" v-if="!ifLogged">
@@ -175,7 +185,7 @@
 
 
 <script>
-
+import M from 'materialize-css/dist/js/materialize.js'
 export default {
     name:'UserInformationForm',
 
@@ -204,7 +214,10 @@ export default {
         ifLogged(){
             return this.$store.state.userLogged
         }
-
+    },
+    mounted(){
+        let countrySelector = document.querySelectorAll('select');
+        M.FormSelect.init(countrySelector);
     },
 
     methods:{
