@@ -2,87 +2,61 @@
   {
     "elements": [
       {
-        "id": "login-of-user;logging-in",
+        "id": "logout;logging-out",
         "keyword": "Scenario",
-        "line": 13,
-        "name": "Logging in",
+        "line": 3,
+        "name": "Logging out",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "that I am at the Hoolitels homepage",
+            "name": "that I am on the hoolitels site",
             "result": {
               "status": "passed",
-              "duration": 3869460700
+              "duration": 3884536000
             },
             "line": 4,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:4"
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:4"
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "name": "I click on the user icon",
+            "keyword": "And ",
+            "name": "I am currently logged in",
             "result": {
               "status": "passed",
-              "duration": 4047900
+              "duration": 1668953301
             },
             "line": 5,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:12"
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:11"
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "I enter \"user\" in the email field",
+            "name": "click the logout button",
             "result": {
               "status": "passed",
-              "duration": 717450400
+              "duration": 10791700
             },
             "line": 6,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:19"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "name": "I enter \"user\" in the password field",
-            "result": {
-              "status": "passed",
-              "duration": 508741500
-            },
-            "line": 7,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:25"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "name": "I click the login button",
-            "result": {
-              "status": "passed",
-              "duration": 2046463599
-            },
-            "line": 8,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:31"
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:27"
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "name": "I should be logged in",
+            "name": "I should be logged out",
             "result": {
               "status": "passed",
-              "duration": 5224301
+              "duration": 302297699
             },
-            "line": 9,
+            "line": 7,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:40"
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:32"
             }
           },
           {
@@ -90,107 +64,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 879978599
-            },
-            "hidden": true,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "id": "login-of-user;logging-in",
-        "keyword": "Scenario",
-        "line": 14,
-        "name": "Logging in",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "name": "that I am at the Hoolitels homepage",
-            "result": {
-              "status": "passed",
-              "duration": 4241485600
-            },
-            "line": 4,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:4"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "name": "I click on the user icon",
-            "result": {
-              "status": "passed",
-              "duration": 3839701
-            },
-            "line": 5,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:12"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "name": "I enter \"tdinsdaleg@naver.com\" in the email field",
-            "result": {
-              "status": "passed",
-              "duration": 503137600
-            },
-            "line": 6,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:19"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "name": "I enter \"3uROILP\" in the password field",
-            "result": {
-              "status": "passed",
-              "duration": 504918401
-            },
-            "line": 7,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:25"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "name": "I click the login button",
-            "result": {
-              "status": "passed",
-              "duration": 2043131001
-            },
-            "line": 8,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:31"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "name": "I should be logged in",
-            "result": {
-              "status": "passed",
-              "duration": 11295699
-            },
-            "line": 9,
-            "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:40"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "After ",
-            "result": {
-              "status": "passed",
-              "duration": 779647700
+              "duration": 833821800
             },
             "hidden": true,
             "match": {
@@ -202,11 +76,11 @@
         "type": "scenario"
       }
     ],
-    "id": "login-of-user",
+    "id": "logout",
     "keyword": "Feature",
     "line": 1,
-    "name": "Login of user",
+    "name": "Logout",
     "tags": [],
-    "uri": "C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\login.feature"
+    "uri": "C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\logout.feature"
   }
 ]
