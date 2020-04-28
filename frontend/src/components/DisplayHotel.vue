@@ -5,7 +5,7 @@
       <div class="card hoverable">
         <div class="card-image">
           <img :src="require('@/assets/' + hotel.images[0].url)" />
-          <span class="card-title">{{ hotel.name }}</span>
+          <span class="card-title"><strong class="hotel-name">{{ hotel.name }}</strong></span>
         </div>
         <div class="card-content">
           <div class="row">
@@ -35,11 +35,11 @@
             <div class="col distance">
               <h4>Avstånd</h4>
               <ul>
-                <li>
+                <li class="valign-wrapper">
                   <i class="material-icons tiny">location_city</i>
                   {{hotel.distance_to_town_center}} meter till centrum
                 </li>
-                <li>
+                <li class="valign-wrapper">
                   <i class="material-icons tiny">beach_access</i>
                   {{hotel.distance_to_beach}} meter till stranden
                 </li>
@@ -48,12 +48,12 @@
             <div class="contact col">
               <h4>Kontakt</h4>
               <ul>
-                <li>
-                  <i class="material-icons tiny">email</i>
+                <li class="valign-wrapper">
+                  <i class="material-icons tiny"> email</i>
                   {{hotel.email}}
                 </li>
-                <li>
-                  <i class="material-icons tiny">contact_phone</i>
+                <li class="valign-wrapper">
+                  <i class="material-icons tiny"> contact_phone</i>
                   {{hotel.phone}}
                 </li>
               </ul>
@@ -95,12 +95,11 @@ export default {
  
 
   },
-  methods:{
-    clickHotel(){
-     this.$store.commit('setSelectedHotel', this.hotel)
-     console.log("hotell", this.hotel)
-    
-    }, 
+  methods: {
+    clickHotel() {
+      this.$store.commit("setSelectedHotel", this.hotel);
+     
+    }
   }
 
 };
@@ -144,6 +143,13 @@ h4 {
 .contact h4{
   font-size:large;
 }
-
+.hotel-name{
+  text-shadow: 5px;
+  color: black;
+  background: white
+}
+.card-image img{
+  opacity: 0.8;
+}
 
 </style>

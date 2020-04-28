@@ -24,9 +24,11 @@ export default {
   },
   created() {
     this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
-  }
+    this.$store.dispatch("isUserLogged")
+  },
 };
 </script>
+
 
 <style src="materialize-css/dist/css/materialize.css"></style>
 <style scoped>

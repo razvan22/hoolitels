@@ -1,4 +1,5 @@
 <template>
+
   <div class="z-depth-1">
     <!-- <div class="divider"></div> -->
     <div class="row">
@@ -117,6 +118,10 @@ export default {
 /* .valign-wrapper go-right {
   justify-content: flex-end;
 } */
+.room-img {
+  width: 210px;
+
+}
 
 span em {
   font-size: 1.5em;
