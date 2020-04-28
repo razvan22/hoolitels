@@ -40,7 +40,7 @@ Vue.use(VueRouter)
 },
 
 {
-  path: '/order',
+  path: '/order/',
   name: 'Order', 
   component: Order
 },

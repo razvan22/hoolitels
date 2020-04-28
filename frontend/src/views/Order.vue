@@ -1,5 +1,8 @@
 <template>
 <div class="container">
+  <RoomView :room="this.$route.params.room" /> 
+  <div class="row">
+  </div>
   <div class="row">
     <div class="col s12  center-align">
       <div class="card-background">
@@ -33,7 +36,7 @@
           </div>
            </form>
         <div class="col s12 center-align">
-          <router-link to="/payment">  <a class="waves-effect waves-light btn-small">Fortsätt till betalning</a></router-link>
+          <router-link to="/payment"> <a class="waves-effect waves-light btn-small">Fortsätt till betalning</a></router-link>
         </div> 
       </div> 
       </div>
@@ -43,16 +46,29 @@
 </template>
 
 <script>
+import RoomView from "@/components/RoomView.vue";
 
 export default {
+  
 
   data(){
     return{
     counterAdult: 0,
     counterChild: 0,
     counterBaby: 0,
+     city: {},
 
   }
+  },
+
+  computed:{
+ 
+  },
+
+
+  components:{
+    RoomView,
+
   },
   methods:{
     counterDecrementAdult(){
@@ -73,7 +89,9 @@ export default {
       this.counterBaby = 0;
       
     },
-  }
+
+    
+  },
 }
 </script>
 

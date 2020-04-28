@@ -6,6 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     cities: [],
+    rooms: [],
+    selectedRoom: 0,
     amenities: [],
     dateSelected: {
     selectedCity: 0,
@@ -25,6 +27,14 @@ export default new Vuex.Store({
       state.cities = value
     },
 
+    setSelectedRoom(state, value) {
+      state.selectedRoom = value
+    },
+
+    setRoom(state, value) {
+      state.rooms = value
+    },
+
     setAmenities(state, value) {
       state.amenities = value
     },
@@ -36,6 +46,7 @@ export default new Vuex.Store({
     userLogStatus(state, value){
       state.userLogged = value
     },
+    
 
     
   },

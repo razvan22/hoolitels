@@ -1,5 +1,4 @@
 <template>
-
   <div class="z-depth-1">
     <img class="room-img" :src="require('@/assets/' + room.images[0].url)" />
     <!-- <div class="divider"></div> -->
@@ -47,7 +46,8 @@
         </ul>
       </div>
       <div class="button-book col offset-s4">
-        <router-link to="/" class="waves-effect waves-light cyan darken-2 btn-small">Boka</router-link>
+        <router-link to="/order" class="waves-effect waves-light cyan darken-2 btn-small">Boka</router-link>
+        <router-link :to="{ name: 'Order', params: {room: this.room}}">Boka rum</router-link>
       </div>
     </div>
     <div class="row"></div>
@@ -95,6 +95,7 @@ export default {
         price: this.room.cost_all_inclusive
       });
     }
+    console.log("selectedRoom", this.room)
   },
 
   methods: {
@@ -107,7 +108,14 @@ export default {
       //   (this.room.cost_all_inclusive && this.room.cost_all_inclusive > 0)
       // );
     }
-  }
+    
+  },
+    computed: {
+ 
+   
+    
+    
+  },
 };
 </script>
 
