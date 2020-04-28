@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.collapsible-body {
+    background: white;
+}
 .container .row .book{
     margin-top: 1vh;
 } 
