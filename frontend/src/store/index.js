@@ -6,19 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cities: [],
-    selectedRooms: [ {
-      number: 0, rooms: []
-    },
-    {
-      number: 1, rooms: []
-    },
-    {
-      number: 2, rooms: []
-    },
-    {
-      number: 3, rooms: []
-    }
-  ],
     amenities: [],
     dateSelected: {
       selectedCity: 0,
@@ -31,6 +18,11 @@ export default new Vuex.Store({
       checkedFiltration: [],
       distance_to_beach: 0,
       distance_to_town: 0,
+    },
+    booking: {
+      rooms: 1,
+      check_in: "",
+      check_out: "",
     },
   },
 
@@ -55,19 +47,12 @@ export default new Vuex.Store({
       state.user = value;
     },
 
-    addSelectedRooms(state, value){
-      state.selectedRooms = state.selectedRooms.concat(value);
+    userLogStatus(state, value) {
+      state.userLogged = value;
     },
 
-    removeSelectedRooms(state, value){
-      for (let index = 0; index < value.length; index++) {
-        const element = value[index];
-        state.selectedRooms.pop(element) 
-      }
-   
-    },
-    userLogStatus(state, value){
-      state.userLogged = value
+    setSelectedRooms(state, value) {
+      state.booking.rooms = value;
     },
   },
 
