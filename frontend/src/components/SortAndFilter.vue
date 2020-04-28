@@ -89,8 +89,9 @@ export default {
   
      },
        mounted() {
-          let sidenavs = document.querySelectorAll("#mobile-demo-1");
+      let sidenavs = document.querySelectorAll("#mobile-demo-1");
       M.Sidenav.init(sidenavs, { edge: "right" });
+      sidenavs.close();
       
        
     },
