@@ -1,6 +1,7 @@
 <template>
   <div id="booking" >
-        <table class="responsive-table centered" v-for="booking in bookings" :key="booking.id">
+
+            <table class="responsive-table centered" v-for="booking in bookings" :key="booking.id" >
             <thead>
             <tr>
                 <th>Boknings id</th>
@@ -16,7 +17,7 @@
             <tbody>
             <tr>
                 <td>{{booking.id}}</td>
-                <td>{{booking.start_date}} - {{bookings[1].start_date}}</td>
+                <td>{{booking.start_date}} - {{booking.end_date}}</td>
                 <td>{{booking.num_adults}}</td>
                 <td>{{booking.num_children}}</td>
                 <td>{{booking.num_infants}}</td>
@@ -26,7 +27,6 @@
             </tbody>
         </table>
         
-        
     </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
     name: 'BookingComponent',
     data(){
         return{
-            bookings: this.$store.state.user.bookings,
+            bookings: this.$store.state.user.bookings
         }
     },
     created(){
@@ -49,8 +49,12 @@ export default {
 
 <style scoped>
 #booking{
+    
+    
+
     background: white;
 }
+
 
 
 
