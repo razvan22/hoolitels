@@ -1,7 +1,9 @@
 package com.hoolitels.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.hoolitels.server.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,6 +35,7 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")
+//    @JsonBackReference("roomBookingsRoomBackReference")
     @JsonManagedReference("roomBookingsRoomBackReference")
     private List<Roombooking> roombookings = new ArrayList<>();
 
@@ -100,6 +103,10 @@ public class Room {
 
     public Integer getCost_all_inclusive() {
         return cost_all_inclusive;
+    }
+
+    public List<Roombooking> getRoombookings() {
+        return roombookings;
     }
 
     public Set<Image> getImages() {

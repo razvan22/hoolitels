@@ -19,15 +19,15 @@
                   </div>
                 </li>
               </ul>
-            </div>            
+            </div>
             <div class="contact col s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
                 <i
                   v-for="n in 4"
-                  :key="n"                  
+                  :key="n"
                   class=" rating__icon--star fa fa-star"
-                ></i>                
+                ></i>
               </div>
             </div>
           </div>
@@ -37,11 +37,11 @@
               <ul>
                 <li class="valign-wrapper">
                   <i class="material-icons tiny">location_city</i>
-                  {{hotel.distance_to_town_center}} meter till centrum
+                  {{ hotel.distance_to_town_center }} meter till centrum
                 </li>
                 <li class="valign-wrapper">
                   <i class="material-icons tiny">beach_access</i>
-                  {{hotel.distance_to_beach}} meter till stranden
+                  {{ hotel.distance_to_beach }} meter till stranden
                 </li>
               </ul>
             </div>
@@ -60,11 +60,14 @@
             </div>
           </div>
           <div v-if="DisplayRooms">
-            <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
+            <RoomTypeList :rooms="hotel.rooms" />
+            <!-- <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" /> -->
           </div>
         </div>
         <div class="card-action align-center">
-          <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Boka rum</router-link>
+          <router-link :to="{ name: 'HotelVy', params: { hotel: this.hotel } }"
+            >Boka rum</router-link
+          >
         </div>
       </div>
     </div>
@@ -72,25 +75,28 @@
   </div>
 </template>
 <script>
-import RoomView from "@/components/RoomView.vue";
+// import RoomView from "@/components/RoomView.vue";
+import RoomTypeList from "@/components/RoomTypeList";
 
 export default {
   name: "DisplayHotel",
   props: [`hotel`, `DisplayRooms`],
   data() {
     return {
-      isHidden: false
+      isHidden: false,
     };
   },
   computed: {
     amenitiesIsEmpty() {
       return this.hotel.amenities && this.hotel.amenities.length;
-    }
+    },
   },
   mounted() {},
   components: {
-    RoomView
+    // RoomView,
+    RoomTypeList,
   },
+
   methods: {
     clickHotel() {
       this.$store.commit("setSelectedHotel", this.hotel);

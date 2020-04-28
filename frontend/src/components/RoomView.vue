@@ -1,5 +1,4 @@
 <template>
-
   <div class="z-depth-1">
     <img class="room-img" :src="require('@/assets/' + room.images[0].url)" />
     <!-- <div class="divider"></div> -->
@@ -47,7 +46,11 @@
         </ul>
       </div>
       <div class="button-book col offset-s4">
-        <router-link to="/" class="waves-effect waves-light cyan darken-2 btn-small">Boka</router-link>
+        <router-link
+          to="/"
+          class="waves-effect waves-light cyan darken-2 btn-small"
+          >Boka</router-link
+        >
       </div>
     </div>
     <div class="row"></div>
@@ -65,8 +68,8 @@ export default {
       numFormatter: new Intl.NumberFormat("sv-SE", {
         style: "currency",
         currency: "SEK",
-        minimumFractionDigits: 0
-      })
+        minimumFractionDigits: 0,
+      }),
     };
   },
 
@@ -78,21 +81,21 @@ export default {
     if (this.room.cost_half_board && this.room.cost_half_board > 0) {
       this.extras.push({
         kind: "halvpension",
-        price: this.room.cost_half_board
+        price: this.room.cost_half_board,
       });
     }
 
     if (this.room.cost_full_board && this.room.cost_full_board > 0) {
       this.extras.push({
         kind: "helpension",
-        price: this.room.cost_full_board
+        price: this.room.cost_full_board,
       });
     }
 
     if (this.room.cost_all_inclusive && this.room.cost_all_inclusive > 0) {
       this.extras.push({
         kind: "all inclusive",
-        price: this.room.cost_all_inclusive
+        price: this.room.cost_all_inclusive,
       });
     }
   },
@@ -106,8 +109,8 @@ export default {
       //   (this.room.cost_full_board && this.room.cost_full_board > 0) ||
       //   (this.room.cost_all_inclusive && this.room.cost_all_inclusive > 0)
       // );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -117,7 +120,6 @@ export default {
 } */
 .room-img {
   width: 210px;
-
 }
 
 span em {

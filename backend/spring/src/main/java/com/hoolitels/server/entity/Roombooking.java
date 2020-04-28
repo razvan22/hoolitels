@@ -1,7 +1,6 @@
 package com.hoolitels.server.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,27 +16,30 @@ public class Roombooking {
     @JsonBackReference("roomBookingBackReference")
     private Booking booking;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "room_id", nullable = false)
     @JsonBackReference("roomBookingsRoomBackReference")
     private Room room;
 
-    @Column(nullable = false)
-    private boolean extra_bed;
+    @Column(nullable = true)
+    private int extra_bed;
+
+    @Column(nullable = true)
+    private Integer food_cost;
 
     @Column(nullable = false)
-    private Integer food_cost;
+    private Integer room_cost;
 
     public Roombooking() {
     }
 
 //    public Roombooking(long booking, Room room, boolean extra_bed, Integer food_cost) {
-    public Roombooking(Booking booking, Room room, boolean extra_bed, Integer food_cost) {
-//        this.booking_id = booking;
+    public Roombooking(Booking booking, Room room, Integer extra_bed, Integer food_cost, Integer room_cost) {
         this.booking = booking;
         this.room = room;
         this.extra_bed = extra_bed;
         this.food_cost = food_cost;
+        this.room_cost = room_cost;
     }
 
     public long getId() {
@@ -48,23 +50,43 @@ public class Roombooking {
         return booking;
     }
 
-    public Room getRoom() {
-        return room;
+    public long getBooking_id(){
+        return booking.getId();
     }
 
-    public boolean isExtra_bed() {
-        return extra_bed;
+    public long getRoom_id() {
+        return room.getId();
+    }
+
+    public Room getRoom() {
+        return room;
     }
 
     public Integer getFood_cost() {
         return food_cost;
     }
 
-//    public long getBooking_id() {
-//        return booking_id;
-//    }
-//
-//    public void setBooking_id(long booking_id) {
-//        this.booking_id = booking_id;
-//    }
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public int getExtra_bed() {
+        return extra_bed;
+    }
+
+    public void setExtra_bed(int extra_bed) {
+        this.extra_bed = extra_bed;
+    }
+
+    public void setFood_cost(Integer food_cost) {
+        this.food_cost = food_cost;
+    }
+
+    public Integer getRoom_cost() {
+        return room_cost;
+    }
+
+    public void setRoom_cost(Integer room_cost) {
+        this.room_cost = room_cost;
+    }
 }

@@ -31,11 +31,8 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.POST,"/login").permitAll()
         .antMatchers("/").permitAll()
         .and()
-        .formLogin()
-        .and()
-        .logout()
-        .deleteCookies("JSESSIONID");
-
+        .formLogin();
+//        .and().logout().deleteCookies("JESSIONID");
     }
 
     @Override
