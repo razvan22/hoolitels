@@ -1,6 +1,6 @@
 <template>
-  <div id="booking">
-        <table class="responsive-table centered">
+  <div id="booking" >
+        <table class="responsive-table centered" v-for="booking in bookings" :key="booking.id">
             <thead>
             <tr>
                 <th>Boknings id</th>
@@ -15,13 +15,13 @@
 
             <tbody>
             <tr>
-                <td>{{bookings[0].id}}</td>
-                <td>{{bookings[0].start_date}} - {{bookings[1].start_date}}</td>
-                <td>{{bookings[0].num_adults}}</td>
-                <td>{{bookings[0].num_children}}</td>
-                <td>{{bookings[0].num_infants}}</td>
+                <td>{{booking.id}}</td>
+                <td>{{booking.start_date}} - {{bookings[1].start_date}}</td>
+                <td>{{booking.num_adults}}</td>
+                <td>{{booking.num_children}}</td>
+                <td>{{booking.num_infants}}</td>
                 <td></td>
-                <td>{{bookings[0].paid}}</td>
+                <td>{{bookings.paid}}</td>
             </tr>
             </tbody>
         </table>
