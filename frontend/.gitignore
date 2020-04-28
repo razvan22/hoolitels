@@ -23,3 +23,4 @@ node_modules
 
 package.json
 package-lock.json
+tests/selenium/reports/
