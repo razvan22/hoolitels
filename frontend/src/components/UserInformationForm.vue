@@ -156,7 +156,10 @@
                 <div class="row" id="submit-btn">
                     <div class="col">
                         <a v-if="ifLogged&&!editMode" v-on:click="editMode = true"  class="light-blue lighten-1 btn-floating waves-effect waves-light btn-medium"><i class="material-icons">edit</i></a>
-                        <button v-if="!ifLogged||editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in
+                        <button v-if="editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <button v-if="!ifLogged" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -205,7 +208,28 @@ export default {
     },
 
     methods:{
+        async addUser(){
+            // let data = this.user;
+            let data = {
+                name: 'Ysab',
+                email:'yshg@gmail.com',
+                address:'Gsyjjdwh',
+                zip: '1234',
+                city: 'City',
+                phone: '79262936',
+                password: 'abcd123'
 
+            }
+                let rawResponse = await fetch('http://localhost:8080/rest/user',{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+                
+            });
+            
+            let response = await rawResponse.json();
+            console.log(response)
+        }
  
     }
     

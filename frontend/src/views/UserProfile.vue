@@ -4,10 +4,17 @@
     <div class="container">
         <div class="row">
             <UserInformationForm/>
-                
-
             <div class="col s12 m12 l12">
-                <booking-componet></booking-componet>
+                <div class="container">
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">notes</i>Dina bokningar</div>
+                            <div class="collapsible-body">
+                                <booking-componet></booking-componet>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         
@@ -16,6 +23,7 @@
 </template>
 
 <script>
+import M from 'materialize-css/dist/js/materialize.js'
 import UserInformationForm from '../components/UserInformationForm'
 import BookingComponet from  '../components/BookingComponent.vue'
 export default {
@@ -33,11 +41,18 @@ export default {
             this.$store.state.disable.editUserInfo = false;
         }
     },
+    mounted(){
+        let colap = document.querySelectorAll('.collapsible');
+        M.Collapsible.init(colap);
+    }
   
 }
 </script>
 
 <style scoped>
+.container .row .book{
+    margin-top: 1vh;
+} 
 div #nav{
     padding: 3vh 2vw 0vh 2vw;
 }
