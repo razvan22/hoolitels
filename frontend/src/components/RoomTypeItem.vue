@@ -13,13 +13,19 @@
               }})</span
             >
           </div>
-          <div class="col s5">
+          <div class="col s3 center-align">
             <select v-model="p.selectedRoom">
-              <option value disabled selected>Välj antal rum</option>
-              <option v-for="n in p.count" :key="n" :value="n">{{ n }}</option>
+              <!-- <option value disabled selected>Välj antal rum</option> -->
+              <option
+                v-for="n in p.count"
+                :key="n"
+                :value="n"
+                :selected="n === 1 ? true : false"
+                >{{ n }}</option
+              >
             </select>
           </div>
-          <div class="col s2">
+          <div class="col s5 right-align">
             <router-link
               to="/"
               class="waves-effect waves-light cyan darken-2 btn-small"
