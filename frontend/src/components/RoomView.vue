@@ -1,5 +1,4 @@
 <template>
-
   <div class="z-depth-1">
     <!-- <div class="divider"></div> -->
     <div class="row">
@@ -43,12 +42,12 @@
           </li>   
         </ul>
       </div>
-      <div class="button-book col offset-s4 ">
-             <router-link
-        to="/"
-        class="waves-effect waves-light  cyan darken-2 btn-small"
-        >Boka
-      </router-link>
+      <div class="button-book col offset-s4">
+        <router-link
+          to="/"
+          class="waves-effect waves-light cyan darken-2 btn-small"
+          >Boka</router-link
+        >
       </div>
     </div>
     <div class="row">
@@ -120,7 +119,6 @@ export default {
 } */
 .room-img {
   width: 210px;
-
 }
 
 span em {
