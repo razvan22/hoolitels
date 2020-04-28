@@ -8,12 +8,14 @@
       <span>,{{ this.$store.state.resultSortFilter.dist_to_town }}</span>
     </div>
     <SortAndFilter />
+    <div :key="newHotels">
     <DisplayHotel
-      v-for="h in city.hotels"
+      v-for="h in hotels" 
       :key="h.id"
       :hotel="h"
       :DisplayRooms="false"
     />
+    </div>
   </body>
 </template>
 
@@ -26,6 +28,8 @@ export default {
   data() {
     return {
       city: {},
+      newHotels: 0,
+      hotels: [],
     };
   },
 
@@ -33,6 +37,14 @@ export default {
     bus.$on("changeIt", (data) => {
       console.log("We got some new data from the filter!!!", data);
       this.getCity();
+      if(this.$store.state.resultSortFilter.dist_to_beach){
+        console.log("distans strand", this.city.hotels.length)
+        this.hotels = this.city.hotels.filter(h=> h.distance_to_beach <= this.$store.state.resultSortFilter.dist_to_beach)
+        console.log("after filter", this.hotels.length)
+        this.newHotels +=1;
+       
+      }
+    
     });
   },
 
@@ -52,6 +64,7 @@ export default {
       );
       response = await response.json();
       this.city = response;
+      this.hotels = this.city.hotels;
     },
   },
 };

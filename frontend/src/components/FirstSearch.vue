@@ -58,7 +58,6 @@ export default {
       },
       set(value) {
         this.$store.commit("setSelectedCity", value);
-        console.log("value" + value);
       }
     }
   },
@@ -109,8 +108,6 @@ export default {
 .headline {
   color: rgb(253, 253, 253);
   margin: 20px;
-
-
 }
 
 .icon_in {
