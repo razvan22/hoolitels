@@ -18,14 +18,9 @@ public class Country {
     @Column(columnDefinition = "VARCHAR")
     private String name;
 
-//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "country")
-//    @JsonManagedReference("userCountryBackReference")
-//    private List<User> users = new ArrayList<>();
-
     public Country() {
     }
 
-    @JsonIgnore
     public long getId() {
         return id;
     }

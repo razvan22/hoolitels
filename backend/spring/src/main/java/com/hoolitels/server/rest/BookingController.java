@@ -44,8 +44,9 @@ public class BookingController {
         booking.getRoombookings().forEach(rb ->
                 rbLocal.add(new Roombooking(booking,
                                             (roomRepository.findById(rb.getRoom_id())).get(),
-                                            rb.isExtra_bed(),
-                                            rb.getFood_cost())));
+                                            rb.getExtra_bed(),
+                                            rb.getFood_cost(),
+                                            rb.getRoom_cost())));
         booking.setRoomBookings(rbLocal);
 
         List<Roombooking> rbs = booking.getRoombookings();
