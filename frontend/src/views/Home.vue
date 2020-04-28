@@ -1,24 +1,22 @@
 <template>
-<body>
-  <!-- <FirstSearch /> -->
-  <Review />
-</body>
+  <body>
+    <FirstSearch />
+  </body>
 </template>
 
 <script>
-// import FirstSearch from "@/components/FirstSearch.vue";
-import Review from "@/components/Review.vue"
-export default {
-  name: "Home",
-  components: {
-    // FirstSearch
-    Review
+  import FirstSearch from '@/components/FirstSearch.vue'
+
+  export default {
+    name: 'Home',
+    components: {
+      FirstSearch,
+    },
   }
-};
 </script>
 
 <style scoped>
-body {
-  /* background-image: url("@/../../assets/header-img.jpg") !important; */
-}
+  body {
+    /* background-image: url("@/../../assets/header-img.jpg") !important; */
+  }
 </style>

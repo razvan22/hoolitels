@@ -1,12 +1,9 @@
 <template>
-  <div class="container">
+  <div id="review-modal" class="modal">
     <div class="card">
       <div class="row">
         <div class="col s12 m5">
-          <h5 class="center-align title">
-            <i class="material-icons prefix teal-text">mode_edit</i> Lämna ett
-            omdöme!
-          </h5>
+          <h5 class="center-align title">Lämna ett omdöme!</h5>
           <h6 class="center-align title">Du besökte hoteldotname</h6>
           <div class="row">
             <div class="grade">
@@ -14,7 +11,7 @@
                 :show-rating="false"
                 :star-size="40"
                 :increment="0.5"
-                v-model="rating"
+                v-model="reviewRating"
               ></star-rating>
             </div>
           </div>
@@ -26,20 +23,10 @@
         />
         <form class="col s12">
           <div class="row">
-            <div class="input-field col s7">
-              <input
-                id="input_text"
-                type="text"
-                data-length="20"
-                maxlength="20"
-              />
-              <label for="input_text">Rubrik</label>
-            </div>
-          </div>
-          <div class="row">
             <div class="input-field col s12">
               <textarea
                 id="textareareview"
+                v-model="reviewText"
                 class="materialize-textarea"
                 data-length="120"
                 maxlength="120"
@@ -54,7 +41,7 @@
           class="btn waves-effect waves-light"
           type="submit"
           name="action"
-          :disabled="!isSendable"
+          v-on:click="postReview"
         >
           Lämna in
           <i class="material-icons right">send</i>
@@ -77,27 +64,49 @@
 
     data() {
       return {
-        textCountTitle: 0,
+        reviewRating: 3,
+        reviewText: '',
+        review: {
+          rating: 0,
+          text: '',
+          user: {
+            id: 0,
+          },
+          hotel: {
+            id: 0,
+          },
+        },
         textCountReview: 0,
-        isSendable: false,
-        rating: 3,
       }
     },
 
     mounted() {
       document.addEventListener('DOMContentLoaded', function() {
-        this.textCountTitle = document.querySelectorAll(
-          '#input_text, #textareatitle'
-        )
         this.textCountReview = document.querySelectorAll(
           '#input_text, #textareareview'
         )
-        M.CharacterCounter.init(this.textCountTitle)
         M.CharacterCounter.init(this.textCountReview)
       })
     },
 
-    methods: {},
+    methods: {
+      async postReview() {
+        this.review.rating = this.reviewRating * 2
+        this.review.text = this.reviewText
+        this.review.user.id = this.$store.state.user.id
+        this.review.hotel.id = 1800;
+        // this.hotel.id;
+
+        fetch('/rest/review', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.review),
+          redirect: 'manual',
+        })
+        console.log(this.review)
+        // Close modal, success message
+      },
+    },
   }
 </script>
 
