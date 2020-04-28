@@ -1,24 +1,19 @@
 let { $, sleep } = require('./funcs');
 module.exports = function () {
 
-
  sleepTime = 1000;
 
- 
  this.Given(/^I click on Don't have an account\? link text$/, async function () {
   let newAccount = await $('#slide-out > div > div.container > div:nth-child(2) > div:nth-child(4) > a > p');
   newAccount.click()
   assert(newAccount, 'Expected to find the "dont have an account?" text');
  });
 
-
  this.Given(/^I click anywhere on the site$/, async function () {
   let randomClick = await $('body > div.sidenav-overlay');
   randomClick.click()
   assert(randomClick, 'Expected to leave the overlay');
  });
-
-
 
  this.When(/^I enter my för och efternamn$/, async function () {
   let myFullName = 'Marian Towfik'
@@ -65,9 +60,7 @@ module.exports = function () {
   await sleep(sleepTime)
  });
 
-
  this.When(/^I enter my postnummer$/, async function () {
- 
   let postalcode = '12345';
   let postalcoderInput = await $('#zip');
   await postalcoderInput.sendKeys(postalcode)
@@ -95,7 +88,6 @@ module.exports = function () {
 
 
  this.When(/^I enter my telefonnummer$/, async function () {
-  
   let phonenumber = '0704563735'
   let numberInput = await $(' #telephone')
   await numberInput.sendKeys(phonenumber)
@@ -111,13 +103,10 @@ module.exports = function () {
   await sleep(sleepTime)
  });
 
-
  this.Then(/^I should have a account$/, function (callback) {
   // Write code here that turns the phrase above into concrete actions
   callback(null, 'pending');
  });
-
-
 
 
 }
