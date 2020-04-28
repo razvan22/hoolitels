@@ -13,7 +13,7 @@
             "name": "that I am at the Hoolitels homepage",
             "result": {
               "status": "passed",
-              "duration": 3842947700
+              "duration": 3869460700
             },
             "line": 4,
             "match": {
@@ -26,7 +26,7 @@
             "name": "I click on the user icon",
             "result": {
               "status": "passed",
-              "duration": 6585900
+              "duration": 4047900
             },
             "line": 5,
             "match": {
@@ -39,7 +39,7 @@
             "name": "I enter \"user\" in the email field",
             "result": {
               "status": "passed",
-              "duration": 719269700
+              "duration": 717450400
             },
             "line": 6,
             "match": {
@@ -52,7 +52,7 @@
             "name": "I enter \"user\" in the password field",
             "result": {
               "status": "passed",
-              "duration": 507401200
+              "duration": 508741500
             },
             "line": 7,
             "match": {
@@ -65,7 +65,7 @@
             "name": "I click the login button",
             "result": {
               "status": "passed",
-              "duration": 2037740400
+              "duration": 2046463599
             },
             "line": 8,
             "match": {
@@ -78,7 +78,7 @@
             "name": "I should be logged in",
             "result": {
               "status": "passed",
-              "duration": 3329400
+              "duration": 5224301
             },
             "line": 9,
             "match": {
@@ -90,7 +90,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 866185700
+              "duration": 879978599
             },
             "hidden": true,
             "match": {
@@ -113,7 +113,7 @@
             "name": "that I am at the Hoolitels homepage",
             "result": {
               "status": "passed",
-              "duration": 4315147501
+              "duration": 4241485600
             },
             "line": 4,
             "match": {
@@ -126,7 +126,7 @@
             "name": "I click on the user icon",
             "result": {
               "status": "passed",
-              "duration": 4027200
+              "duration": 3839701
             },
             "line": 5,
             "match": {
@@ -139,7 +139,7 @@
             "name": "I enter \"tdinsdaleg@naver.com\" in the email field",
             "result": {
               "status": "passed",
-              "duration": 718672700
+              "duration": 503137600
             },
             "line": 6,
             "match": {
@@ -152,7 +152,7 @@
             "name": "I enter \"3uROILP\" in the password field",
             "result": {
               "status": "passed",
-              "duration": 509005500
+              "duration": 504918401
             },
             "line": 7,
             "match": {
@@ -165,7 +165,7 @@
             "name": "I click the login button",
             "result": {
               "status": "passed",
-              "duration": 2048650401
+              "duration": 2043131001
             },
             "line": 8,
             "match": {
@@ -178,7 +178,7 @@
             "name": "I should be logged in",
             "result": {
               "status": "passed",
-              "duration": 3765299
+              "duration": 11295699
             },
             "line": 9,
             "match": {
@@ -190,7 +190,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 761573801
+              "duration": 779647700
             },
             "hidden": true,
             "match": {
