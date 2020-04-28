@@ -1,21 +1,20 @@
 <template>
   <div>
     <div class="row">
-      <h6>{{ Type.Kind }} - antal rum: {{ Type.count }}</h6>
+      <h6>{{ Type.Kind }} - antal lediga rum: {{ Type.count }}</h6>
     </div>
     <div v-for="(p, index) in this.priceRange" :key="index">
-      <div v-if="p.count > 1">
-        <div class="row">
-          <div class="col s4">
-            <span
-              >Pris: {{ numFormatter.format(p.room.price) }} ({{
-                p.count
-              }})</span
+      <!-- <div v-if="p.count > 1"> -->
+        <div class="row valign-wrapper">
+          <div class="col s11 l12">
+            <span class="room-price"
+              >Pris: {{ numFormatter.format(p.room.price)}}</span
             >
           </div>
-          <div class="col s3 center-align">
+          
+          <div id ="selected-room col s1 l2">
             <select v-model="p.selectedRoom">
-              <!-- <option value disabled selected>Välj antal rum</option> -->
+            <option value>0</option>
               <option
                 v-for="n in p.count"
                 :key="n"
@@ -25,16 +24,9 @@
               >
             </select>
           </div>
-          <div class="col s5 right-align">
-            <router-link
-              to="/"
-              class="waves-effect waves-light cyan darken-2 btn-small"
-              >Boka</router-link
-            >
-          </div>
-        </div>
+        
       </div>
-      <div v-else>
+      <!-- <div v-else>
         <div class="row">
           <div class="col s9">
             <span>Pris: {{ numFormatter.format(p.room.price) }}</span>
@@ -47,7 +39,7 @@
             >
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -56,7 +48,7 @@
 import M from "materialize-css";
 export default {
   name: "RoomTypeItem",
-  props: [`Type`],
+  props: [`Type`, `Number`],
   data() {
     return {
       numFormatter: new Intl.NumberFormat("sv-SE", {
@@ -65,12 +57,15 @@ export default {
         minimumFractionDigits: 0,
       }),
       priceRange: [],
+      
     };
+    
   },
 
   computed: {},
 
   mounted() {
+      
     for (var index = 0; index < this.Type.count; index++) {
       let fIndex = this.priceRange.findIndex((e) => {
         return e.room.price === this.Type.RoomList[index].price;
@@ -90,7 +85,6 @@ export default {
         return a.room.price - b.room.price;
       });
     } // for index...
-
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems);
   },
@@ -98,9 +92,16 @@ export default {
   updated() {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems);
+ 
   },
 
-  methods: {},
+  methods: {
+    getSelectedRooms: function(){
+      for ( let p of this.priceRange){
+        console.log("selectedRoom from pricerange ", p.selectedRoom)
+      }
+    }
+  },
 };
 </script>
 
@@ -116,4 +117,10 @@ h4 {
 /* .select-wrapper input.select-dropdown {
   font-size: 10px !important;
 } */
+
+.room-price{
+ font-size: medium;
+
+
+}
 </style>

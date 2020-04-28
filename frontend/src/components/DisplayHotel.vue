@@ -20,7 +20,7 @@
                 </li>
               </ul>
             </div>
-            <div class="contact col s5 m4 l3">
+            <div class="contact col offset-s2 s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
                 <i
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div v-if="DisplayRooms">
-            <RoomTypeList :rooms="hotel.rooms" />
+            <RoomTypeList :rooms="hotel.rooms" :ref="'roomTypeList' + hotel.id"/>
             <!-- <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" /> -->
           </div>
         </div>
@@ -69,6 +69,7 @@
             >Boka rum</router-link
           >
         </div>
+       
       </div>
     </div>
     <div class="col m3"></div>
@@ -91,17 +92,18 @@ export default {
       return this.hotel.amenities && this.hotel.amenities.length;
     },
   },
-  mounted() {},
+  mounted() {
+    console.log("Displayhotell ref", this.$refs );
+  },
+  
   components: {
     // RoomView,
     RoomTypeList,
+  
   },
 
   methods: {
-    clickHotel() {
-      this.$store.commit("setSelectedHotel", this.hotel);
-     
-    }
+
   }
 };
 </script>

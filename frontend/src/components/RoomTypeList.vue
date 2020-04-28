@@ -2,7 +2,8 @@
   <div>
     <div v-for="(t, index) in this.TypeList" :key="index">
       <div v-if="t.count > 0">
-        <RoomTypeItem :Type="t" />
+        <RoomTypeItem :Type="t" :number="index" />
+        <div class="divider"></div>
       </div>
     </div>
   </div>
@@ -49,11 +50,24 @@ export default {
     // });
   },
 
+  mounted(){
+    console.log( this.$refs );
+  },
+
   components: {
     RoomTypeItem,
   },
 
-  methods: {},
+  methods: {
+    // getSelectedRoom: function(){
+    //   console.log("RoomTypeList getselectedRoom")
+    //   for(let ref in this.$refs){
+    //     console.log(ref)
+    //      this.$refs[ref].getSelectedRooms()
+    //   } 
+    // }
+
+  },
 };
 </script>
 
