@@ -39,32 +39,25 @@
 
                 <div class="row">
 
-                    <div class="col s12 m6 l6">
-                        <div class="input-field" v-if="!ifLogged">
-                            <input id="country" type="text" class="validate" v-model="user.country">
-                            <label v-if="!ifLogged" for="country">Land</label>
+                    <div class="col s12 m8 l8">
+                        <div class="input-field" v-if="!ifLogged" >
+                               <select v-model="selectedCountry" >
+                                <option value="" disabled selected  >Välj ditt land</option>
+                                <option   v-for="country in countries" :key="country.id" >{{country.name}}</option>
+                            </select>
+                            <!-- <input id="country" type="text" class="validate" v-model="user.country">
+                            <label v-if="!ifLogged" for="country">Land</label> -->
                         </div>
                         <div class="input-field" v-if="ifLogged && editMode">
-                            <input id="country" type="text" class="validate" v-model="user.country">
-                            <label v-if="ifLogged" for="country"></label>
+                            <input id="country" type="text" class="validate">
+                            <label v-if="ifLogged" for="country">{{getUserCountry}}</label>
                         </div>
                         <div class="input-field"  v-if="ifLogged && !editMode">
-                            <input disabled  id="disabled" type="text" class="validate center" v-model="user.country">
-                            <label for="disabled"></label>
+                            <input disabled  id="disabled" type="text" class="validate center">
+                            <label for="disabled">{{getUserCountry}}</label>
                         </div>
                     </div>
-                    <div class="col s12 m12 l12" >
-                        <div class="input-field">
-                            <select>
-                                <option value="" disabled selected>Välj ditt land</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col s12 m6 l6">
+                    <div class="col s12 m4 l4">
                         <div class="input-field" v-if="!ifLogged">
                             <input id=" city" type="text" class="validate" v-model="user.city">
                             <label v-if="!ifLogged" for="city">Stad</label>
@@ -82,7 +75,7 @@
                 </div>
                 <div class="row">
 
-                        <div class="col s4 m4 l4">
+                    <div class="col s4 m4 l4">
                         <div class="input-field" v-if="!ifLogged">
                             <input id="zip" type="text" class="validate" v-model="user.zip">
                             <label v-if="!ifLogged" for="zip">postnummer</label>
@@ -194,7 +187,7 @@ export default {
             user:{
                 name:this.$store.state.user.name,
                 email: this.$store.state.user.email,
-                country:this.$store.state.user.country,
+                country:this.$store.state.user.country_id,
                 city:this.$store.state.user.city,
                 address:this.$store.state.user.address,
                 zip:this.$store.state.user.zip,
@@ -203,19 +196,35 @@ export default {
                 phone: this.$store.state.user.phone
             },
             
-            editMode: false
+            editMode: false,
+            countries:this.$store.state.countries,
+            selectedCountry: ''
             
         }
     },
     computed:{
+        getUserCountry(){
+        let fIndex = this.countries.findIndex((e) => {
+        return e.id === this.user.country});
+        if(fIndex > -1){
+            return this.countries[fIndex].name
+        }else{
+            return "";
+        }
+        }
+        ,
         getUser(){
             return this.$store.state.user
         },
         ifLogged(){
             return this.$store.state.userLogged
-        }
-    },
+        },
+
+    }
+    ,
     mounted(){
+        this.$store.dispatch("isUserLogged");
+        this.$store.dispatch("getCountries");
         let countrySelector = document.querySelectorAll('select');
         M.FormSelect.init(countrySelector);
     },

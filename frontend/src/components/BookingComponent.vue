@@ -38,9 +38,6 @@ export default {
             bookings: this.$store.state.user.bookings
         }
     },
-    created(){
-        console.log(this.bookings)
-    }
 
     
 }
