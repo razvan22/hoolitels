@@ -36,11 +36,6 @@ public class User {
     @Column(nullable = false)
     private String phone;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "country_id", nullable = false)
-    @JsonBackReference("userBackReference")
-    private Country country;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference("userBookingBackReference")
     private Set<Booking> bookings;
@@ -48,6 +43,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference("reviewBackReference")
     private Set<Review> reviews;
+
+//    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "country_id", nullable = false)
+//    @JsonBackReference("userCountryBackReference")
+//    private Country country;
+    private long country_id;
 
     public User(){}
 
@@ -91,8 +92,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getCountryName() {
-        return country.getName();
+//    public String getCountryName() {
+//        return country.getName();
+//    }
+
+    public long getCountry_id() {
+        return country_id;
     }
 
     public void setName(String name) {
@@ -133,7 +138,11 @@ public class User {
         return reviews;
     }
 
-    public void setCountry(Optional<Country> country) {
-        this.country = country.orElse(null);
+//    public void setCountry(Optional<Country> country) {
+//        this.country = country.orElse(null);
+//    }
+
+    public void setCountry_id(long country_id) {
+        this.country_id = country_id;
     }
 }

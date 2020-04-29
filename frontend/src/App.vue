@@ -20,11 +20,14 @@ import Footer from "@/components/Footer.vue";
 export default {
   components: {
     Header,
-    Footer
+    Footer,
   },
   created() {
-    this.$store.dispatch("getCities"), this.$store.dispatch("getAmenities");
-  }
+    this.$store.dispatch("getCities"),
+    this.$store.dispatch("getAmenities");
+    this.$store.dispatch("isUserLogged");
+    this.$store.dispatch("getCountries");
+  },
 };
 </script>
 
@@ -33,6 +36,7 @@ export default {
 #app {
   /* flex: 1 0 auto; */
 }
+
 .back {
   flex-direction: column;
   display: flex;

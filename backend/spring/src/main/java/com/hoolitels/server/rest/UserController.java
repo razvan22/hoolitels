@@ -4,14 +4,12 @@ import com.hoolitels.server.entity.Booking;
 import com.hoolitels.server.entity.User;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,14 +32,20 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User userToBeCreated) {
+//        Optional<Country> cOpt = countryRepository.findById(userToBeCreated.getCountry_id());
+//        if (cOpt.isEmpty()) return null;
+//
+//        userToBeCreated.setCountry(cOpt.get());
         return userRepository.save(userToBeCreated);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @DeleteMapping("all")
     private void deleteAllUsers() {
-        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Collection<? extends GrantedAuthority> auth = user.getAuthorities();
-        if (user.getAuthorities().contains("ROLE_ADMIN")) userRepository.deleteAll();
+//        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Collection<? extends GrantedAuthority> auth = user.getAuthorities();
+//        if (user.getAuthorities().contains("ROLE_ADMIN")) userRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
     public String currentUserName(Principal principal) {

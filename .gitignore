@@ -34,3 +34,4 @@ build/
 ### NPM ###
 /frontend/node_modules
 node_modules
+frontend\tests\selenium\reports

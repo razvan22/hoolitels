@@ -49,7 +49,6 @@ public class Review {
         return user.getName();
     }
 
-    @JsonIgnore
     public long getUser_id() {
         return user.getId();
     }
@@ -62,7 +61,6 @@ public class Review {
         return hotel.getName();
     }
 
-    @JsonIgnore
     public long getHotel_id() {
         return hotel.getId();
     }

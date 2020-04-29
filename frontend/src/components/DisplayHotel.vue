@@ -5,7 +5,9 @@
       <div class="card hoverable">
         <div class="card-image">
           <img :src="require('@/assets/' + hotel.images[0].url)" />
-          <span class="card-title">{{ hotel.name }}</span>
+          <span class="card-title"
+            ><strong class="hotel-name">{{ hotel.name }}</strong></span
+          >
         </div>
         <div class="card-content">
           <div class="row">
@@ -19,15 +21,15 @@
                   </div>
                 </li>
               </ul>
-            </div>            
-            <div class="contact col s5 m4 l3">
+            </div>
+            <div class="contact col offset-s2 s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
                 <i
                   v-for="n in 4"
-                  :key="n"                  
+                  :key="n"
                   class=" rating__icon--star fa fa-star"
-                ></i>                
+                ></i>
               </div>
             </div>
           </div>
@@ -35,36 +37,50 @@
             <div class="col distance">
               <h4>Avstånd</h4>
               <ul>
-                <li>
+                <li class="valign-wrapper">
                   <i class="material-icons tiny">location_city</i>
-                  {{hotel.distance_to_town_center}} meter till centrum
+                  {{ hotel.distance_to_town_center }} meter till centrum
                 </li>
-                <li>
+                <li class="valign-wrapper">
                   <i class="material-icons tiny">beach_access</i>
-                  {{hotel.distance_to_beach}} meter till stranden
+                  {{ hotel.distance_to_beach }} meter till stranden
                 </li>
               </ul>
             </div>
             <div class="contact col">
               <h4>Kontakt</h4>
               <ul>
-                <li>
-                  <i class="material-icons tiny">email</i>
-                  {{hotel.email}}
+                <li class="valign-wrapper">
+                  <i class="material-icons tiny"> email</i>
+                  {{ hotel.email }}
                 </li>
-                <li>
-                  <i class="material-icons tiny">contact_phone</i>
-                  {{hotel.phone}}
+                <li class="valign-wrapper">
+                  <i class="material-icons tiny"> contact_phone</i>
+                  {{ hotel.phone }}
                 </li>
               </ul>
             </div>
           </div>
           <div v-if="DisplayRooms">
-            <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" />
+            <RoomTypeList
+              :rooms="hotel.rooms"
+              :ref="'roomTypeList' + hotel.id"
+            />
+            <!-- <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" /> -->
           </div>
         </div>
-        <div class="card-action align-center">
-          <router-link :to="{ name: 'HotelVy', params: {hotel: this.hotel}}">Boka rum</router-link>
+        <div class="card-action align-center" v-if="!DisplayRooms">
+          <router-link :to="{ name: 'HotelVy', params: { hotel: this.hotel } }"
+            >Boka rummmmmm</router-link
+          >
+        </div>
+        <div v-else class="card-action align-center">
+          <router-link
+            :to="{ name: 'Order' }"
+            :disabled="buttonShouldBeDisabled"
+            >Boka rum ({{ this.totRoomsSelected }} av
+            {{ this.$store.state.booking.rooms }} bokade)</router-link
+          >
         </div>
       </div>
     </div>
@@ -73,36 +89,57 @@
   
 </template>
 <script>
- import RoomView from "@/components/RoomView.vue";
+// import RoomView from "@/components/RoomView.vue";
+import RoomTypeList from "@/components/RoomTypeList";
+import { bus } from "../main";
 
 export default {
   name: "DisplayHotel",
   props: [`hotel`, `DisplayRooms`],
   data() {
     return {
-    isHidden: false
+      isHidden: false,
+      selectedRoomsPerType: [0, 0, 0, 0],
+      totRoomsSelected: 0,
     };
   },
-  computed:{
-    amenitiesIsEmpty(){
-      return this.hotel.amenities && this.hotel.amenities.length 
-    }
+  computed: {
+    buttonShouldBeDisabled: {
+      get() {
+        return this.totRoomsSelected < this.$store.state.booking.rooms;
+      }
+    },
 
+    amenitiesIsEmpty() {
+      return this.hotel.amenities && this.hotel.amenities.length;
+    },
   },
-  mounted() {},
+
+  created() {
+    bus.$on("selectedRooms", (data) => {
+      this.selectedRoomsPerType[data.listNum] = parseInt(data.newVal);
+      this.calcTotRoomsSelected();
+    });
+  },
+
   components: {
-    RoomView
- 
-
+    RoomTypeList,
   },
-  methods:{
-    clickHotel(){
-     this.$store.commit('setSelectedHotel', this.hotel)
-     console.log("hotell", this.hotel)
-    
-    }, 
-  }
 
+  methods: {
+    calcTotRoomsSelected: function() {
+      let sum = 0;
+      for (let i = 0; i < this.selectedRoomsPerType.length; i++) {
+        sum += this.selectedRoomsPerType[i];
+      }
+      this.totRoomsSelected = sum;
+      // return sum;
+    },
+
+    getSum: function(total, num) {
+      return total + parseInt(num);
+    },
+  },
 };
 </script>
 
@@ -144,6 +181,12 @@ h4 {
 .contact h4{
   font-size:large;
 }
-
-
+.hotel-name {
+  text-shadow: 5px;
+  color: black;
+  background: white;
+}
+.card-image img {
+  opacity: 0.8;
+}
 </style>

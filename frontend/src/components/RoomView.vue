@@ -42,12 +42,12 @@
           </li>   
         </ul>
       </div>
-      <div class="button-book col offset-s4 ">
-             <router-link
-        to="/"
-        class="waves-effect waves-light  cyan darken-2 btn-small"
-        >Boka
-      </router-link>
+      <div class="button-book col offset-s4">
+        <router-link
+          to="/"
+          class="waves-effect waves-light cyan darken-2 btn-small"
+          >Boka</router-link
+        >
       </div>
     </div>
     <div class="row">
@@ -117,6 +117,9 @@ export default {
 /* .valign-wrapper go-right {
   justify-content: flex-end;
 } */
+.room-img {
+  width: 210px;
+}
 
 span em {
   font-size: 1.5em;

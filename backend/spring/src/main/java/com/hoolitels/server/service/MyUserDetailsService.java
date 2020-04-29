@@ -45,7 +45,7 @@ public class MyUserDetailsService implements UserDetailsService {
         u.setZip("11111");
         u.setCity("usercity");
         u.setPhone("012345678");
-        u.setCountry(countryRepository.findById(227L));
+        u.setCountry_id(227L);
         try {
             userRepository.save(u);
         } catch (Exception e) {

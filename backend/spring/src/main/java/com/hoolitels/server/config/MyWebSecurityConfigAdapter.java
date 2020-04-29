@@ -24,14 +24,16 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, "/rest/city/**").permitAll()
         .antMatchers(HttpMethod.GET,"/rest/amenity/**").permitAll()
         .antMatchers(HttpMethod.GET,"/rest/country/**").permitAll()
+        .antMatchers(HttpMethod.GET,"/rest/search/**").permitAll()
+        .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
         .antMatchers("/rest/**").authenticated()
         .antMatchers("/api/**").authenticated()
-        .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
         .antMatchers(HttpMethod.DELETE,"/rest/user").authenticated()
         .antMatchers(HttpMethod.POST,"/login").permitAll()
         .antMatchers("/").permitAll()
         .and()
-        .formLogin();
+        .formLogin()
+        .and().logout().deleteCookies("JESSIONID");
     }
 
     @Override

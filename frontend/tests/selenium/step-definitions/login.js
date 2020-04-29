@@ -9,7 +9,7 @@ module.exports = function () {
       });
 
       this.When(/^I enter "([^"]*)" in the email field$/, async function (email) {
-        let emailBox = await $('#email');
+        let emailBox = await $('#username');
         emailBox.sendKeys(email);
         await sleep(500);
       });
@@ -22,7 +22,7 @@ module.exports = function () {
   
       this.When(/^I click the login button$/, async function () {
         //let loginButton = await driver.getElementByTagName('button');
-        let loginButton = await $('#slide-out > div > div.container > div:nth-child(2) > div:nth-child(3) > button');
+        let loginButton = await $('button');
         loginButton.click();
         console.log(loginButton);
         await sleep(2000);        
@@ -30,8 +30,8 @@ module.exports = function () {
 
       //finish this code when login is working!!
       this.Then(/^I should be logged in$/, async function () {
-        let something = await $('nameofsomething');
-        assert(something, 'Expected to be logged in');
+        let loggedIn = await $('#logged');
+        assert(loggedIn, 'Expected to be logged in');
       
       });
 }
