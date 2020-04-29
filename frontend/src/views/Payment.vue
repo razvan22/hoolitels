@@ -24,7 +24,7 @@
         </div>
         <div class="row">
           <div class="col align-center offset-s4 offset-m5 offset-l5">
-            <router-link to="/" a class="waves-effect waves-light btn cyan darken-2 ">Betala</router-link>
+            <router-link to="/" a class="btn-payment waves-effect waves-light btn cyan darken-2  ">Betala</router-link>
           </div>
         </div>
       </div>
@@ -40,5 +40,8 @@ export default {};
 .payment-form {
   background: white;
   padding-top: 2vh;
+}
+.btn-payment{
+   border-radius: 25px;
 }
 </style>

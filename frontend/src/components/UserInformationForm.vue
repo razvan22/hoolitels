@@ -155,9 +155,8 @@
             <div class="container">
                 <div class="row" id="submit-btn">
                     <div class="col">
-                        <a v-if="ifLogged&&!editMode" v-on:click="editMode = true"  class="light-blue lighten-1 btn-floating waves-effect waves-light btn-medium"><i class="material-icons">edit</i></a>
-                        <button v-if="!ifLogged||editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in
-                            <i class="material-icons right">send</i>
+                        <a v-if="ifLogged&&!editMode" v-on:click="editMode = true"  class=" lighten-1 btn-floating waves-effect waves-light btn-medium"><i class="material-icons">edit</i></a>
+                        <button v-if="!ifLogged||editMode" v-on:click="editMode = false" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Registrera
                         </button>
                     </div>
                 </div>
@@ -237,5 +236,9 @@ export default {
 #user-form{
     display: flex;
     flex-direction: column;
+}
+
+.btn-register {
+     border-radius: 25px;
 }
 </style>
