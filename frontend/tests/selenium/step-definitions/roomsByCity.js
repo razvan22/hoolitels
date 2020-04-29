@@ -6,6 +6,7 @@ module.exports = function () {
         let logo = await $('#app');
         assert(logo, 'Expected there to be a div element named "app"');
         assert(homepage, 'Expected the homepage to load');
+        await sleep(200)
     });
 
     this.When(/^I select Malmö from the välj stad dropdown menu$/, async function () {
@@ -17,6 +18,10 @@ module.exports = function () {
         malmo.click();
         await sleep(200)
         //write assert test that Malmö is in the välj stad dropdown
+        //'body > main > div > div.row > div:nth-child(1)'
+       
+        //#select-options-db935abb-f02c-41e7-6c9a-303f8d1d60dd7
+       //dropDown  #select-options-3dc0315d-4269-7516-cf1d-50312ef6ac760 > span:nth-child(1)
     });
 
     this.When(/^I click the sök button$/, async function () {

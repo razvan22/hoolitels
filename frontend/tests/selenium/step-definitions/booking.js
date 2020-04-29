@@ -29,28 +29,28 @@ module.exports = function () {
       });
 
     this.When(/^I choose Extrasäng$/, async function () {
-        let extraSang = await$();
+        let extraSang = await $();
         await extraSang.click();
         asert(extraSang, "Expcted Extrasäng to be chosen as add-on");
         await sleep (1000);
       });
 
       this.When(/^I choose Halvpension$/, async function () {
-        let halvPension = await$();
+        let halvPension = await $();
         await halvPension.click();
         asert(halvPension, "Expcted Halvpension to be chosen as add-on");
         await sleep (1000);
       });
 
       this.When(/^I choose Helpension$/, async function () {
-        let helPension = await$();
+        let helPension = await $();
         await helPension.click();
         asert(helPension, "Expcted Helpension to be chosen as add-on");
         await sleep (1000);
       });
 
       this.When(/^I choose All\-inclusive$/, async function () {
-        let allInclusive = await$();
+        let allInclusive = await $();
         await allInclusive.click();
         asert(allInclusive, "Expcted All-inclusive to be chosen as add-on");
         await sleep (1000);
