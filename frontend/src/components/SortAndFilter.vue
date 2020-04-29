@@ -32,7 +32,7 @@
         </label>
         <li class="input-field small-margin-left">
           <div class="row">
-            <div class="col s6">
+            <div class="dist-to col s6">
               <label for="dist_to_beach">Avstånd till strand (m)</label>
               <select
                 v-model="sortFilter.dist_to_beach"
@@ -47,7 +47,7 @@
                 }}</option>
               </select>
             </div>
-            <div class="col s6">
+            <div class="dist-to col s6">
               <label for="dist_to_town">Avstånd till centrum (m)</label>
               <select
                 v-model="sortFilter.dist_to_town"
@@ -185,7 +185,13 @@ export default {
   margin-left: 5px;
 }
 
-.rounded-btn {
+.rounded-btn  {
   border-radius: 25px;
 }
+
+.dist-to > label{
+  font-size: 0.7rem;
+}
+
+
 </style>

@@ -64,20 +64,19 @@
               :rooms="hotel.rooms"
               :ref="'roomTypeList' + hotel.id"
             />
-            <!-- <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" /> -->
           </div>
         </div>
         <div class="card-action align-center" v-if="!DisplayRooms">
           <router-link :to="{ name: 'HotelVy', params: { hotel: this.hotel } }"
-            >Boka rummmmmm</router-link
+            >Boka rum på detta hotell</router-link
           >
         </div>
         <div v-else class="card-action align-center">
           <router-link
             :to="{ name: 'Order' }"
             :disabled="buttonShouldBeDisabled"
-            >Boka rum ({{ this.totRoomsSelected }} av
-            {{ this.$store.state.booking.rooms }} bokade)</router-link
+            >Boka rum! ({{ this.totRoomsSelected }} av
+            {{ this.numRoomsToBook }} bokade)</router-link
           >
         </div>
       </div>
@@ -85,20 +84,21 @@
     <div class="col m3"></div>
   </div>
 </template>
-<script>
-  // import RoomView from "@/components/RoomView.vue";
-  import RoomTypeList from '@/components/RoomTypeList'
-  import { bus } from '../main'
 
-  export default {
-    name: 'DisplayHotel',
-    props: [`hotel`, `DisplayRooms`],
-    data() {
-      return {
-        isHidden: false,
-        selectedRoomsPerType: [0, 0, 0, 0],
-        totRoomsSelected: 0,
-      }
+<script>
+import RoomTypeList from "@/components/RoomTypeList";
+
+export default {
+  name: "DisplayHotel",
+  props: [`hotel`, `DisplayRooms`],
+  data() {
+    return {
+      isHidden: false,
+    };
+  },
+  computed: {
+    numRoomsToBook() {
+      return this.$store.state.booking.rooms;
     },
     computed: {
       buttonShouldBeDisabled: {
@@ -107,37 +107,29 @@
         },
       },
 
-      amenitiesIsEmpty() {
-        return this.hotel.amenities && this.hotel.amenities.length
-      },
+    totRoomsSelected() {
+      return this.$store.state.roomSelection.totSelectedRooms;
     },
 
-    created() {
-      bus.$on('selectedRooms', (data) => {
-        this.selectedRoomsPerType[data.listNum] = parseInt(data.newVal)
-        this.calcTotRoomsSelected()
-      })
+    buttonShouldBeDisabled() {
+      return this.totRoomsSelected < this.numRoomsToBook;
     },
 
-    components: {
-      RoomTypeList,
+    amenitiesIsEmpty() {
+      return this.hotel.amenities && this.hotel.amenities.length;
     },
 
-    methods: {
-      calcTotRoomsSelected: function() {
-        let sum = 0
-        for (let i = 0; i < this.selectedRoomsPerType.length; i++) {
-          sum += this.selectedRoomsPerType[i]
-        }
-        this.totRoomsSelected = sum
-        // return sum;
-      },
+  created() {
 
-      getSum: function(total, num) {
-        return total + parseInt(num)
-      },
-    },
-  }
+  },
+
+  components: {
+    RoomTypeList,
+  },
+
+  methods: {
+  },
+};
 </script>
 
 <style scoped>
