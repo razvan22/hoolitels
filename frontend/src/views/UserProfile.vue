@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div>
     <div class="container">
       <div class="row">
         <UserInformationForm />
@@ -51,11 +51,13 @@
 <style scoped>
   .collapsible-body {
     background: white;
-  }
-  .container .row .book {
+}
+
+.container .row .book{
     margin-top: 1vh;
-  }
-  div #nav {
+} 
+
+div #nav{
     padding: 3vh 2vw 0vh 2vw;
   }
 
@@ -69,5 +71,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 </style>

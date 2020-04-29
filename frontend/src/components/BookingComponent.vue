@@ -54,7 +54,7 @@
 </template>
 
 <script>
-  export default {
+export default {
     name: 'BookingComponent',
 
     data() {
@@ -62,18 +62,20 @@
         bookings: this.$store.state.user.bookings,
       }
     },
-    mounted() {
-      console.log(this.bookings)
-    },
-  }
+
+    mounted(){
+        console.log(this.bookings)
+    }  
+}
 </script>
 
 <style scoped>
-  #booking #row {
+#booking #row{
     border-radius: 1em;
-    border: solid #e0e0e0;
-  }
-  #booking .row {
-    margin: 2vh 0vw 2vh 0vw;
-  }</style
->>
+    border: solid #e0e0e0 ;
+}
+#booking .row {
+
+    margin: 2vh 0vw 2vh 0vw
+}
+</style>
