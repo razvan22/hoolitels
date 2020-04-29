@@ -10,6 +10,7 @@ export default new Vuex.Store({
     dateSelected: {
       selectedCity: 0,
     },
+    city: {},
     hotels: [],
     user: {},
     userLogged: false,
@@ -61,6 +62,31 @@ export default new Vuex.Store({
 
     setSelectedRooms(state, value) {
       state.booking.rooms = value;
+    },
+
+    setCheckIn(state, value) {
+      state.booking.check_in = value;
+    },
+
+    setCheckOut(state, value) {
+      state.booking.check_out = value;
+    },
+
+    setCity(state, value) {
+      state.city = value;
+    },
+
+    setHotels(state, value) {
+      state.hotels = value;
+    },
+
+    filterHotels(state) {
+      // Use state.resultSortFilter to create a filtered list
+      if (state.resultSortFilter.dist_to_beach) {
+        state.hotels = state.city.hotels.filter(
+          (h) => h.distance_to_beach <= state.resultSortFilter.dist_to_beach
+        );
+      }
     },
   },
 
@@ -128,6 +154,36 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8070/rest/country");
       response = await response.json();
       commit("setCountries", response);
+    },
+
+    async getCity({ commit, state }) {
+      let searchObj = {
+        city_id: state.dateSelected.selectedCity,
+        start_date: state.booking.check_in,
+        end_date: state.booking.check_out,
+        nr_of_rooms: state.booking.rooms,
+      };
+
+      let response = await fetch(
+        "/rest/city/" + state.dateSelected.selectedCity
+      );
+      console.log("searchObj: ", searchObj, " ", JSON.stringify(searchObj));
+
+      // let response = await fetch("/rest/search/", {
+      //   "method": "GET",
+      //   "headers": {
+      //     "Content-Type": "application/json",
+      //   },
+      //   "body": JSON.stringify(searchObj),
+      // });
+
+      response = await response.json();
+      console.log(response);
+
+      commit("setCity", response);
+      commit("setHotels", response.hotels);
+      // this.city = response;
+      // this.hotels = this.city.hotels;
     },
   },
 
