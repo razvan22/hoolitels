@@ -75,8 +75,11 @@
           >
         </div>
         <div v-else class="card-action align-center">
-          <router-link :to="{ name: 'Order' }"
-            >Boka rum ({{ this.totRoomsSelected }} av {{this.$store.state.booking.rooms}} bokade)</router-link
+          <router-link
+            :to="{ name: 'Order' }"
+            :disabled="buttonShouldBeDisabled"
+            >Boka rum ({{ this.totRoomsSelected }} av
+            {{ this.$store.state.booking.rooms }} bokade)</router-link
           >
         </div>
       </div>
@@ -100,27 +103,12 @@ export default {
     };
   },
   computed: {
-    // totRoomsSelected() {
-    //   let sum = 0;
-    //   for (let i = 0; i < this.selectedRoomsPerType.length; i++) {
-    //     sum += this.selectedRoomsPerType[i];
-    //   }
-    //   return sum;
-    // },
-    // totRoomsSelected() {
-    //   let sum = 0;
-    //   for (let index = 0; index < 4; index++) {
-    //     console.log(
-    //       "index: ",
-    //       index,
-    //       " value: ",
-    //       this.selectedRoomsPerType[index]
-    //     );
+    buttonShouldBeDisabled: {
+      get() {
+        return this.totRoomsSelected < this.$store.state.booking.rooms;
+      }
+    },
 
-    //     sum += this.selectedRoomsPerType[index];
-    //   }
-    //   return sum; //this.selectedRoomsPerType.reduce(this.getSum(), 0);
-    // },
     amenitiesIsEmpty() {
       return this.hotel.amenities && this.hotel.amenities.length;
     },

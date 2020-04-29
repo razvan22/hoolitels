@@ -44,9 +44,6 @@ export default {
         this.TypeList[tIndex].PriceMax = this.rooms[index].price;
       }
     }
-    // this.rooms.foreach(function(room) {
-    //   this.TypeList[room.max_occupany - 1]++;
-    // });
   },
 
   mounted() {
