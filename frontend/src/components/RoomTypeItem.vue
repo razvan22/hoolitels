@@ -28,7 +28,6 @@
 
 <script>
 import M from "materialize-css";
-import { bus } from "../main";
 
 export default {
   name: "RoomTypeItem",
@@ -84,34 +83,10 @@ export default {
         (e) => e.price === this.priceRange[id].price
       );
 
-      let toRemove = rooms.length - event.target.value;
+      rooms = rooms.slice(0, event.target.value);
 
-      console.log(
-        "rooms pre-slice: ",
-        rooms,
-        ", len: ",
-        rooms.length,
-        ", nums to keep: ",
-        event.target.value,
-        ", toRemove: ",
-        toRemove
-      );
-
-      let rooms2 = rooms.slice(0, event.target.value);
-
-      console.log("Rooms post-slice: ", rooms2);
-
-      bus.$emit("selectedRooms", {
-        newVal: event.target.value,
-        listNum: this.Number,
-        rooms: rooms2,
-      });
-    },
-
-    getSelectedRooms: function() {
-      for (let p of this.priceRange) {
-        console.log("selectedRoom from pricerange ", p.selectedRoom);
-      }
+      this.$store.commit("setSelectedRoomsRecsPerType", {list: this.Number, array: rooms});
+      this.$store.commit("setSelectedRoomsPerType", {list: this.Number, newVal: event.target.value});
     },
   },
 };
@@ -125,10 +100,6 @@ h4 {
 .row {
   margin-bottom: 5px;
 }
-
-/* .select-wrapper input.select-dropdown {
-  font-size: 10px !important;
-} */
 
 .room-price {
   font-size: medium;

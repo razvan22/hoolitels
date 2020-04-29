@@ -22,7 +22,7 @@ public class SearchController {
     @Autowired
     private CityRepository cityRepository;
 
-    @GetMapping
+    @PostMapping
     public Iterable<Hotel> getAllHotelsByCity(@RequestBody SearchModel model) {
         List<Hotel> hotels;
 

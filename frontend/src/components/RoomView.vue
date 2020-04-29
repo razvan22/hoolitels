@@ -2,38 +2,33 @@
   <div class="z-depth-1">
     <!-- <div class="divider"></div> -->
     <div class="row">
-      <div class="col s8 m10">
-        <div class="valign-wrapper">
+      <div class="col s8 m10 l7">
+        <div class="test valign-wrapper">
           <i class="material-icons small teal-text">people</i>
           <span
             ><em> {{ room.type }} ({{ room.max_occupancy }})</em></span
           >
         </div>
       </div>
-      <div class="col s4 m2 right-align">
-        <span class="teal-text text-darken-2"
-          ><strong>{{ numFormatter.format(room.price) }}</strong></span
-        >
+      <div class="col s4 m2 l1">
+        <span class="teal-text text-darken-2">
+          <strong>{{ numFormatter.format(room.price) }}<span>/natt</span></strong>
+        </span>
       </div>
     </div>
-    <div class="row">
-      <div class="col s10 offset-s1">
-        <span>Här kommer rumsbeskrivningen</span>
-      </div>
-      </div>
-     <div class="row" v-if="hasExtras()">
-      <div class="col s10 offset-s1 m5 offset-m1 z-depth-1">
-        <span><u>Tillval</u></span>
+    <div class="row valign-wrapper hej " v-if="hasExtras()">
+      <div class="addition-box col s10  offset-s3 m5 offset-m4 z-depth-1">
+         <span>
+          <u>Tillval</u>
+        </span> 
         <ul>
           <li v-for="e in extras" :key="e.kind">
             <div class="row">
-              <div class="col s4 m4">
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in"   />
+              <div class="col s4 m4 ">
+                  <label >
+                    <input type="checkbox" class="filled-in" />
                     <span>{{ e.kind }}:</span>
-                 </label>
-                </p>
+                  </label>
               </div>
               <div class="col s8 m8 right-align">
                 <span>{{ numFormatter.format(e.price) }}</span>
@@ -41,13 +36,6 @@
             </div>
           </li>   
         </ul>
-      </div>
-      <div class="button-book col offset-s4">
-        <router-link
-          to="/"
-          class="waves-effect waves-light cyan darken-2 btn-small"
-          >Boka</router-link
-        >
       </div>
     </div>
     <div class="row">
@@ -118,7 +106,7 @@ export default {
   justify-content: flex-end;
 } */
 .room-img {
-  width: 210px;
+  width: 250px;
 }
 
 span em {
@@ -137,4 +125,31 @@ li .row {
   padding: 2vh;
  
 }
+
+.room-img{
+  margin-top: 1em;
+}
+
+@media screen and (min-width: 601px) {
+.hej{
+  margin-left: 1%;
+ margin-right: 8%;
+}
+}
+
+@media screen and (max-width: 600px) {
+.hej{
+  margin-left: 1%;
+  margin-right: 17%;
+}
+}
+
+@media screen and (min-width: 601px) {
+.test{
+  margin-left: 50%;
+}
+}
+
+
+
 </style>

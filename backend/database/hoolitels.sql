@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Värd:                         127.0.0.1
--- Serverversion:                10.4.11-MariaDB - mariadb.org binary distribution
--- Server-OS:                    Win64
+-- Host:                         localhost
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
 -- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
 
@@ -12,12 +12,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumpar databasstruktur för hoolitels
+-- Dumping database structure for hoolitels
 DROP DATABASE IF EXISTS `hoolitels`;
 CREATE DATABASE IF NOT EXISTS `hoolitels` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `hoolitels`;
 
--- Dumpar struktur för tabell hoolitels.amenity
+-- Dumping structure for table hoolitels.amenity
 CREATE TABLE IF NOT EXISTS `amenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `amenity` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.amenity: ~4 rows (ungefär)
+-- Dumping data for table hoolitels.amenity: ~4 rows (approximately)
 /*!40000 ALTER TABLE `amenity` DISABLE KEYS */;
 INSERT INTO `amenity` (`id`, `name`) VALUES
 	(3, 'Barnklubb'),
@@ -34,7 +34,7 @@ INSERT INTO `amenity` (`id`, `name`) VALUES
 	(4, 'Restaurang');
 /*!40000 ALTER TABLE `amenity` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.booking
+-- Dumping structure for table hoolitels.booking
 CREATE TABLE IF NOT EXISTS `booking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT 0,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   CONSTRAINT `FK_booking_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.booking: ~15 rows (ungefär)
+-- Dumping data for table hoolitels.booking: ~15 rows (approximately)
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
 INSERT INTO `booking` (`id`, `user_id`, `num_adults`, `num_children`, `num_infants`, `start_date`, `end_date`, `comment`, `paid`) VALUES
 	(1, 1331, 1, 0, 0, '2020-04-18', '2020-04-20', '0', b'0'),
@@ -70,7 +70,7 @@ INSERT INTO `booking` (`id`, `user_id`, `num_adults`, `num_children`, `num_infan
 	(29, 1802, 2, 2, 0, '2020-09-29', '2020-09-30', '0', b'0');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.cart_items
+-- Dumping structure for table hoolitels.cart_items
 CREATE TABLE IF NOT EXISTS `cart_items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `food` int(11) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `cart_items` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumpar data för tabell hoolitels.cart_items: ~4 rows (ungefär)
+-- Dumping data for table hoolitels.cart_items: ~4 rows (approximately)
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
 INSERT INTO `cart_items` (`id`, `food`, `amount`, `user`) VALUES
 	(1, 1, 1, 1),
@@ -88,7 +88,7 @@ INSERT INTO `cart_items` (`id`, `food`, `amount`, `user`) VALUES
 	(5, 1, 7, 1);
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.city
+-- Dumping structure for table hoolitels.city
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.city: ~10 rows (ungefär)
+-- Dumping data for table hoolitels.city: ~10 rows (approximately)
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` (`id`, `name`) VALUES
 	(115, 'Göteborg'),
@@ -111,7 +111,7 @@ INSERT INTO `city` (`id`, `name`) VALUES
 	(112, 'Västerås');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.country
+-- Dumping structure for table hoolitels.country
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   UNIQUE KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumpar data för tabell hoolitels.country: ~246 rows (ungefär)
+-- Dumping data for table hoolitels.country: ~246 rows (approximately)
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
 INSERT INTO `country` (`id`, `name`) VALUES
 	(16, 'Afghanistan'),
@@ -370,7 +370,7 @@ INSERT INTO `country` (`id`, `name`) VALUES
 	(261, 'Zimbabwe');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.foods
+-- Dumping structure for table hoolitels.foods
 CREATE TABLE IF NOT EXISTS `foods` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -381,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `foods` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumpar data för tabell hoolitels.foods: ~3 rows (ungefär)
+-- Dumping data for table hoolitels.foods: ~3 rows (approximately)
 /*!40000 ALTER TABLE `foods` DISABLE KEYS */;
 INSERT INTO `foods` (`id`, `title`, `text`, `image`, `cost`, `category`) VALUES
 	(1, 'Big Flac', 'The bigger they come the hotter they are', 'https://www.tifood.se/wp-content/uploads/2019/01/890357-600x600.jpg', 125.00, 'burgers'),
@@ -389,7 +389,7 @@ INSERT INTO `foods` (`id`, `title`, `text`, `image`, `cost`, `category`) VALUES
 	(3, 'Mushroom Burger', 'Mushrooms are surprisingly similar in taste and texture to meat when cooked, and this mushroom veggie burger recipe may just surprise you with how tasty it is. While mushrooms provide plenty of flavor and texture, the addition of pinto beans makes this re', 'https://veryveganrecipes.com/wp-content/uploads/2015/12/how-to-make-vegan-portobello-mushroom-burger-recipe.png', 95.00, 'burgers');
 /*!40000 ALTER TABLE `foods` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.hotel
+-- Dumping structure for table hoolitels.hotel
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -403,118 +403,119 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   `distance_to_town_center` int(11) DEFAULT -1 COMMENT '-1, finns inte nära, 0 ligger precis vid',
   `checkin_time` time NOT NULL,
   `checkout_time` time NOT NULL DEFAULT '11:00:00',
+  `grade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `name_cityId` (`name`,`city_id`) USING BTREE,
   KEY `FK_cityId` (`city_id`) USING BTREE,
   CONSTRAINT `FK_cityId` FOREIGN KEY (`city_id`) REFERENCES `city` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1898 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.hotel: ~100 rows (ungefär)
+-- Dumping data for table hoolitels.hotel: ~100 rows (approximately)
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` (`id`, `name`, `address`, `zip`, `city_id`, `desc`, `email`, `phone`, `distance_to_beach`, `distance_to_town_center`, `checkin_time`, `checkout_time`) VALUES
-	(1798, 'Beer-Dickinson hotell', '85 Upham Point', '91550', 113, '0', 'tcaro0@ft.com', '4644587049', 3355, 3264, '00:00:00', '00:00:00'),
-	(1799, 'Ullrich, Harris and Legros hotell', '726 North Center', '65878', 111, '0', 'tdelue1@nature.com', '4546985039', 36, 4835, '00:00:00', '00:00:00'),
-	(1800, 'Klocko-VonRueden hotell', '2 Maywood Point', '55285', 108, '0', 'wbarrows2@technorati.com', '9887699457', 453, 3378, '00:00:00', '00:00:00'),
-	(1801, 'King-Cassin hotell', '39 Vermont Road', '79758', 109, '0', 'clawling3@ow.ly', '1985840657', 4099, 1166, '00:00:00', '00:00:00'),
-	(1802, 'Willms-Schmeler hotell', '727 Sloan Junction', '60979', 111, '0', 'tlegrave4@irs.gov', '8385562991', 4424, 3727, '00:00:00', '00:00:00'),
-	(1803, 'Casper-Wiza hotell', '2 Eastwood Park', '33281', 113, '0', 'tbellay5@godaddy.com', '6087107017', 4061, 3229, '00:00:00', '00:00:00'),
-	(1804, 'Stoltenberg-Waelchi hotell', '7427 Bartelt Pass', '49804', 115, '0', 'jguyers6@ezinearticles.com', '5716251159', 2761, 4439, '00:00:00', '00:00:00'),
-	(1805, 'Spinka Group hotell', '12295 Heffernan Crossing', '40224', 108, '0', 'athorneywork7@addtoany.com', '3147575425', 3616, 1003, '00:00:00', '00:00:00'),
-	(1806, 'Leannon Group hotell', '55 Spaight Junction', '38675', 109, '0', 'gpfeffle8@statcounter.com', '8002284200', 4651, 3690, '00:00:00', '00:00:00'),
-	(1807, 'Howe, Monahan and Osinski hotell', '531 Scoville Pass', '65316', 113, '0', 'rcoyle9@si.edu', '5743605366', 901, 72, '00:00:00', '00:00:00'),
-	(1808, 'Trantow, Bailey and Tremblay hotell', '736 Scott Drive', '47963', 116, '0', 'bpasha@ebay.com', '7101704194', 3104, 253, '00:00:00', '00:00:00'),
-	(1809, 'Huels, Goldner and Tremblay hotell', '83741 Moulton Circle', '74337', 111, '0', 'hfurmengerb@myspace.com', '6775094868', 1293, 2275, '00:00:00', '00:00:00'),
-	(1810, 'Kohler Group hotell', '07 Corscot Avenue', '18792', 109, '0', 'lboerdermanc@slideshare.net', '8387186905', 2522, 2873, '00:00:00', '00:00:00'),
-	(1811, 'Murazik-Barton hotell', '0894 Merry Trail', '32407', 108, '0', 'rbrodied@si.edu', '1956191393', 973, 1845, '00:00:00', '00:00:00'),
-	(1812, 'Tromp Group hotell', '7 Chive Avenue', '29496', 114, '0', 'dlisciardellie@tamu.edu', '2647097712', 1214, 2860, '00:00:00', '00:00:00'),
-	(1813, 'Schmitt Group hotell', '961 Mcguire Terrace', '98549', 112, '0', 'cvaldesf@marketwatch.com', '1222251485', 3075, 4488, '00:00:00', '00:00:00'),
-	(1814, 'Mayert-Dooley hotell', '264 Fisk Way', '53911', 110, '0', 'oohengertyg@nasa.gov', '4888169498', 206, 2056, '00:00:00', '00:00:00'),
-	(1815, 'Eichmann, O\'Connell and Farrell hotell', '67875 Westerfield Court', '69147', 111, '0', 'acutcliffeh@abc.net.au', '3624031878', 4615, 1707, '00:00:00', '00:00:00'),
-	(1816, 'Anderson-Abernathy hotell', '8285 Bultman Avenue', '87449', 109, '0', 'gmahedyi@eepurl.com', '9821206648', 981, 1066, '00:00:00', '00:00:00'),
-	(1817, 'Skiles Group hotell', '9160 Morningstar Junction', '42977', 114, '0', 'esadatj@imgur.com', '2488240547', 4935, 272, '00:00:00', '00:00:00'),
-	(1818, 'Abbott, Casper and Hansen hotell', '07011 Novick Court', '87493', 115, '0', 'mmcdonnellk@blinklist.com', '5716559132', 1581, 4523, '00:00:00', '00:00:00'),
-	(1819, 'Walsh-Wolff hotell', '49 5th Pass', '54735', 114, '0', 'mconybearl@narod.ru', '3381488195', 68, 169, '00:00:00', '00:00:00'),
-	(1820, 'Simonis, Cummerata and Grady hotell', '43301 Laurel Parkway', '50147', 116, '0', 'atrunbym@vimeo.com', '9094004457', 860, 3198, '00:00:00', '00:00:00'),
-	(1821, 'Graham LLC hotell', '2882 Warbler Lane', '59103', 114, '0', 'kjuettn@columbia.edu', '1737366674', 324, 4057, '00:00:00', '00:00:00'),
-	(1822, 'Hettinger, Buckridge and Weimann hotell', '2608 Lakeland Alley', '24344', 113, '0', 'blazonbyo@typepad.com', '3297726589', 700, 2373, '00:00:00', '00:00:00'),
-	(1823, 'Hudson-Sporer hotell', '288 Del Sol Parkway', '79715', 110, '0', 'bbeardsleyp@addtoany.com', '4602792794', 993, 3330, '00:00:00', '00:00:00'),
-	(1824, 'Upton, Zemlak and Ritchie hotell', '9021 Mifflin Place', '45285', 112, '0', 'gosmonq@techcrunch.com', '1938308928', 1190, 1583, '00:00:00', '00:00:00'),
-	(1825, 'Quigley Group hotell', '74683 Cherokee Court', '32455', 115, '0', 'abraysonr@webnode.com', '3898382658', 887, 1261, '00:00:00', '00:00:00'),
-	(1826, 'Donnelly, Gutmann and Reichert hotell', '36994 Transport Plaza', '33198', 114, '0', 'hduddins@nbcnews.com', '5263821303', 902, 4885, '00:00:00', '00:00:00'),
-	(1827, 'Terry, Konopelski and Kuvalis hotell', '20 Northport Parkway', '51134', 113, '0', 'mgosnallt@hc360.com', '9944566090', 1122, 449, '00:00:00', '00:00:00'),
-	(1828, 'Maggio, Aufderhar and Hayes hotell', '29625 Hoepker Park', '47081', 109, '0', 'fcholoninu@flickr.com', '8235053314', 1180, 4387, '00:00:00', '00:00:00'),
-	(1829, 'Renner and Sons hotell', '53 Becker Hill', '71954', 110, '0', 'oreasonv@behance.net', '4237817261', 1814, 1589, '00:00:00', '00:00:00'),
-	(1830, 'Huel-Crooks hotell', '87294 Dorton Court', '23237', 108, '0', 'bmingow@odnoklassniki.ru', '9839470215', 4901, 4574, '00:00:00', '00:00:00'),
-	(1831, 'Prosacco-Cummings hotell', '8 Utah Street', '42582', 113, '0', 'epatmanx@wordpress.org', '8739907431', 1902, 3138, '00:00:00', '00:00:00'),
-	(1832, 'Sauer, Little and Abshire hotell', '198 Montana Lane', '36135', 108, '0', 'klabbay@flavors.me', '5475478639', 1534, 2132, '00:00:00', '00:00:00'),
-	(1833, 'Koss LLC hotell', '736 Village Green Parkway', '35013', 111, '0', 'dmclellanz@nationalgeographic.com', '8949309172', 4408, 4386, '00:00:00', '00:00:00'),
-	(1834, 'Barrows LLC hotell', '4199 Hudson Trail', '28253', 116, '0', 'skubacek10@opera.com', '8802265301', 123, 4773, '00:00:00', '00:00:00'),
-	(1835, 'Pouros-Erdman hotell', '76 Algoma Center', '79202', 108, '0', 'lyukhin11@aol.com', '2381469072', 4223, 3013, '00:00:00', '00:00:00'),
-	(1836, 'Connelly Group hotell', '19988 Karstens Point', '99218', 111, '0', 'pmcbain12@uol.com.br', '8408664141', 1599, 4055, '00:00:00', '00:00:00'),
-	(1837, 'Feest Group hotell', '5635 Bellgrove Road', '51476', 111, '0', 'cconeau13@foxnews.com', '3408823716', 1232, 1114, '00:00:00', '00:00:00'),
-	(1838, 'Luettgen and Sons hotell', '59 Roth Point', '12776', 112, '0', 'dcaulier14@bing.com', '9686757794', 2843, 4728, '00:00:00', '00:00:00'),
-	(1839, 'Emmerich-Bogan hotell', '1 Farragut Circle', '34166', 109, '0', 'voverstall15@is.gd', '3891257693', 4548, 409, '00:00:00', '00:00:00'),
-	(1840, 'Schroeder, Parker and Jacobs hotell', '177 Oak Valley Way', '88951', 112, '0', 'mpaddock16@dot.gov', '4933109793', 4102, 4629, '00:00:00', '00:00:00'),
-	(1841, 'Nolan Inc hotell', '05 Kennedy Park', '90753', 114, '0', 'ygraben17@hexun.com', '5233349419', 4946, 161, '00:00:00', '00:00:00'),
-	(1842, 'Ruecker-Runolfsson hotell', '003 Huxley Way', '47983', 109, '0', 'ogorrick18@blogs.com', '6112284695', 2907, 3900, '00:00:00', '00:00:00'),
-	(1843, 'Adams Group hotell', '3422 Mendota Terrace', '66507', 115, '0', 'lapted19@devhub.com', '3404062279', 1938, 1835, '00:00:00', '00:00:00'),
-	(1844, 'Krajcik and Sons hotell', '4 Muir Park', '91306', 116, '0', 'bmaccaughey1a@yellowpages.com', '5767551875', 1043, 4847, '00:00:00', '00:00:00'),
-	(1845, 'Wisoky, Lakin and Maggio hotell', '7 New Castle Drive', '62935', 115, '0', 'tgawn1b@chicagotribune.com', '6285267211', 3425, 4730, '00:00:00', '00:00:00'),
-	(1846, 'Shanahan Inc hotell', '84 Coleman Court', '39333', 109, '0', 'sbrolechan1c@posterous.com', '4825422136', 2721, 2189, '00:00:00', '00:00:00'),
-	(1847, 'Ondricka Inc hotell', '2 Banding Court', '41528', 113, '0', 'agregol1d@4shared.com', '7029681904', 4638, 4583, '00:00:00', '00:00:00'),
-	(1848, 'Hyatt-Howe hotell', '62277 Sage Circle', '55546', 115, '0', 'eblasli1e@ovh.net', '3123161208', 4243, 1753, '00:00:00', '00:00:00'),
-	(1849, 'Halvorson, Willms and Bins hotell', '04014 School Parkway', '16102', 112, '0', 'mtwallin1f@naver.com', '7752760289', 3457, 4109, '00:00:00', '00:00:00'),
-	(1850, 'Erdman Group hotell', '31 Hintze Park', '26814', 113, '0', 'rstannus1g@amazonaws.com', '1738718695', 4783, 1643, '00:00:00', '00:00:00'),
-	(1851, 'Frami-Wunsch hotell', '4 Clyde Gallagher Drive', '49679', 111, '0', 'khuffer1h@bandcamp.com', '8599923816', 1313, 2077, '00:00:00', '00:00:00'),
-	(1852, 'Douglas, Armstrong and Reynolds hotell', '2 American Point', '91520', 110, '0', 'iogan1i@about.com', '8526011453', 1902, 4369, '00:00:00', '00:00:00'),
-	(1853, 'King Inc hotell', '2 Park Meadow Point', '52883', 114, '0', 'mborn1j@nytimes.com', '7358208547', 1612, 1208, '00:00:00', '00:00:00'),
-	(1854, 'O\'Keefe and Sons hotell', '68789 Ryan Hill', '51086', 108, '0', 'cheadey1k@edublogs.org', '6426202130', 3949, 1784, '00:00:00', '00:00:00'),
-	(1855, 'O\'Conner-Keebler hotell', '073 Caliangt Lane', '29039', 115, '0', 'jdragonette1l@addthis.com', '6761465386', 2504, 328, '00:00:00', '00:00:00'),
-	(1856, 'Goodwin, Homenick and Lehner hotell', '462 Ramsey Street', '51966', 111, '0', 'ngraber1m@nps.gov', '5611398864', 4297, 3559, '00:00:00', '00:00:00'),
-	(1857, 'Glover, Bergstrom and Kub hotell', '3 Hooker Way', '21082', 112, '0', 'poleksiak1n@ocn.ne.jp', '5006633479', 2925, 2569, '00:00:00', '00:00:00'),
-	(1858, 'Batz-Schumm hotell', '5 Hoffman Pass', '68998', 109, '0', 'gsommerfeld1o@rakuten.co.jp', '1211499716', 4340, 3553, '00:00:00', '00:00:00'),
-	(1859, 'Hudson, Nienow and Marks hotell', '481 Susan Junction', '51744', 114, '0', 'mgallone1p@fotki.com', '3904461263', 1545, 1428, '00:00:00', '00:00:00'),
-	(1860, 'Toy, Walter and Schuster hotell', '681 Kipling Plaza', '34047', 116, '0', 'ctett1q@creativecommons.org', '9108412152', 3738, 2052, '00:00:00', '00:00:00'),
-	(1861, 'Kuhlman, Heidenreich and Lehner hotell', '0 Sundown Avenue', '88003', 115, '0', 'ndilucia1r@google.co.uk', '4703601856', 1398, 4562, '00:00:00', '00:00:00'),
-	(1862, 'Stoltenberg Inc hotell', '27 Londonderry Crossing', '88801', 112, '0', 'gshilstone1s@adobe.com', '4356793078', 2316, 1743, '00:00:00', '00:00:00'),
-	(1863, 'Kihn, Nitzsche and Johnson hotell', '80594 Charing Cross Point', '15972', 109, '0', 'bkrauze1t@prnewswire.com', '5917527612', 4601, 3159, '00:00:00', '00:00:00'),
-	(1864, 'Dietrich LLC hotell', '458 Bunker Hill Hill', '17657', 116, '0', 'bscopham1u@stumbleupon.com', '7515618356', 2073, 4073, '00:00:00', '00:00:00'),
-	(1865, 'Lehner, Schiller and Gleichner hotell', '27477 Dwight Point', '36261', 116, '0', 'vbuzzing1v@themeforest.net', '3078821247', 726, 489, '00:00:00', '00:00:00'),
-	(1866, 'Torphy-Rohan hotell', '850 Gateway Crossing', '97187', 112, '0', 'ostockton1w@reference.com', '3208214982', 828, 4593, '00:00:00', '00:00:00'),
-	(1867, 'Reynolds, Champlin and Bergstrom hotell', '6601 Sugar Pass', '63388', 115, '0', 'hbraim1x@archive.org', '4756648461', 4365, 2621, '00:00:00', '00:00:00'),
-	(1868, 'Padberg, Walker and Legros hotell', '4894 Ruskin Junction', '11947', 111, '0', 'vcasserly1y@ezinearticles.com', '9293195365', 1770, 4415, '00:00:00', '00:00:00'),
-	(1869, 'Dickinson-Kessler hotell', '70 Cardinal Road', '81230', 114, '0', 'fhumburton1z@g.co', '7443778575', 3879, 2784, '00:00:00', '00:00:00'),
-	(1870, 'Ziemann and Sons hotell', '375 Dapin Hill', '54017', 112, '0', 'mjohns20@elpais.com', '3091945887', 2291, 4308, '00:00:00', '00:00:00'),
-	(1871, 'Larkin and Sons hotell', '28 Shasta Lane', '51285', 113, '0', 'hwarrillow21@facebook.com', '8478751472', 4112, 15, '00:00:00', '00:00:00'),
-	(1872, 'Grady, Graham and Ankunding hotell', '3986 Pleasure Parkway', '43834', 110, '0', 'lprosch22@archive.org', '4168619818', 396, 1842, '00:00:00', '00:00:00'),
-	(1873, 'McClure Group hotell', '57 Sachs Park', '95517', 112, '0', 'rtottman23@blog.com', '6475033472', 3147, 2418, '00:00:00', '00:00:00'),
-	(1874, 'Turcotte, Kutch and Okuneva hotell', '02669 Larry Drive', '47950', 109, '0', 'dstanden24@dmoz.org', '1089435898', 116, 653, '00:00:00', '00:00:00'),
-	(1875, 'Nienow and Sons hotell', '9166 Bellgrove Terrace', '66243', 113, '0', 'cmaundrell25@stanford.edu', '8972472574', 549, 2159, '00:00:00', '00:00:00'),
-	(1876, 'Schumm Inc hotell', '942 Eggendart Way', '25603', 117, '0', 'bmation26@ycombinator.com', '5134096577', 4217, 3105, '00:00:00', '00:00:00'),
-	(1877, 'Gleason and Sons hotell', '04566 Hooker Street', '55937', 113, '0', 'jmarland27@edublogs.org', '5125579584', 4422, 4575, '00:00:00', '00:00:00'),
-	(1878, 'Champlin LLC hotell', '77 Southridge Pass', '84072', 115, '0', 'ydance28@smugmug.com', '3171743930', 590, 129, '00:00:00', '00:00:00'),
-	(1879, 'Walter-Aufderhar hotell', '3 Beilfuss Alley', '89388', 117, '0', 'bcounihan29@t-online.de', '2051922206', 4037, 3155, '00:00:00', '00:00:00'),
-	(1880, 'Gutkowski Group hotell', '15553 Tennyson Place', '68810', 110, '0', 'vconstable2a@nifty.com', '3612533333', 3425, 2369, '00:00:00', '00:00:00'),
-	(1881, 'Sipes Inc hotell', '3014 Linden Junction', '95896', 112, '0', 'lkivell2b@sbwire.com', '1304574837', 3177, 898, '00:00:00', '00:00:00'),
-	(1882, 'Reichel and Sons hotell', '86 Glendale Parkway', '21901', 109, '0', 'leccleshare2c@sphinn.com', '2398261491', 84, 126, '00:00:00', '00:00:00'),
-	(1883, 'Greenfelder-Wiza hotell', '911 Sunnyside Pass', '31894', 110, '0', 'dbutson2d@nhs.uk', '4822505726', 2306, 972, '00:00:00', '00:00:00'),
-	(1884, 'Rau, Witting and Jacobs hotell', '2 Corscot Road', '94934', 111, '0', 'jsmalls2e@census.gov', '1226593230', 2297, 178, '00:00:00', '00:00:00'),
-	(1885, 'Aufderhar-Dach hotell', '722 Dahle Way', '84374', 109, '0', 'lalker2f@oaic.gov.au', '4106264965', 3884, 285, '00:00:00', '00:00:00'),
-	(1886, 'Gislason, Wuckert and Funk hotell', '409 Esker Drive', '29143', 114, '0', 'hstothert2g@xinhuanet.com', '2136998685', 4944, 1788, '00:00:00', '00:00:00'),
-	(1887, 'Bergnaum, Price and Wilderman hotell', '120 Del Sol Court', '88983', 114, '0', 'dstuer2h@abc.net.au', '6798295746', 1479, 1293, '00:00:00', '00:00:00'),
-	(1888, 'Stark-Wisoky hotell', '1 Michigan Alley', '89188', 110, '0', 'mandrew2i@163.com', '4232177874', 2699, 1776, '00:00:00', '00:00:00'),
-	(1889, 'Paucek, Heidenreich and Bogan hotell', '9472 Eagle Crest Alley', '78825', 115, '0', 'cmidson2j@mysql.com', '4795388599', 619, 4689, '00:00:00', '00:00:00'),
-	(1890, 'Jacobi-Gaylord hotell', '24 Maple Plaza', '39412', 112, '0', 'rharkness2k@yelp.com', '8198306528', 2903, 4834, '00:00:00', '00:00:00'),
-	(1891, 'Bashirian-Stehr hotell', '5 Buhler Parkway', '17337', 112, '0', 'spittson2l@amazon.co.uk', '7115008761', 535, 4797, '00:00:00', '00:00:00'),
-	(1892, 'Hammes-Stamm hotell', '6 Reindahl Court', '36757', 116, '0', 'gviger2m@jigsy.com', '5174892079', 3630, 2174, '00:00:00', '00:00:00'),
-	(1893, 'Mueller-Ward hotell', '374 Garrison Road', '85160', 116, '0', 'gbartholin2n@china.com.cn', '5536745229', 1770, 431, '00:00:00', '00:00:00'),
-	(1894, 'Hoeger, Runte and Walsh hotell', '16 Steensland Plaza', '14260', 111, '0', 'lhedde2o@businesswire.com', '3554832862', 4840, 2759, '00:00:00', '00:00:00'),
-	(1895, 'Wiegand, Feil and Ebert hotell', '6177 Dorton Parkway', '65579', 116, '0', 'gkynman2p@google.de', '3245966030', 1882, 2098, '00:00:00', '00:00:00'),
-	(1896, 'Batz and Sons hotell', '71 Loomis Lane', '86538', 111, '0', 'dreede2q@epa.gov', '5999440794', 2463, 2406, '00:00:00', '00:00:00'),
-	(1897, 'Schuster-Graham hotell', '9723 Vera Terrace', '85742', 110, '0', 'kjaskowicz2r@statcounter.com', '8358395361', 803, 4139, '00:00:00', '00:00:00');
+INSERT INTO `hotel` (`id`, `name`, `address`, `zip`, `city_id`, `desc`, `email`, `phone`, `distance_to_beach`, `distance_to_town_center`, `checkin_time`, `checkout_time`, `grade`) VALUES
+	(1798, 'Beer-Dickinson hotell', '85 Upham Point', '91550', 113, '0', 'tcaro0@ft.com', '4644587049', 3355, 3264, '00:00:00', '00:00:00', 8),
+	(1799, 'Ullrich, Harris and Legros hotell', '726 North Center', '65878', 111, '0', 'tdelue1@nature.com', '4546985039', 36, 4835, '00:00:00', '00:00:00', 9),
+	(1800, 'Klocko-VonRueden hotell', '2 Maywood Point', '55285', 108, '0', 'wbarrows2@technorati.com', '9887699457', 453, 3378, '00:00:00', '00:00:00', 10),
+	(1801, 'King-Cassin hotell', '39 Vermont Road', '79758', 109, '0', 'clawling3@ow.ly', '1985840657', 4099, 1166, '00:00:00', '00:00:00', 1),
+	(1802, 'Willms-Schmeler hotell', '727 Sloan Junction', '60979', 111, '0', 'tlegrave4@irs.gov', '8385562991', 4424, 3727, '00:00:00', '00:00:00', 2),
+	(1803, 'Casper-Wiza hotell', '2 Eastwood Park', '33281', 113, '0', 'tbellay5@godaddy.com', '6087107017', 4061, 3229, '00:00:00', '00:00:00', 3),
+	(1804, 'Stoltenberg-Waelchi hotell', '7427 Bartelt Pass', '49804', 115, '0', 'jguyers6@ezinearticles.com', '5716251159', 2761, 4439, '00:00:00', '00:00:00', 4),
+	(1805, 'Spinka Group hotell', '12295 Heffernan Crossing', '40224', 108, '0', 'athorneywork7@addtoany.com', '3147575425', 3616, 1003, '00:00:00', '00:00:00', 5),
+	(1806, 'Leannon Group hotell', '55 Spaight Junction', '38675', 109, '0', 'gpfeffle8@statcounter.com', '8002284200', 4651, 3690, '00:00:00', '00:00:00', 6),
+	(1807, 'Howe, Monahan and Osinski hotell', '531 Scoville Pass', '65316', 113, '0', 'rcoyle9@si.edu', '5743605366', 901, 72, '00:00:00', '00:00:00', 7),
+	(1808, 'Trantow, Bailey and Tremblay hotell', '736 Scott Drive', '47963', 116, '0', 'bpasha@ebay.com', '7101704194', 3104, 253, '00:00:00', '00:00:00', 8),
+	(1809, 'Huels, Goldner and Tremblay hotell', '83741 Moulton Circle', '74337', 111, '0', 'hfurmengerb@myspace.com', '6775094868', 1293, 2275, '00:00:00', '00:00:00', 9),
+	(1810, 'Kohler Group hotell', '07 Corscot Avenue', '18792', 109, '0', 'lboerdermanc@slideshare.net', '8387186905', 2522, 2873, '00:00:00', '00:00:00', 10),
+	(1811, 'Murazik-Barton hotell', '0894 Merry Trail', '32407', 108, '0', 'rbrodied@si.edu', '1956191393', 973, 1845, '00:00:00', '00:00:00', 1),
+	(1812, 'Tromp Group hotell', '7 Chive Avenue', '29496', 114, '0', 'dlisciardellie@tamu.edu', '2647097712', 1214, 2860, '00:00:00', '00:00:00', 2),
+	(1813, 'Schmitt Group hotell', '961 Mcguire Terrace', '98549', 112, '0', 'cvaldesf@marketwatch.com', '1222251485', 3075, 4488, '00:00:00', '00:00:00', 3),
+	(1814, 'Mayert-Dooley hotell', '264 Fisk Way', '53911', 110, '0', 'oohengertyg@nasa.gov', '4888169498', 206, 2056, '00:00:00', '00:00:00', 4),
+	(1815, 'Eichmann, O\'Connell and Farrell hotell', '67875 Westerfield Court', '69147', 111, '0', 'acutcliffeh@abc.net.au', '3624031878', 4615, 1707, '00:00:00', '00:00:00', 5),
+	(1816, 'Anderson-Abernathy hotell', '8285 Bultman Avenue', '87449', 109, '0', 'gmahedyi@eepurl.com', '9821206648', 981, 1066, '00:00:00', '00:00:00', 6),
+	(1817, 'Skiles Group hotell', '9160 Morningstar Junction', '42977', 114, '0', 'esadatj@imgur.com', '2488240547', 4935, 272, '00:00:00', '00:00:00', 7),
+	(1818, 'Abbott, Casper and Hansen hotell', '07011 Novick Court', '87493', 115, '0', 'mmcdonnellk@blinklist.com', '5716559132', 1581, 4523, '00:00:00', '00:00:00', 8),
+	(1819, 'Walsh-Wolff hotell', '49 5th Pass', '54735', 114, '0', 'mconybearl@narod.ru', '3381488195', 68, 169, '00:00:00', '00:00:00', 9),
+	(1820, 'Simonis, Cummerata and Grady hotell', '43301 Laurel Parkway', '50147', 116, '0', 'atrunbym@vimeo.com', '9094004457', 860, 3198, '00:00:00', '00:00:00', 10),
+	(1821, 'Graham LLC hotell', '2882 Warbler Lane', '59103', 114, '0', 'kjuettn@columbia.edu', '1737366674', 324, 4057, '00:00:00', '00:00:00', 1),
+	(1822, 'Hettinger, Buckridge and Weimann hotell', '2608 Lakeland Alley', '24344', 113, '0', 'blazonbyo@typepad.com', '3297726589', 700, 2373, '00:00:00', '00:00:00', 2),
+	(1823, 'Hudson-Sporer hotell', '288 Del Sol Parkway', '79715', 110, '0', 'bbeardsleyp@addtoany.com', '4602792794', 993, 3330, '00:00:00', '00:00:00', 3),
+	(1824, 'Upton, Zemlak and Ritchie hotell', '9021 Mifflin Place', '45285', 112, '0', 'gosmonq@techcrunch.com', '1938308928', 1190, 1583, '00:00:00', '00:00:00', 4),
+	(1825, 'Quigley Group hotell', '74683 Cherokee Court', '32455', 115, '0', 'abraysonr@webnode.com', '3898382658', 887, 1261, '00:00:00', '00:00:00', 5),
+	(1826, 'Donnelly, Gutmann and Reichert hotell', '36994 Transport Plaza', '33198', 114, '0', 'hduddins@nbcnews.com', '5263821303', 902, 4885, '00:00:00', '00:00:00', 6),
+	(1827, 'Terry, Konopelski and Kuvalis hotell', '20 Northport Parkway', '51134', 113, '0', 'mgosnallt@hc360.com', '9944566090', 1122, 449, '00:00:00', '00:00:00', 7),
+	(1828, 'Maggio, Aufderhar and Hayes hotell', '29625 Hoepker Park', '47081', 109, '0', 'fcholoninu@flickr.com', '8235053314', 1180, 4387, '00:00:00', '00:00:00', 8),
+	(1829, 'Renner and Sons hotell', '53 Becker Hill', '71954', 110, '0', 'oreasonv@behance.net', '4237817261', 1814, 1589, '00:00:00', '00:00:00', 9),
+	(1830, 'Huel-Crooks hotell', '87294 Dorton Court', '23237', 108, '0', 'bmingow@odnoklassniki.ru', '9839470215', 4901, 4574, '00:00:00', '00:00:00', 10),
+	(1831, 'Prosacco-Cummings hotell', '8 Utah Street', '42582', 113, '0', 'epatmanx@wordpress.org', '8739907431', 1902, 3138, '00:00:00', '00:00:00', 1),
+	(1832, 'Sauer, Little and Abshire hotell', '198 Montana Lane', '36135', 108, '0', 'klabbay@flavors.me', '5475478639', 1534, 2132, '00:00:00', '00:00:00', 2),
+	(1833, 'Koss LLC hotell', '736 Village Green Parkway', '35013', 111, '0', 'dmclellanz@nationalgeographic.com', '8949309172', 4408, 4386, '00:00:00', '00:00:00', 3),
+	(1834, 'Barrows LLC hotell', '4199 Hudson Trail', '28253', 116, '0', 'skubacek10@opera.com', '8802265301', 123, 4773, '00:00:00', '00:00:00', 4),
+	(1835, 'Pouros-Erdman hotell', '76 Algoma Center', '79202', 108, '0', 'lyukhin11@aol.com', '2381469072', 4223, 3013, '00:00:00', '00:00:00', 5),
+	(1836, 'Connelly Group hotell', '19988 Karstens Point', '99218', 111, '0', 'pmcbain12@uol.com.br', '8408664141', 1599, 4055, '00:00:00', '00:00:00', 6),
+	(1837, 'Feest Group hotell', '5635 Bellgrove Road', '51476', 111, '0', 'cconeau13@foxnews.com', '3408823716', 1232, 1114, '00:00:00', '00:00:00', 7),
+	(1838, 'Luettgen and Sons hotell', '59 Roth Point', '12776', 112, '0', 'dcaulier14@bing.com', '9686757794', 2843, 4728, '00:00:00', '00:00:00', 8),
+	(1839, 'Emmerich-Bogan hotell', '1 Farragut Circle', '34166', 109, '0', 'voverstall15@is.gd', '3891257693', 4548, 409, '00:00:00', '00:00:00', 9),
+	(1840, 'Schroeder, Parker and Jacobs hotell', '177 Oak Valley Way', '88951', 112, '0', 'mpaddock16@dot.gov', '4933109793', 4102, 4629, '00:00:00', '00:00:00', 10),
+	(1841, 'Nolan Inc hotell', '05 Kennedy Park', '90753', 114, '0', 'ygraben17@hexun.com', '5233349419', 4946, 161, '00:00:00', '00:00:00', 1),
+	(1842, 'Ruecker-Runolfsson hotell', '003 Huxley Way', '47983', 109, '0', 'ogorrick18@blogs.com', '6112284695', 2907, 3900, '00:00:00', '00:00:00', 2),
+	(1843, 'Adams Group hotell', '3422 Mendota Terrace', '66507', 115, '0', 'lapted19@devhub.com', '3404062279', 1938, 1835, '00:00:00', '00:00:00', 3),
+	(1844, 'Krajcik and Sons hotell', '4 Muir Park', '91306', 116, '0', 'bmaccaughey1a@yellowpages.com', '5767551875', 1043, 4847, '00:00:00', '00:00:00', 4),
+	(1845, 'Wisoky, Lakin and Maggio hotell', '7 New Castle Drive', '62935', 115, '0', 'tgawn1b@chicagotribune.com', '6285267211', 3425, 4730, '00:00:00', '00:00:00', 5),
+	(1846, 'Shanahan Inc hotell', '84 Coleman Court', '39333', 109, '0', 'sbrolechan1c@posterous.com', '4825422136', 2721, 2189, '00:00:00', '00:00:00', 6),
+	(1847, 'Ondricka Inc hotell', '2 Banding Court', '41528', 113, '0', 'agregol1d@4shared.com', '7029681904', 4638, 4583, '00:00:00', '00:00:00', 7),
+	(1848, 'Hyatt-Howe hotell', '62277 Sage Circle', '55546', 115, '0', 'eblasli1e@ovh.net', '3123161208', 4243, 1753, '00:00:00', '00:00:00', 8),
+	(1849, 'Halvorson, Willms and Bins hotell', '04014 School Parkway', '16102', 112, '0', 'mtwallin1f@naver.com', '7752760289', 3457, 4109, '00:00:00', '00:00:00', 9),
+	(1850, 'Erdman Group hotell', '31 Hintze Park', '26814', 113, '0', 'rstannus1g@amazonaws.com', '1738718695', 4783, 1643, '00:00:00', '00:00:00', 10),
+	(1851, 'Frami-Wunsch hotell', '4 Clyde Gallagher Drive', '49679', 111, '0', 'khuffer1h@bandcamp.com', '8599923816', 1313, 2077, '00:00:00', '00:00:00', 1),
+	(1852, 'Douglas, Armstrong and Reynolds hotell', '2 American Point', '91520', 110, '0', 'iogan1i@about.com', '8526011453', 1902, 4369, '00:00:00', '00:00:00', 2),
+	(1853, 'King Inc hotell', '2 Park Meadow Point', '52883', 114, '0', 'mborn1j@nytimes.com', '7358208547', 1612, 1208, '00:00:00', '00:00:00', 3),
+	(1854, 'O\'Keefe and Sons hotell', '68789 Ryan Hill', '51086', 108, '0', 'cheadey1k@edublogs.org', '6426202130', 3949, 1784, '00:00:00', '00:00:00', 4),
+	(1855, 'O\'Conner-Keebler hotell', '073 Caliangt Lane', '29039', 115, '0', 'jdragonette1l@addthis.com', '6761465386', 2504, 328, '00:00:00', '00:00:00', 5),
+	(1856, 'Goodwin, Homenick and Lehner hotell', '462 Ramsey Street', '51966', 111, '0', 'ngraber1m@nps.gov', '5611398864', 4297, 3559, '00:00:00', '00:00:00', 6),
+	(1857, 'Glover, Bergstrom and Kub hotell', '3 Hooker Way', '21082', 112, '0', 'poleksiak1n@ocn.ne.jp', '5006633479', 2925, 2569, '00:00:00', '00:00:00', 7),
+	(1858, 'Batz-Schumm hotell', '5 Hoffman Pass', '68998', 109, '0', 'gsommerfeld1o@rakuten.co.jp', '1211499716', 4340, 3553, '00:00:00', '00:00:00', 8),
+	(1859, 'Hudson, Nienow and Marks hotell', '481 Susan Junction', '51744', 114, '0', 'mgallone1p@fotki.com', '3904461263', 1545, 1428, '00:00:00', '00:00:00', 9),
+	(1860, 'Toy, Walter and Schuster hotell', '681 Kipling Plaza', '34047', 116, '0', 'ctett1q@creativecommons.org', '9108412152', 3738, 2052, '00:00:00', '00:00:00', 10),
+	(1861, 'Kuhlman, Heidenreich and Lehner hotell', '0 Sundown Avenue', '88003', 115, '0', 'ndilucia1r@google.co.uk', '4703601856', 1398, 4562, '00:00:00', '00:00:00', 1),
+	(1862, 'Stoltenberg Inc hotell', '27 Londonderry Crossing', '88801', 112, '0', 'gshilstone1s@adobe.com', '4356793078', 2316, 1743, '00:00:00', '00:00:00', 2),
+	(1863, 'Kihn, Nitzsche and Johnson hotell', '80594 Charing Cross Point', '15972', 109, '0', 'bkrauze1t@prnewswire.com', '5917527612', 4601, 3159, '00:00:00', '00:00:00', 3),
+	(1864, 'Dietrich LLC hotell', '458 Bunker Hill Hill', '17657', 116, '0', 'bscopham1u@stumbleupon.com', '7515618356', 2073, 4073, '00:00:00', '00:00:00', 4),
+	(1865, 'Lehner, Schiller and Gleichner hotell', '27477 Dwight Point', '36261', 116, '0', 'vbuzzing1v@themeforest.net', '3078821247', 726, 489, '00:00:00', '00:00:00', 5),
+	(1866, 'Torphy-Rohan hotell', '850 Gateway Crossing', '97187', 112, '0', 'ostockton1w@reference.com', '3208214982', 828, 4593, '00:00:00', '00:00:00', 6),
+	(1867, 'Reynolds, Champlin and Bergstrom hotell', '6601 Sugar Pass', '63388', 115, '0', 'hbraim1x@archive.org', '4756648461', 4365, 2621, '00:00:00', '00:00:00', 7),
+	(1868, 'Padberg, Walker and Legros hotell', '4894 Ruskin Junction', '11947', 111, '0', 'vcasserly1y@ezinearticles.com', '9293195365', 1770, 4415, '00:00:00', '00:00:00', 8),
+	(1869, 'Dickinson-Kessler hotell', '70 Cardinal Road', '81230', 114, '0', 'fhumburton1z@g.co', '7443778575', 3879, 2784, '00:00:00', '00:00:00', 9),
+	(1870, 'Ziemann and Sons hotell', '375 Dapin Hill', '54017', 112, '0', 'mjohns20@elpais.com', '3091945887', 2291, 4308, '00:00:00', '00:00:00', 10),
+	(1871, 'Larkin and Sons hotell', '28 Shasta Lane', '51285', 113, '0', 'hwarrillow21@facebook.com', '8478751472', 4112, 15, '00:00:00', '00:00:00', 1),
+	(1872, 'Grady, Graham and Ankunding hotell', '3986 Pleasure Parkway', '43834', 110, '0', 'lprosch22@archive.org', '4168619818', 396, 1842, '00:00:00', '00:00:00', 2),
+	(1873, 'McClure Group hotell', '57 Sachs Park', '95517', 112, '0', 'rtottman23@blog.com', '6475033472', 3147, 2418, '00:00:00', '00:00:00', 3),
+	(1874, 'Turcotte, Kutch and Okuneva hotell', '02669 Larry Drive', '47950', 109, '0', 'dstanden24@dmoz.org', '1089435898', 116, 653, '00:00:00', '00:00:00', 4),
+	(1875, 'Nienow and Sons hotell', '9166 Bellgrove Terrace', '66243', 113, '0', 'cmaundrell25@stanford.edu', '8972472574', 549, 2159, '00:00:00', '00:00:00', 5),
+	(1876, 'Schumm Inc hotell', '942 Eggendart Way', '25603', 117, '0', 'bmation26@ycombinator.com', '5134096577', 4217, 3105, '00:00:00', '00:00:00', 6),
+	(1877, 'Gleason and Sons hotell', '04566 Hooker Street', '55937', 113, '0', 'jmarland27@edublogs.org', '5125579584', 4422, 4575, '00:00:00', '00:00:00', 7),
+	(1878, 'Champlin LLC hotell', '77 Southridge Pass', '84072', 115, '0', 'ydance28@smugmug.com', '3171743930', 590, 129, '00:00:00', '00:00:00', 8),
+	(1879, 'Walter-Aufderhar hotell', '3 Beilfuss Alley', '89388', 117, '0', 'bcounihan29@t-online.de', '2051922206', 4037, 3155, '00:00:00', '00:00:00', 9),
+	(1880, 'Gutkowski Group hotell', '15553 Tennyson Place', '68810', 110, '0', 'vconstable2a@nifty.com', '3612533333', 3425, 2369, '00:00:00', '00:00:00', 10),
+	(1881, 'Sipes Inc hotell', '3014 Linden Junction', '95896', 112, '0', 'lkivell2b@sbwire.com', '1304574837', 3177, 898, '00:00:00', '00:00:00', 1),
+	(1882, 'Reichel and Sons hotell', '86 Glendale Parkway', '21901', 109, '0', 'leccleshare2c@sphinn.com', '2398261491', 84, 126, '00:00:00', '00:00:00', 2),
+	(1883, 'Greenfelder-Wiza hotell', '911 Sunnyside Pass', '31894', 110, '0', 'dbutson2d@nhs.uk', '4822505726', 2306, 972, '00:00:00', '00:00:00', 3),
+	(1884, 'Rau, Witting and Jacobs hotell', '2 Corscot Road', '94934', 111, '0', 'jsmalls2e@census.gov', '1226593230', 2297, 178, '00:00:00', '00:00:00', 4),
+	(1885, 'Aufderhar-Dach hotell', '722 Dahle Way', '84374', 109, '0', 'lalker2f@oaic.gov.au', '4106264965', 3884, 285, '00:00:00', '00:00:00', 5),
+	(1886, 'Gislason, Wuckert and Funk hotell', '409 Esker Drive', '29143', 114, '0', 'hstothert2g@xinhuanet.com', '2136998685', 4944, 1788, '00:00:00', '00:00:00', 6),
+	(1887, 'Bergnaum, Price and Wilderman hotell', '120 Del Sol Court', '88983', 114, '0', 'dstuer2h@abc.net.au', '6798295746', 1479, 1293, '00:00:00', '00:00:00', 7),
+	(1888, 'Stark-Wisoky hotell', '1 Michigan Alley', '89188', 110, '0', 'mandrew2i@163.com', '4232177874', 2699, 1776, '00:00:00', '00:00:00', 8),
+	(1889, 'Paucek, Heidenreich and Bogan hotell', '9472 Eagle Crest Alley', '78825', 115, '0', 'cmidson2j@mysql.com', '4795388599', 619, 4689, '00:00:00', '00:00:00', 9),
+	(1890, 'Jacobi-Gaylord hotell', '24 Maple Plaza', '39412', 112, '0', 'rharkness2k@yelp.com', '8198306528', 2903, 4834, '00:00:00', '00:00:00', 10),
+	(1891, 'Bashirian-Stehr hotell', '5 Buhler Parkway', '17337', 112, '0', 'spittson2l@amazon.co.uk', '7115008761', 535, 4797, '00:00:00', '00:00:00', 1),
+	(1892, 'Hammes-Stamm hotell', '6 Reindahl Court', '36757', 116, '0', 'gviger2m@jigsy.com', '5174892079', 3630, 2174, '00:00:00', '00:00:00', 2),
+	(1893, 'Mueller-Ward hotell', '374 Garrison Road', '85160', 116, '0', 'gbartholin2n@china.com.cn', '5536745229', 1770, 431, '00:00:00', '00:00:00', 3),
+	(1894, 'Hoeger, Runte and Walsh hotell', '16 Steensland Plaza', '14260', 111, '0', 'lhedde2o@businesswire.com', '3554832862', 4840, 2759, '00:00:00', '00:00:00', 4),
+	(1895, 'Wiegand, Feil and Ebert hotell', '6177 Dorton Parkway', '65579', 116, '0', 'gkynman2p@google.de', '3245966030', 1882, 2098, '00:00:00', '00:00:00', 5),
+	(1896, 'Batz and Sons hotell', '71 Loomis Lane', '86538', 111, '0', 'dreede2q@epa.gov', '5999440794', 2463, 2406, '00:00:00', '00:00:00', 6),
+	(1897, 'Schuster-Graham hotell', '9723 Vera Terrace', '85742', 110, '0', 'kjaskowicz2r@statcounter.com', '8358395361', 803, 4139, '00:00:00', '00:00:00', 7);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.hotelamenity
+-- Dumping structure for table hoolitels.hotelamenity
 CREATE TABLE IF NOT EXISTS `hotelamenity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hotel_id` int(11) NOT NULL,
@@ -526,7 +527,7 @@ CREATE TABLE IF NOT EXISTS `hotelamenity` (
   CONSTRAINT `FK_hotelamenity_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.hotelamenity: ~100 rows (ungefär)
+-- Dumping data for table hoolitels.hotelamenity: ~100 rows (approximately)
 /*!40000 ALTER TABLE `hotelamenity` DISABLE KEYS */;
 INSERT INTO `hotelamenity` (`id`, `hotel_id`, `amenity_id`) VALUES
 	(62, 1799, 2),
@@ -631,7 +632,7 @@ INSERT INTO `hotelamenity` (`id`, `hotel_id`, `amenity_id`) VALUES
 	(16, 1897, 2);
 /*!40000 ALTER TABLE `hotelamenity` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.image
+-- Dumping structure for table hoolitels.image
 CREATE TABLE IF NOT EXISTS `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(500) NOT NULL DEFAULT '0',
@@ -646,7 +647,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   CONSTRAINT `FK_image_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4001 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.image: ~1 100 rows (ungefär)
+-- Dumping data for table hoolitels.image: ~1 100 rows (approximately)
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
 INSERT INTO `image` (`id`, `url`, `name`, `desc`, `hotel_id`, `room_id`) VALUES
 	(3001, '168', 'Dozedaisy', '0', NULL, 3921),
@@ -1633,7 +1634,7 @@ INSERT INTO `image` (`id`, `url`, `name`, `desc`, `hotel_id`, `room_id`) VALUES
 	(4000, '36', 'Haspan Flatsedge', '0', 1836, 4601);
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.review
+-- Dumping structure for table hoolitels.review
 CREATE TABLE IF NOT EXISTS `review` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rating` int(11) NOT NULL DEFAULT 5,
@@ -1645,15 +1646,16 @@ CREATE TABLE IF NOT EXISTS `review` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `FK_review_hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`),
   CONSTRAINT `FK_review_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.review: ~0 rows (ungefär)
+-- Dumping data for table hoolitels.review: ~0 rows (approximately)
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
 INSERT INTO `review` (`id`, `rating`, `text`, `hotel_id`, `user_id`) VALUES
-	(1, 8, 'Här kommer vår fin-fina recension!!!', 1850, 1063);
+	(1, 8, 'Här kommer vår fin-fina recension!!!', 1850, 1063),
+	(2, 8, 'Här kommer vår fin-fina recension!2', 1800, 1063);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.room
+-- Dumping structure for table hoolitels.room
 CREATE TABLE IF NOT EXISTS `room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` enum('Single','Double','Triple','Family') NOT NULL,
@@ -1672,7 +1674,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   CONSTRAINT `FK__hotel` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4863 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.room: ~982 rows (ungefär)
+-- Dumping data for table hoolitels.room: ~982 rows (approximately)
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
 INSERT INTO `room` (`id`, `type`, `floor`, `number`, `hotel_id`, `price`, `max_occupancy`, `cost_extra_bed`, `cost_half_board`, `cost_full_board`, `cost_all_inclusive`) VALUES
 	(3863, 'Single', 7, 704, 1818, 900, 1, 289, NULL, 676, NULL),
@@ -2659,7 +2661,7 @@ INSERT INTO `room` (`id`, `type`, `floor`, `number`, `hotel_id`, `price`, `max_o
 	(4862, 'Family', 8, 818, 1849, 1750, 4, 95, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.roombooking
+-- Dumping structure for table hoolitels.roombooking
 CREATE TABLE IF NOT EXISTS `roombooking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `booking_id` int(11) NOT NULL DEFAULT 0,
@@ -2675,7 +2677,7 @@ CREATE TABLE IF NOT EXISTS `roombooking` (
   CONSTRAINT `FK__room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.roombooking: ~20 rows (ungefär)
+-- Dumping data for table hoolitels.roombooking: ~20 rows (approximately)
 /*!40000 ALTER TABLE `roombooking` DISABLE KEYS */;
 INSERT INTO `roombooking` (`id`, `booking_id`, `room_id`, `extra_bed`, `room_cost`, `food_cost`) VALUES
 	(1, 1, 3863, 0, 1200, 676),
@@ -2700,7 +2702,7 @@ INSERT INTO `roombooking` (`id`, `booking_id`, `room_id`, `extra_bed`, `room_cos
 	(24, 29, 4099, 150, 1100, 333);
 /*!40000 ALTER TABLE `roombooking` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.user
+-- Dumping structure for table hoolitels.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '0',
@@ -2715,10 +2717,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `phone` (`phone`),
   KEY `FK__country` (`country_id`) USING BTREE,
-  CONSTRAINT `FK__country` FOREIGN KEY (`country_id`) REFERENCES `country` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2064 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `FK__country` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2066 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell hoolitels.user: ~1 001 rows (ungefär)
+-- Dumping data for table hoolitels.user: ~1 002 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `name`, `email`, `address`, `zip`, `city`, `phone`, `password`, `country_id`) VALUES
 	(1063, 'Winifred Boath', 'wboath0@house.gov', '296 Sunnyside Point', '14521', 'Sawara', '2123758293', '0bVsmQ', 176),
@@ -3721,10 +3723,11 @@ INSERT INTO `user` (`id`, `name`, `email`, `address`, `zip`, `city`, `phone`, `p
 	(2060, 'Deloria MacNeilly', 'dmacneillyrp@scientificamerican.com', '6 Hauk Street', '42910', 'Korba', '2869023346', 'vfPuWfv', 205),
 	(2061, 'Daniela Buddock', 'dbuddockrq@economist.com', '18964 Morningstar Alley', '66950', 'Nangakeo', '4178183288', 'A9rt4HiTL', 135),
 	(2062, 'Melantha Dobbie', 'mdobbierr@eventbrite.com', '846 Morning Drive', '80618', 'Mariental', '6284872654', 'oHY1qTSfR2', 194),
-	(2063, 'user', 'user', 'uservejen 1', '11111', 'usercity', '012345678', 'user', 227);
+	(2063, 'user', 'user', 'uservejen 1', '11111', 'usercity', '012345678', 'user', 227),
+	(2065, 'Snurre Sprätt2', 'snurra2@spratt.se', 'Hålvägen 2', '11122', 'Hålihuvetstaden', '112236344', 'tjosanhejsa2n', 18);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
--- Dumpar struktur för tabell hoolitels.users
+-- Dumping structure for table hoolitels.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
@@ -3734,15 +3737,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumpar data för tabell hoolitels.users: ~2 rows (ungefär)
+-- Dumping data for table hoolitels.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`) VALUES
 	(1, 'ben@node.se', 'abc123', 'Ben', 'Node'),
 	(2, 'bob@node.se', 'abc123', 'Bob', 'Node');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- Dumpar struktur för vy hoolitels.vwhotelroombookings
--- Skapar temporärtabell för att hantera VIEW-beroendefel
+-- Dumping structure for view hoolitels.vwhotelroombookings
+-- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `vwhotelroombookings` (
 	`HotelId` INT(11) NOT NULL,
 	`name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
@@ -3753,8 +3756,8 @@ CREATE TABLE `vwhotelroombookings` (
 	`end_date` DATE NULL
 ) ENGINE=MyISAM;
 
--- Dumpar struktur för vy hoolitels.vwhotelroombookings
--- Tar bort temporärtabell och skapar slutgiltlig VIEW-struktur
+-- Dumping structure for view hoolitels.vwhotelroombookings
+-- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `vwhotelroombookings`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `vwhotelroombookings` AS SELECT hotel.id AS HotelId, hotel.name, room.id AS RoomId, roombooking.id AS RBId, booking.id AS BookingId, booking.start_date, booking.end_date FROM hotel  
 LEFT JOIN room ON hotel.id = room.hotel_id
