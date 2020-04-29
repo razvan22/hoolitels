@@ -2,7 +2,11 @@
   <div>
     <div class="container">
       <div class="container">
-        <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
+        <div class="row">
+          <div class="col s12">
+            <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
+          </div>
+        </div>
       </div>
       <div class="row selectors">
         <div class="input-field col s12 m6">
@@ -123,7 +127,13 @@ export default {
 .headline {
   color: rgb(253, 253, 253);
   margin: 20px;
+  display: flex;
+  justify-content: center;
 }
+
+
+
+
 
 .icon_in {
   margin-top: 10px;
