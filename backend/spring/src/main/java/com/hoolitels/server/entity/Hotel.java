@@ -63,6 +63,9 @@ public class Hotel {
     @Column(nullable = false)
     private Time checkout_time;
 
+    @Column(nullable = true)
+    private int grade;
+
     @OneToMany(mappedBy = "hotel")
     @JsonManagedReference("reviewHotelBackReference")
     private List<Review> reviews = new ArrayList<>();
@@ -160,6 +163,14 @@ public class Hotel {
 
     public Set<Amenity> getAmenities() {
         return amenities;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 
     public List<Room> getFreeRooms(Date start_date, Date end_date) {
