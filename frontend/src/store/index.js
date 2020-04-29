@@ -13,17 +13,21 @@ export default new Vuex.Store({
     hotels: [],
     user: {},
     userLogged: false,
+
     resultSortFilter: {
       selected: "price-low-hi",
       checkedFiltration: [],
       distance_to_beach: 0,
       distance_to_town: 0,
     },
+    
     booking: {
       rooms: 1,
       check_in: "",
       check_out: "",
     },
+
+    countries:[]
   },
 
   mutations: {
@@ -50,6 +54,9 @@ export default new Vuex.Store({
     userLogStatus(state, value) {
       state.userLogged = value;
     },
+    setCountries(state, value){
+      state.countries = value;
+    }
 
     setSelectedRooms(state, value) {
       state.booking.rooms = value;
@@ -85,16 +92,18 @@ export default new Vuex.Store({
         this.state.userLogged = true;
       }
     },
-    async isUserLogged({ commit }) {
-      let response = await fetch("api/whoami");
-      let responsee = await response.json();
 
-      if (responsee == null) {
-        this.state.userLogged = false;
-      } else {
-        this.state.userLogged = true;
-      }
-      commit("setUser", responsee);
+      async isUserLogged({ commit }){
+        let response = await fetch('api/whoami')
+        let responsee = await response.json()
+
+        if(responsee == null){
+          this.state.userLogged = false;
+          
+        }else{
+          this.state.userLogged = true;
+        }
+       commit('setUser', responsee)
     },
 
     async getAmenities({ commit }) {
@@ -111,8 +120,15 @@ export default new Vuex.Store({
       document.cookie =
         "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       this.state.userLogged = false;
-      commit("setUser", null);
+      commit('setUser', null)
     },
+      
+    async getCountries({ commit }) {
+      let response = await fetch('http://localhost:8070/rest/country')
+      response = await response.json()
+      commit('setCountries', response)
+    }
+
   },
 
   modules: {},
