@@ -145,8 +145,34 @@
                             <button v-if="!ifLogged" v-on:click="editMode = false" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Skapa konto</button>
                         </div>
                     </div>
+                </div>
+            </div>
+             <div >
+                <modal name="successful" :height="150" :width="500" :border-radius="200">
+                    <div id="promp">
+                        <h5 class="center">Ett konto har skapats med e-post</h5>
+                        <h6 class="center">{{user.email}}</h6>
+                        <div class="center">
+                       <router-link to="/"> <button  class="btn-register-2 btn-small waves-effect waves-light cyan darken-2"  name="action">Ok
+                        </button>
+                        </router-link>
+                        </div>
                     </div>
-              </div>  
+                </modal>
+                <modal name="failed" :height="150" :width="500" :border-radius="200">
+                    <div id="promp">
+                        <h5 class="center red-text">Registrering misslyckades !!!</h5>
+                        
+                        <div class="center">
+                            <button @click="hide" class="btn-register-2 btn-small waves-effect waves-light cyan darken-2"  name="action">Ok
+                            </button>
+                        </div>
+                    </div>
+                </modal>
+                
+            </div>   
+          
+            
         </div>
 
 </template>
@@ -169,7 +195,8 @@ export default {
             },
             editMode: false,
             countries:this.$store.state.countries,
-            selectedCountry: '',
+            
+        
             
         }
     },
@@ -204,18 +231,6 @@ export default {
 
          addUser: async function(){
             
-            // let data = {
-            //     country_id: this.user.country,
-            //     name:"Testname",
-            //     email: "testemail@gmail.com",
-            //     address: "Hålvägen 1",
-            //     zip: "323",
-            //     city: "NewCit",
-            //     phone: "0987665673",
-            //     password: "abcnd12345"
-
-            // }
-            console.log(this.user)
             let rawResponse = await fetch('http://localhost:8070/rest/user',{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' ,
@@ -224,15 +239,38 @@ export default {
                 body: JSON.stringify(this.user)
                 
             });
+            if(rawResponse.status == 200){
+              this.successfulShow()
+            }else{
+                this.failedShow ()
+            }
             let response = await rawResponse.json();
             console.log(response)
         },
+
+
+        successfulShow () {
+            this.$modal.show('successful');
+        },
+
+        failedShow () {
+             this.$modal.show('failed');
+        },
+
+        hide() {
+             this.$modal.hide('failed');
+        }
     }
     
 }
 </script>
 
 <style scoped>
+
+#promp {
+    
+}
+
 #disabled{
     border: 0em;
 }
@@ -256,5 +294,13 @@ export default {
 }
 .btn-register {
      border-radius: 25px;
+}
+#promp h6{
+    color: #424242;
+}
+.btn-register-2 {
+    margin-top: 3vh;
+     border-radius: 10px;
+     width: 100px;
 }
 </style>
