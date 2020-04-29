@@ -35,8 +35,8 @@
         </div>
       </div>
       <HotelDatePicker
-        @checkInChanged="this.updateCheckIn"
-        @checkOutChanged="updateCheckOut"
+        @check-in-changed="updateCheckIn"
+        @check-out-changed="updateCheckOut"
         :showYear="true"
         :displayClearButton="false"
         :firstDayOfWeek="1"

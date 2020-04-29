@@ -29,6 +29,7 @@ export default new Vuex.Store({
     },
 
     countries: [],
+    originalHotels: []
   },
 
   mutations: {
@@ -62,6 +63,10 @@ export default new Vuex.Store({
 
     setSelectedRooms(state, value) {
       state.booking.rooms = value;
+    },
+
+    setOriginalHotels(state, value) {
+      state.originalHotels = value;
     },
 
     setCheckIn(state, value) {
@@ -162,28 +167,22 @@ export default new Vuex.Store({
         start_date: state.booking.check_in,
         end_date: state.booking.check_out,
         nr_of_rooms: state.booking.rooms,
-      };
+      };   
 
-      let response = await fetch(
-        "/rest/city/" + state.dateSelected.selectedCity
-      );
-      console.log("searchObj: ", searchObj, " ", JSON.stringify(searchObj));
-
-      // let response = await fetch("/rest/search/", {
-      //   "method": "GET",
-      //   "headers": {
-      //     "Content-Type": "application/json",
-      //   },
-      //   "body": JSON.stringify(searchObj),
-      // });
+      let response = await fetch('/rest/search/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchObj),
+      })
 
       response = await response.json();
       console.log(response);
 
-      commit("setCity", response);
-      commit("setHotels", response.hotels);
-      // this.city = response;
-      // this.hotels = this.city.hotels;
+      commit("setOriginalHotels", response);
+      commit("setHotels", response);
     },
   },
 
