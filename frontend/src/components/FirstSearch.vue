@@ -2,7 +2,11 @@
   <div>
     <div class="container">
       <div class="container">
-        <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
+        <div class="row">
+          <div class="col s12">
+            <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
+          </div>
+        </div>
       </div>
       <div class="row selectors">
         <div class="input-field col s12 m6">
@@ -35,13 +39,14 @@
         </div>
       </div>
       <HotelDatePicker
-        @checkInChanged="this.updateCheckIn"
-        @checkOutChanged="updateCheckOut"
+        @check-in-changed="updateCheckIn"
+        @check-out-changed="updateCheckOut"
         :showYear="true"
         :displayClearButton="false"
         :firstDayOfWeek="1"
         :startingDateValue="new Date()"
         :endingDateValue="getTomorrow()"
+        :i18n="i18nSwe"
       />
       <div class="center-align">
         <router-link
@@ -56,139 +61,162 @@
 </template>
 
 <script>
-import M from "materialize-css";
-import HotelDatePicker from "vue-hotel-datepicker";
+  import M from 'materialize-css'
+  import HotelDatePicker from 'vue-hotel-datepicker'
 
-export default {
-  components: {
-    HotelDatePicker,
-  },
-  computed: {
-    selectedRooms: {
-      get() {
-        return this.$store.state.booking.rooms;
+  export default {
+    components: {
+      HotelDatePicker,
+    },
+    computed: {
+      selectedRooms: {
+        get() {
+          return this.$store.state.booking.rooms
+        },
+
+        set(value) {
+          this.$store.commit('setSelectedRooms', value)
+        },
       },
 
-      set(value) {
-        this.$store.commit("setSelectedRooms", value);
+      selectedCity: {
+        get() {
+          return this.$store.state.dateSelected.selectedCity
+        },
+        set(value) {
+          this.$store.commit('setSelectedCity', value)
+        },
+      },
+
+      startdate: {
+        get() {
+          return this.$store.state.booking.check_in
+        },
+
+        set(value) {
+          this.$store.commit('setCheckIn', value)
+        },
+      },
+
+      enddate: {
+        get() {
+          return this.$store.state.booking.check_out
+        },
+
+        set(value) {
+          this.$store.commit('setCheckOut', value)
+        },
       },
     },
 
-    selectedCity: {
-      get() {
-        return this.$store.state.dateSelected.selectedCity;
-      },
-      set(value) {
-        this.$store.commit("setSelectedCity", value);
-      },
+    data() {
+      return {
+        i18nSwe: {
+          night: 'Natt',
+          nights: 'Nätter',
+          'day-names': ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör'],
+          'check-in': 'Check-in',
+          'check-out': 'Check-Out',
+          'month-names': [
+            'januari',
+            'februari',
+            'mars',
+            'april',
+            'maj',
+            'juni',
+            'juli',
+            'augusti',
+            'september',
+            'oktober',
+            'november',
+            'december',
+          ],
+        },
+        booking: {
+          rooms: 1,
+          check_in: '',
+          check_out: '',
+        },
+      }
+    },
+    mounted() {
+      var elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
+      this.startdate = new Date()
+      this.enddate = this.getTomorrow()
     },
 
-    startdate: {
-      get() {
-        return this.$store.state.booking.check_in;
-      },
-
-      set(value) {
-        this.$store.commit("setCheckIn", value);
-      },
+    updated() {
+      var elems = document.querySelectorAll('select')
+      M.FormSelect.init(elems)
     },
 
-    enddate: {
-      get() {
-        return this.$store.state.booking.check_out;
+    methods: {
+      updateCheckIn(date) {
+        this.$store.commit('setCheckIn', date)
+        console.log('updateCheckin: ', date)
+
+        // this.startdate = date;
       },
 
-      set(value) {
-        this.$store.commit("setCheckOut", value);
+      updateCheckOut(date) {
+        this.$store.commit('setCheckOut', date)
+        console.log('updateCheckOut: ', date)
+        // this.enddate = date;
+      },
+
+      getTomorrow() {
+        let d = new Date()
+        d.setDate(d.getDate() + 2)
+        return d
       },
     },
-  },
-
-  data() {
-    return {
-      booking: {
-        rooms: 1,
-        check_in: "",
-        check_out: "",
-      },
-    };
-  },
-  mounted() {
-    var elems = document.querySelectorAll("select");
-    M.FormSelect.init(elems);
-    this.startdate = new Date();
-    this.enddate = this.getTomorrow();
-  },
-
-  updated() {
-    var elems = document.querySelectorAll("select");
-    M.FormSelect.init(elems);
-  },
-
-  methods: {
-    updateCheckIn(date) {
-      this.$store.commit("setCheckIn", date);
-      console.log("updateCheckin: ", date);
-
-      // this.startdate = date;
-    },
-
-    updateCheckOut(date) {
-      this.$store.commit("setCheckOut", date);
-      console.log("updateCheckOut: ", date);
-      // this.enddate = date;
-    },
-
-    getTomorrow() {
-      let d = new Date();
-      d.setDate(d.getDate() + 2);
-      return d;
-    },
-  },
-};
+  }
 </script>
 
 <style>
-.select-wrapper input.select-dropdown {
-  border-bottom: none !important;
-}
+  .select-wrapper input.select-dropdown {
+    border-bottom: none !important;
+  }
 </style>
 
 <style scoped>
-.selectors {
-  margin-bottom: 14px;
-}
+  .selectors {
+    margin-bottom: 14px;
+  }
 
-.headline {
-  color: rgb(253, 253, 253);
-  margin: 20px;
-}
+  .headline {
+    color: rgb(253, 253, 253);
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+  }
 
-.icon_in {
-  margin-top: 10px;
-  font-size: 18px;
-  color: Turquoise;
-  padding-left: 5px;
-}
+  .icon_in {
+    margin-top: 10px;
+    font-size: 18px;
+    color: Turquoise;
+    padding-left: 5px;
+  }
 
-.datepicker__wrapper {
-  height: 50px !important;
-}
+  .datepicker__wrapper {
+    height: 50px !important;
+  }
 
-.datepicker__wrapper >>> .datepicker__dummy-wrapper {
-  border: none !important;
-}
+  .datepicker__wrapper >>> .datepicker__dummy-wrapper {
+    border: none !important;
+  }
 
-.input-field {
-  background: rgb(255, 255, 255);
-}
-.myicon {
-  font-size: 3rem !important;
-}
+  .input-field {
+    background: rgb(255, 255, 255);
+  }
+  .myicon {
+    font-size: 3rem !important;
+  }
 
-.search-btn {
-  margin-top: 40px;
-  width: 30%;
-  border-radius: 25px;
-}
+  .search-btn {
+    margin-top: 40px;
+    width: 30%;
+    border-radius: 25px;
+  }
 </style>

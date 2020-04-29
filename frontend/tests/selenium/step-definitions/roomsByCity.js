@@ -2,13 +2,12 @@ let { $, sleep } = require('./funcs');
 module.exports = function () {
 
     this.When(/^I select Malmö from the välj stad dropdown menu$/, async function () {
-        let dropDown = await $('body > main > div > div.row > div:nth-child(1)');
-        await dropDown.click();
+        let dropDown = await driver.findElements(by.innerHTML('Välj stad'));
+        dropDown.click();
         await sleep(200);
-        let malmo = $('#select-options-3dc0315d-4269-7516-cf1d-50312ef6ac767 > span:nth-child(1)');
-        //let malmo = await driver.findElements(by.text('Malmö'));
-        //var xpath = "//li[contains(text(),'Malmö')]";
-        await malmo.click();
+        var malmo = await driver.findElement(by.innerHTML('Malmö'));
+        console.log(malmo);
+        malmo.click();
         await sleep(200)
         //write assert test that Malmö is in the välj stad dropdown
         //'body > main > div > div.row > div:nth-child(1)'
