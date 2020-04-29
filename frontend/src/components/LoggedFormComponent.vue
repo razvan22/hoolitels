@@ -55,6 +55,11 @@ export default {
     methods: {
     logout(){
           this.$store.dispatch("logout")
+          this.deleteCook()
+      },
+      deleteCook () {
+        
+        console.log("delete-run") 
       }
       
     }

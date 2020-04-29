@@ -169,10 +169,7 @@
                         </div>
                     </div>
                 </modal>
-                
             </div>   
-          
-            
         </div>
 
 </template>

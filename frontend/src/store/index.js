@@ -172,12 +172,13 @@ export default new Vuex.Store({
     },
 
     async logout({ commit }) {
-      await fetch("http://localhost:8070/logout", {
+      await fetch("http://127.0.0.1:8070/logout", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json"},
+       body:{
+       }
       });
-      document.cookie =
-        "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+     
       this.state.userLogged = false;
       commit("setUser", null);
     },
