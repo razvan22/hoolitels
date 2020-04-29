@@ -2,15 +2,19 @@ let { $, sleep } = require('./funcs');
 module.exports = function () {
 
     this.When(/^I select Malmö from the välj stad dropdown menu$/, async function () {
-        let dropDown = await $('body > main > div > div.row > div:nth-child(1)');
+        let dropDown = await $();
         dropDown.click();
         await sleep(200);
-        //let malmo = $('#select-options-db935abb-f02c-41e7-6c9a-303f8d1d60dd7');
+        let malmo = $('#select-options-3dc0315d-4269-7516-cf1d-50312ef6ac767 > span:nth-child(1)');
         //let malmo = await driver.findElements(by.text('Malmö'));
-        var xpath = "//li[contains(text(),'Malmö')]";
-        xpath.click();
+        //var xpath = "//li[contains(text(),'Malmö')]";
+        malmo.click();
         await sleep(200)
         //write assert test that Malmö is in the välj stad dropdown
+        //'body > main > div > div.row > div:nth-child(1)'
+       
+        //#select-options-db935abb-f02c-41e7-6c9a-303f8d1d60dd7
+       //dropDown  #select-options-3dc0315d-4269-7516-cf1d-50312ef6ac760 > span:nth-child(1)
     });
 
     this.When(/^I click the sök button$/, async function () {

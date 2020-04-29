@@ -35,6 +35,8 @@
         </div>
       </div>
       <HotelDatePicker
+        @checkInChanged="this.updateCheckIn"
+        @checkOutChanged="updateCheckOut"
         :showYear="true"
         :displayClearButton="false"
         :firstDayOfWeek="1"
@@ -80,6 +82,26 @@ export default {
         this.$store.commit("setSelectedCity", value);
       },
     },
+
+    startdate: {
+      get() {
+        return this.$store.state.booking.check_in;
+      },
+
+      set(value) {
+        this.$store.commit("setCheckIn", value);
+      },
+    },
+
+    enddate: {
+      get() {
+        return this.$store.state.booking.check_out;
+      },
+
+      set(value) {
+        this.$store.commit("setCheckOut", value);
+      },
+    },
   },
 
   data() {
@@ -94,12 +116,29 @@ export default {
   mounted() {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems);
+    this.startdate = new Date();
+    this.enddate = this.getTomorrow();
   },
+
   updated() {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems);
   },
+
   methods: {
+    updateCheckIn(date) {
+      this.$store.commit("setCheckIn", date);
+      console.log("updateCheckin: ", date);
+
+      // this.startdate = date;
+    },
+
+    updateCheckOut(date) {
+      this.$store.commit("setCheckOut", date);
+      console.log("updateCheckOut: ", date);
+      // this.enddate = date;
+    },
+
     getTomorrow() {
       let d = new Date();
       d.setDate(d.getDate() + 2);
