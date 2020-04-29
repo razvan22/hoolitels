@@ -29,10 +29,29 @@ export default new Vuex.Store({
     },
 
     countries: [],
-    originalHotels: []
+    originalHotels: [],
+    roomSelection: {
+      selectedRoomsPerType: [0, 0, 0, 0],
+      roomIdPerType: [[],[],[],[]],
+      totSelectedRooms: 0,
+    },  
   },
 
   mutations: {
+    setSelectedRoomsPerType(state, value) {
+      state.roomSelection.selectedRoomsPerType[value.list] = parseInt(value.newVal);
+
+      let sum = 0;
+      for (let i = 0; i <state.roomSelection.selectedRoomsPerType.length; i++) {
+        sum += state.roomSelection.selectedRoomsPerType[i];
+      }
+      state.roomSelection.totSelectedRooms = sum;
+    },
+
+    setSelectedRoomsIdsPerType(state, listNum, value) {
+      state.roomSelection.roomIdPerType[listNum] = value;
+    }, 
+
     setSortFilter(state, value) {
       state.resultSortFilter = value;
     },
