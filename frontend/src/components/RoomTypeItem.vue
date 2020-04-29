@@ -85,9 +85,6 @@ export default {
 
       rooms = rooms.slice(0, event.target.value);
 
-console.log("onChange: rooms = ", rooms);
-
-
       this.$store.commit("setSelectedRoomsRecsPerType", {list: this.Number, array: rooms});
       this.$store.commit("setSelectedRoomsPerType", {list: this.Number, newVal: event.target.value});
     },
