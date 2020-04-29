@@ -40,7 +40,6 @@ export default {
 
 .footer .row {
   margin-bottom: 0px !important;
-  margin-top: 0px !important;
 }
 
 

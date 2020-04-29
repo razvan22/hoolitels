@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="back">
-    <div id="filter">
+    <div id="fade">
       <div class="all">
         <Header />
         <main>
@@ -35,15 +35,10 @@ export default {
   /* flex: 1 0 auto; */
 }
 
-@media (min-width: 301px) and (max-width: 500px) {
-  .back {    
-    background-image: url("../src/assets/header-img.jpg") !important;
-  }
-}
-
 .back {
   flex-direction: column;
-  display: flex;  
+  display: flex;
+  background-image: url("../src/assets/header-img.jpg") !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
@@ -54,12 +49,12 @@ export default {
     rgb(253, 221, 155)
   );
 }
-#filter {
+#fade {
   background: rgb(236, 236, 236, 0.3);
 }
 
 .all {
-  min-height: calc(100vh - 55px) !important;
+  min-height: calc(100vh - 69px) !important;
   flex: 1 0 auto;
 }
 </style>

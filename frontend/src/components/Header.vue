@@ -3,13 +3,8 @@
     <div class="row row1">
       <div class="col m3 no-pad"></div>
       <div class="col s12 m6">
-        <div class="col s2 smallogo hide-on-med-and-up">          
-        <router-link to="/">
-        <img src="../assets/logo_minimal.gif" class="logo" /></router-link></div>
-        <div class="col m6 l4 hide-on-small-only">          
-        <router-link to="/">
-        <img src="../assets/logo_minimal.gif" class="logo" /></router-link></div>
-        <div class="col s1"></div>
+        <div class="col s3"></div>
+        <img src="../assets/logo_minimal.gif" class="logo" />
 
         <i
           data-target="slide-out"
@@ -55,16 +50,11 @@
 
 <style scoped>
 #header .logo {
-
-  margin-top: 10px;
-  width: 100%;
-}
-
-#header .row .smallogo {
-
-  margin-left: 0px;
-  margin-right: 40px;
-  width: 32%;
+  /* display: block;
+    margin-left: auto;
+    margin-right: auto  */
+  margin-top: 30px;
+  width: 50%;
 }
 
 #header .row1 .no-pad {
@@ -86,7 +76,7 @@
 } */
 
 #header .row .col {
-  /* justify-content: center; */
+  justify-content: center;
   display: flex;
   padding-right: 0px;
 }

@@ -35,17 +35,14 @@ public class ReviewController {
 
     @PostMapping
     public Review createReview(@RequestBody Review review) {
-//        Optional<User> userOpt = userRepository.findById(review.getUser_id());
+        Optional<User> userOpt = userRepository.findById(review.getUser_id());
         Optional<Hotel> hotelOpt = hotelRepository.findById(review.getHotel_id());
-//        if (userOpt.isEmpty()) return null;
-//        if (hotelOpt.isEmpty()) return null;
+        if (userOpt.isEmpty()) return null;
+        if (hotelOpt.isEmpty()) return null;
 
-//        review.setUser(userOpt.get());
+        review.setUser(userOpt.get());
         review.setHotel(hotelOpt.get());
 
-        System.out.println("hejhopp" + hotelOpt.get());
-
-//        return reviewRepository.save(review);
-        return null;
+        return reviewRepository.save(review);
     } // createReview
 }
