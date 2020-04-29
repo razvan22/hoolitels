@@ -88,7 +88,7 @@
 <script>
   import RoomTypeList from '@/components/RoomTypeList'
 
-  export default {
+export default {
     name: 'DisplayHotel',
     props: [`hotel`, `DisplayRooms`],
     data() {
@@ -100,29 +100,23 @@
       numRoomsToBook() {
         return this.$store.state.booking.rooms
       },
-      computed: {
-        totRoomsSelected() {
-          return this.$store.state.roomSelection.totSelectedRooms
-        },
+      totRoomsSelected() {
+        return this.$store.state.roomSelection.totSelectedRooms
+      },
 
-        buttonShouldBeDisabled() {
-          return this.totRoomsSelected < this.numRoomsToBook
-        },
+      buttonShouldBeDisabled() {
+        return this.totRoomsSelected < this.numRoomsToBook
+      },
 
-        amenitiesIsEmpty() {
-          return this.hotel.amenities && this.hotel.amenities.length
-        },
-
-        created() {},
-
-        components: {
-          RoomTypeList,
-        },
-
-        methods: {},
+      amenitiesIsEmpty() {
+        return this.hotel.amenities && this.hotel.amenities.length
       },
     },
-  }
+
+    components: {
+      RoomTypeList,
+    },
+}
 </script>
 
 <style scoped>
