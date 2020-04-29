@@ -86,50 +86,43 @@
 </template>
 
 <script>
-import RoomTypeList from "@/components/RoomTypeList";
+  import RoomTypeList from '@/components/RoomTypeList'
 
-export default {
-  name: "DisplayHotel",
-  props: [`hotel`, `DisplayRooms`],
-  data() {
-    return {
-      isHidden: false,
-    };
-  },
-  computed: {
-    numRoomsToBook() {
-      return this.$store.state.booking.rooms;
+  export default {
+    name: 'DisplayHotel',
+    props: [`hotel`, `DisplayRooms`],
+    data() {
+      return {
+        isHidden: false,
+      }
     },
     computed: {
-      buttonShouldBeDisabled: {
-        get() {
-          return this.totRoomsSelected < this.$store.state.booking.rooms
-        },
+      numRoomsToBook() {
+        return this.$store.state.booking.rooms
       },
+      computed: {
+        totRoomsSelected() {
+          return this.$store.state.roomSelection.totSelectedRooms
+        },
 
-    totRoomsSelected() {
-      return this.$store.state.roomSelection.totSelectedRooms;
+        buttonShouldBeDisabled() {
+          return this.totRoomsSelected < this.numRoomsToBook
+        },
+
+        amenitiesIsEmpty() {
+          return this.hotel.amenities && this.hotel.amenities.length
+        },
+
+        created() {},
+
+        components: {
+          RoomTypeList,
+        },
+
+        methods: {},
+      },
     },
-
-    buttonShouldBeDisabled() {
-      return this.totRoomsSelected < this.numRoomsToBook;
-    },
-
-    amenitiesIsEmpty() {
-      return this.hotel.amenities && this.hotel.amenities.length;
-    },
-
-  created() {
-
-  },
-
-  components: {
-    RoomTypeList,
-  },
-
-  methods: {
-  },
-};
+  }
 </script>
 
 <style scoped>
