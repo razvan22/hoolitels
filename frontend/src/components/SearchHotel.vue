@@ -1,16 +1,10 @@
 <template>
-    <div class="main" id="date">
-        <div class="container">
-            <DateSelector/>
-                    <div class="row">
-            </div>
-          
-        </div>
+  <div class="main" id="date">
+    <div class="container">
+      <DateSelector />
+      <div class="row"></div>
     </div>
-            
-        
-    
-  
+  </div>
 </template>
 
 <script>
