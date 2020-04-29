@@ -38,6 +38,8 @@
         :showYear="true"
         :displayClearButton="false"
         :firstDayOfWeek="1"
+        :startingDateValue="new Date()"
+        :endingDateValue="getTomorrow()"
       />
       <div class="center-align">
         <router-link
@@ -67,7 +69,7 @@ export default {
 
       set(value) {
         this.$store.commit("setSelectedRooms", value);
-      }
+      },
     },
 
     selectedCity: {
@@ -100,7 +102,7 @@ export default {
   methods: {
     getTomorrow() {
       let d = new Date();
-      d.setDate(d.getDate() + 4);
+      d.setDate(d.getDate() + 2);
       return d;
     },
   },

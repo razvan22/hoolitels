@@ -141,7 +141,8 @@ public class User {
 //    public void setCountry(Optional<Country> country) {
 //        this.country = country.orElse(null);
 //    }
-    public void setCountry(long country) {
-        this.country_id = country;
+
+    public void setCountry_id(long country_id) {
+        this.country_id = country_id;
     }
 }
