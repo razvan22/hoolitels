@@ -139,7 +139,7 @@
 
 <script>
 import M from "materialize-css";
-import { bus } from "../main";
+// import { bus } from "../main";
 
 export default {
   name: "SortAndFilter",
@@ -163,7 +163,8 @@ export default {
     },
     sortAndFilter: function() {
       this.$store.commit("setSortFilter", this.sortFilter);
-      bus.$emit("changeIt", "changed sorting and filtering");
+      this.$store.commit("filterHotels");
+      // bus.$emit("changeIt", "changed sorting and filtering");
     },
   },
   mounted() {
