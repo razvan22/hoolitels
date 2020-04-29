@@ -22,7 +22,7 @@ module.exports = function () {
       });
 
     this.Then(/^my room is added to my cart$/, async function () {
-        addedToCart = await $();
+         let addedToCart = await $();
         assert(addedToCart, "Expected the room to be added to the cart");
         await sleep (1000);
     

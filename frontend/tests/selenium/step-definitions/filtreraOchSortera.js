@@ -30,9 +30,9 @@ module.exports = function () {
 
     this.When(/^I choose "([^"]*)" avstånd till strand$/, async function () {  
                 let avståndTillStrand = await $('#div.s6:nth-child(1) > select:nth-child(2)');
-                avståndTillStrand.click();
+                await avståndTillStrand.click();
                 let femHundraAvståndStrand = await $('#div.s6:nth-child(1) > select:nth-child(2) > option:nth-child(2)');
-                femHundraAvståndStrand.click();
+                await femHundraAvståndStrand.click();
                 assert(femHundraAvståndStrand,"Expected to choose 500 m. avstånd till strand");
                 await sleep(1000);
       });
@@ -40,9 +40,9 @@ module.exports = function () {
 
     this.When(/^I choose "([^"]*)" avsånd till centrum$/, async function () {  
         let avståndTillCentrum = await $('div.s6:nth-child(2) > select:nth-child(2)');
-        avståndTillCentrum.click();
+        await avståndTillCentrum.click();
         let tusenAvståndTillCentrum = await $('div.s6:nth-child(2) > select:nth-child(2) > option:nth-child(3)');
-        tusenAvståndTillCentrum.click();
+        await tusenAvståndTillCentrum.click();
         assert(tusenAvståndTillCentrum,"Expected to choose 1000 m. avstånd till centrum");
         await sleep(1000);
       });
@@ -50,7 +50,7 @@ module.exports = function () {
 
     this.When(/^I choose "([^"]*)" sortera options$/, async function () {      
           let prisLagstTillhogst = await $('#mobile-demo-1 > ul:nth-child(1) > form:nth-child(10) > p:nth-child(1) > label:nth-child(1) > span:nth-child(2)')              
-            prisLagstTillhogst.click();
+            await prisLagstTillhogst.click();
             assert(prisLagstTillhogst, "Expected to choose pris lägst till högst");
             await sleep(1000);
       });
@@ -58,13 +58,13 @@ module.exports = function () {
 
     this.When(/^I click on tillämpa button$/, async function () {
            let tillampaButton = await $('#.sidenav-close');
-           tillampaButton.click();
+           await tillampaButton.click();
            assert(tillampaButton, "Expected to click on tillämpa button");
            await sleep(1000);     
           // #mobile-demo-1 > ul:nth-child(1) > form:nth-child(10) > li:nth-child(6)       
         });
 
-    this.Then(/^I should get a list of hotels based on filter$/, function () { 
+    this.Then(/^I should get a list of hotels based on filter$/, async function () { 
                     
     });
 
