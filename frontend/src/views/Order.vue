@@ -1,7 +1,7 @@
 <template>
 <div class="container">
    <div class="row">
-    <div class="col s12 center-align">
+    <div class="col s12 offset-l1 l9 center-align">
       <div class="card-background">
        <div >
         <RoomView
