@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="back">
-    <div id="fade">
+    <div id="filter">
       <div class="all">
         <Header />
         <main>
@@ -49,12 +49,12 @@ export default {
     rgb(253, 221, 155)
   );
 }
-#fade {
+#filter {
   background: rgb(236, 236, 236, 0.3);
 }
 
 .all {
-  min-height: calc(100vh - 69px) !important;
+  min-height: calc(100vh - 55px) !important;
   flex: 1 0 auto;
 }
 </style>

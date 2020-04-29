@@ -1,5 +1,6 @@
 <template>
-  <div id="review-modal" class="modal">
+<!-- id="review-modal" class="modal" -->
+  <div class="container">
     <div class="card">
       <div class="row">
         <div class="col s12 m5">
@@ -45,7 +46,7 @@
         >
           Lämna in
           <i class="material-icons right">send</i>
-        </button>
+        </button>         
       </div>
     </div>
   </div>

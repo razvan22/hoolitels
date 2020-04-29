@@ -65,11 +65,6 @@ export default {
 
   data() {
     return {
-      // selected: {
-      //   id: 0,
-      //   name: "Välj"
-      // },
-
       booking: {
         rooms: 1,
         check_in: "",
