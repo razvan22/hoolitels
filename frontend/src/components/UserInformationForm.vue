@@ -161,9 +161,9 @@
                         <button v-if="editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Registrera
                             
                         </button>
-                        <button v-if="!ifLogged" v-on:click="addUser" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in
-                            <i class="material-icons right">send</i>
-                        <button v-if="!ifLogged" v-on:click="editMode = false" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Registrera
+                        <!-- <button v-if="!ifLogged" v-on:click="addUser" class="btn-large waves-effect waves-light" type="submit" name="action">Skicka in -->
+                            <!-- <i class="material-icons right">send</i> -->
+                        <button v-if="!ifLogged" v-on:click="addUser" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Registrera
                            
                         </button>
                     </div>
@@ -243,7 +243,7 @@ export default {
             //     password: "abcnd12345"
 
             // }
-           
+            console.log(this.user)
             let rawResponse = await fetch('http://localhost:8070/rest/user',{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' ,
