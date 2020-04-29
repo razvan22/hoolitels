@@ -37,9 +37,14 @@
               <p class="center">{{ room.food_cost }}</p>
             </div>
             <div class="col s12 m3">
-              <h6 class="center">Lämna ett omdöme</h6>
-              <div @click="reviewModal" :room="room">link</div>
-              <modal name="reviewModal" :height="400" :width="350">
+              <!-- v-if  booking.end_date before new Date()-->
+              
+              <div class="hide-on-med-and-up center" @click="reviewModal" :room="room">Lämna ett omdöme</div>
+              <modal class="hide-on-med-and-up" name="reviewModal" :height="400" :width="350">
+                <Review :room="room" />
+              </modal>
+              <div class="hide-on-small-only center" @click="reviewModalLarge" :room="room">Lämna ett omdöme</div>
+              <modal class="hide-on-small-only" name="reviewModalLarge" :height="400" :width="700">
                 <Review :room="room" />
               </modal>
             </div>
@@ -70,7 +75,10 @@ export default {
   methods: {
     reviewModal() {
       this.$modal.show("reviewModal");
-    }
+    },
+reviewModalLarge() {
+      this.$modal.show("reviewModalLarge");
+    }    
   }
 };
 </script>
