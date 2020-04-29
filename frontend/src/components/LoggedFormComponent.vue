@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col s12 m12 l12">
-                  <router-link to="/userprofile" >
+                  <router-link to="/userprofile" class="sidenav-close" >
                     <p class="center">Din profil </p>
                   </router-link>
                 </div>
