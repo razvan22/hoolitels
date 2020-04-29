@@ -10,6 +10,14 @@ export default new Vuex.Store({
     dateSelected: {
       selectedCity: 0,
     },
+
+    bookingInfo: {
+      numAdults: 0,
+      numChildren: 0,
+      numToddlers: 0,
+      message: "",
+    },
+
     city: {},
     hotels: [],
     user: {},
@@ -32,33 +40,62 @@ export default new Vuex.Store({
     originalHotels: [],
     roomSelection: {
       selectedRoomsPerType: [0, 0, 0, 0],
-      roomIdPerType: [[],[],[],[]],
+      roomIdPerType: [[], [], [], []],
       totSelectedRooms: 0,
       roomsSelected: [],
-    },  
+    },
   },
 
   mutations: {
+    setMessageToHotel(state, value) {
+      state.bookingInfo.message = value;
+    },
+
+    setNumAdults(state, value) {
+      state.bookingInfo.numAdults = value;
+    },
+
+    setNumChildren(state, value) {
+      state.bookingInfo.numChildren = value;
+    },
+
+    setNumToddlers(state, value) {
+      state.bookingInfo.numToddlers = value;
+    },
+
     setSelectedRoomsPerType(state, value) {
-      state.roomSelection.selectedRoomsPerType[value.list] = parseInt(value.newVal);
+      state.roomSelection.selectedRoomsPerType[value.list] = parseInt(
+        value.newVal
+      );
 
       let sum = 0;
-      for (let i = 0; i <state.roomSelection.selectedRoomsPerType.length; i++) {
+      for (
+        let i = 0;
+        i < state.roomSelection.selectedRoomsPerType.length;
+        i++
+      ) {
         sum += state.roomSelection.selectedRoomsPerType[i];
       }
-      state.roomSelection.totSelectedRooms = sum;  
+      state.roomSelection.totSelectedRooms = sum;
     },
 
     setSelectedRoomsRecsPerType(state, value) {
       state.roomSelection.roomIdPerType[value.list] = value.array;
 
       let tempArray = [];
-      for (let i = 0; i <state.roomSelection.roomIdPerType.length; i++) {
+      for (let i = 0; i < state.roomSelection.roomIdPerType.length; i++) {
         tempArray = tempArray.concat(state.roomSelection.roomIdPerType[i]);
       }
 
-      state.roomSelection.roomsSelected = tempArray;    
-    }, 
+      state.roomSelection.roomsSelected = tempArray;
+    },
+
+    clearSelectedRooms(state) {
+      state.roomSelection.selectedRoomsPerType = [0, 0, 0, 0];
+      state.roomSelection.roomIdPerType = [[], [], [], []];
+      state.roomSelection.totSelectedRooms = 0;
+      state.roomSelection.roomsSelected = [];
+    },
 
     setSortFilter(state, value) {
       state.resultSortFilter = value;
@@ -113,12 +150,30 @@ export default new Vuex.Store({
     },
 
     filterHotels(state) {
+      state.hotels = state.originalHotels;
+
       // Use state.resultSortFilter to create a filtered list
       if (state.resultSortFilter.dist_to_beach) {
-        state.hotels = state.city.hotels.filter(
+        state.hotels = state.hotels.filter(
           (h) => h.distance_to_beach <= state.resultSortFilter.dist_to_beach
         );
-      }
+      } // distance to beach
+
+      if (state.resultSortFilter.dist_to_town) {
+        state.hotels = state.hotels.filter(
+          (h) =>
+            h.distance_to_town_center <= state.resultSortFilter.dist_to_town
+        );
+      } // distance to town center
+
+      if (state.resultSortFilter.checkedFiltration.length > 0) {
+        state.hotels = state.hotels.filter((h) => {
+          let amen = h.amenities.map((a) => a.id);
+          return state.resultSortFilter.checkedFiltration.every((a) =>
+            amen.includes(a)
+          );
+        });
+      } // filter on amenities
     },
   },
 
@@ -194,16 +249,16 @@ export default new Vuex.Store({
         start_date: state.booking.check_in,
         end_date: state.booking.check_out,
         nr_of_rooms: state.booking.rooms,
-      };   
+      };
 
-      let response = await fetch('/rest/search/', {
-        method: 'POST',
+      let response = await fetch("/rest/search/", {
+        method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(searchObj),
-      })
+      });
 
       response = await response.json();      
 
