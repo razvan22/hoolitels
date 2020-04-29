@@ -27,7 +27,7 @@
                   <div class="input-field col s12 m12 l12">
                       <router-link to="/userprofile">
                           <button
-                            class="btn waves-effect waves-light"
+                            class="btn waves-effect waves-light cyan darken-2"
                             type="submit"
                             v-on:click="login()"
                             name="action">Logga in
