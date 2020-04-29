@@ -31,7 +31,7 @@
                             type="submit"
                             v-on:click="login()"
                             name="action">Logga in
-                        </button>
+                        </a>
                       </router-link>
                   </div>
                   <div class="col s12 m12 l12">
@@ -84,5 +84,8 @@ export default {
   #header .container .row i {
     font-size: 4em;
     color: #006064;
+  }
+  .button-log-in{
+      border-radius: 25px;
   }
 </style>
