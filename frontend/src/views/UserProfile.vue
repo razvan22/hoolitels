@@ -1,6 +1,5 @@
 <template>
 <div>
-
     <div class="container">
         <div class="row">
             <UserInformationForm/>
@@ -53,9 +52,11 @@ export default {
 .collapsible-body {
     background: white;
 }
+
 .container .row .book{
     margin-top: 1vh;
 } 
+
 div #nav{
     padding: 3vh 2vw 0vh 2vw;
 }
@@ -71,5 +72,4 @@ body #userName{
     justify-content: center;
     align-items: center;
 }
-
 </style>

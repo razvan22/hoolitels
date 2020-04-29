@@ -5,7 +5,9 @@
       <div class="card hoverable">
         <div class="card-image">
           <img :src="require('@/assets/' + hotel.images[0].url)" />
-          <span class="card-title"><strong class="hotel-name">{{ hotel.name }}</strong></span>
+          <span class="card-title"
+            ><strong class="hotel-name">{{ hotel.name }}</strong></span
+          >
         </div>
         <div class="card-content">
           <div class="row">
@@ -20,7 +22,7 @@
                 </li>
               </ul>
             </div>
-            <div class="contact col s5 m4 l3">
+            <div class="contact col offset-s2 s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
                 <i
@@ -50,23 +52,31 @@
               <ul>
                 <li class="valign-wrapper">
                   <i class="material-icons tiny"> email</i>
-                  {{hotel.email}}
+                  {{ hotel.email }}
                 </li>
                 <li class="valign-wrapper">
                   <i class="material-icons tiny"> contact_phone</i>
-                  {{hotel.phone}}
+                  {{ hotel.phone }}
                 </li>
               </ul>
             </div>
           </div>
           <div v-if="DisplayRooms">
-            <RoomTypeList :rooms="hotel.rooms" />
+            <RoomTypeList
+              :rooms="hotel.rooms"
+              :ref="'roomTypeList' + hotel.id"
+            />
             <!-- <RoomView v-for="r in hotel.rooms" :key="r.id" :room="r" /> -->
           </div>
         </div>
-        <div class="card-action align-center">
+        <div class="card-action align-center" v-if="!DisplayRooms">
           <router-link :to="{ name: 'HotelVy', params: { hotel: this.hotel } }"
-            >Boka rum</router-link
+            >Boka rummmmmm</router-link
+          >
+        </div>
+        <div v-else class="card-action align-center">
+          <router-link :to="{ name: 'Order' }"
+            >Boka rum ({{ this.totRoomsSelected }} av {{this.$store.state.booking.rooms}} bokade)</router-link
           >
         </div>
       </div>
@@ -77,6 +87,7 @@
 <script>
 // import RoomView from "@/components/RoomView.vue";
 import RoomTypeList from "@/components/RoomTypeList";
+import { bus } from "../main";
 
 export default {
   name: "DisplayHotel",
@@ -84,25 +95,62 @@ export default {
   data() {
     return {
       isHidden: false,
+      selectedRoomsPerType: [0, 0, 0, 0],
+      totRoomsSelected: 0,
     };
   },
   computed: {
+    // totRoomsSelected() {
+    //   let sum = 0;
+    //   for (let i = 0; i < this.selectedRoomsPerType.length; i++) {
+    //     sum += this.selectedRoomsPerType[i];
+    //   }
+    //   return sum;
+    // },
+    // totRoomsSelected() {
+    //   let sum = 0;
+    //   for (let index = 0; index < 4; index++) {
+    //     console.log(
+    //       "index: ",
+    //       index,
+    //       " value: ",
+    //       this.selectedRoomsPerType[index]
+    //     );
+
+    //     sum += this.selectedRoomsPerType[index];
+    //   }
+    //   return sum; //this.selectedRoomsPerType.reduce(this.getSum(), 0);
+    // },
     amenitiesIsEmpty() {
       return this.hotel.amenities && this.hotel.amenities.length;
     },
   },
-  mounted() {},
+
+  created() {
+    bus.$on("selectedRooms", (data) => {
+      this.selectedRoomsPerType[data.listNum] = parseInt(data.newVal);
+      this.calcTotRoomsSelected();
+    });
+  },
+
   components: {
-    // RoomView,
     RoomTypeList,
   },
 
   methods: {
-    clickHotel() {
-      this.$store.commit("setSelectedHotel", this.hotel);
-     
-    }
-  }
+    calcTotRoomsSelected: function() {
+      let sum = 0;
+      for (let i = 0; i < this.selectedRoomsPerType.length; i++) {
+        sum += this.selectedRoomsPerType[i];
+      }
+      this.totRoomsSelected = sum;
+      // return sum;
+    },
+
+    getSum: function(total, num) {
+      return total + parseInt(num);
+    },
+  },
 };
 </script>
 
@@ -142,13 +190,12 @@ h4 {
 .contact h4 {
   font-size: large;
 }
-.hotel-name{
+.hotel-name {
   text-shadow: 5px;
   color: black;
-  background: white
+  background: white;
 }
-.card-image img{
+.card-image img {
   opacity: 0.8;
 }
-
 </style>

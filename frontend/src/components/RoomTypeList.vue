@@ -2,7 +2,8 @@
   <div>
     <div v-for="(t, index) in this.TypeList" :key="index">
       <div v-if="t.count > 0">
-        <RoomTypeItem :Type="t" />
+        <RoomTypeItem :Type="t" :Number="index" />
+        <div class="divider"></div>
       </div>
     </div>
   </div>
@@ -43,17 +44,28 @@ export default {
         this.TypeList[tIndex].PriceMax = this.rooms[index].price;
       }
     }
-    console.log("TypeList: ", this.TypeList);
     // this.rooms.foreach(function(room) {
     //   this.TypeList[room.max_occupany - 1]++;
     // });
+  },
+
+  mounted() {
+    console.log(this.$refs);
   },
 
   components: {
     RoomTypeItem,
   },
 
-  methods: {},
+  methods: {
+    // getSelectedRoom: function(){
+    //   console.log("RoomTypeList getselectedRoom")
+    //   for(let ref in this.$refs){
+    //     console.log(ref)
+    //      this.$refs[ref].getSelectedRooms()
+    //   }
+    // }
+  },
 };
 </script>
 
