@@ -86,7 +86,7 @@
 } */
 
 #header .row .col {
-  justify-content: center;
+  /* justify-content: center; */
   display: flex;
   padding-right: 0px;
 }
