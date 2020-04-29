@@ -34,6 +34,7 @@ export default new Vuex.Store({
       selectedRoomsPerType: [0, 0, 0, 0],
       roomIdPerType: [[],[],[],[]],
       totSelectedRooms: 0,
+      roomsSelected: [],
     },  
   },
 
@@ -45,11 +46,18 @@ export default new Vuex.Store({
       for (let i = 0; i <state.roomSelection.selectedRoomsPerType.length; i++) {
         sum += state.roomSelection.selectedRoomsPerType[i];
       }
-      state.roomSelection.totSelectedRooms = sum;
+      state.roomSelection.totSelectedRooms = sum;  
     },
 
-    setSelectedRoomsIdsPerType(state, listNum, value) {
-      state.roomSelection.roomIdPerType[listNum] = value;
+    setSelectedRoomsRecsPerType(state, value) {
+      state.roomSelection.roomIdPerType[value.list] = value.array;
+
+      let tempArray = [];
+      for (let i = 0; i <state.roomSelection.roomIdPerType.length; i++) {
+        tempArray = tempArray.concat(state.roomSelection.roomIdPerType[i]);
+      }
+
+      state.roomSelection.roomsSelected = tempArray;    
     }, 
 
     setSortFilter(state, value) {

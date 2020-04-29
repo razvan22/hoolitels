@@ -1,10 +1,17 @@
 <template>
 <div class="container">
-  <div class="row">
-    <div class="col s12  center-align">
+   <div class="row">
+    <div class="col s12 center-align">
       <div class="card-background">
-        <h4> Vem kommer med?</h4>
-         <h5> Gäster {{counterAdult + counterChild +counterBaby}}</h5>
+       <div >
+        <RoomView
+            v-for="r in rooms"
+            :key="r.id"
+            :room="r"
+          />
+        </div>      
+        <h6>Vem kommer med?</h6>
+         <h5>Gäster {{counterAdult + counterChild +counterBaby}}</h5>
          <div class="guests center-align">
            <p><strong> Vuxna </strong></p>
            <a class="btn-floating cyan darken-2" v-on:click="counterDecrementAdult()" >
@@ -12,7 +19,7 @@
               v-on:click="counterAdult+=1"><i class="material-icons">add</i></a>
          </div>
           <div class="guests center-align ">
-           <p><strong> Barn </strong> </p>
+           <p><strong> Barn </strong></p>
            <a class="btn-floating cyan darken-2" v-on:click="counterDecrementChild()">
              <i class="material-icons">remove</i></a> {{counterChild}} <a class="btn-floating cyan darken-2"
               v-on:click="counterChild+=1"><i class="material-icons">add</i></a>
@@ -44,16 +51,35 @@
 
 <script>
 
+import RoomView from "@/components/RoomView";
+
 export default {
+
+  components: {
+    RoomView,
+  },
 
   data(){
     return{
-    counterAdult: 0,
-    counterChild: 0,
-    counterBaby: 0,
-
-  }
+      counterAdult: 0,
+      counterChild: 0,
+      counterBaby: 0,
+    }
   },
+
+  computed: {
+    rooms() {
+      return this.$store.state.roomSelection.roomsSelected;
+      // let rArray = [];
+      // for (let i = 0; i < this.$store.state.roomSelection.roomIdPerType.length; i++) {
+      //   if (this.$store.state.roomSelection.roomIdPerType[i])
+      //     rArray = [...rArray, ...this.$store.state.roomSelection.roomIdPerType[i]];
+      // }
+
+      // return rArray;
+    },
+  },
+
   methods:{
     counterDecrementAdult(){
       this.counterAdult -=1;
@@ -92,5 +118,4 @@ export default {
 .last-button{
   margin-bottom: 7%;
 }
-
 </style>
