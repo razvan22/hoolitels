@@ -1,11 +1,10 @@
 <template>
-    <div class="user">
-        <div id="user-form">
-          <div class="container">
               <div class="container" id="container-bg">
                 <div class="row">
-
-                    <div class="col s12 m6 l6">
+                    <div class="col s12">
+                          <h4 id="create-account">Skapa ett konto</h4>
+                    </div>
+                    <div class="col s12 m6 l12">
                         <div class="input-field" v-if="!ifLogged">
                             <input id="full_name" type="text" class="validate" v-model="user.name">
                             <label for="full_name">Namn</label>
@@ -19,11 +18,10 @@
                             <label for="disabled"></label>
                         </div>
                     </div>
-
-                    <div class="col s12 m6 l6" >
+                    <div class="col s12 m6 l12" >
                         <div class="input-field" v-if="!ifLogged">
                             <input id="email" type="email" class="validate" v-model="user.email">
-                            <label v-if="!ifLogged" for="email">e-post</label>
+                            <label v-if="!ifLogged" for="email">E-post</label>
                         </div>
                         <div class="input-field" v-if="ifLogged && editMode">
                             <input id="email" type="email" class="validate" v-model="user.email">
@@ -34,63 +32,9 @@
                             <label for="disabled"></label>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col s12 m8 l8">
-                        <div class="input-field" v-if="!ifLogged" >
-                               <select v-model="selectedCountry" >
-                                <option value="" disabled selected  >Välj ditt land</option>
-                                <option   v-for="country in countries" :key="country.id" >{{country.name}}</option>
-                            </select>
-                            <!-- <input id="country" type="text" class="validate" v-model="user.country">
-                            <label v-if="!ifLogged" for="country">Land</label> -->
-                        </div>
-                        <div class="input-field" v-if="ifLogged && editMode">
-                            <input id="country" type="text" class="validate">
-                            <label v-if="ifLogged" for="country">{{getUserCountry}}</label>
-                        </div>
-                        <div class="input-field"  v-if="ifLogged && !editMode">
-                            <input disabled  id="disabled" type="text" class="validate center">
-                            <label for="disabled">{{getUserCountry}}</label>
-                        </div>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <div class="input-field" v-if="!ifLogged">
-                            <input id=" city" type="text" class="validate" v-model="user.city">
-                            <label v-if="!ifLogged" for="city">Stad</label>
-                        </div>
-                        <div class="input-field" v-if="ifLogged && editMode">
-                            <input id=" city" type="text" class="validate" v-model="user.city">
-                            <label v-if="ifLogged" for="city"></label>
-                        </div>
-                        <div class="input-field"  v-if="ifLogged && !editMode">
-                            <input disabled  id="disabled" type="text" class="validate center" v-model="user.city">
-                            <label for="disabled"></label>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="row">
-
-                    <div class="col s4 m4 l4">
-                        <div class="input-field" v-if="!ifLogged">
-                            <input id="zip" type="text" class="validate" v-model="user.zip">
-                            <label v-if="!ifLogged" for="zip">postnummer</label>
-                        </div>
-                        <div class="input-field" v-if="ifLogged && editMode">
-                            <input id="zip" type="text" class="validate center" v-model="user.zip">
-                            <label v-if="ifLogged" for="zip"></label>
-                        </div>
-                        <div class="input-field"  v-if="ifLogged && !editMode">
-                            <input disabled  id="disabled" type="text" class="validate center" v-model="user.zip">
-                            <label for="disabled"></label>
-                        </div>
-                    </div>
-
-                    <div class="col s8 m8 l8">
+                    <div class="col s12 m12 l12">
                         <div class="input-field" v-if="!ifLogged">
                             <input id="address" type="text" class="validate" v-model="user.address">
                             <label v-if="!ifLogged" for="address">Adress</label>
@@ -103,13 +47,62 @@
                             <input disabled  id="disabled" type="text" class="validate center" v-model="user.address">
                             <label for="disabled"></label>
                         </div>
+                     </div>
+                </div>
+                    <div class="row">
+
+                       <div class="col s4 m4 l4">
+                        <div class="input-field" v-if="!ifLogged">
+                            <input id="zip" type="text" class="validate" v-model="user.zip">
+                            <label v-if="!ifLogged" for="zip">Postnummer</label>
+                        </div>
+                        <div class="input-field" v-if="ifLogged && editMode">
+                            <input id="zip" type="text" class="validate center" v-model="user.zip">
+                            <label v-if="ifLogged" for="zip"></label>
+                        </div>
+                        <div class="input-field"  v-if="ifLogged && !editMode">
+                            <input disabled  id="disabled" type="text" class="validate center" v-model="user.zip">
+                            <label for="disabled"></label>
+                        </div>
                     </div>
 
-                </div>
-
+                    <div class="row">
+                        <div class="col s8 m8 l8">
+                        <div class="input-field" v-if="!ifLogged">
+                            <input id="city" type="text" class="validate" v-model="user.city">
+                            <label v-if="!ifLogged" for="city">Postort</label>
+                        </div>
+                        <div class="input-field" v-if="ifLogged && editMode">
+                            <input id=" city" type="text" class="validate" v-model="user.city">
+                            <label v-if="ifLogged" for="city"></label>
+                        </div>
+                        <div class="input-field"  v-if="ifLogged && !editMode">
+                            <input disabled  id="disabled" type="text" class="validate center" v-model="user.city">
+                            <label for="disabled"></label>
+                        </div>
+                    </div>
                 <div class="row">
-
-                    <div class="col s12 m12 l12">
+                    <div class="col s12">              
+                      <div class="input-field" v-if="!ifLogged" >
+                               <select v-model="selectedCountry" >
+                                <option value="" disabled selected  >Välj ditt land</option>
+                                <option v-for="country in countries" :key="country.id" >{{country.name}}</option>
+                            </select> 
+                            <!-- <input id="country" type="text" class="validate" v-model="user.country">
+                            <label v-if="!ifLogged" for="country">Land</label> -->
+                         </div>
+                        <div class="input-field" v-if="ifLogged && editMode">
+                            <input id="country" type="text" class="validate">
+                            <label v-if="ifLogged" for="country">{{getUserCountry}}</label>
+                        </div>
+                        <div class="input-field"  v-if="ifLogged && !editMode">
+                            <input disabled  id="disabled" type="text" class="validate center">
+                            <label for="disabled">{{getUserCountry}}</label>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
                         <div class="input-field" v-if="!ifLogged">
                             <input id="telephone" type="tel" class="validate" v-model="user.phone">
                             <label v-if="!ifLogged" for="telephone">Telefonnummer</label>
@@ -123,60 +116,40 @@
                             <label for="disabled"></label>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="row" v-if="editMode || !ifLogged">
-
-                    <div class="col s12 m12 l12">
+                    <div class="col s12">
                         <div class="input-field" v-if="editMode">
                             <input  id="password" type="password" class="validate">
-                            <label for="password">gammalt lösenord</label>
+                            <label for="password">Gammalt lösenord</label>
                         </div>
                     </div>
-
-                    <div class="col s12 m12 l12">
+                    <div class="col s12">
                         <div class="input-field">
                             <input id="password" type="password" class="validate" >
-                            <label for="password">lösenord</label>
+                            <label for="password">Ange lösenord</label>
                         </div>
                     </div>
-
-                    <div class="col s12 m12 l12">
+                    <div class="col s12">
                         <div class="input-field">
                             <input id="confirm_password" type="password" class="validate">
-                            <label for="confirm_password">bekräfta lösenord</label>
+                            <label for="confirm_password">Bekräfta lösenord</label>
                         </div>
                     </div>
-
                 </div>
-
-
-
-            </div>
-
-            <div class="container">
-                <div class="row" id="submit-btn">
-                    <div class="col">
-                        <a v-if="ifLogged&&!editMode" v-on:click="editMode = true"  class="btn-register light-blue lighten-1 btn-floating waves-effect waves-light btn-medium cyan darken-2"><i class="material-icons">edit</i></a>
-                        <button v-if="editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Registrera
-                            
-                        </button>
-                        <button v-if="!ifLogged" v-on:click="editMode = false" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Registrera
-                           
-                        </button>
+                   <div class="row" id="submit-btn">
+                        <div class="col">
+                            <a v-if="ifLogged&&!editMode" v-on:click="editMode = true"  class="btn-register light-blue lighten-1 btn-floating waves-effect waves-light btn-medium cyan darken-2"><i class="material-icons">edit</i></a>
+                            <button v-if="editMode" v-on:click="editMode = false" class="btn-large waves-effect waves-light" type="submit" name="action">Spara   
+                            </button>
+                            <button v-if="!ifLogged" v-on:click="editMode = false" class="btn-register btn-large waves-effect waves-light cyan darken-2" type="submit" name="action">Skapa konto</button>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    </div>
+              </div>  
         </div>
-    </div>
-</div>
+
 </template>
-
-
-
-
-
 <script>
 import M from 'materialize-css/dist/js/materialize.js'
 export default {
@@ -198,7 +171,7 @@ export default {
             
             editMode: false,
             countries:this.$store.state.countries,
-            selectedCountry: ''
+            selectedCountry: '',
             
         }
     },
@@ -266,25 +239,20 @@ export default {
 .user{
     padding-top: 5em;
 }
-.container #submit-btn{
-    margin-top: 4em;
-    display: flex;
+ #submit-btn{
+     display: flex;
     align-items: center;
-    justify-content: center;;
-
+    justify-content: center; 
 }
-#user-form #container-bg{
-    display: flex;
-    flex-direction: column;
-    border-radius: 1em;
+ #container-bg{
     background: white;
 }
+#create-account{
+       display: flex;
+    align-items: center;
+    justify-content: center;  
 
-#user-form{
-    display: flex;
-    flex-direction: column;
 }
-
 .btn-register {
      border-radius: 25px;
 }
