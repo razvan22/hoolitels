@@ -132,7 +132,7 @@ export default {
       },
 
       set: function(value) {
-        this.$store.commit("setAdults", value);
+        this.$store.commit("setNumAdults", value);
       },
     },
 
@@ -142,7 +142,7 @@ export default {
       },
 
       set: function(value) {
-        this.$store.commit("setChildren", value);
+        this.$store.commit("setNumChildren", value);
       },
     },
 
@@ -152,7 +152,7 @@ export default {
       },
 
       set: function(value) {
-        this.$store.commit("setToddlers", value);
+        this.$store.commit("setNumToddlers", value);
       },
     },
 
