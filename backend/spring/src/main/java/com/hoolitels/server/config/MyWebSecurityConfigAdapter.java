@@ -18,17 +18,22 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .httpBasic()
-            .and()
-            .authorizeRequests()
-            .antMatchers("/rest/city/**").permitAll()
-            .antMatchers("/rest/**").authenticated()
-            .antMatchers("/rest/city").permitAll()
-            .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
-            .antMatchers("/").permitAll();
-//            .and()// Ta bort när vi har eget formulär
-//            .formLogin(); // Ta bort när vi har eget formulär
+        .cors().and()
+        .csrf().disable()
+        .authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/rest/city/**").permitAll()
+        .antMatchers(HttpMethod.GET,"/rest/amenity/**").permitAll()
+        .antMatchers(HttpMethod.GET,"/rest/country/**").permitAll()
+        .antMatchers(HttpMethod.GET,"/rest/search/**").permitAll()
+        .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
+        .antMatchers("/rest/**").authenticated()
+        .antMatchers("/api/**").authenticated()
+        .antMatchers(HttpMethod.DELETE,"/rest/user").authenticated()
+        .antMatchers(HttpMethod.POST,"/login").permitAll()
+        .antMatchers("/").permitAll()
+        .and()
+        .formLogin()
+        .and().logout().deleteCookies("JESSIONID");
     }
 
     @Override
@@ -38,3 +43,7 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             .passwordEncoder(myUserDetailService.getEncoder());
     }
 }
+
+
+
+

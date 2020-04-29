@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -37,16 +36,19 @@ public class User {
     @Column(nullable = false)
     private String phone;
 
-    @Column(nullable = false)
-    private int countryId;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference
+    @JsonManagedReference("userBookingBackReference")
     private Set<Booking> bookings;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonManagedReference("userBackReference")
+    @JsonManagedReference("reviewBackReference")
     private Set<Review> reviews;
+
+//    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "country_id", nullable = false)
+//    @JsonBackReference("userCountryBackReference")
+//    private Country country;
+    private long country_id;
 
     public User(){}
 
@@ -90,12 +92,12 @@ public class User {
         this.phone = phone;
     }
 
-    public int getCountryId() {
-        return countryId;
-    }
+//    public String getCountryName() {
+//        return country.getName();
+//    }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public long getCountry_id() {
+        return country_id;
     }
 
     public void setName(String name) {
@@ -134,5 +136,13 @@ public class User {
 
     public Set<Review> getReviews() {
         return reviews;
+    }
+
+//    public void setCountry(Optional<Country> country) {
+//        this.country = country.orElse(null);
+//    }
+
+    public void setCountry_id(long country_id) {
+        this.country_id = country_id;
     }
 }

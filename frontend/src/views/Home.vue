@@ -1,27 +1,22 @@
 <template>
-  <body>
-    <Header />
-    <main>
-      <SearchHotel />
-    </main>
-    <Footer />
-  </body>
+<body>
+  <FirstSearch />
+</body>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import SearchHotel from "@/components/SearchHotel.vue";
+import FirstSearch from "@/components/FirstSearch.vue";
 
 export default {
   name: "Home",
   components: {
-    Header,
-    SearchHotel,
-    Footer,
-  },
+    FirstSearch
+  }
 };
 </script>
 
-<style>
+<style scoped>
+body {
+  /* background-image: url("@/../../assets/header-img.jpg") !important; */
+}
 </style>

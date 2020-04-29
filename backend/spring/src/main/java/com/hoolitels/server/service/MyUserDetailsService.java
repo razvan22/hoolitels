@@ -1,6 +1,7 @@
 package com.hoolitels.server.service;
 
 import com.hoolitels.server.entity.User;
+import com.hoolitels.server.repository.CountryRepository;
 import com.hoolitels.server.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,9 +19,13 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CountryRepository countryRepository;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(s);
+
         if (user == null) {
             throw new UsernameNotFoundException("Login failed!");
         }
@@ -40,17 +45,17 @@ public class MyUserDetailsService implements UserDetailsService {
         u.setZip("11111");
         u.setCity("usercity");
         u.setPhone("012345678");
-        u.setCountryId(227);
+        u.setCountry_id(227L);
         try {
             userRepository.save(u);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private UserDetails toUserDetails(User user) {
-        return org.springframework.security.core.userdetails.User.
-                withUsername(user.getEmail())
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getName())
                 .password(getEncoder().encode(user.getPassword())) // Fusk eftersom vi har genererade lösenord i databasen - gör inte detta "pauw riktigt".
                 .roles("USER")
                 .build();

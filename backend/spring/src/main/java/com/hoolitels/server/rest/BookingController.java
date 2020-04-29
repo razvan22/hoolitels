@@ -35,7 +35,7 @@ public class BookingController {
 
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
-        Optional<User> userOpt = userRepository.findById(booking.getUser().getId());
+        Optional<User> userOpt = userRepository.findById(booking.getUserRec().getId());
         if (userOpt.isEmpty()) return null;
 
         booking.setUser(userOpt.get());
@@ -43,9 +43,10 @@ public class BookingController {
         ArrayList<Roombooking> rbLocal = new ArrayList<Roombooking>();
         booking.getRoombookings().forEach(rb ->
                 rbLocal.add(new Roombooking(booking,
-                                            (roomRepository.findById(rb.getRoom().getId())).get(),
-                                            rb.isExtra_bed(),
-                                            rb.getFood_cost())));
+                                            (roomRepository.findById(rb.getRoom_id())).get(),
+                                            rb.getExtra_bed(),
+                                            rb.getFood_cost(),
+                                            rb.getRoom_cost())));
         booking.setRoomBookings(rbLocal);
 
         List<Roombooking> rbs = booking.getRoombookings();
@@ -54,7 +55,7 @@ public class BookingController {
     } // createBooking
 
     private boolean checkMatches(Roombooking rb, Date start, Date end) {
-        Optional<Room> roomOpt = roomRepository.findById(rb.getRoom().getId());
+        Optional<Room> roomOpt = roomRepository.findById(rb.getRoom_id());
 
         if (roomOpt.isEmpty()) return false;
         return roomOpt.get().isFree(start, end);
