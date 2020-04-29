@@ -20,12 +20,11 @@ module.exports = function () {
 
       });
 
-    this.When(/^I choose "([^"]*)" filter options$/, async function (barnKlubb) {       
+    this.When(/^I choose "([^"]*)" filter options$/, async function () {       
                let barnKlubb = await $('#mobile-demo-1 > ul:nth-child(1) > label:nth-child(3) > p:nth-child(1) > span:nth-child(2)') 
                barnKlubb.click();  
                await sleep(1000);
                assert(barnKlubb, "Expected to choose barn klubb as filter option") 
-               await sleep(1000);
       });
         
 
@@ -57,7 +56,7 @@ module.exports = function () {
       });
         
 
-    this.When(/^I click on tillämpa button$/, function () {
+    this.When(/^I click on tillämpa button$/, async function () {
            let tillampaButton = await $('#.sidenav-close');
            tillampaButton.click();
            assert(tillampaButton, "Expected to click on tillämpa button");

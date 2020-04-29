@@ -1,14 +1,6 @@
 let { $, sleep } = require('./funcs');
 module.exports = function () {
 
-    this.Given(/^that I am on the homepage$/, async function () {
-        let homepage = await helpers.loadPage('http://localhost:8080/');
-        let logo = await $('#app');
-        assert(logo, 'Expected there to be a div element named "app"');
-        assert(homepage, 'Expected the homepage to load');
-        await sleep(200)
-    });
-
     this.When(/^I select Malmö from the välj stad dropdown menu$/, async function () {
         let dropDown = await driver.findElements(by.innerHTML('Välj stad'));
         dropDown.click();
