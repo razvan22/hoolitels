@@ -1,51 +1,24 @@
 <template>
   <div>
     <div class="row">
-      <h6>{{ Type.Kind }} - antal rum: {{ Type.count }}</h6>
+      <h6>{{ Type.Kind }} - antal lediga rum: {{ Type.count }}</h6>
     </div>
     <div v-for="(p, index) in this.priceRange" :key="index">
-      <div v-if="p.count > 1">
-        <div class="row">
-          <div class="col s4">
-            <span
-              >Pris: {{ numFormatter.format(p.room.price) }} ({{
-                p.count
-              }})</span
-            >
-          </div>
-          <div class="col s3 center-align">
-            <select v-model="p.selectedRoom">
-              <!-- <option value disabled selected>Välj antal rum</option> -->
-              <option
-                v-for="n in p.count"
-                :key="n"
-                :value="n"
-                :selected="n === 1 ? true : false"
-                >{{ n }}</option
-              >
-            </select>
-          </div>
-          <div class="col s5 right-align">
-            <router-link
-              to="/"
-              class="waves-effect waves-light cyan darken-2 btn-small"
-              >Boka</router-link
-            >
-          </div>
+      <div class="row valign-wrapper">
+        <div class="col s11 l12">
+          <span class="room-price"
+            >Pris: {{ numFormatter.format(p.room.price) }}</span
+          >
         </div>
-      </div>
-      <div v-else>
-        <div class="row">
-          <div class="col s9">
-            <span>Pris: {{ numFormatter.format(p.room.price) }}</span>
-          </div>
-          <div class="col s1 button-book">
-            <router-link
-              to="/"
-              class="waves-effect waves-light cyan darken-2 btn-small"
-              >Boka</router-link
-            >
-          </div>
+        <div id="selected-room col s1 l2">
+          <select
+            v-model="p.selectedRoom"
+            @change="onChange($event)"
+            class="form-control"
+          >
+            <option value="0" selected>0</option>
+            <option v-for="n in p.count" :key="n" :value="n">{{ n }}</option>
+          </select>
         </div>
       </div>
     </div>
@@ -54,9 +27,11 @@
 
 <script>
 import M from "materialize-css";
+import { bus } from "../main";
+
 export default {
   name: "RoomTypeItem",
-  props: [`Type`],
+  props: [`Type`, `Number`],
   data() {
     return {
       numFormatter: new Intl.NumberFormat("sv-SE", {
@@ -82,7 +57,7 @@ export default {
         this.priceRange.push({
           room: this.Type.RoomList[index],
           count: 1,
-          selectedRoom: -1,
+          selectedRoom: 0,
         });
       } // else
 
@@ -95,12 +70,31 @@ export default {
     M.FormSelect.init(elems);
   },
 
+  // watch: {
+  //   priceRange: function(changes) {
+  //     console.log("Hej hopp i watch!!!!!!! ", changes);
+  //   },
+  // },
+
   updated() {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems);
   },
 
-  methods: {},
+  methods: {
+    onChange: function(event) {
+      bus.$emit("selectedRooms", {
+        newVal: event.target.value,
+        listNum: this.Number,
+      });
+    },
+
+    getSelectedRooms: function() {
+      for (let p of this.priceRange) {
+        console.log("selectedRoom from pricerange ", p.selectedRoom);
+      }
+    },
+  },
 };
 </script>
 
@@ -116,4 +110,8 @@ h4 {
 /* .select-wrapper input.select-dropdown {
   font-size: 10px !important;
 } */
+
+.room-price {
+  font-size: medium;
+}
 </style>

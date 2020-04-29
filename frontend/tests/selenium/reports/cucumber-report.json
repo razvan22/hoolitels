@@ -2,14 +2,22 @@
   {
     "elements": [
       {
+<<<<<<< HEAD
         "id": "logout;logging-out",
         "keyword": "Scenario",
         "line": 3,
         "name": "Logging out",
+=======
+        "id": "booking-a-room-in-a-hotel;booking-without-add-ons",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Booking without add-ons",
+>>>>>>> devtest
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
+<<<<<<< HEAD
             "name": "that I am on the hoolitels site",
             "result": {
               "status": "passed",
@@ -18,6 +26,15 @@
             "line": 4,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:4"
+=======
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6742780099
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
             }
           },
           {
@@ -25,30 +42,391 @@
             "keyword": "And ",
             "name": "I am currently logged in",
             "result": {
-              "status": "passed",
-              "duration": 1668953301
+              "status": "undefined"
             },
-            "line": 5,
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:11"
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:11"
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "click the logout button",
+            "name": "I click the sök button",
             "result": {
-              "status": "passed",
-              "duration": 10791700
+              "status": "skipped"
             },
-            "line": 6,
+            "line": 10,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:27"
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+>>>>>>> devtest
             }
           },
           {
             "arguments": [],
+            "keyword": "And ",
+<<<<<<< HEAD
+            "name": "I am currently logged in",
+            "result": {
+              "status": "passed",
+              "duration": 1668953301
+=======
+            "name": "I should get a list of available rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click on the boka button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 16
+          },
+          {
+            "arguments": [],
             "keyword": "Then ",
+            "name": "my room is added to my cart",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 17
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 2223337600
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "booking-a-room-in-a-hotel;booking-with-add-ons",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "Booking with add-ons",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6848059900
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I am currently logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Extrasäng",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the boka button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "my room is added to my cart",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1939488800
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "booking-a-room-in-a-hotel;booking-with-add-ons",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Booking with add-ons",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6875981400
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I am currently logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "skipped"
+>>>>>>> devtest
+            },
+            "line": 6,
+            "match": {
+<<<<<<< HEAD
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:11"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:11"
+>>>>>>> devtest
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+<<<<<<< HEAD
+            "name": "click the logout button",
+            "result": {
+              "status": "passed",
+              "duration": 10791700
+=======
+            "name": "I click the sök button",
+            "result": {
+              "status": "skipped"
+>>>>>>> devtest
+            },
+            "line": 10,
+            "match": {
+<<<<<<< HEAD
+              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:27"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Halvpension",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the boka button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "my room is added to my cart",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1760050199
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "booking-a-room-in-a-hotel;booking-with-add-ons",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Booking with add-ons",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6415953400
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I am currently logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+>>>>>>> devtest
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Helpension",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the boka button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+<<<<<<< HEAD
             "name": "I should be logged out",
             "result": {
               "status": "passed",
@@ -57,18 +435,132 @@
             "line": 7,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\logout.js:32"
-            }
+=======
+            "name": "my room is added to my cart",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25
           },
           {
             "arguments": [],
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 833821800
+              "duration": 1704457900
             },
             "hidden": true,
             "match": {
-              "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "booking-a-room-in-a-hotel;booking-with-add-ons",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Booking with add-ons",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6581451701
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I am currently logged in",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+>>>>>>> devtest
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available rooms",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose All-inclusive",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the boka button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "my room is added to my cart",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+<<<<<<< HEAD
+              "duration": 833821800
+=======
+              "duration": 2009184299
+>>>>>>> devtest
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
             }
           }
         ],
@@ -76,11 +568,20 @@
         "type": "scenario"
       }
     ],
+<<<<<<< HEAD
     "id": "logout",
     "keyword": "Feature",
     "line": 1,
     "name": "Logout",
     "tags": [],
     "uri": "C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\logout.feature"
+=======
+    "id": "booking-a-room-in-a-hotel",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Booking a room in a hotel",
+    "tags": [],
+    "uri": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\booking.feature"
+>>>>>>> devtest
   }
 ]
