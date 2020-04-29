@@ -206,8 +206,7 @@ export default new Vuex.Store({
         body: JSON.stringify(searchObj),
       })
 
-      response = await response.json();
-      console.log(response);
+      response = await response.json();      
 
       commit("setOriginalHotels", response);
       commit("setHotels", response);

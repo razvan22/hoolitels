@@ -12,11 +12,8 @@
             <div class="contact col s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
-                <i
-                  v-for="n in 4"
-                  :key="n"
-                  class=" rating__icon--star fa fa-star"
-                ></i>
+                <star-rating :inline="true" :star-size="24" :increment="0.5" :read-only="true" :show-rating="false" :rating="(hotel.grade/2)"></star-rating>
+
               </div>
             </div>
             <div class="col s5 m4 l3 ">
@@ -87,6 +84,7 @@
 
 <script>
   import RoomTypeList from '@/components/RoomTypeList'
+  import StarRating from "vue-star-rating";
 
 export default {
     name: 'DisplayHotel',
@@ -115,6 +113,7 @@ export default {
 
     components: {
       RoomTypeList,
+      StarRating
     },
 }
 </script>
