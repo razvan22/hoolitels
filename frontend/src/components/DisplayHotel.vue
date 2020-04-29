@@ -5,13 +5,21 @@
       <div class="card hoverable">
         <div class="card-image">
           <img :src="require('@/assets/' + hotel.images[0].url)" />
-          <span class="card-title"
-            ><strong class="hotel-name">{{ hotel.name }}</strong></span
-          >
+          <span class="card-title">{{ hotel.name }}</span>
         </div>
         <div class="card-content">
           <div class="row">
-            <div class="col s5 m4 l3">
+            <div class="contact col s5 m4 l3">
+              <h4>Omdöme</h4>
+              <div>
+                <i
+                  v-for="n in 4"
+                  :key="n"
+                  class=" rating__icon--star fa fa-star"
+                ></i>
+              </div>
+            </div>
+            <div class="col s5 m4 l3 ">
               <ul class="amenities">
                 <h4 v-if="amenitiesIsEmpty">Bekvämligheter</h4>
                 <li v-for="a in hotel.amenities" :key="a.id">
@@ -21,16 +29,6 @@
                   </div>
                 </li>
               </ul>
-            </div>
-            <div class="contact col offset-s2 s5 m4 l3">
-              <h4>Omdöme</h4>
-              <div>
-                <i
-                  v-for="n in 4"
-                  :key="n"
-                  class=" rating__icon--star fa fa-star"
-                ></i>
-              </div>
             </div>
           </div>
           <div class="row">
@@ -102,6 +100,12 @@ export default {
     numRoomsToBook() {
       return this.$store.state.booking.rooms;
     },
+    computed: {
+      buttonShouldBeDisabled: {
+        get() {
+          return this.totRoomsSelected < this.$store.state.booking.rooms
+        },
+      },
 
     totRoomsSelected() {
       return this.$store.state.roomSelection.totSelectedRooms;
@@ -114,7 +118,6 @@ export default {
     amenitiesIsEmpty() {
       return this.hotel.amenities && this.hotel.amenities.length;
     },
-  },
 
   created() {
 
@@ -130,47 +133,48 @@ export default {
 </script>
 
 <style scoped>
-/* ändra h4 till en klass */
-h4 {
-  margin-top: 10px;
-}
+  /* ändra h4 till en klass */
+  h4 {
+    margin-top: 10px;
+  }
 
-.row {
-  margin-bottom: 0px;
-}
-.rating__icon--star {
-  color: orange;
-  font-size: 18px;
-}
+  .row {
+    margin-bottom: 0px;
+  }
+  .rating__icon--star {
+    color: orange;
+    font-size: 18px;
+  }
 
-.amenities {
-  font-size: smaller;
-}
+  .amenities {
+    font-size: smaller;
+  }
 
-.amenities h4 {
-  font-size: large;
-}
+  .amenities h4 {
+    font-size: large;
+  }
 
-.distance {
-  font-size: smaller;
-}
-.distance h4 {
-  font-size: large;
-}
+  .distance {
+    font-size: smaller;
+  }
+  .distance h4 {
+    font-size: large;
+  }
 
-.contact {
-  font-size: smaller;
-}
+  .contact {
+    font-size: smaller;
+  }
 
-.contact h4 {
-  font-size: large;
-}
-.hotel-name {
-  text-shadow: 5px;
-  color: black;
-  background: white;
-}
-.card-image img {
-  opacity: 0.8;
-}
+  .contact h4 {
+    font-size: large;
+  }
+  .card-title {
+    text-shadow: 1px 1px black !important;
+    background: rgba(253, 253, 253, 0.3);
+    width: 100%;
+    padding: 10px 15px !important;
+  }
+  .card-image img {
+    /* opacity: 0.8; */
+  }
 </style>
