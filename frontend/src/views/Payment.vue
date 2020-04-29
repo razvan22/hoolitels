@@ -8,7 +8,6 @@
       <h5 class="center-align">Vi har tagit emot din betalning</h5>
       <p class="center-align">Tack för din bokning</p>
       <div class="divider"></div>
-       
     </div>
     <div class="modal-footer center-align">
       <a href="/userProfile" class="modal-close waves-effect waves-light ">Klicka här för att se dina bokningar</a>
@@ -38,7 +37,7 @@
         </div>
         <div class="row">
           <div class="col align-center offset-s4 offset-m5 offset-l5">
-             <a class="btn-payment waves-effect waves-light btn modal-trigger cyan darken-2" href="#modal1">Betala </a>
+             <a class="btn-payment waves-effect waves-light btn modal-trigger cyan darken-2" href="#modal1" @click="saveBooking">Betala</a>
           </div>
         </div>
       </div>
@@ -53,13 +52,15 @@ export default{
   mounted(){
     let elems = document.querySelectorAll('.modal');
     M.Modal.init(elems);
-    
   },
 
+  methods: {
+    saveBooking: function() {
+
+    }
+  }
+
 };
-
-
-
 </script>
 
 <style scoped>

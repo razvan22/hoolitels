@@ -113,12 +113,31 @@ export default new Vuex.Store({
     },
 
     filterHotels(state) {
+      state.hotels = state.originalHotels;
+
       // Use state.resultSortFilter to create a filtered list
       if (state.resultSortFilter.dist_to_beach) {
-        state.hotels = state.city.hotels.filter(
+        state.hotels = state.hotels.filter(
           (h) => h.distance_to_beach <= state.resultSortFilter.dist_to_beach
         );
-      }
+      } // distance to beach
+
+      if (state.resultSortFilter.dist_to_town) {
+        state.hotels = state.hotels.filter(
+          (h) => h.distance_to_town_center <= state.resultSortFilter.dist_to_town
+        );        
+      } // distance to town center
+
+      if (state.resultSortFilter.checkedFiltration.length > 0)
+      {
+        state.hotels = state.hotels.filter(
+          (h) => {
+            let amen = h.amenities.map(a => a.id);
+            return state.resultSortFilter.checkedFiltration.every(a => amen.includes(a)); 
+          }
+        ); 
+      } // filter on amenities
+
     },
   },
 
