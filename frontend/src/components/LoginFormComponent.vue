@@ -25,9 +25,9 @@
                     <input id="password" type="password" v-model="user.password" />
                   </div>
                   <div class="input-field col s12 m12 l12">
-                      <router-link to="/userprofile">
+                      <router-link to="/">
                           <button
-                            class="btn waves-effect waves-light"
+                            class="btn waves-effect waves-light sidenav-close"
                             type="submit"
                             v-on:click="login()"
                             name="action">Logga in
@@ -35,7 +35,7 @@
                       </router-link>
                   </div>
                   <div class="col s12 m12 l12">
-                    <router-link to="/signup"
+                    <router-link to="/signup" class="sidenav-close"
                       ><p>Skapa konto</p></router-link>
                   </div>
                 </div>

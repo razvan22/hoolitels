@@ -35,10 +35,15 @@ export default {
   /* flex: 1 0 auto; */
 }
 
+@media (min-width: 301px) and (max-width: 500px) {
+  .back {    
+    background-image: url("../src/assets/header-img.jpg") !important;
+  }
+}
+
 .back {
   flex-direction: column;
-  display: flex;
-  background-image: url("../src/assets/header-img.jpg") !important;
+  display: flex;  
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
