@@ -25,7 +25,6 @@ public class MyWebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET,"/rest/amenity/**").permitAll()
         .antMatchers(HttpMethod.GET,"/rest/country/**").permitAll()
         .antMatchers(HttpMethod.GET,"/rest/search/**").permitAll()
-        .antMatchers(HttpMethod.POST,"/rest/search/**").permitAll()
         .antMatchers(HttpMethod.POST,"/rest/user").permitAll()
         .antMatchers("/rest/**").authenticated()
         .antMatchers("/api/**").authenticated()

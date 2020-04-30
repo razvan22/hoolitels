@@ -94,4 +94,9 @@
   width: 70%;
   height: auto;
 }
+
+#header .row i {
+  /* font-size: 2em; */
+  /* color: #006064; */
+}
 </style>

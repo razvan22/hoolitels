@@ -27,7 +27,7 @@
           <div class="input-field col s12 m12 l12">
             <router-link to="/">
               <button
-                class="btn-login btn waves-effect waves-light sidenav-close cyan darken-2"
+                class="btn waves-effect waves-light sidenav-close"
                 type="submit"
                 v-on:click="login()"
                 name="action"
@@ -87,7 +87,7 @@
     font-size: 4em;
     color: #006064;
   }
-  .btn-login {
+  .button-log-in {
     border-radius: 25px;
   }
 </style>

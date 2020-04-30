@@ -2,11 +2,7 @@
   <div>
     <div class="container">
       <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
-          </div>
-        </div>
+        <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
       </div>
       <div class="row selectors">
         <div class="input-field col s12 m6">
@@ -39,8 +35,8 @@
         </div>
       </div>
       <HotelDatePicker
-        @check-in-changed="updateCheckIn"
-        @check-out-changed="updateCheckOut"
+        @checkInChanged="this.updateCheckIn"
+        @checkOutChanged="updateCheckOut"
         :showYear="true"
         :displayClearButton="false"
         :firstDayOfWeek="1"
@@ -166,13 +162,7 @@ export default {
 .headline {
   color: rgb(253, 253, 253);
   margin: 20px;
-  display: flex;
-  justify-content: center;
 }
-
-
-
-
 
 .icon_in {
   margin-top: 10px;

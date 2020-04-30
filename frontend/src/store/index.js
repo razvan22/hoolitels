@@ -29,37 +29,9 @@ export default new Vuex.Store({
     },
 
     countries: [],
-    originalHotels: [],
-    roomSelection: {
-      selectedRoomsPerType: [0, 0, 0, 0],
-      roomIdPerType: [[],[],[],[]],
-      totSelectedRooms: 0,
-      roomsSelected: [],
-    },  
   },
 
   mutations: {
-    setSelectedRoomsPerType(state, value) {
-      state.roomSelection.selectedRoomsPerType[value.list] = parseInt(value.newVal);
-
-      let sum = 0;
-      for (let i = 0; i <state.roomSelection.selectedRoomsPerType.length; i++) {
-        sum += state.roomSelection.selectedRoomsPerType[i];
-      }
-      state.roomSelection.totSelectedRooms = sum;  
-    },
-
-    setSelectedRoomsRecsPerType(state, value) {
-      state.roomSelection.roomIdPerType[value.list] = value.array;
-
-      let tempArray = [];
-      for (let i = 0; i <state.roomSelection.roomIdPerType.length; i++) {
-        tempArray = tempArray.concat(state.roomSelection.roomIdPerType[i]);
-      }
-
-      state.roomSelection.roomsSelected = tempArray;    
-    }, 
-
     setSortFilter(state, value) {
       state.resultSortFilter = value;
     },
@@ -90,10 +62,6 @@ export default new Vuex.Store({
 
     setSelectedRooms(state, value) {
       state.booking.rooms = value;
-    },
-
-    setOriginalHotels(state, value) {
-      state.originalHotels = value;
     },
 
     setCheckIn(state, value) {
@@ -194,22 +162,28 @@ export default new Vuex.Store({
         start_date: state.booking.check_in,
         end_date: state.booking.check_out,
         nr_of_rooms: state.booking.rooms,
-      };   
+      };
 
-      let response = await fetch('/rest/search/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(searchObj),
-      })
+      let response = await fetch(
+        "/rest/city/" + state.dateSelected.selectedCity
+      );
+      console.log("searchObj: ", searchObj, " ", JSON.stringify(searchObj));
+
+      // let response = await fetch("/rest/search/", {
+      //   "method": "GET",
+      //   "headers": {
+      //     "Content-Type": "application/json",
+      //   },
+      //   "body": JSON.stringify(searchObj),
+      // });
 
       response = await response.json();
       console.log(response);
 
-      commit("setOriginalHotels", response);
-      commit("setHotels", response);
+      commit("setCity", response);
+      commit("setHotels", response.hotels);
+      // this.city = response;
+      // this.hotels = this.city.hotels;
     },
   },
 
