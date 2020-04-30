@@ -1,15 +1,15 @@
 # hoolitels
-<br\>
+<br/>
 Jan-Erik "Janis" Karlsson - BitLord69
-<br\>
+<br/>
 Sofia Fredman - soffred
-<br\>
+<br/>
 Anna Gagliano - anyagagliano
-<br\>
+<br/>
 Razvan-Petru Nechifor - razvan22
-<br\>
+<br/>
 Mathias Permlid - mplovecraft
-<br\>
+<br/>
 Steve - srchap78
-<br\>
+<br/>
 Marian Towfik - MarianTowfik
