@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container limit">
       <div class="container">
         <div class="row">
           <div class="col s12">
-            <h4 class="headline">Hitta tusentals hotell över hela Sverige</h4>
+            <h4 class="headline center-align">Hitta tusentals hotell över hela Sverige</h4>
           </div>
         </div>
       </div>
@@ -181,6 +181,12 @@
 </style>
 
 <style scoped>
+@media (min-width: 501px) {
+  .limit {    
+    max-width: 50%;
+  }
+}
+
   .selectors {
     margin-bottom: 14px;
   }

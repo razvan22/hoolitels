@@ -39,11 +39,11 @@
             <div class="col s12 m3">
               <!-- v-if  booking.end_date before new Date()-->
               
-              <div class="hide-on-med-and-up center" @click="reviewModal" :room="room">Lämna ett omdöme</div>
+              <div class="btn hide-on-med-and-up center" @click="reviewModal" :room="room">Omdöme</div>
               <modal class="hide-on-med-and-up" name="reviewModal" :height="400" :width="350">
                 <Review :room="room" />
               </modal>
-              <div class="hide-on-small-only center" @click="reviewModalLarge" :room="room">Lämna ett omdöme</div>
+              <div class="btn-small hide-on-small-only center" @click="reviewModalLarge" :room="room">Omdöme</div>
               <modal class="hide-on-small-only" name="reviewModalLarge" :height="400" :width="700">
                 <Review :room="room" />
               </modal>
@@ -90,5 +90,9 @@ reviewModalLarge() {
 }
 #booking .row {
   margin: 2vh 0vw 2vh 0vw;
+}
+
+.btn-small {
+  border-radius: 25px;
 }
 </style>
