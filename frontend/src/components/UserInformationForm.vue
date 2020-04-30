@@ -1,4 +1,5 @@
 <template>
+<div class="user">
   <div class="container" id="container-bg">
     <div class="row">
       <div class="col s12">
@@ -143,9 +144,9 @@
         <div class="row">
           <div class="col s12">
             <div class="input-field" v-if="!ifLogged">
-              <select v-model="selectedCountry">
+              <select v-model="user.country_id">
                 <option value="" disabled selected>Välj ditt land</option>
-                <option v-for="country in countries" :key="country.id">{{
+                <option :value="country.id" v-for="country in countries" :key="country.id">{{
                   country.name
                 }}</option>
               </select>
@@ -238,7 +239,7 @@
             </button>
             <button
               v-if="!ifLogged"
-              v-on:click="editMode = false"
+              v-on:click="addUser"
               class="btn-register btn-large waves-effect waves-light cyan darken-2"
               type="submit"
               name="action"
@@ -281,6 +282,7 @@
           </div>
         </div>
       </modal>
+    </div>
     </div>
   </div>
 </template>
@@ -332,6 +334,7 @@ export default {
 
   methods: {
     addUser: async function() {
+      console.log(JSON.stringify(this.user))
       let rawResponse = await fetch("http://localhost:8070/rest/user", {
         method: "POST",
         headers: {
