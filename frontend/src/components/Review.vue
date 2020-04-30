@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col s12 m5">
         <h5 class="center-align title">Lämna ett omdöme!</h5>
-        <h6 class="center-align title">Du besökte {{ room.hotel_id }}</h6>
+        <!-- <h6 class="center-align title">Du besökte {{ room.hotel_id }}</h6> -->
         <div class="row">
           <div class="grade">
             <star-rating
@@ -110,6 +110,9 @@ export default {
   margin-bottom: 20px;
 }
 
+.btn {
+  border-radius: 25px;
+}
 .hotel-img {
   float: right;
 }

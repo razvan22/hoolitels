@@ -230,7 +230,7 @@
             <button
               v-if="editMode"
               v-on:click="editMode = false"
-              class="btn-large waves-effect waves-light"
+              class="btn waves-effect waves-light"
               type="submit"
               name="action"
             >
@@ -398,5 +398,9 @@ export default {
   margin-top: 3vh;
   border-radius: 10px;
   width: 100px;
+}
+
+.btn {
+  border-radius: 25px;
 }
 </style>

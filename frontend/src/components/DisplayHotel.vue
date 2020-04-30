@@ -155,10 +155,11 @@ export default {
     font-size: large;
   }
   .card-title {
-    text-shadow: 1px 1px black !important;
-    background: rgba(253, 253, 253, 0.3);
+    text-shadow: 1px 1px rgb(49, 49, 49) !important;
+    background: rgba(221, 221, 221, 0.4);
     width: 100%;
     padding: 10px 15px !important;
+    /* color: rgb(0, 255, 221) !important; */
   }
   .card-image img {
     /* opacity: 0.8; */

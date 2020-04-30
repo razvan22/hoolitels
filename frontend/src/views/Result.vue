@@ -1,6 +1,7 @@
 <template>
   <body>
     <SortAndFilter />
+    <h5 v-if="hotels.length == 0" class="center-align">Det finns inga hotell som matchar ditt sökfilter</h5>
     <DisplayHotel
       v-for="h in hotels"
       :key="h.id"
