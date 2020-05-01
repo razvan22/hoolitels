@@ -1,14 +1,13 @@
 <template>
   <div class="z-depth-1">
-    <img class="room-img" :src="require('@/assets/' + room.images[0].url)" />
     <!-- <div class="divider"></div> -->
     <div class="row">
       <div class="col s8 m10 l7">
         <div class="test valign-wrapper">
           <i class="material-icons small teal-text">people</i>
-          <span>
-            <em>{{ room.type }} ({{ room.max_occupancy }})</em>
-          </span>
+          <span
+            ><em> {{ room.type }} ({{ room.max_occupancy }})</em></span
+          >
         </div>
       </div>
       <div class="col s4 m2 l1">
@@ -35,11 +34,12 @@
                 <span>{{ numFormatter.format(e.price) }}</span>
               </div>
             </div>
-          </li>
+          </li>   
         </ul>
       </div>
     </div>
-    <div class="row"></div>
+    <div class="row">
+    </div>
   </div>
 </template>
 
@@ -84,6 +84,7 @@ export default {
         price: this.room.cost_all_inclusive,
       });
     }
+
   },
 
   methods: {
@@ -120,8 +121,9 @@ li .row {
   margin-bottom: 0;
 }
 
-.button-book {
+.button-book{
   padding: 2vh;
+ 
 }
 
 .room-img{

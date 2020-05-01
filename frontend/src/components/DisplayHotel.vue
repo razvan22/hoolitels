@@ -21,8 +21,8 @@
                 <h4 v-if="amenitiesIsEmpty">Bekvämligheter</h4>
                 <li v-for="a in hotel.amenities" :key="a.id">
                   <div class="valign-wrapper">
-                    <i class="material-icons teal-text">check_circle</i>
-                    {{ a.name }}
+                    <i class="material-icons teal-text">check_circle</i
+                    >{{ a.name }}
                   </div>
                 </li>
               </ul>
@@ -80,6 +80,7 @@
     </div>
     <div class="col m3"></div>
   </div>
+  
 </template>
 
 <script>

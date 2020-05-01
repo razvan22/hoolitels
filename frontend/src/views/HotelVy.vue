@@ -1,6 +1,6 @@
 <template>
-  <div class="result"> 
-      <DisplayHotel :hotel="this.$route.params.hotel" :DisplayRooms="true" /> 
+  <div class="result">      
+      <DisplayHotel :hotel="this.$route.params.hotel" :DisplayRooms="true" />       
     </div>
 </template>
 
@@ -8,8 +8,9 @@
 import DisplayHotel from "@/components/DisplayHotel.vue";
 
 export default {
-  components: {   
-    DisplayHotel
-  }
+  components: {
+    DisplayHotel,
+  },
 };
 </script>
+

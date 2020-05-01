@@ -34,10 +34,6 @@ public class Image {
     public Image() {
     }
 
-    public String getUrl() {
-        return url;
-    }
-
     public long getId() {
         return id;
     }

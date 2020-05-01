@@ -1,0 +1,1974 @@
+{
+	"info": {
+		"_postman_id": "1cb5a593-714c-4926-ba62-438bde3adaa4",
+		"name": "Hoolitels collection update",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "61404353-4e4e-4c32-b058-416534ffbab6",
+								"exec": [
+									"pm.test(\"Status code is 302\", function () {",
+									"    pm.response.to.have.status(302);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8070/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Whoami",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7f9a3e80-684c-45f7-b541-6fb1095d7bf0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/api/whoami",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"api",
+								"whoami"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://localhost:8070/api/whoami",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8070/api/whoami",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"api",
+										"whoami"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Apr 2020 12:15:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2063,\n    \"name\": \"user\",\n    \"email\": \"user\",\n    \"address\": \"uservejen 1\",\n    \"zip\": \"11111\",\n    \"city\": \"usercity\",\n    \"phone\": \"012345678\",\n    \"countryId\": 227,\n    \"bookings\": [],\n    \"reviews\": []\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all data in user table Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a15a03ad-e0ab-4d13-a62f-d7786a33dca3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Test to check if all elements in the user table have at least object keys id, name, email, address, zip, city, phone, bookings\", function () {",
+									"    let users = pm.response.json();",
+									"    for(let user of users){",
+									"    pm.expect(user).to.have.any.key(",
+									"        \"id\", ",
+									"        \"name\", ",
+									"        \"email\", ",
+									"        \"address\", ",
+									"        \"zip\",",
+									"        \"city\", ",
+									"        \"phone\",",
+									"        \"bookings\");",
+									"    }",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"tlsPreferServerCiphers": false,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8070/rest/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"user"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a1b5699-1906-4609-941c-156545c76b83",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Test to check if all elements in the user table have all object keys\", function () {",
+									"    let user = pm.response.json();",
+									"    ",
+									"    pm.expect(user).to.have.all.keys(",
+									"       \"id\",",
+									"    \"name\",",
+									"    \"password\",",
+									"    \"email\",",
+									"    \"address\",",
+									"    \"zip\",",
+									"    \"city\",",
+									"    \"phone\",",
+									"    \"countryId\",",
+									"    \"bookings\"",
+									")",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\":\"Flora\",\n        \"email\": \"flora@mail.com\",\n        \"address\": \"Floragatan 56\",\n        \"zip\": \"667554\",\n        \"city\": \"Uppsala\",\n        \"phone\": \"0765763456\",\n        \"bookings\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8070/rest/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete specific user in user table Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa6a8fc9-1c3c-409d-b478-740620156656",
+								"exec": [
+									"pm.test(\"Status code is 200 (OK)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/user/1063",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"user",
+								"1063"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2c171885-90e5-45d5-a75f-73790b84aeb0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8070/rest/user/1067",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"user",
+								"1067"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a 405(method not allowed) error when trying to delete all data in user table Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ac969e2-6c29-447c-a84e-bdcd08733ee9",
+								"exec": [
+									"pm.test(\"Status code is 405 (method not allowed)\", function () {",
+									"    pm.response.to.have.status(405);",
+									"});",
+									"",
+									"/*pm.test(\"Test to see if row is changed\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.changedRows).to.eql(1);",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Search med andra parameter Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a5a9810-7374-40e8-a659-d716739e5923",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Test to check if all elements in the result have at least object keys\", function () {",
+									"    let searchResults = pm.response.json();",
+									"    for(let searchResult of searchResults){",
+									"    pm.expect(searchResult).to.have.any.key(",
+									"        \"id\", ",
+									"        \"name\", ",
+									"        \"zip\",",
+									"        \"images\",",
+									"        \"rooms\",",
+									"        \"amenities\",",
+									"        \"desc\");",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city_id\":115,\r\n    \"amenities\": [2],\r\n    \"nr_of_rooms\": 2,\r\n    \"distance_to_beach\": 2000,\r\n    \"distance_to_town_center\": 2000,\r\n    \"start_date\": \"2020-01-20\",\r\n    \"end_date\": \"2020-01-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8070/rest/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"search"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "c",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search med andra parameter Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8070/rest/search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"rest",
+										"search"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "c",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Apr 2020 12:29:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1843,\n        \"name\": \"Adams Group hotell\",\n        \"zip\": \"66507\",\n        \"images\": [\n            {\n                \"id\": 3203,\n                \"name\": \"Tortula Moss\"\n            },\n            {\n                \"id\": 3963,\n                \"name\": \"Ravenfoot Sedge\"\n            },\n            {\n                \"id\": 3243,\n                \"name\": \"Fringed Orchid\"\n            },\n            {\n                \"id\": 3672,\n                \"name\": \"African Asparagus Fern\"\n            },\n            {\n                \"id\": 3092,\n                \"name\": \"Caparosa\"\n            },\n            {\n                \"id\": 3061,\n                \"name\": \"Pyrenopsis Lichen\"\n            },\n            {\n                \"id\": 3098,\n                \"name\": \"Island Glorybush\"\n            },\n            {\n                \"id\": 3606,\n                \"name\": \"Telosma\"\n            }\n        ],\n        \"rooms\": [\n            {\n                \"id\": 3952,\n                \"type\": \"Single\",\n                \"floor\": 4,\n                \"number\": 404,\n                \"hotel\": \"Adams Group hotell\",\n                \"price\": 1768,\n                \"max_occupancy\": 1,\n                \"cost_extra_bed\": 278,\n                \"cost_half_board\": 137,\n                \"cost_full_board\": null,\n                \"cost_all_inclusive\": null,\n                \"images\": [\n                    {\n                        \"id\": 3956,\n                        \"name\": \"Creeping Strapfern\"\n                    }\n                ]\n            },\n            {\n                \"id\": 4381,\n                \"type\": \"Single\",\n                \"floor\": 7,\n                \"number\": 701,\n                \"hotel\": \"Adams Group hotell\",\n                \"price\": 1587,\n                \"max_occupancy\": 1,\n                \"cost_extra_bed\": 174,\n                \"cost_half_board\": null,\n                \"cost_full_board\": null,\n                \"cost_all_inclusive\": 804,\n                \"images\": [\n                    {\n                        \"id\": 3396,\n                        \"name\": \"Dwarf Checkerbloom\"\n                    }\n                ]\n            },\n            {\n                \"id\": 4550,\n                \"type\": \"Triple\",\n                \"floor\": 8,\n                \"number\": 815,\n                \"hotel\": \"Adams Group hotell\",\n                \"price\": 1000,\n                \"max_occupancy\": 3,\n                \"cost_extra_bed\": 178,\n                \"cost_half_board\": null,\n                \"cost_full_board\": 467,\n                \"cost_all_inclusive\": null,\n                \"images\": [\n                    {\n                        \"id\": 3532,\n                        \"name\": \"Bill's Neoparrya\"\n                    },\n                    {\n                        \"id\": 3539,\n                        \"name\": \"Rustyhair Saxifrage\"\n                    }\n                ]\n            },\n            {\n                \"id\": 3955,\n                \"type\": \"Double\",\n                \"floor\": 8,\n                \"number\": 826,\n                \"hotel\": \"Adams Group hotell\",\n                \"price\": 1036,\n                \"max_occupancy\": 2,\n                \"cost_extra_bed\": 181,\n                \"cost_half_board\": 243,\n                \"cost_full_board\": null,\n                \"cost_all_inclusive\": null,\n                \"images\": []\n            },\n            {\n                \"id\": 4829,\n                \"type\": \"Single\",\n                \"floor\": 9,\n                \"number\": 921,\n                \"hotel\": \"Adams Group hotell\",\n                \"price\": 840,\n                \"max_occupancy\": 1,\n                \"cost_extra_bed\": 161,\n                \"cost_half_board\": null,\n                \"cost_full_board\": 531,\n                \"cost_all_inclusive\": null,\n                \"images\": []\n            }\n        ],\n        \"amenities\": [\n            {\n                \"id\": 3,\n                \"name\": \"Barnklubb\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Kvällsunderhållning\"\n            }\n        ],\n        \"city\": \"Göteborg\",\n        \"desc\": \"0\",\n        \"email\": \"lapted19@devhub.com\",\n        \"phone\": \"3404062279\",\n        \"distance_to_beach\": 1938,\n        \"distance_to_town_center\": 1835,\n        \"checkin_time\": \"01:00:00\",\n        \"checkout_time\": \"01:00:00\",\n        \"reviews\": [],\n        \"distance_to_town\": 1835\n    }\n]"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "room",
+			"item": [
+				{
+					"name": "Get all rooms",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3b3d9a8e-93c6-48b4-b1a7-19b0e4d14a7d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Test to check if all elements in the room table have at least following object keys id, type, floor, number,roombookings, city, phone, bookings, price, max_occupancy, cost_extra_bed, cost_half_board, cost_full_board, cost_all_inclusive,images\", function () {",
+									"    let rooms = pm.response.json();",
+									"    for(let room of rooms){",
+									"    pm.expect(room).to.have.any.key(",
+									"        \"id\", ",
+									"        \"type\", ",
+									"        \"floor\", ",
+									"        \"number\", ",
+									"        \"roombookings\",",
+									"        \"city\", ",
+									"        \"phone\",",
+									"        \"bookings\",",
+									"        \"price\",",
+									"        \"max_occupancy\",",
+									"        \"cost_extra_bed\",",
+									"        \"cost_half_board\",",
+									"        \"cost_full_board\",",
+									"        \"cost_all_inclusive\",",
+									"        \"images\"",
+									"    )",
+									"    }",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific room",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ad29f46-fdfb-4145-b51e-808b20fbb562",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200 ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if room/id in the room table has at least object keys\", function () {",
+									"    let room = pm.response.json();",
+									"    pm.expect(room).to.have.any.keys(",
+									"        \"id\", ",
+									"        \"type\", ",
+									"        \"floor\", ",
+									"        \"number\", ",
+									"        \"roombookings\",",
+									"        \"city\", ",
+									"        \"phone\",",
+									"        \"bookings\",",
+									"        \"price\",",
+									"        \"max_occupancy\",",
+									"        \"cost_extra_bed\",",
+									"        \"cost_half_board\",",
+									"        \"cost_full_board\",",
+									"        \"cost_all_inclusive\",",
+									"        \"images\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/room/3881",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"room",
+								"3881"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Get all reviews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb26ece2-aba0-44b2-9dd2-3afd62297ce9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Test to check if all elements in the review table have exactly object keys id, rating, text, hotel_id, user_id, userName, hotelName\", function () {",
+									"    let reviews = pm.response.json();",
+									"    for(let review of reviews){",
+									"    pm.expect(review).to.have.all.key(",
+									"        \"id\", ",
+									"        \"rating\", ",
+									"        \"text\", ",
+									"        \"hotel_id\", ",
+									"        \"user_id\",",
+									"        \"userName\", ",
+									"        \"hotelName\"",
+									"    )",
+									"    }",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific review",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "21bae07b-bb36-4547-b7dc-2ddfeffe8499",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if review/id in the hotel table has exact object keys\", function () {",
+									"    let review = pm.response.json();",
+									"    pm.expect(review).to.have.all.keys(",
+									"      \"id\", ",
+									"        \"rating\", ",
+									"        \"text\", ",
+									"        \"hotel_id\", ",
+									"        \"user_id\",",
+									"        \"userName\", ",
+									"        \"hotelName\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/review/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"review",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create review",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"rating\": 9,\r\n        \"text\": \"Very comfortable hotel\",\r\n        \"user_id\":1071,\r\n        \"hotel_id\": 1806\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8070/rest/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"review"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Get all hotels",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6525c960-4642-417c-8563-0ad278789824",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1600ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1600);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Test to check if all elements in the hotel table have at least object keys id, name, zip, images, rooms, amenities, desc,email, phone, distance_to_beach, distance_to_town_center, checkin_time, checkout_time\", function () {",
+									"    let hotels = pm.response.json();",
+									"    for(let hotel of hotels){",
+									"    pm.expect(hotel).to.have.any.keys('id', 'name', 'zip', 'images', 'rooms','amenities', 'desc','email','phone', 'distance_to_beach', 'distance_to_town_center', 'checkin_time', 'checkout_time');",
+									"    }",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/hotel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific hotel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "709b42c0-d522-4a6c-ac53-9d1f18351ca5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if hotel/id in the hotel table has at least object keys\", function () {",
+									"    let hotel = pm.response.json();",
+									"    pm.expect(hotel).to.have.any.keys(",
+									"      'id', 'name', 'zip', 'images', 'rooms','amenities', 'desc','email','phone', 'distance_to_beach', 'distance_to_town_center', 'checkin_time', 'checkout_time');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/hotel/1810",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"hotel",
+								"1810"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Country",
+			"item": [
+				{
+					"name": "Get all countries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7cf038d3-8a94-4ac4-8030-85162811652d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 600ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response objects should contain id, name\", function () {",
+									"    let countries = pm.response.json();",
+									"    for(let country of countries){",
+									"        pm.expect(country).to.have.all.keys( 'id', 'name');",
+									"\t}",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/country",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"country"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get country specific id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ac68944-a65f-4443-8bad-1a8373b6576f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if specific element in the country table has all object keys\", function () {",
+									"   let country = pm.response.json();",
+									"    pm.expect(country).to.have.all.keys('id', 'name');",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8070/rest/country/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"country",
+								"28"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://ddc09a52-9e66-47aa-9508-9c436c1a7cf9.mock.pstmn.io/rest/country:2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://ddc09a52-9e66-47aa-9508-9c436c1a7cf9.mock.pstmn.io/rest/country:2",
+									"protocol": "https",
+									"host": [
+										"ddc09a52-9e66-47aa-9508-9c436c1a7cf9",
+										"mock",
+										"pstmn",
+										"io"
+									],
+									"path": [
+										"rest",
+										"country:2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Apr 2020 13:50:22 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1586872281"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=fc967850fd0c127f"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=ad4831deec88c48d"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\t\"id\":2,\n\t\"name\":\"United Kingdom\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "Get all cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d9519d1-b753-4780-a9d0-b32f0c397d98",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"The city table objects should contain at least keys id, name, hotels\", function () {",
+									"    let cities = pm.response.json();",
+									"    for(let city of cities){",
+									"        pm.expect(city).to.have.all.keys( 'id', 'name', 'hotels');",
+									"\t}",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/city",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific city",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d38e8d1b-2464-40fa-ae39-ec8419a931c0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if specific element in the city table has at least object keys\", function () {",
+									"   let city = pm.response.json();",
+									"    pm.expect(city).to.have.any.keys('id', 'name', 'hotels');",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/city/113",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"city",
+								"113"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Get all bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3f0428a-37ca-4225-b57f-fcf522461645",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 600ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response objects should contain id, name\", function () {",
+									"    let bookings = pm.response.json();",
+									"    for(let booking of bookings){",
+									"        pm.expect(booking).to.have.any.keys(",
+									"            \"id\",",
+									"        \"roombookings\",",
+									"        \"num_adults\",",
+									"        \"num_children\",",
+									"        \"num_infants\",",
+									"        \"start_date\",",
+									"        \"end_date\",",
+									"        \"comment\",",
+									"        \"paid\",",
+									"        \"userName\" );",
+									"\t}",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "717477e5-2ea7-4539-b797-956ec73a6e1f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if specific element in the booking table has at least object keys\", function () {",
+									"   let booking = pm.response.json();",
+									"    pm.expect(booking).to.have.any.keys( \"id\",",
+									"        \"roombookings\",",
+									"        \"num_adults\",",
+									"        \"num_children\",",
+									"        \"num_infants\",",
+									"        \"start_date\",",
+									"        \"end_date\",",
+									"        \"comment\",",
+									"        \"paid\",",
+									"        \"userName\" );",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/booking/23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"booking",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c110f842-1bc8-4341-bc4d-0d9332bc7b32",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if all elements in the response have at least object keys\", function () {",
+									"    let response = pm.response.json();",
+									"    ",
+									"    pm.expect(response).to.have.any.keys(",
+									"        \"id\",",
+									"    \"roombookings\",",
+									"    \"num_adults\",",
+									"    \"num_children\",",
+									"    \"num_infants\",",
+									"    \"start_date\",",
+									"    \"end_date\",",
+									"    \"comment\",",
+									"    \"paid\",",
+									"    \"userName\"",
+									")",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\":{\r\n\t\t\"id\": 1075\r\n\t},\r\n\t\"roombookings\": [\r\n\t\t{\r\n\t\t\"room\": {\r\n\t\t\t\"id\": 3869\r\n\t\t\t},\r\n\t\t\r\n\t\t\"food_cost\": 500,\r\n\t\t \"room_cost\": 500\r\n\t\t}\r\n\t],\r\n\t\"num_adults\":  2,\r\n\t\"num_children\": 0,\r\n\t\"num_infants\": 0,\r\n\t\"start_date\": \"2020-06-02\",\r\n\t\"end_date\": \"2020-06-07\",\r\n\t\"comment\": \"\",\r\n\t\"paid\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8070/rest/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"booking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create booking",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"user\":{\r\n\t\t\"id\": 1074\r\n\t},\r\n\t\"roombookings\": [\r\n\t\t{\r\n\t\t\"room\": {\r\n\t\t\t\"id\": 3871\r\n\t\t\t},\r\n\t\t\r\n\t\t\"food_cost\": 500,\r\n\t\t \"room_cost\": 500\r\n\t\t}\r\n\t],\r\n\t\"num_adults\":  2,\r\n\t\"num_children\": 0,\r\n\t\"num_infants\": 0,\r\n\t\"start_date\": \"2020-06-01\",\r\n\t\"end_date\": \"2020-06-07\",\r\n\t\"comment\": \"\",\r\n\t\"paid\": false\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8070/rest/booking",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"rest",
+										"booking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 11:27:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 30,\n    \"roombookings\": [\n        {\n            \"id\": 25,\n            \"extra_bed\": 0,\n            \"food_cost\": 500,\n            \"room_cost\": 500,\n            \"room_id\": 3871,\n            \"booking_id\": 30\n        }\n    ],\n    \"num_adults\": 2,\n    \"num_children\": 0,\n    \"num_infants\": 0,\n    \"start_date\": \"2020-06-01T00:00:00.000+0000\",\n    \"end_date\": \"2020-06-07T00:00:00.000+0000\",\n    \"comment\": \"\",\n    \"paid\": false,\n    \"userName\": \"Esma Tabord\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Amenity",
+			"item": [
+				{
+					"name": "Get all amenities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "871bf9e1-a810-4ec6-8de3-ac1a228ec02a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Test to check if all elements in the amenity table have exactly object keys id, name\", function () {",
+									"    let amenities = pm.response.json();",
+									"    for(let amenity of amenities){",
+									"    pm.expect(amenity).to.have.all.key(",
+									"        \"id\", ",
+									"        \"name\"",
+									"    )",
+									"    }",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/amenity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"amenity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific amenity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93df4f7b-cbd0-4a62-870c-433d3076dffe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Test to check if amenity/id in the amenity table has exact object keys id, name\", function () {",
+									"    let amenity = pm.response.json();",
+									"    pm.expect(amenity).to.have.all.keys(",
+									"      \"id\", ",
+									"        \"name\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/rest/amenity/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"rest",
+								"amenity",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf147f29-7999-419a-a72c-a886aea120d4",
+								"exec": [
+									"pm.test(\"Status code is 302\", function () {",
+									"    pm.response.to.have.status(302);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
