@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@popperjs/core": "^2.3.3",
     "@smartweb/vue-flash-message": "^0.6.4",
+    "acorn": "^7.1.1",
     "core-js": "^3.6.4",
     "cucumber": "^6.0.5",
     "materialize-css": "^1.0.0-rc.2",
@@ -43,6 +44,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest-fetch-mock": "^3.0.3",
     "selenium-cucumber-js": "^1.7.0",
     "vue-template-compiler": "^2.6.11"
   },
@@ -69,6 +71,12 @@
           "jest": true
         }
       }
+    ]
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
     ]
   },
   "browserslist": [
