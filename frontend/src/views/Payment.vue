@@ -114,11 +114,6 @@
 // import M from "materialize-css";
 
 export default {
-  mounted() {
-    // let elems = document.querySelectorAll(".modal");
-    // M.Modal.init(elems);
-  },
-
   computed: {
     rooms: {
       get: function() {

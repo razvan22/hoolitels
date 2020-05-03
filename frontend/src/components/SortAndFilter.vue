@@ -72,8 +72,8 @@
                 name="group1"
                 type="radio"
                 id="price-low-hi"
-                value="price-low-hi"
-                v-model="sortFilter.selected"
+                value="10"
+                v-model="sortFilter.sortMode"
               />
               <span>Pris (lägst till högst)</span>
             </label>
@@ -85,8 +85,8 @@
                 name="group1"
                 type="radio"
                 id="price-hi-low"
-                value="price-hi-low"
-                v-model="sortFilter.selected"
+                value="20"
+                v-model="sortFilter.sortMode"
               />
               <span>Pris (högst till lägst)</span>
             </label>
@@ -98,8 +98,8 @@
                 name="group1"
                 type="radio"
                 id="review-low-hi"
-                value="review-low-hi"
-                v-model="sortFilter.selected"
+                value="30"
+                v-model="sortFilter.sortMode"
               />
               <span>Omdöme (lägst till högst )</span>
             </label>
@@ -110,9 +110,9 @@
                 class="with-gap"
                 name="group1"
                 type="radio"
-                v-model="sortFilter.selected"
+                v-model="sortFilter.sortMode"
                 id="review-hi-low"
-                value="review-hi-low"
+                value="40"
               />
               <span>Omdöme (högst till lägst)</span>
             </label>
@@ -147,16 +147,16 @@ export default {
   data() {
     return {
       sortFilter: {
+        sortMode: "10",
         checkedFiltration: [],
-        selected: "price-low-hi",
-        dist_to_beach: undefined,
         dist_to_town: undefined,
+        dist_to_beach: undefined,
       },
     };
   },
   methods: {
     uncheckAll: function() {
-      this.sortFilter.selected = "price-low-hi";
+      this.sortFilter.sortMode = "10";
       this.sortFilter.checkedFiltration = [];
       this.sortFilter.dist_to_beach = undefined;
       this.sortFilter.dist_to_town = undefined;
@@ -164,7 +164,6 @@ export default {
     sortAndFilter: function() {
       this.$store.commit("setSortFilter", this.sortFilter);
       this.$store.commit("filterHotels");
-      // bus.$emit("changeIt", "changed sorting and filtering");
     },
   },
   mounted() {
@@ -185,13 +184,11 @@ export default {
   margin-left: 5px;
 }
 
-.rounded-btn  {
+.rounded-btn {
   border-radius: 25px;
 }
 
-.dist-to > label{
+.dist-to > label {
   font-size: 0.7rem;
 }
-
-
 </style>

@@ -24,7 +24,7 @@ export default new Vuex.Store({
     userLogged: false,
 
     resultSortFilter: {
-      selected: "price-low-hi",
+      sortMode: "10",
       checkedFiltration: [],
       distance_to_beach: 0,
       distance_to_town: 0,
@@ -174,12 +174,30 @@ export default new Vuex.Store({
           );
         });
       } // filter on amenities
+
+      // Sort each hotels' rooms, always from lowest to highest price
+      state.hotels.forEach((h) => h.rooms.sort((a, b) => a.price - b.price));
+
+      // sorting comes here
+      let sortPrefix =
+        state.resultSortFilter.sortMode == 10 ||
+        state.resultSortFilter.sortMode == 30
+          ? 1
+          : -1;
+
+      if (state.resultSortFilter.sortMode < 30) {
+        state.hotels.sort(
+          (a, b) => sortPrefix * (a.rooms[0].price - b.rooms[0].price)
+        );
+      } else {
+        state.hotels.sort((a, b) => sortPrefix * (a.grade - b.grade));
+      }
     },
   },
 
   actions: {
     async getCities({ commit }) {
-      let response = await fetch("rest/city");
+      let response = await fetch("/rest/city");
       response = await response.json();
       commit("setCities", response);
     },
@@ -201,7 +219,7 @@ export default new Vuex.Store({
       if (response.url.includes("error")) {
         console.log("Wrong username/password");
       } else {
-        response = await fetch("api/whoami");
+        response = await fetch("/api/whoami");
         let responsee = await response.json();
         commit("setUser", responsee);
         this.state.userLogged = true;
@@ -209,7 +227,7 @@ export default new Vuex.Store({
     },
 
     async isUserLogged({ commit }) {
-      let response = await fetch("api/whoami");
+      let response = await fetch("/api/whoami");
       let responsee = await response.json();
 
       if (responsee == null) {
@@ -227,7 +245,7 @@ export default new Vuex.Store({
     },
 
     async logout({ commit }) {
-      await fetch("http://localhost:8070/logout", {
+      await fetch("/logout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
@@ -238,7 +256,7 @@ export default new Vuex.Store({
     },
 
     async getCountries({ commit }) {
-      let response = await fetch("http://localhost:8070/rest/country");
+      let response = await fetch("/rest/country");
       response = await response.json();
       commit("setCountries", response);
     },
@@ -260,10 +278,11 @@ export default new Vuex.Store({
         body: JSON.stringify(searchObj),
       });
 
-      response = await response.json();      
+      response = await response.json();
 
       commit("setOriginalHotels", response);
       commit("setHotels", response);
+      commit("filterHotels", response);
     },
   },
 
