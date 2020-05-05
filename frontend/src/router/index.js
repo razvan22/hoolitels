@@ -1,70 +1,70 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Result from '../views/Result.vue'
-import Signup from '../views/Signup.vue'
-import HotelVy from '../views/HotelVy.vue'
-import Payment from '../views/Payment.vue'
-import Order from '../views/Order.vue'
-import UserProfile from '../views/UserProfile.vue'
-Vue.use(VueRouter)
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import Result from "../views/Result.vue";
+import Signup from "../views/Signup.vue";
+import HotelVy from "../views/HotelVy.vue";
+import Payment from "../views/Payment.vue";
+import Order from "../views/Order.vue";
+import UserProfile from "../views/UserProfile.vue";
+Vue.use(VueRouter);
 
-  const routes = [
+const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/userprofile',
-    name: 'UserProfile',
-    component: UserProfile 
-  },
-
-  {
-    path: '/result',
-    name: 'Result',
-    component: Result 
+    path: "/userprofile",
+    name: "UserProfile",
+    component: UserProfile,
   },
 
   {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup
+    path: "/result",
+    name: "Result",
+    component: Result,
   },
-{
-  path: '/hotelVy/:hotel',
-  name: 'HotelVy',
-  props:true, 
-  component: HotelVy
-},
 
-{
-  path: '/order',
-  name: 'Order', 
-  component: Order
-},
-
-{
-  path: '/payment',
-  name: 'Payment',
-  component: Payment
-},
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
+  },
+  {
+    path: "/hotelVy/:hotel",
+    name: "HotelVy",
+    props: true,
+    component: HotelVy,
+  },
 
-]
+  {
+    path: "/order",
+    name: "Order",
+    component: Order,
+  },
+
+  {
+    path: "/payment",
+    name: "Payment",
+    component: Payment,
+  },
+  //   ,
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // }
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

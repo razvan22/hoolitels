@@ -12,8 +12,14 @@
             <div class="contact col s5 m4 l3">
               <h4>Omdöme</h4>
               <div>
-                <star-rating :inline="true" :star-size="24" :increment="0.5" :read-only="true" :show-rating="false" :rating="(hotel.grade/2)"></star-rating>
-
+                <star-rating
+                  :inline="true"
+                  :star-size="24"
+                  :increment="0.5"
+                  :read-only="true"
+                  :show-rating="false"
+                  :rating="hotel.grade / 2"
+                ></star-rating>
               </div>
             </div>
             <div class="col s5 m4 l3 ">
@@ -55,12 +61,18 @@
                 </li>
               </ul>
             </div>
+            <div class="contact col">
+              <h4>Pris</h4>
+              <ul>
+                <li class="valign-wrapper">
+                  <i class="material-icons tiny">attach_money</i>
+                  Rum från {{ numFormatter.format(hotel.rooms[0].price) }}
+                </li>
+              </ul>
+            </div>
           </div>
           <div v-if="DisplayRooms">
-            <RoomTypeList
-              :rooms="hotel.rooms"
-              :ref="'roomTypeList' + hotel.id"
-            />
+            <RoomTypeList :rooms="hotel.rooms" />
           </div>
         </div>
         <div class="card-action align-center" v-if="!DisplayRooms">
@@ -84,85 +96,93 @@
 </template>
 
 <script>
-  import RoomTypeList from '@/components/RoomTypeList'
-  import StarRating from "vue-star-rating";
+import RoomTypeList from "@/components/RoomTypeList";
+import StarRating from "vue-star-rating";
 
 export default {
-    name: 'DisplayHotel',
-    props: [`hotel`, `DisplayRooms`],
-    data() {
-      return {
-        isHidden: false,
-      }
+  name: "DisplayHotel",
+  props: [`hotel`, `DisplayRooms`],
+  data() {
+    return {
+      numFormatter: new Intl.NumberFormat("sv-SE", {
+        style: "currency",
+        currency: "SEK",
+        minimumFractionDigits: 0,
+      }),
+    };
+  },
+  computed: {
+    numRoomsToBook() {
+      return this.$store.state.booking.rooms;
     },
-    computed: {
-      numRoomsToBook() {
-        return this.$store.state.booking.rooms
-      },
-      totRoomsSelected() {
-        return this.$store.state.roomSelection.totSelectedRooms
-      },
-
-      buttonShouldBeDisabled() {
-        return this.totRoomsSelected < this.numRoomsToBook
-      },
-
-      amenitiesIsEmpty() {
-        return this.hotel.amenities && this.hotel.amenities.length
-      },
+    totRoomsSelected() {
+      return this.$store.state.roomSelection.totSelectedRooms;
     },
 
-    components: {
-      RoomTypeList,
-      StarRating
+    buttonShouldBeDisabled() {
+      return this.totRoomsSelected < this.numRoomsToBook;
     },
-}
+
+    amenitiesIsEmpty() {
+      return this.hotel.amenities && this.hotel.amenities.length;
+    },
+  },
+
+  components: {
+    RoomTypeList,
+    StarRating,
+  },
+};
 </script>
 
 <style scoped>
-  /* ändra h4 till en klass */
-  h4 {
-    margin-top: 10px;
-  }
+h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
-  .row {
-    margin-bottom: 0px;
-  }
-  .rating__icon--star {
-    color: orange;
-    font-size: 18px;
-  }
+ul {
+  margin-top: 0;
+}
 
-  .amenities {
-    font-size: smaller;
-  }
+.row {
+  margin-bottom: 0px;
+}
+.rating__icon--star {
+  color: orange;
+  font-size: 18px;
+}
 
-  .amenities h4 {
-    font-size: large;
-  }
+.amenities {
+  font-size: smaller;
+}
 
-  .distance {
-    font-size: smaller;
-  }
-  .distance h4 {
-    font-size: large;
-  }
+.amenities h4 {
+  font-size: large;
+}
 
-  .contact {
-    font-size: smaller;
-  }
+.distance {
+  font-size: smaller;
+}
+.distance h4 {
+  font-size: large;
+}
 
-  .contact h4 {
-    font-size: large;
-  }
-  .card-title {
-    text-shadow: 1px 1px rgb(49, 49, 49) !important;
-    background: rgba(221, 221, 221, 0.4);
-    width: 100%;
-    padding: 10px 15px !important;
-    /* color: rgb(0, 255, 221) !important; */
-  }
-  .card-image img {
-    /* opacity: 0.8; */
-  }
+.contact {
+  font-size: smaller;
+}
+
+.contact h4 {
+  font-size: large;
+}
+.card-title {
+  text-shadow: 1px 1px rgb(49, 49, 49) !important;
+  background: rgba(221, 221, 221, 0.4);
+  width: 100%;
+  padding: 10px 15px !important;
+  /* color: rgb(0, 255, 221) !important; */
+}
+.card-image img {
+  /* opacity: 0.8; */
+}
 </style>
