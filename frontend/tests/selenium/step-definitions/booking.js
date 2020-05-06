@@ -4,8 +4,11 @@ module.exports = function () {
    
 
   this.When(/^I click on the boka rum på detta hotell button$/, async function () {  
-    await sleep(2000);  
+    await sleep(100);  
      let bokaButton = await $('body > div:nth-child(2) > div.col.s12.m6 > div > div.card-action.align-center > a');
+     //the line below will scroll the page so the element(in this case 'bokaButton') is at the top
+     driver.executeScript("arguments[0].scrollIntoView(true);", bokaButton);
+     await sleep(300)
      bokaButton.click();
     assert(bokaButton, "can not find boka button");
     await sleep(2000);  
