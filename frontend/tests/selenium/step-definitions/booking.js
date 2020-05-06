@@ -11,14 +11,15 @@ module.exports = function () {
      await sleep(300)
      bokaButton.click();
     assert(bokaButton, "can not find boka button");
-    await sleep(2000);  
-    
+    await sleep(4000);  
+   
+    //body > div:nth-child(2) > div.col.s12.m6 > div > div.card-action.align-center > a
   });
 
   this.When(/^I should get the list of available rooms$/, async function () {      
     let room = await $('.card-content > div:nth-child(3) > div:nth-child(1)');
     assert(room, "expected to find a list of available rooms");
-    await sleep(2000);
+    await sleep(4000);
   });
      
   
