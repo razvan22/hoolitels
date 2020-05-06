@@ -4,7 +4,7 @@ module.exports = function () {
    
 
   this.When(/^I click on the boka rum på detta hotell button$/, async function () {  
-    await sleep(100);  
+    await sleep(1000);  
      let bokaButton = await $('body > div:nth-child(2) > div.col.s12.m6 > div > div.card-action.align-center > a');
      //the line below will scroll the page so the element(in this case 'bokaButton') is at the top
      driver.executeScript("arguments[0].scrollIntoView(true);", bokaButton);
@@ -19,19 +19,18 @@ module.exports = function () {
   this.When(/^I should get the list of available rooms$/, async function () {      
     let room = await $('.card-content > div:nth-child(3) > div:nth-child(1)');
     assert(room, "expected to find a list of available rooms");
-    await sleep(4000);
+    await sleep(2000);
   });
      
   
   this.When(/^I choose number of rooms from dropdown menu$/, async function () {  
-    let  numberOfRooms = await $('.card-content > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input:nth-child(1)');
+    let  numberOfRooms = await $('.card-content > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input:nth-child(1)');
     numberOfRooms.click();
     await sleep(2000);
-    let numberOne = await $('#select-options-b868878f-7bf1-3dee-7ae6-f4df4c33e8001');
+    let numberOne = await driver.findElement(By.xpath('/html/body/div[1]/div/div/main/div/div/div[2]/div/div[2]/div[3]/div/div[1]/div/div[1]/div[2]/div/div[2]/div/ul/li[2]/span'));
     numberOne.click();
-    assert(numberOne, "expected to choose the number of rooms");
+    assert(numberOne, "expected to choose the number of rooms (1)");
     await sleep(2000);
-    
   });
 
   this.When(/^I click on the boka rum button$/, async function () {
@@ -42,7 +41,7 @@ module.exports = function () {
   });
 
   this.When(/^I should see the order page$/, async function () {
-    let orderPage = await $('div.z-depth-1:nth-child(2)');
+    let orderPage = await $('div.s8:nth-child(1)');
     assert(orderPage, "expected to find an order page");
     await sleep(2000);
   });
@@ -92,6 +91,7 @@ module.exports = function () {
   
   this.When(/^I click on my bokningar$/, async function () {
     let myBookings = await $('.collapsible-header > i:nth-child(1)');
+    driver.executeScript("arguments[0].scrollIntoView(true);", myBookings);
     myBookings.click();
     assert(myBookings, "Expect to open my bookings information");
     await sleep(2000);

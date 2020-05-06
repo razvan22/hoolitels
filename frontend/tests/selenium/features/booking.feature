@@ -1,6 +1,6 @@
 Feature: Booking a room in a hotel in Malmö
  
-    Scenario Outline: Booking one room in Malmö without add-ons for 2 adults
+    Scenario Outline: Booking one room in Malmö without add-ons for 1 adult
       Given that I am at the homepage
       And I click on the user icon
       And I enter "<email>" in the email field

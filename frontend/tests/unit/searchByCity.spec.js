@@ -10,7 +10,7 @@ describe('Search rooms by city', () => {
     test('', () => {
         fetch.mockResponseOnce();
         await store.dispatch();
-        expect(store.state.).to.eql(value);
+        expect(store.state).to.eql(value);
     });
 
     
