@@ -76,7 +76,7 @@
   "jest": {
     "automock": false,
     "setupFiles": [
-      "./setupJest.js"
+      "./tests/unit/setupJest.js"
     ]
   },
   "browserslist": [
