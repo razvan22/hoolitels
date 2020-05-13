@@ -2,10 +2,17 @@
   {
     "elements": [
       {
+<<<<<<< HEAD
         "id": "login-of-user;logging-in",
         "keyword": "Scenario",
         "line": 13,
         "name": "Logging in",
+=======
+        "id": "use-filtrering-and-sortering-options-to-get-the-right-hotel;as-a-user-i-would-like-to-use-filtrera-and-sortera-functions-to-choose-a-right-hotel",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "As a user I would like to use filtrera and sortera functions to choose a right hotel",
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
         "steps": [
           {
             "arguments": [],
@@ -13,7 +20,11 @@
             "name": "that I am at the homepage",
             "result": {
               "status": "passed",
+<<<<<<< HEAD
               "duration": 5708810400
+=======
+              "duration": 6449786100
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
             "line": 4,
             "match": {
@@ -23,6 +34,7 @@
           {
             "arguments": [],
             "keyword": "When ",
+<<<<<<< HEAD
             "name": "I click on the user icon",
             "result": {
               "status": "passed",
@@ -31,62 +43,604 @@
             "line": 5,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:12"
+=======
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "passed",
+              "duration": 6020810500
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:4"
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "I enter \"user\" in the email field",
+            "name": "I click the sök button",
             "result": {
               "status": "passed",
+              "duration": 1011745501
+            },
+            "line": 11,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:16"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available hotels in Malmö",
+            "result": {
+              "status": "passed",
+              "duration": 2008211001
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on filtrera_och_sortera button",
+            "result": {
+              "status": "passed",
+              "duration": 1248392599
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:7"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "a panel Hitta rätt hotel för dig appears on the right",
+            "result": {
+              "status": "passed",
+              "duration": 1010264100
+            },
+            "line": 14,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:15"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Barnklubb filter options",
+            "result": {
+              "status": "passed",
+              "duration": 1009213101
+            },
+            "line": 15,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:22"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose fem hundra avstånd till strand",
+            "result": {
+              "status": "passed",
+<<<<<<< HEAD
               "duration": 729057600
+=======
+              "duration": 1468063800
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
-            "line": 6,
+            "line": 16,
             "match": {
+<<<<<<< HEAD
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:18"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:56"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "I enter \"user\" in the password field",
+            "name": "I choose tusen avstånd till centrum",
             "result": {
               "status": "passed",
+<<<<<<< HEAD
               "duration": 507613399
+=======
+              "duration": 1459331800
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
-            "line": 7,
+            "line": 17,
             "match": {
+<<<<<<< HEAD
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:24"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:93"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "I click the login button",
+            "name": "I choose Pris lägst till högst sortera options",
             "result": {
               "status": "passed",
+<<<<<<< HEAD
               "duration": 2018801500
+=======
+              "duration": 1225051000
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
-            "line": 8,
+            "line": 18,
             "match": {
+<<<<<<< HEAD
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:30"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:131"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
+<<<<<<< HEAD
             "keyword": "Then ",
             "name": "I should be logged in",
             "result": {
               "status": "passed",
               "duration": 4731801
+=======
+            "keyword": "And ",
+            "name": "I click on tillämpa button",
+            "result": {
+              "status": "passed",
+              "duration": 1239557399
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
-            "line": 9,
+            "line": 19,
             "match": {
+<<<<<<< HEAD
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:37"
+=======
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:139"
             }
           },
           {
             "arguments": [],
+            "keyword": "Then ",
+            "name": "I should get a list of hotels based on filter",
+            "result": {
+              "status": "passed",
+              "duration": 152899
+            },
+            "line": 20,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:170"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1383284400
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "use-filtrering-and-sortering-options-to-get-the-right-hotel;as-a-user-i-would-like-to-use-filtrera-and-sortera-functions-to-choose-a-right-hotel",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "As a user I would like to use filtrera and sortera functions to choose a right hotel",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6762878400
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "passed",
+              "duration": 6018705500
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "passed",
+              "duration": 1010776100
+            },
+            "line": 11,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:16"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available hotels in Malmö",
+            "result": {
+              "status": "passed",
+              "duration": 2010159699
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on filtrera_och_sortera button",
+            "result": {
+              "status": "passed",
+              "duration": 1238497900
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:7"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "a panel Hitta rätt hotel för dig appears on the right",
+            "result": {
+              "status": "passed",
+              "duration": 1009670701
+            },
+            "line": 14,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:15"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Kvällsunderhållning filter options",
+            "result": {
+              "status": "passed",
+              "duration": 1007159899
+            },
+            "line": 15,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:30"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose tusen fem hundra avstånd till strand",
+            "result": {
+              "status": "passed",
+              "duration": 1455940000
+            },
+            "line": 16,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:65"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose två tusen avstånd till centrum",
+            "result": {
+              "status": "passed",
+              "duration": 1470582600
+            },
+            "line": 17,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:102"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Pris högst till lägst sortera options",
+            "result": {
+              "status": "passed",
+              "duration": 1235093401
+            },
+            "line": 18,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:148"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click on tillämpa button",
+            "result": {
+              "status": "passed",
+              "duration": 1257525601
+            },
+            "line": 19,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:139"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should get a list of hotels based on filter",
+            "result": {
+              "status": "passed",
+              "duration": 92901
+            },
+            "line": 20,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:170"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1250501799
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "use-filtrering-and-sortering-options-to-get-the-right-hotel;as-a-user-i-would-like-to-use-filtrera-and-sortera-functions-to-choose-a-right-hotel",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "As a user I would like to use filtrera and sortera functions to choose a right hotel",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 6562318300
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "passed",
+              "duration": 6018673199
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "passed",
+              "duration": 1011604500
+            },
+            "line": 11,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:16"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I should get a list of available hotels in Malmö",
+            "result": {
+              "status": "passed",
+              "duration": 2009443999
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on filtrera_och_sortera button",
+            "result": {
+              "status": "passed",
+              "duration": 1236471400
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:7"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "a panel Hitta rätt hotel för dig appears on the right",
+            "result": {
+              "status": "passed",
+              "duration": 1009356400
+            },
+            "line": 14,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:15"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Pool filter options",
+            "result": {
+              "status": "passed",
+              "duration": 1007554299
+            },
+            "line": 15,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:38"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose två tusen avstånd till strand",
+            "result": {
+              "status": "passed",
+              "duration": 1458144699
+            },
+            "line": 16,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:74"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose tusen fem hundra avstånd till centrum",
+            "result": {
+              "status": "passed",
+              "duration": 1460744901
+            },
+            "line": 17,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:111"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I choose Omdöme lägst till högst sortera options",
+            "result": {
+              "status": "passed",
+              "duration": 1226532001
+            },
+            "line": 18,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:156"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click on tillämpa button",
+            "result": {
+              "status": "passed",
+              "duration": 1245651399
+            },
+            "line": 19,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:139"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should get a list of hotels based on filter",
+            "result": {
+              "status": "passed",
+              "duration": 88899
+            },
+            "line": 20,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:170"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1381936299
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "use-filtrering-and-sortering-options-to-get-the-right-hotel;as-a-user-i-would-like-to-use-filtrera-and-sortera-functions-to-choose-a-right-hotel",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "As a user I would like to use filtrera and sortera functions to choose a right hotel",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I am at the homepage",
+            "result": {
+              "status": "passed",
+              "duration": 7232045799
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I select Malmö from the välj stad dropdown menu",
+            "result": {
+              "status": "passed",
+              "duration": 6019302499
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:4"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the sök button",
+            "result": {
+              "status": "passed",
+              "duration": 1009398399
+            },
+            "line": 11,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:16"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
+            }
+          },
+          {
+            "arguments": [],
+<<<<<<< HEAD
             "keyword": "After ",
             "result": {
               "status": "passed",
@@ -95,6 +649,43 @@
             "hidden": true,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+=======
+            "keyword": "And ",
+            "name": "I should get a list of available hotels in Malmö",
+            "result": {
+              "status": "passed",
+              "duration": 2008334800
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\roomsByCity.js:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I click on filtrera_och_sortera button",
+            "result": {
+              "status": "passed",
+              "duration": 1227622200
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:7"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "a panel Hitta rätt hotel för dig appears on the right",
+            "result": {
+              "status": "passed",
+              "duration": 1010770800
+            },
+            "line": 14,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:15"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           }
         ],
@@ -109,6 +700,7 @@
         "steps": [
           {
             "arguments": [],
+<<<<<<< HEAD
             "keyword": "Given ",
             "name": "that I am at the homepage",
             "result": {
@@ -118,10 +710,22 @@
             "line": 4,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\home.js:4"
+=======
+            "keyword": "And ",
+            "name": "I choose Restaurang filter options",
+            "result": {
+              "status": "passed",
+              "duration": 1007750801
+            },
+            "line": 15,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:46"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
+<<<<<<< HEAD
             "keyword": "When ",
             "name": "I click on the user icon",
             "result": {
@@ -131,11 +735,23 @@
             "line": 5,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:12"
+=======
+            "keyword": "And ",
+            "name": "I choose två tusen fem hundra avstånd till strand",
+            "result": {
+              "status": "passed",
+              "duration": 1457289300
+            },
+            "line": 16,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:83"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
+<<<<<<< HEAD
             "name": "I enter \"tdinsdaleg@naver.com\" in the email field",
             "result": {
               "status": "passed",
@@ -144,11 +760,22 @@
             "line": 6,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:18"
+=======
+            "name": "I choose två tusen fem hundra avstånd till centrum",
+            "result": {
+              "status": "passed",
+              "duration": 1463377100
+            },
+            "line": 17,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:120"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
+<<<<<<< HEAD
             "name": "I enter \"3uROILP\" in the password field",
             "result": {
               "status": "passed",
@@ -157,11 +784,22 @@
             "line": 7,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:24"
+=======
+            "name": "I choose Omdöme högst till lägst sortera options",
+            "result": {
+              "status": "passed",
+              "duration": 1237567799
+            },
+            "line": 18,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:163"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
+<<<<<<< HEAD
             "name": "I click the login button",
             "result": {
               "status": "passed",
@@ -170,11 +808,22 @@
             "line": 8,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:30"
+=======
+            "name": "I click on tillämpa button",
+            "result": {
+              "status": "passed",
+              "duration": 1251655600
+            },
+            "line": 19,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:139"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
+<<<<<<< HEAD
             "name": "I should be logged in",
             "result": {
               "status": "passed",
@@ -183,6 +832,16 @@
             "line": 9,
             "match": {
               "location": "Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\login.js:37"
+=======
+            "name": "I should get a list of hotels based on filter",
+            "result": {
+              "status": "passed",
+              "duration": 85500
+            },
+            "line": 20,
+            "match": {
+              "location": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\step-definitions\\filtreraOchSortera.js:170"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             }
           },
           {
@@ -190,7 +849,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
+<<<<<<< HEAD
               "duration": 822745101
+=======
+              "duration": 1147015900
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
             },
             "hidden": true,
             "match": {
@@ -202,11 +865,20 @@
         "type": "scenario"
       }
     ],
+<<<<<<< HEAD
     "id": "login-of-user",
     "keyword": "Feature",
     "line": 1,
     "name": "Login of user",
     "tags": [],
     "uri": "C:\\Users\\srcha\\Google Drive\\Skola\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\login.feature"
+=======
+    "id": "use-filtrering-and-sortering-options-to-get-the-right-hotel",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Use filtrering and sortering options to get the right hotel",
+    "tags": [],
+    "uri": "C:\\dev\\hoolitels\\frontend\\tests\\selenium\\features\\filtreraOchSortera.feature"
+>>>>>>> e84e947826665240d849b6044bbd9ab643108fcf
   }
 ]

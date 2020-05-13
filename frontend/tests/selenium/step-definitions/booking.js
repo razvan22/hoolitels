@@ -98,8 +98,10 @@ module.exports = function () {
   });
    
   this.Then(/^I can find my booking in the list$/, async function () {
-    let recentBooking = await $('#booking > div:nth-child(1) > div:nth-child(1)');
+    let recentBooking = await $('div.l3:nth-child(1) > p:nth-child(2)');
     assert(recentBooking, "Expect to find my recent booking in the list");
+  
+    
   });
 
     }
