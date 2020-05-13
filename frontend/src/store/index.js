@@ -202,28 +202,29 @@ export default new Vuex.Store({
       commit("setCities", response);
     },
 
-    async springLogin({ commit }, credent) {
+    async springLogin({dispatch}, credent) {
       let credentials =
         "username=" +
         encodeURIComponent(credent.email) +
         "&password=" +
         encodeURIComponent(credent.password);
 
-      let response = await fetch("/login", {
+       await fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: credentials,
         redirect: "manual",
       });
 
-      if (response.url.includes("error")) {
+     /*  if (response.url.includes("error")) {
         console.log("Wrong username/password");
       } else {
         response = await fetch("/api/whoami");
         let responsee = await response.json();
         commit("setUser", responsee);
         this.state.userLogged = true;
-      }
+      } */
+     await dispatch('isUserLogged');
     },
 
     async isUserLogged({ commit }) {
