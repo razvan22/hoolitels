@@ -19,9 +19,10 @@ describe('Change value of userLogged', () => {
     });
 
     test('After commit: value = true', () => {
-        console.log("userLogged before commit: "+store.state.userLogged);
+        console.log("userLogged before commit: " + store.state.userLogged);
+        //this calls on the mutation userLogStatus with the parameter true
         store.commit('userLogStatus', true)
-        console.log("userLogged after commit: "+store.state.userLogged);
+        console.log("userLogged after commit: " + store.state.userLogged);
 
         assert.isTrue(store.state.userLogged, "Should expect to be true");
         expect(store.state.userLogged).to.be.a("boolean");
