@@ -4,7 +4,7 @@
     <div class="col s12 m6">
       <div class="card hoverable">
         <div class="card-image">
-          <img :src="require('@/assets/' + hotel.images[0].url)" />
+          <img :src="require('@/assets/hotel-img/' + hotel.images[0].url + '.jpg')" />
           <span class="card-title">{{ hotel.name }}</span>
         </div>
         <div class="card-content">

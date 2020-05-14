@@ -313,7 +313,7 @@ export default {
         return e.id === this.user.country_id;
       });
       if (fIndex > -1) {
-        return this.countries[fIndex].name;
+        return this.countries[fIndex].name === undefined ? this.countries[fIndex].name : '' ;
       } else {
         return "";
       }
